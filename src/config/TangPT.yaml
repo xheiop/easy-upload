@@ -1,0 +1,127 @@
+host: tangpt.top
+url: https://www.tangpt.top
+uploadPath: /upload.php
+siteType: NexusPHP
+icon: data:image/png;base64,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
+asSource: false
+asTarget: true
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+torrentDownloadLinkSelector: a[href*="download.php?id="]
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+torrent:
+  selector: input[name="file"]
+name:
+  selector: input[name="name"]
+subtitle:
+  selector: input[name="small_descr"]
+imdb:
+  selector: input[name="pt_gen"]
+description:
+  selector: textarea[name="descr"]
+category:
+  selector: select[name="type"]
+  map:
+    movie: "401"
+    tv: "402"
+    documentary: "404"
+    anime: "405"
+    tvShow: "403"
+    music: "406"
+    sports: "407"
+    misc: "409"
+videoType:
+  selector: select[name="medium_sel[4]"]
+  map:
+    uhdbluray: "10"
+    bluray: "1"
+    hddvd: "2"
+    remux: "3"
+    hdtv: "5"
+    dvdr: "6"
+    encode: "7"
+    cd: "8"
+    web: "11"
+    track: "9"
+    minibd: "4"
+resolution:
+  selector: select[name="standard_sel[4]"]
+  map:
+    1080p: "1"
+    1080i: "1"
+    2160p: "5"
+    2160i: "5"
+    480p: "3"
+    720p: "2"
+    4320p: "6"
+    1440p: "4"
+    1440i: "4"
+videoCodec:
+  selector: select[name="codec_sel[4]"]
+  map:
+    h264: '1'
+    hevc: '6'
+    h265: '6'
+    x264: '1'
+    x265: '6'
+    av1: '7'
+    mpeg2: '4'
+    vc1: '2'
+    xvid: '3'
+    other: '5'
+audioCodec:
+  selector: select[name="audiocodec_sel[4]"]
+  map:
+    flac: "1"
+    ape: "2"
+    dts-hd: "16"
+    dts:x: "15"
+    truehd: "12"
+    lpcm: "19"
+    e-ac3: "10"
+    dts: "14"
+    mp3: "4"
+    ogg: "5"
+    aac: "6"
+    other: "7"
+    ac3: "11"
+    wav: "13"
+team:
+  selector: select[name="team_sel[4]"]
+  map:
+    qhstudio: '37'
+    chd: '2'
+    hds: '1'
+    cspt: '38'
+    ubweb: '36'
+    zmweb: '35'
+    hhweb: '34'
+    adweb: '31'
+    u2: '26'
+    opencd: '24'
+    beast: '23'
+    hdarea: '21'
+    ffansdiy: '19'
+    cmct: '17'
+    ourtv: '16'
+    btshd: '15'
+    hdhome: '14'
+    pterweb: '13'
+    hdsweb: '11'
+    mweb: '10'
+    frds: '8'
+    agsvweb: '7'
+    starfallweb: '6'
+    other: '5'
+    wiki: '4'
+    mysilu: '3'
+anonymous:
+  selector: input[name="uplver"]
