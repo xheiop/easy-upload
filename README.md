@@ -123,6 +123,9 @@ Greasemonkey 4 与以上两种脚本管理器的 API 严重不一致且只能在
       <td align="center" valign="top" width="20%"><a href="https://github.com/jiang925"><img src="https://avatars.githubusercontent.com/u/6193639?v=4?s=75" width="75px;" alt="Tian J."/><br /><sub><b>Tian J.</b></sub></a><br /><a href="https://github.com/techmovie/easy-upload/commits?author=jiang925" title="Code">💻</a></td>
       <td align="center" valign="top" width="20%"><a href="https://github.com/DDinghoya"><img src="https://avatars.githubusercontent.com/u/19677686?v=4?s=75" width="75px;" alt="DDinghoya"/><br /><sub><b>DDinghoya</b></sub></a><br /><a href="https://github.com/techmovie/easy-upload/commits?author=DDinghoya" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="20%"><a href="https://github.com/Griseo-bh3rd"><img src="https://avatars.githubusercontent.com/u/121101691?v=4?s=75" width="75px;" alt="【繁星】格蕾修"/><br /><sub><b>【繁星】格蕾修</b></sub></a><br /><a href="https://github.com/techmovie/easy-upload/commits?author=Griseo-bh3rd" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
