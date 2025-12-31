@@ -2,7 +2,7 @@
 // @name            EasyUpload PT一键转种
 // @name:en         EasyUpload - Trackers Transfer Tool
 // @namespace       https://github.com/techmovie/easy-upload
-// @version         7.0.3
+// @version         7.0.4
 // @author          birdplane
 // @description     一键转种，支持PT站点之间的种子转移。
 // @description:en  Transfer torrents between trackers with one click.
@@ -6398,16 +6398,16 @@
       icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAESklEQVR4nKWV70+aVxTHr4quW5elq1m7dMm6xLhVO511dori8AcoKMLzyKD8EBBQQH7KEEFEEBUUtFUH2qqdtd206bJFX7TJlvVFt1fNXu1fadJmm+V5vgtNpXVp1yU7b85Nzsnn3nPv+Z5LyAssGo0WAiggL7FcLJdD/oMVHIAMfP6RpE3bnHTrvZmgLZYOWCfjVrUn5TFxKysrSw42JoQUvBK24DFRCavq17BGtB+Uf44ZUw9mTDJEtB0IKlv+nB3quztjU3cenJa8CPbUc1LD5lRY28n4KR7m3QbWR/GYUUUrsz7lZ1ZCTsbeUcX6ZVzEjNK/pq3qCCHkoPRn4PzJho0pP9UIt+jTbHrMmZ000nB112OQX4EvqWYMU81IDGnYxRFL1tJyhokZJIjbVOHnyifkO4WiKOeTTgM1rulgA4o2dsrcy7i66uGXnUfG1oJbITFueFuwaOIiQDfA0FiOrWSE8VE8hNTC/bhd255jKJ6yiKKSlEyZ6HverjpkQq6sta0Ks/2t2LZXYZUuxs7QadwOVeOH4TLcsFVh1iCET96KlbDncYDmIWai7hwqOfeaPllTdilgRcwsx5ici5vOGswLCJZ6irDjLMct90e42nccqTaCHVctRqR1iA9p2AWPAX6a93DKpDqXB0b6JN6wWoCr8QAzLGvChrsDaWkhFiWF+FpXit3RamzqT2Bd8za+khVjlSpB2sJHUC1CZszJjEgbELcqzHlgyqmKRbQCjGvFjLW1EluuRiyKCZalHOwFqvHbWg9+v67A3bkWbPSVYlFEsB0UIXc1IY2Y8dNNCKm7xvPAiz7DpEdUjYsePeOjmrFpb8CSmCBNleCmsxz3FoS4f1mCXy4JkOl940nsuq8dEUM3Lnn1jL2tAtF+OpQHRg1Sd1DejG8WJhh7Zy2uuARI9xRiQ1eK2xPnsReswa7/LO5flmJdcwyr1GtYHuQjoGzHtYSf8UrqkLCpDHlgwqLmjtDN+4J3CDreJWxIycO2swYrvRzsBWvx4zQPP03zsBv4BKt0Eb511cFP10NwgrCdJwsx+kXLg6hJ+fHzSuHEraqfjZ+dgvg9kqXKX0fSLMLmwBmsK4/imu44NvuOYU35JrYsVZg1CSEtK87lPh5s+gBzDu1unnTQjDM2XeeETpTtOc2B+BRhFGePIT06iIxNiDU7F1dsXKw4urAW8YL+8GgOxlBlRxAzyh5NWxS8Q2o5WMw6dJEJjRCdJwkzbaazy8Eh1i6qQ2ygF1EjhZBWiu/Xl1iXuC4reZ+wsf5uJB16zyHYP4RdNGvXh2NG6R/jF9qgqHiLDV5oZzYTQWZlbIiZ0IkZt+gcGzfTOXU8nHMa3f82cfKBnDbnnH13Qmrho5RdhUl9Nzup62LnHSqMyvkPkk7D3rRFfbjMl1h+EvMJ4czYNTVJl34grJOMR/Wy0JxDb4y7TbnXfJLzqgH7rC//xxfwN4B0OdZPvAg6AAAAAElFTkSuQmCC"
     },
     "PTer-offer": {
-      url: "https://pterclub.com",
-      host: "pterclub.com",
+      url: "https://pterclub.net",
+      host: "pterclub.net",
       siteType: "NexusPHP",
       icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACu1BMVEUAAAD////Cl3f/sZv/88f/NgD/z6j/VAD/AAD/++v/NwCGe33/rGgAAAX/6dgABBr/zqgTL1vxCACLblsAAAwAEzYAAgiZgmoCAwX9AAAFBAb7q3IEAAADAgL217wFAAD//////////////f///f////9IPkDRiEj/mTr/lTr/lTr9mz3InGrZlFv9tXP/3r0AAAAkGh27YRL7gBBsUTKpVBb/exP/j0D/xJIAAAE5KiX1ewT5eQLpfhxhSzbOagv/lU3/7dkAAAArIBqFUSWNUh9+TCOtXxv5fgy0aimFTh6OUh6NWzJROCbneA3/gCf/yp0EAAABAAIAABQAABUNDB2YVhz7hiDCpYoAAAAAABIAAAsTFBmlXRv/fBX/vYQbGB+4ZRb/iCT/+eUBDx6PVSH/fhz/wowAAAAwJyP0jjnTuKXvx6kABUtfOybTcBP/hTD/1K0AAAJONCH8fwaPXCikcUz/unz/rnPpjT/dcg7/cQn/lUf///8AABVqQSL5gQ1iSCy1XhL/eAr+cgr+dgf+fSb/zKQAChyFTyHndw9bQi/TbwvrdgrrfC77rXUUFhumXBrFbhBhQCy8bByuYRWxYhiuYBunXh+OXDSai38AAAAsIB+kXQ9dRzqogmIjHRstKCgOFyoAAyAAAAk9KyPShTM1O0gAAAtWOSP+nksAAwxxRyPtcxv7pmwDAgNALB5zRyZnPh2WYzz82LoEAAABAAEAAAUAAAP/dwD/dAH/cwH/cgDTdRX2fAT+eAD/eAD+dwD4eAP0ewX2egT/eQD/bwb9ewH/egD/dAD/fQD/dgD+fgH/dQD/fAD/cwD+fgPUcRP+cwP/ewDpdgr+ewLzeQX+fAD+eQD9bwP7fQT/fwD/fQH+fQT0ewb/fgHBZxP/fgLYcRD/egfufAv+dgznew3ndwb///9+450wAAAAuXRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkNDA4HASCOq6ipq2FhZxcCh/r8yuT4vjQVtf7+99b3tRYnq8fCyvH70sLBpNv981gIHBsXafLnTRYYH6n1/HOC/NEhafX3Xw+pui4IB5D+zSYdxv7PwHBdj+36egIw3P3c8Pf2/LIaUO773Pfrlx9y+/Tj9e3hyJdGBwOR87dgNikaBw+xuyEkz4ZA6PVdQ6WmqX0YBw0LDAI5k3AAAAABYktHRAH/Ai3eAAAAB3RJTUUH5QQKBzAvYbh7GgAAAUJJREFUGNNjYMAGGBkVFJWgQFlFlZERJMikpq6hqQUGmto6unr6zCwMDAaGRjt37dq9e/euXXuMTUzNzC1YGRksrfbus7bZf+DgocNHbO3sjx5zcGRjcHJ2cXVzP37Uw9PL28fX78RJ/wB2hsCg4JDQsFOnwyMio6JjYs+cjYvnANllkJB47nxSMicDQ0rqhbNp6VwgwYzMi+cuZWXncOfm5V8+X1DIAxTjLSq+cqKktKy8orLq6oHqmlo+oCB/Xf21Aw2NTc0trddv3GxrFwDpFuzovHW0q7vn9p2793r7+oXAfmKYMPH+uUmTp0ydNn3GzFnCYCGR2XMenHs4d978BQsXLRaFhojYkqWPTjxetlycESmYJFasfHLi6SpJZDEGqdVrnj1fu04aWUxGdv2GjZs2b5FDEZTfum37jtkMBAEAezt4kKiqYGgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDQtMTBUMDc6NDg6NDYrMDA6MDBMncp9AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTA0LTEwVDA3OjQ4OjQ2KzAwOjAwPcBywQAAAABJRU5ErkJggg==",
       asTarget: true,
       uploadPath: "/offers.php?add_offer=1"
     },
     PTer: {
-      url: "https://pterclub.com",
-      host: "pterclub.com",
+      url: "https://pterclub.net",
+      host: "pterclub.net",
       siteType: "NexusPHP",
       icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACu1BMVEUAAAD////Cl3f/sZv/88f/NgD/z6j/VAD/AAD/++v/NwCGe33/rGgAAAX/6dgABBr/zqgTL1vxCACLblsAAAwAEzYAAgiZgmoCAwX9AAAFBAb7q3IEAAADAgL217wFAAD//////////////f///f////9IPkDRiEj/mTr/lTr/lTr9mz3InGrZlFv9tXP/3r0AAAAkGh27YRL7gBBsUTKpVBb/exP/j0D/xJIAAAE5KiX1ewT5eQLpfhxhSzbOagv/lU3/7dkAAAArIBqFUSWNUh9+TCOtXxv5fgy0aimFTh6OUh6NWzJROCbneA3/gCf/yp0EAAABAAIAABQAABUNDB2YVhz7hiDCpYoAAAAAABIAAAsTFBmlXRv/fBX/vYQbGB+4ZRb/iCT/+eUBDx6PVSH/fhz/wowAAAAwJyP0jjnTuKXvx6kABUtfOybTcBP/hTD/1K0AAAJONCH8fwaPXCikcUz/unz/rnPpjT/dcg7/cQn/lUf///8AABVqQSL5gQ1iSCy1XhL/eAr+cgr+dgf+fSb/zKQAChyFTyHndw9bQi/TbwvrdgrrfC77rXUUFhumXBrFbhBhQCy8bByuYRWxYhiuYBunXh+OXDSai38AAAAsIB+kXQ9dRzqogmIjHRstKCgOFyoAAyAAAAk9KyPShTM1O0gAAAtWOSP+nksAAwxxRyPtcxv7pmwDAgNALB5zRyZnPh2WYzz82LoEAAABAAEAAAUAAAP/dwD/dAH/cwH/cgDTdRX2fAT+eAD/eAD+dwD4eAP0ewX2egT/eQD/bwb9ewH/egD/dAD/fQD/dgD+fgH/dQD/fAD/cwD+fgPUcRP+cwP/ewDpdgr+ewLzeQX+fAD+eQD9bwP7fQT/fwD/fQH+fQT0ewb/fgHBZxP/fgLYcRD/egfufAv+dgznew3ndwb///9+450wAAAAuXRSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkNDA4HASCOq6ipq2FhZxcCh/r8yuT4vjQVtf7+99b3tRYnq8fCyvH70sLBpNv981gIHBsXafLnTRYYH6n1/HOC/NEhafX3Xw+pui4IB5D+zSYdxv7PwHBdj+36egIw3P3c8Pf2/LIaUO773Pfrlx9y+/Tj9e3hyJdGBwOR87dgNikaBw+xuyEkz4ZA6PVdQ6WmqX0YBw0LDAI5k3AAAAABYktHRAH/Ai3eAAAAB3RJTUUH5QQKBzAvYbh7GgAAAUJJREFUGNNjYMAGGBkVFJWgQFlFlZERJMikpq6hqQUGmto6unr6zCwMDAaGRjt37dq9e/euXXuMTUzNzC1YGRksrfbus7bZf+DgocNHbO3sjx5zcGRjcHJ2cXVzP37Uw9PL28fX78RJ/wB2hsCg4JDQsFOnwyMio6JjYs+cjYvnANllkJB47nxSMicDQ0rqhbNp6VwgwYzMi+cuZWXncOfm5V8+X1DIAxTjLSq+cqKktKy8orLq6oHqmlo+oCB/Xf21Aw2NTc0trddv3GxrFwDpFuzovHW0q7vn9p2793r7+oXAfmKYMPH+uUmTp0ydNn3GzFnCYCGR2XMenHs4d978BQsXLRaFhojYkqWPTjxetlycESmYJFasfHLi6SpJZDEGqdVrnj1fu04aWUxGdv2GjZs2b5FDEZTfum37jtkMBAEAezt4kKiqYGgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDQtMTBUMDc6NDg6NDYrMDA6MDBMncp9AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTA0LTEwVDA3OjQ4OjQ2KzAwOjAwPcBywQAAAABJRU5ErkJggg==",
       asSource: true,
@@ -7839,6 +7839,155 @@
         }
       }
     },
+    TangPT: {
+      host: "tangpt.top",
+      url: "https://www.tangpt.top",
+      uploadPath: "/upload.php",
+      siteType: "NexusPHP",
+      icon: "data:image/png;base64,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",
+      asSource: false,
+      asTarget: true,
+      seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)",
+      torrentDownloadLinkSelector: 'a[href*="download.php?id="]',
+      search: {
+        path: "/torrents.php",
+        imdbOptionKey: "4",
+        nameOptionKey: "0",
+        params: {
+          incldead: "0",
+          search_area: "{optionKey}",
+          search: "{imdb}",
+          sort: "5",
+          type: "desc"
+        }
+      },
+      torrent: {
+        selector: 'input[name="file"]'
+      },
+      name: {
+        selector: 'input[name="name"]'
+      },
+      subtitle: {
+        selector: 'input[name="small_descr"]'
+      },
+      imdb: {
+        selector: 'input[name="pt_gen"]'
+      },
+      description: {
+        selector: 'textarea[name="descr"]'
+      },
+      category: {
+        selector: 'select[name="type"]',
+        map: {
+          movie: "401",
+          tv: "402",
+          documentary: "404",
+          anime: "405",
+          tvShow: "403",
+          music: "406",
+          sports: "407",
+          misc: "409"
+        }
+      },
+      videoType: {
+        selector: 'select[name="medium_sel[4]"]',
+        map: {
+          uhdbluray: "10",
+          bluray: "1",
+          hddvd: "2",
+          remux: "3",
+          hdtv: "5",
+          dvdr: "6",
+          encode: "7",
+          cd: "8",
+          web: "11",
+          track: "9",
+          minibd: "4"
+        }
+      },
+      resolution: {
+        selector: 'select[name="standard_sel[4]"]',
+        map: {
+          "1080p": "1",
+          "1080i": "1",
+          "2160p": "5",
+          "2160i": "5",
+          "480p": "3",
+          "720p": "2",
+          "4320p": "6",
+          "1440p": "4",
+          "1440i": "4"
+        }
+      },
+      videoCodec: {
+        selector: 'select[name="codec_sel[4]"]',
+        map: {
+          h264: "1",
+          hevc: "6",
+          h265: "6",
+          x264: "1",
+          x265: "6",
+          av1: "7",
+          mpeg2: "4",
+          vc1: "2",
+          xvid: "3",
+          other: "5"
+        }
+      },
+      audioCodec: {
+        selector: 'select[name="audiocodec_sel[4]"]',
+        map: {
+          flac: "1",
+          ape: "2",
+          "dts-hd": "16",
+          "dts:x": "15",
+          truehd: "12",
+          lpcm: "19",
+          "e-ac3": "10",
+          dts: "14",
+          mp3: "4",
+          ogg: "5",
+          aac: "6",
+          other: "7",
+          ac3: "11",
+          wav: "13"
+        }
+      },
+      team: {
+        selector: 'select[name="team_sel[4]"]',
+        map: {
+          qhstudio: "37",
+          chd: "2",
+          hds: "1",
+          cspt: "38",
+          ubweb: "36",
+          zmweb: "35",
+          hhweb: "34",
+          adweb: "31",
+          u2: "26",
+          opencd: "24",
+          beast: "23",
+          hdarea: "21",
+          ffansdiy: "19",
+          cmct: "17",
+          ourtv: "16",
+          btshd: "15",
+          hdhome: "14",
+          pterweb: "13",
+          hdsweb: "11",
+          mweb: "10",
+          frds: "8",
+          agsvweb: "7",
+          starfallweb: "6",
+          other: "5",
+          wiki: "4",
+          mysilu: "3"
+        }
+      },
+      anonymous: {
+        selector: 'input[name="uplver"]'
+      }
+    },
     UHDBits: {
       url: "https://uhdbits.org",
       host: "uhdbits.org",
@@ -8034,6 +8183,102 @@
       },
       resolution: {
         selector: "#rc_select_12"
+      }
+    },
+    ZMPT: {
+      host: "zmpt.cc",
+      url: "https://zmpt.cc",
+      uploadPath: "/upload.php",
+      siteType: "NexusPHP",
+      icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE2klEQVR4nH2Ua2xUVRDHLw8fGCIqGkAMYBCNJEKkEQkIK+3umbm7W6wN22KhsvKwhS10K93SUuhWbClWmrYEKaW0tU+gsHfZlhiFYEQDhsAHH8gHYmJAAfEVVB6l9879m20DQkw4yflwcvL/zcyZ/xlNu8fCQd9o9KiIxOgPO0YQQ12TKJ82DbXLjNA8+2N++F76AUjU8Ygd4RkwXAqfeKai27VeYnRUoupPMcgUgy+IQYeki8uxh92IJY+6G5CQcB98viG3znbEMQOGOiwx+ltirtJeY87z6KZMRFVE9qtLso9N7NeBmBd2B1+Qdr0MHZ5HAW3QAFBP1OFJnA6HY+gtqGW406wDfEIMuiH7VK90USP2qZlonTvV7FQ7pJWuoEMH2nRIE19FA30Whw4APWoFvGqTeOkQvCoF2kCk3sNJzyJCHms3HZV2viwt/KM0kWE18Uq0JU5Ds6vUbqDz2D0PqGMT21QNqjxjNdtNqeJVNUhLgaTQKZmv6swUSoU2Y1gc3BdVM61WKpBmPiK79IuynY9btaoE29Qa1Kl8a4cKyzauwTYKYauaqsHjmWQmU6rM4+OSSr8hnWFn0DfWm7S+bzm/BKdvRBx8o1U9I/VcKdvpjGzlq3a1fgxVegbKk0f1bVEJqEoci0pWGnzOcVg4ewwy3OORrvKxSDXATz8g2wPJol8R0CsQouduN7HSPRo1tEG28EWp5K9RwVVWOa27WcRTrI20QUMalWEBtSCDTyLNOy0ukiy1EcFkIOgG3mEgxL/Y66gNxaz6oWHf/aigCVY55cq7HEMJ98gGPiXFdEaTDNWJReoL8ZOFpdwjWVwuK7hWVlKTtdoZttc4S7CWQijmxXbYOQPhhIduZXu6y3c/SthnF/NlKWRTClSvhsUqAr86jmwdWMGQHL4qq7gSOclPIzDzSRQljkJh0sj+XZ8wAuHxD0LTBsd9h7BjKEL0Bgp1oECHBEk0WUYfydt0BDk6ZDX1otATL3HTneb/K5A0EmvcL2Mtv26FVLqVpzIQpEwEKWDnUjuCOhCMJ0NXtL4AF5sBbpHV6poE6XMpoLMopN0IK0bYMTwOvF70qsNcSx1SQP+gwA0UxIN6gVw6i1XUY62g7yWbRLLojIZCr7Lz9eVYQx12iBciSGOkVL0v75EpFRRFLU+Mm71L8w1Bjp4oufQlVjGQ6wWyORwPeDM76UVrCZ2z/XqbhjzfMIQSp6GQK1HkTOr/ehXkl83ch2o3pJa/tba7QmjkJ/o7nMWTsYzS7KV8Xvz0EzL1HdYiKujzz52JLMeE/je6kqceQ7H+lpSpTtmsKq1KPYAP9Byp5gY0J0N20mW7hdrMdkq97cdM9sGvWmUhfScL+JL4XBXwOV/ov+zy+YYgzJNlE53Ah15INX2KBuXCLpeSet6LRj6HPR5IJ53DfpcfMZ7SD3U4HrfSVaHM59PwuSGvuUr/G2NhbTCqEqfLVvUVGj2QeropTeogOpyT0MlL7D18DBGGGGSLoU6im1+5pb0+a9Y48VIPkvWyu2cjMAh1cyZJvaqTRrbQrkM66Gd00XpEPbMRoYDE+Hf06JAYXbcPcF6/Lu5Lh2M4lJr6/4kNbZC9k58ym8mDTvd6cy+1m4arBd2cj25WZtSZZBkqbBm8GAZPvFNrMz/wL9Y2D69m8IJuAAAAAElFTkSuQmCC",
+      asSource: false,
+      asTarget: true,
+      seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)",
+      torrentDownloadLinkSelector: 'a[href*="download.php?id="]',
+      search: {
+        path: "/torrents.php",
+        imdbOptionKey: "4",
+        nameOptionKey: "0",
+        params: {
+          incldead: "0",
+          search_area: "{optionKey}",
+          search: "{imdb}",
+          sort: "5",
+          type: "desc"
+        }
+      },
+      torrent: {
+        selector: 'input[name="file"]'
+      },
+      name: {
+        selector: 'input[name="name"]'
+      },
+      subtitle: {
+        selector: 'input[name="small_descr"]'
+      },
+      imdb: {
+        selector: 'input[name="pt_gen"]'
+      },
+      description: {
+        selector: 'textarea[name="descr"]'
+      },
+      category: {
+        selector: 'select[name="type"]',
+        map: {
+          movie: "401",
+          tv: "402",
+          documentary: "422",
+          anime: "417",
+          tvShow: "403",
+          music: "423",
+          software: "425",
+          game: "426",
+          misc: "409"
+        }
+      },
+      videoType: {
+        selector: 'select[name="medium_sel[4]"]',
+        map: {
+          uhdbluray: "1",
+          bluray: "1",
+          hddvd: "2",
+          remux: "3",
+          hdtv: "5",
+          dvdr: "6",
+          encode: "7",
+          cd: "8",
+          web: "10",
+          other: "12"
+        }
+      },
+      resolution: {
+        selector: 'select[name="standard_sel[4]"]',
+        map: {
+          "1080p": "1",
+          "1080i": "1",
+          "2160p": "5",
+          "480p": "7",
+          "720p": "8",
+          "4320p": "9"
+        }
+      },
+      audioCodec: {
+        selector: 'select[name="audiocodec_sel[4]"]',
+        map: {
+          flac: "1",
+          ape: "2",
+          dts: "3",
+          mp3: "4",
+          ogg: "5",
+          aac: "6",
+          other: "7",
+          ac3: "8",
+          alac: "9",
+          wav: "10"
+        }
+      },
+      anonymous: {
+        selector: 'input[name="uplver"]'
       }
     },
     fearnopeer: {
@@ -9165,7 +9410,7 @@
   }
   class PterClubStrategy {
     matches(url, bbCode) {
-      return bbCode.includes("img.pterclub.com");
+      return bbCode.includes("img.pterclub.net");
     }
     async transform(url, bbCode) {
       var _a2, _b;
@@ -11677,57 +11922,6 @@ ${description}`;
     }
   }
   registry$1.register(new PTN());
-  class PTSBAO extends BaseFiller {
-    constructor() {
-      super(...arguments);
-      this.priority = 10;
-    }
-    canHandle(siteName) {
-      return siteName === "PTSBAO";
-    }
-    fill(info) {
-      this.info = info;
-      this.prepareToFillInfo();
-      this.fillTorrentTitle();
-      this.disableTorrentChange();
-      this.fillIMDb();
-      this.fillDescription();
-      this.fillCategoryAndVideoInfo();
-      this.fillRemainingInfo();
-      this.fillTorrentFile();
-    }
-    fillCategoryAndVideoInfo() {
-      if (!this.info) return;
-      const {
-        category: categoryConfig,
-        videoCodec: videoCodecConfig,
-        audioCodec: audioCodecConfig,
-        source: sourceConfig,
-        videoType: videoTypeConfig,
-        resolution: resolutionConfig
-      } = this.siteInfo;
-      const {
-        category,
-        videoCodec = "",
-        audioCodec = "",
-        source,
-        videoType,
-        resolution
-      } = this.info;
-      $$2(categoryConfig.selector).val(categoryConfig.map[category]);
-      $$2(categoryConfig.selector)[0].dispatchEvent(
-        new Event("change", { bubbles: true })
-      );
-      setTimeout(() => {
-        $$2(videoCodecConfig.selector).val(videoCodecConfig.map[videoCodec]);
-        $$2(audioCodecConfig.selector).val(audioCodecConfig.map[audioCodec]);
-        $$2(sourceConfig.selector).val(sourceConfig.map[source]);
-        $$2(videoTypeConfig.selector).val(videoTypeConfig.map[videoType]);
-        $$2(resolutionConfig.selector).val(resolutionConfig.map[resolution]);
-      }, 500);
-    }
-  }
-  registry$1.register(new PTSBAO());
   class SpeedApp extends BaseFiller {
     constructor() {
       super(...arguments);
@@ -15546,13 +15740,13 @@ $1`
     }
   }
   registry$1.register(new MTV());
-  class AGSV extends BaseFiller {
+  class SharedNexusPHPCategoryChange extends BaseFiller {
     constructor() {
       super(...arguments);
       this.priority = 10;
     }
     canHandle(siteName) {
-      return siteName === "AGSV";
+      return !!siteName.match(/AGSV|PTSBAO|Railgun|ZMPT|qingwa|PTcafe/);
     }
     fill(info) {
       this.info = info;
@@ -15561,6 +15755,7 @@ $1`
       this.disableTorrentChange();
       this.fillIMDb();
       this.fillDescription();
+      this.fillBasicAttributes();
       this.fillCategoryAndVideoInfo();
       this.fillRemainingInfo();
       this.fillTorrentFile();
@@ -15590,61 +15785,15 @@ $1`
       setTimeout(() => {
         $$2(videoCodecConfig.selector).val(videoCodecConfig.map[videoCodec]);
         $$2(audioCodecConfig.selector).val(audioCodecConfig.map[audioCodec]);
-        $$2(sourceConfig.selector).val(sourceConfig.map[source]);
+        if (sourceConfig) {
+          $$2(sourceConfig.selector).val(sourceConfig.map[source]);
+        }
         $$2(videoTypeConfig.selector).val(videoTypeConfig.map[videoType]);
         $$2(resolutionConfig.selector).val(resolutionConfig.map[resolution]);
       }, 500);
     }
   }
-  registry$1.register(new AGSV());
-  class Railgun extends BaseFiller {
-    constructor() {
-      super(...arguments);
-      this.priority = 10;
-    }
-    canHandle(siteName) {
-      return siteName === "Railgun";
-    }
-    fill(info) {
-      this.info = info;
-      this.prepareToFillInfo();
-      this.fillTorrentTitle();
-      this.disableTorrentChange();
-      this.fillIMDb();
-      this.fillDescription();
-      this.fillCategoryAndVideoInfo();
-      this.fillRemainingInfo();
-      this.fillTorrentFile();
-    }
-    fillCategoryAndVideoInfo() {
-      if (!this.info) return;
-      const {
-        category: categoryConfig,
-        videoCodec: videoCodecConfig,
-        audioCodec: audioCodecConfig,
-        videoType: videoTypeConfig,
-        resolution: resolutionConfig
-      } = this.siteInfo;
-      const {
-        category,
-        videoCodec = "",
-        audioCodec = "",
-        videoType,
-        resolution
-      } = this.info;
-      $$2(categoryConfig.selector).val(categoryConfig.map[category]);
-      $$2(categoryConfig.selector)[0].dispatchEvent(
-        new Event("change", { bubbles: true })
-      );
-      setTimeout(() => {
-        $$2(videoCodecConfig.selector).val(videoCodecConfig.map[videoCodec]);
-        $$2(audioCodecConfig.selector).val(audioCodecConfig.map[audioCodec]);
-        $$2(videoTypeConfig.selector).val(videoTypeConfig.map[videoType]);
-        $$2(resolutionConfig.selector).val(resolutionConfig.map[resolution]);
-      }, 500);
-    }
-  }
-  registry$1.register(new Railgun());
+  registry$1.register(new SharedNexusPHPCategoryChange());
   async function autoFillDoubanInfo(selfDom, info) {
     try {
       $$2(selfDom).text($t$1("获取中..."));
@@ -29963,7 +30112,7 @@ ${screenBBcodeArray.join("")}`
         responseType: "arraybuffer",
         timeout: 1e4
       });
-      const result = await parseTorrent(buffer.Buffer.from(file));
+      const result = parseTorrent(buffer.Buffer.from(file));
       const siteInfo = PT_SITE[targetSiteName];
       const announceUrl = ((_a2 = siteInfo == null ? void 0 : siteInfo.torrent) == null ? void 0 : _a2.announce) || "tracker.com";
       const buf = encodeTorrentFile(__spreadProps(__spreadValues({}, result), {

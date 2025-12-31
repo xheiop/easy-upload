@@ -1,3 +1,18 @@
+## [7.0.4](https://github.com/techmovie/easy-upload/compare/7.0.3...7.0.4) (2025-12-31)
+
+
+### Bug Fixes
+
+* **pter:** update host ([aaef8fe](https://github.com/techmovie/easy-upload/commit/aaef8fe1bf32fe91dc232c4e37932ee5df8182e0)), closes [#374](https://github.com/techmovie/easy-upload/issues/374)
+
+
+### Features
+
+* **new tracker:** tangpt ([#371](https://github.com/techmovie/easy-upload/issues/371)) ([0848af9](https://github.com/techmovie/easy-upload/commit/0848af90978327582e31c85638ad8e60e3849363))
+* **new tracker:** zmpt ([8a4c633](https://github.com/techmovie/easy-upload/commit/8a4c6338376ed9dcce34a64a4c495f4bb8cb77db)), closes [#363](https://github.com/techmovie/easy-upload/issues/363)
+
+
+
 ## [7.0.3](https://github.com/techmovie/easy-upload/compare/7.0.2...7.0.3) (2025-08-02)
 
 
