@@ -77,23 +77,23 @@ describe('HdBitsStrategy', () => {
 });
 
 describe('PterClubStrategy', () => {
-  it('should match pterclub.com urls or not', () => {
+  it('should match pterclub.net urls or not', () => {
     const strategy = new PterClubStrategy();
     expect(
-      strategy.matches('', '[img]https://img.pterclub.com/image.jpg[/img]'),
+      strategy.matches('', '[img]https://img.pterclub.net/image.jpg[/img]'),
     ).toBe(true);
     expect(
       strategy.matches('', '[img]https://example.com/image.jpg[/img]'),
     ).toBe(false);
     expect(strategy.matches('', '')).toBe(false);
   });
-  it('should transform pterclub.com urls correctly', async () => {
+  it('should transform pterclub.net urls correctly', async () => {
     const strategy = new PterClubStrategy();
     const result = await strategy.transform(
       '',
-      '[img]https://img.pterclub.com/image.th.png[/img]',
+      '[img]https://img.pterclub.net/image.th.png[/img]',
     );
-    expect(result).toBe('https://img.pterclub.com/image.png');
+    expect(result).toBe('https://img.pterclub.net/image.png');
   });
   it('should handle invalid BBCode during transformation', async () => {
     const strategy = new PterClubStrategy();

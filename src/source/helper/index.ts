@@ -27,7 +27,7 @@ export const formatTorrentTitle = (title: string): string => {
  * @param {Element} content
  * @returns {string}
  */
-export const getFilterBBCode = (content: Element) => {
+export const getFilterBBCode = (content: Element): string => {
   if (content) {
     const bbCodes = htmlToBBCode(content);
     return (
@@ -87,9 +87,12 @@ export const refineCategory = (
  * get video type from source
  *
  * @param {string} source
- * @returns {*}
+ * @returns {string}
  */
-export const getVideoTypeFromSource = (source: string, resolution?: string) => {
+export const getVideoTypeFromSource = (
+  source: string,
+  resolution?: string,
+): string => {
   if (!source) {
     return '';
   }
@@ -110,7 +113,7 @@ export const getVideoTypeFromSource = (source: string, resolution?: string) => {
  * @param {string} title
  * @returns {string}
  */
-export const getVideoSourceFromTitle = (title: string) => {
+export const getVideoSourceFromTitle = (title: string): string => {
   for (const [key, reg] of Object.entries(CONFIG.VIDEO_SOURCE_MATCH_MAP)) {
     if (reg.test(title)) {
       return key;
@@ -125,7 +128,9 @@ export const getVideoSourceFromTitle = (title: string) => {
  * @param {string} bbcode
  * @returns {{ bdInfo: string[]; mediaInfo: string[] }}
  */
-export const getBDInfoOrMediaInfoFromBBCode = (bbcode: string) => {
+export const getBDInfoOrMediaInfoFromBBCode = (
+  bbcode: string,
+): { bdInfo: string[]; mediaInfo: string[] } => {
   const quoteList: string[] = [];
   const quoteRegex = /\[quote\]([^[\]])+?\[\/quote\]/gi;
   while (bbcode?.match(quoteRegex)?.length) {
@@ -214,7 +219,7 @@ export const getMediaTags = ({
   audioLanguages,
   subtitleLanguages,
   hdrFormats,
-}: MediaDetail) => {
+}: MediaDetail): TorrentInfo.MediaTags => {
   const hasChineseAudio = audioLanguages.includes('Chinese');
   const hasChineseSubtitle = subtitleLanguages.includes('Chinese');
   const hasCantoneseAudio = audioLanguages.includes('Cantonese');
@@ -262,7 +267,7 @@ export const getTagsFromSource = (source: string) => {
  * @param {string} source
  * @returns {string}
  */
-export const getResolutionFromSource = (source: string) => {
+export const getResolutionFromSource = (source: string): string => {
   for (const [resolution, reg] of Object.entries(CONFIG.RESOLUTION_MAP)) {
     if (reg.test(source)) {
       return resolution;
@@ -298,9 +303,9 @@ export const getVideoCodecFromSourceAndVideoType = (
  * get category from source
  *
  * @param {string} source
- * @returns {*}
+ * @returns {string}
  */
-export const getCategoryFromSource = (source: string) => {
+export const getCategoryFromSource = (source: string): string => {
   if (!source) {
     return '';
   }

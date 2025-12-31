@@ -60,7 +60,7 @@ const getTorrentFileData = async (
       responseType: 'arraybuffer',
       timeout: 10000,
     });
-    const result = await parseTorrent(Buffer.from(file));
+    const result = parseTorrent(Buffer.from(file));
     const siteInfo = PT_SITE[targetSiteName as SiteName] as Site.SiteInfo;
     const announceUrl = siteInfo?.torrent?.announce || 'tracker.com';
     const buf = toTorrentFile({

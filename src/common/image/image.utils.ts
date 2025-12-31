@@ -58,7 +58,7 @@ export class HdBitsStrategy implements UrlTransformStrategy {
 
 export class PterClubStrategy implements UrlTransformStrategy {
   matches(url: string, bbCode: string): boolean {
-    return bbCode.includes('img.pterclub.com');
+    return bbCode.includes('img.pterclub.net');
   }
 
   async transform(url: string, bbCode: string): Promise<string> {

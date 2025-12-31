@@ -72,6 +72,7 @@
 |     TTG     |            ✅             |           ✅            |
 |   UHDBits   |            ✅             |           ✅            |
 |   ZHUQUE    |            ❌             |           ✅            |
+|    ZMPT     |            ❌             |           ✅            |
 | fearnopeer  |            ✅             |           ✅            |
 |     iTS     |            ❌             |           ✅            |
 |   qingwa    |            ❌             |           ✅            |
