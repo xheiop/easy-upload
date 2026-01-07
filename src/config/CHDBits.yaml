@@ -1,27 +1,27 @@
-url: 'https://ptchdbits.co'
+url: "https://ptchdbits.co"
 host: ptchdbits.co
 siteType: NexusPHP
 icon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA81BMVEX/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD0AAAAAAAAAAAAAAAAAAAAAAD/AAD/AAD/AAD/AAAAAAAAAAAAAAAAAAAAAAAAAAARAAAjAADaAAD/ICBmiIgEBAQDAwMBAQEAAAAAAAAAAAD/AAD/3d39/v7GxsYAAAAAAAD/AAD/5OT/////AAAAAAADAwMCAgIBAQG5ubmAgIBaWlq6urq1tbWysrI0NDT///9/f3/7+/tJSUnLy8tRUVFOTk6mpqb19fXe3t7d3d3c3Nzu7u69vb0hISEdHR0XFxeOjo5X4OIMAAAAM3RSTlMAgbIHAnne59jwjna/7aAVK0RCQQ1VtrUFA7L7/PhdGBgDAwW2/unnnQaxGKDt6LawIeA+sl6aAAAAAWJLR0QyQNJMyAAAAAd0SU1FB+UECQo4D4hi7WcAAACoSURBVBjTY2BgYDRGBUzMDCysbGiC7EwMjBzGxpxc3HDAymNszACU4uXjFxAUggBhEVExcZCgmISklIk0GMjIyskrKIIExZWUVUzNTExMzE1NVdXUNTRBglraOroWlkBRK2sbWzsTPX2QoIGhkb29jamJiYO9vaMTUAdc0NnF1ckNXdDdw9PLG13Qx9fPPwBdEKuZ6IJYnYTV8Vi9iRkgWIMOayBjiw4AMGtCDVTI3J4AAAAldEVYdGRhdGU6Y3JlYXRlADIwMjEtMDQtMDlUMTA6NTY6MTUrMDA6MDBQcxNEAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIxLTA0LTA5VDEwOjU2OjE1KzAwOjAwIS6r+AAAAABJRU5ErkJggg==
 asSource: true
 asTarget: true
-seedDomSelector: '#top~table:first>tbody>tr:nth-child(6)'
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(4)"
 torrentDownloadLinkSelector: 'a[href*="download.php?id="]'
 uploadPath: /upload.php
 search:
   path: /torrents.php
-  imdbOptionKey: '4'
-  nameOptionKey: '0'
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
   params:
-    incldead: '0'
-    search_area: '{optionKey}'
-    search: '{imdb}'
-    sort: '5'
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
     type: desc
   result:
-    list: '.torrents>tbody>tr'
+    list: ".torrents>tbody>tr"
     url: '.torrentname td a[href*="details.php?id="]'
     name: '.torrentname td a[href*="details.php?id="]'
-    size: 'td:nth-child(5)'
+    size: "td:nth-child(5)"
 name:
   selector: 'input[name="name"]'
 subtitle:
@@ -33,100 +33,100 @@ imdb:
 anonymous:
   selector: 'input[name="uplver"]'
 torrent:
-  selector: '#torrent'
+  selector: "#torrent"
 tags:
   chinese_audio: 'input[name="cnlang"]'
   chinese_subtitle: 'input[name="cnsub"]'
   diy: 'input[name="diy"]'
 category:
-  selector: '#browsecat'
+  selector: "#browsecat"
   map:
-    movie: '401'
-    tv: '403'
-    tvPack: '402'
-    documentary: '404'
-    cartoon: '405'
-    sport: '407'
-    concert: '406'
-    music: '406'
+    movie: "401"
+    tv: "403"
+    tvPack: "402"
+    documentary: "404"
+    cartoon: "405"
+    sport: "407"
+    concert: "406"
+    music: "406"
 videoCodec:
   selector: 'select[name="codec_sel"]'
   map:
-    h264: '1'
-    hevc: '5'
-    h265: '5'
-    x264: '1'
-    x265: '5'
-    mpeg2: '4'
-    mpeg4: '6'
-    vc1: '2'
-    xvid: '6'
+    h264: "1"
+    hevc: "5"
+    h265: "5"
+    x264: "1"
+    x265: "5"
+    mpeg2: "4"
+    mpeg4: "6"
+    vc1: "2"
+    xvid: "6"
 audioCodec:
   selector: 'select[name="audiocodec_sel"]'
   map:
-    aac: '6'
-    ac3: '7'
-    dd: '4'
-    dd+: '7'
-    flac: '1'
-    dts: '3'
-    truehd: '11'
-    lpcm: '13'
-    dtshdma: '10'
-    atmos: '10'
-    dtsx: '3'
+    aac: "6"
+    ac3: "7"
+    dd: "4"
+    dd+: "7"
+    flac: "1"
+    dts: "3"
+    truehd: "11"
+    lpcm: "13"
+    dtshdma: "10"
+    atmos: "10"
+    dtsx: "3"
 videoType:
   selector: 'select[name="medium_sel"]'
   map:
     uhdbluray:
-      - '19'
+      - "19"
     bluray:
-      - '1'
+      - "1"
     remux:
-      - '3'
+      - "3"
     encode:
-      - '4'
+      - "4"
     web:
-      - '18'
+      - "18"
     hdtv:
-      - '6'
+      - "6"
 resolution:
   selector: 'select[name="standard_sel"]'
   map:
     2160p:
-      - '6'
+      - "6"
     1080p:
-      - '1'
+      - "1"
     1080i:
-      - '2'
+      - "2"
     720p:
-      - '3'
+      - "3"
     480p:
-      - '5'
+      - "5"
 area:
   selector: 'select[name="processing_sel"]'
   map:
-    CN: '8'
-    US: '3'
-    EU: '7'
-    HK: '5'
-    TW: '9'
-    JP: '4'
-    KR: '6'
-    OT: '0'
+    CN: "8"
+    US: "3"
+    EU: "7"
+    HK: "5"
+    TW: "9"
+    JP: "4"
+    KR: "6"
+    OT: "0"
 team:
   selector: 'select[name="team_sel"]'
   map:
-    chdbits: '14'
-    sgnb: '13'
-    remux: '1'
-    chdtv: '2'
-    chdpad: '15'
-    chdweb: '12'
-    chdhktv: '11'
-    stbox: '10'
-    onehd: '8'
-    blucook: '16'
-    hqc: '17'
-    gbt: '18'
-    kan: '19'
+    chdbits: "14"
+    sgnb: "13"
+    remux: "1"
+    chdtv: "2"
+    chdpad: "15"
+    chdweb: "12"
+    chdhktv: "11"
+    stbox: "10"
+    onehd: "8"
+    blucook: "16"
+    hqc: "17"
+    gbt: "18"
+    kan: "19"
