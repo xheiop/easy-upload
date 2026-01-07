@@ -1,3 +1,12 @@
+## [7.0.5](https://github.com/techmovie/easy-upload/compare/7.0.4...7.0.5) (2026-01-07)
+
+
+### Bug Fixes
+
+* **chd:** fix selector ([76dd87c](https://github.com/techmovie/easy-upload/commit/76dd87c783a7ce0d9bcdc17186124695f8a6cf7f)), closes [#375](https://github.com/techmovie/easy-upload/issues/375)
+
+
+
 ## [7.0.4](https://github.com/techmovie/easy-upload/compare/7.0.3...7.0.4) (2025-12-31)
 
 
