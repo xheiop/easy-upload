@@ -83,7 +83,7 @@ class BHDExtractor extends BaseExtractor implements InfoExtractor {
   }
 
   protected extractMediaInfos() {
-    const mediaInfo = $('#stats-full code').text();
+    const mediaInfo = $('#stats-full .forced-nfo').text();
     this.info.mediaInfos = [mediaInfo];
   }
 

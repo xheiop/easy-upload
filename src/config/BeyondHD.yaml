@@ -91,7 +91,7 @@ imdb:
 tmdb:
   selector: "#tmdbauto"
 mediaInfo:
-  selector: "#mediainfo"
+  selector: "#stats-full .forced-nfo"
 anonymous:
   selector: 'input[name="anonymous"]'
 videoType:
