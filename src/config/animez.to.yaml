@@ -1,0 +1,40 @@
+url: https://animez.to
+host: animez.to
+siteType: Other
+icon: ""
+asSource: true
+asTarget: true
+uploadPath: /upload
+seedDomSelector: ""
+search:
+  path: /search
+  params:
+    q: '{name}'
+  result:
+    list: ''
+    url: ''
+    name: ''
+name:
+  selector: 'input[name="name"]'
+description:
+  selector: 'textarea[name="media_info"]'
+torrent:
+  selector: 'input[name="torrent"]'
+category:
+  selector: 'select[name="format"]'
+  map:
+    tv: 'TV'
+    tvPack: 'TV'
+    movie: 'MOVIE'
+    # TODO: map remaining anime-specific formats below
+    # TV_SHORT: short-form TV series
+    # SPECIAL: special episodes
+    # OVA: OVA releases
+    # ONA: ONA releases
+    # MUSIC: music videos
+    # MANGA: manga
+    # NOVEL: light/web novel
+    # ONE_SHOT: one-shot manga
+    cartoon: 'TV'
+    concert: 'MUSIC'
+    other: ''
