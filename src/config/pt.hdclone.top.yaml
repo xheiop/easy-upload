@@ -1,0 +1,100 @@
+url: https://pt.hdclone.top
+host: pt.hdclone.top
+siteType: NexusPHP
+icon: ""
+asSource: true
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: '#top~table:first>tbody>tr:nth-child(6)'
+search:
+  path: /torrents.php
+  imdbOptionKey: '4'
+  nameOptionKey: '0'
+  params:
+    incldead: '0'
+    search_area: '{optionKey}'
+    search: '{imdb}'
+    sort: '5'
+    type: desc
+  result:
+    list: '.torrents>tbody>tr'
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: 'td:nth-child(5)'
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+imdb:
+  selector: 'input[name="url"][type="text"]'
+anonymous:
+  selector: 'input[name="uplver"]'
+torrent:
+  selector: 'input[name="file"]'
+tags:
+  hdr: 'input[name="tags[4][]"]'
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: '401'
+    tv: '402'
+    tvPack: '402'
+    documentary: '404'
+    variety: '403'
+    cartoon: '405'
+    concert: '410'
+    music: '408'
+    other: '407'
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    h264: '1'
+    x264: '1'
+    hevc: '6'
+    x265: '6'
+    h265: '6'
+    vc1: '2'
+    mpeg2: '4'
+    av1: '3'
+    other: '5'
+videoType:
+  selector: 'select[name="medium_sel[4]"]'
+  map:
+    uhdbluray: '9'
+    bluray: '1'
+    remux: '3'
+    encode: '7'
+    web: '6'
+    hdtv: '2'
+    dvd: '10'
+    dvdrip: '7'
+    other: '5'
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    4320p: '6'
+    2160p: '1'
+    1080p: '2'
+    1080i: '2'
+    720p: '3'
+    576p: '4'
+    480p: '4'
+team:
+  selector: 'select[name="team_sel[4]"]'
+  map:
+    frds: '6'
+    beast: '9'
+    cmct: '8'
+    tlf: '7'
+    wiki: '4'
+    ubits: '13'
+    pter: '14'
+    mteam: '1'
+    chd: '2'
+    beitai: '3'
+    agsv: '5'
+    hdsky: '10'
+    hdhome: '11'
+    ttg: '12'
