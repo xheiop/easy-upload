@@ -1,0 +1,104 @@
+url: https://p.t-baozi.cc
+host: p.t-baozi.cc
+siteType: NexusPHP
+icon: ""
+asSource: true
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: '#top~table:first>tbody>tr:nth-child(6)'
+search:
+  path: /torrents.php
+  imdbOptionKey: '4'
+  nameOptionKey: '0'
+  params:
+    incldead: '0'
+    search_area: '{optionKey}'
+    search: '{imdb}'
+    sort: '5'
+    type: desc
+  result:
+    list: '.torrents>tbody>tr'
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: 'td:nth-child(5)'
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+anonymous:
+  selector: 'input[name="uplver"]'
+torrent:
+  selector: 'input[name="file"]'
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: '401'
+    tv: '402'
+    tvPack: '402'
+    documentary: '404'
+    concert: '406'
+    sport: '407'
+    cartoon: '405'
+    variety: '403'
+    music: '408'
+    other: '409'
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    h264: '1'
+    x264: '1'
+    hevc: '6'
+    x265: '6'
+    h265: '6'
+    mpeg2: '4'
+    vc1: '2'
+    # TODO: AV1 has no standard semantic key
+audioCodec:
+  selector: 'select[name="audiocodec_sel[4]"]'
+  map:
+    aac: '6'
+    ac3: '1'
+    dd: '1'
+    dd+: '1'
+    flac: '13'
+    dts: '3'
+    truehd: '11'
+    lpcm: '12'
+    dtshdma: '10'
+    atmos: '9'
+    dtsx: '8'
+videoType:
+  selector: 'select[name="medium_sel[4]"]'
+  map:
+    uhdbluray: '11'
+    bluray: '1'
+    remux: '3'
+    encode: '7'
+    web: '10'
+    hdtv: '5'
+    dvd: '6'
+    dvdrip: '7'
+    diy: '13'
+    other: '4'
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    4320p: '6'
+    2160p: '5'
+    1080p: '1'
+    1080i: '2'
+    720p: '3'
+    576p: '4'
+    480p: '4'
+team:
+  selector: 'select[name="team_sel[4]"]'
+  map:
+    bzweb: '6'
+    bzpt: '7'
+    hds: '1'
+    chd: '2'
+    myisilu: '3'
+    wiki: '4'
+    other: '5'
