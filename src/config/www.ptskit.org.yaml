@@ -1,0 +1,40 @@
+url: https://www.ptskit.org
+host: www.ptskit.org
+siteType: NexusPHP
+icon: ""
+asSource: true
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: '#top~table:first>tbody>tr:nth-child(6)'
+search:
+  path: /torrents.php
+  imdbOptionKey: '4'
+  nameOptionKey: '0'
+  params:
+    incldead: '0'
+    search_area: '{optionKey}'
+    search: '{imdb}'
+  result:
+    list: '.torrents>tbody>tr'
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: 'td:nth-child(5)'
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+torrent:
+  selector: 'input[name="file"]'
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: '404'
+    tv: '405'
+    tvPack: '405'
+    variety: '409'
+    music: '408'
+    cartoon: '407'
+    other: '406'
+    # TODO: 短剧 (401) - short drama, 动态漫 (402) - motion comic, 游戏 (403) - game
