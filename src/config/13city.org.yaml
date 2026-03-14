@@ -1,0 +1,118 @@
+url: https://13city.org
+host: 13city.org
+siteType: NexusPHP
+icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAFa0lEQVR4nF3Q21PU9xnH8d8f0Fyk973pZKYXMVUjOCoaiIZdV8BE6gFBrcIGULDCCiLiAiXd5bTIHlhOLsIuwsIe2P392F1wlxoghIBKIdWATvDQWOmksZpSxxv7nXcH40Wmz8xr5rn6PM98pKc/fP9qdmpS9A56RY/bI5wDHuF0/5/+AeHyy8KlxITTPfgzHtHdPyC8Q0Pi65szYnX136+ka5GQSL7QRHz7OHG2KHG22E+sa6LEWaLEt02w4byV947ks8n2Z+JtsTeibLbF+K1tjLRzBu4s/EVITQ6XiOu+Rdq1FfYMP0Iz/PBnHqEJfkvqxCoJFWaSjhxCE3lCSujRa5rQI1TyQwpnfiSlfYRwOCSk+vZuEe+YZre8jNp/F5VvkWTvIsm+JZK9d0gO3meX+zZxx7LZUNHKnvBj1P57qP1LJAwuYp97zNrEJqeQg4E3gV0zaJQHJAwusdN7903wEmrlIYm9c5S3f8rklJrjpmLWV3eSPLzM7uC3fPHdv4D/vg6cm7uFLAeF1NDRI9ZfnmVX4D4dCytkRe7zft8i6uAyib3zmMzZPLuezj+nDvFFVwsl2hE+qXShUpYxzvydhtnHXLr9jIK+GEFFFlJdR49I6LnJVyurry89f/mS+umHpEZW2F7nImJXMRcp40boUyYtl5j84yj5BxtJuHqTD7z32da/SKLymHVNIwQVRUjGdqfQ9M/Td+859qX/0LX8EsfSj2ROvWC7NchYp5oHE2e5O5nHjU47n9dcR3vYwlb/EnvHnpMa/YGPx56yxTKKPDwspMbLTrHZ9TU7wv9go9HNusorbK1zo7HKvKer47OzO+moP0SncSeNZ/6A+aSFowdKSDJ0kdzkJ7Gmi5ThB2x3TP/0oaHZKn6tLWHd4Vw8zivU11TSbjHh7LBzRqfD4wsiBxVKS0ox1DdgbW0lHFGQB/vJ+N0+7A1/YlttL+8avchrHVo7WkRSSxsflpfg9XkoKDzN+5viGPR4cbmc1BoN/PLtt9FfrKCxsRFtjha9Xk+xTsf09DTeQJjiwo+oPJ1IUB4S0mWHWaS1WclsM+Ia7KNSryfpwyQ8Xi9DgQB9fVfZrVaj11/E3NxMfv5JmpubeeutX/DkyQr1xrPc8ecx3XaM4ZBfSJ0Oi0jrsHOso4HKmoucKTyNqaERm9lM0o4dOHv76XR0c+BgJrl5+WhSVBSePoUkSVTWGLBX7+fFyDmG6vYRCg0Jqf2yWSTUV6PtM7O+rJbD+n2cqVOxsbSKX6WmU3vyNwxUb8BjWEdz4QkqDlhJ3pLDxwUNJP3+Eg26VPiyiuuWDELhISGZmmwiXVVExtE6jn+WhTN6hM6ZMlTeCEnGJiavpvH9LR1/m81hrtvOl83jFGbYyTZNkmOaJ+tUNvXlBzmRmYiirHXY0i5Gq67Qqu3B6EgnfLsAy7Uiknr8xJ+vJtqq4rtoPsujWUxYLhGsGOdYWjOFxm6KavrYqD1HQVc1H+jy8CshIbVb28RAqQPTiSvoW/czNFeIaaTkdeDm8kpCLRq+GdExH9EyYTUzWjXGib0m9pdHyNCF2ZJbzLkRJ3sMlfjlYSE5WruEt8yFPc9NbXcG0XvF2CfK+cgdYVuVgZhjL8vj51n6/BSznW2MG74iN93O0ZoxsivG2FFQRk3MwSeGMpTIqJCuxSKirqiM0jQD2Rd2YfIdoagjm021Nt7JPkWvfgN3nWpu92zFfaEUW84AqQkl7M61kXK8hXfTM8kyX+RgUSl3/rogpGfPnr6aubEgAn5FePx+4QkowhuQRUCWhS8QEMGATyiKXyiyT8iBgBhWvMLnCwhF9gg5uLZ7xfWIX3yzMC9evFh99T9+STXgGPOVwwAAAABJRU5ErkJggg=='
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: '#top~table:first>tbody>tr:nth-child(6)'
+search:
+  path: /torrents.php
+  imdbOptionKey: '4'
+  nameOptionKey: '0'
+  params:
+    incldead: '0'
+    search_area: '{optionKey}'
+    search: '{imdb}'
+    sort: '5'
+    type: desc
+  result:
+    list: '.torrents>tbody>tr'
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: 'td:nth-child(5)'
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+torrent:
+  selector: 'input[name="file"]'
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: '401'
+    tv: '402'
+    tvPack: '402'
+    documentary: '413'
+    concert: '406'
+    music: '408'
+    variety: '403'
+    cartoon: '405'
+    other: '409'
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    h264: '1'
+    x264: '1'
+    hevc: '2'
+    x265: '2'
+    h265: '2'
+    mpeg2: '3'
+    vc1: '4'
+    xvid: '6'
+audioCodec:
+  selector: 'select[name="audiocodec_sel[4]"]'
+  map:
+    flac: '1'
+    dts: '3'
+    dtshdma: '3'
+    aac: '6'
+    dd+: '7'
+    truehd: '8'
+    atmos: '9'
+    lpcm: '10'
+videoType:
+  selector: 'select[name="medium_sel[4]"]'
+  map:
+    bluray: '1'
+    remux: '3'
+    hdtv: '5'
+    dvd: '6'
+    encode: '7'
+    web: '10'
+    uhdbluray: '11'
+    dvdrip: '7'
+    other: '13'
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    4320p: '1'
+    2160p: '2'
+    1080p: '3'
+    1080i: '4'
+    720p: '5'
+    576p: '5'
+    480p: '5'
+area:
+  selector: 'select[name="processing_sel[4]"]'
+  map:
+    CN: '1'
+    HK: '1'
+    TW: '1'
+    JP: '2'
+    KR: '5'
+    US: '6'
+    EU: '6'
+    OT: '7'
+team:
+  selector: 'select[name="team_sel[4]"]'
+  map:
+    13city: '1'
+    ailmweb: '2'
+    52pt: '3'
+    hhweb: '4'
+    chdweb: '5'
+    frds: '6'
+    mteam: '7'
+    qhstudio: '8'
+    pterweb: '9'
+    rainweb: '10'
+    other: '11'
+    sewageweb: '12'
+    ubweb: '13'
+    zmweb: '14'
+    adweb: '15'
+    ubits: '16'
+    wiki: '17'
