@@ -1,0 +1,93 @@
+url: https://www.ptlover.cc
+host: www.ptlover.cc
+siteType: NexusPHP
+icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAACEElEQVR4nK1UTW/aQBDl/5+4cUCNgiCk1MGmiEBUO0TiAhiwE7D5EhdO5SMHEMjIXuBVM6nVgHFNpa40Wtn7dubNm5mNCSHwPy0WBfA878SuduidXSRzXReHwwHH45GNVhjW+x0swNA/oH2/32M+n2OxWKDZbMIwjABGXJMyAYkZMczlvqJYLEKSvqFeb8BxHGYaln4sTIvdbof39yWenipIp9OQ5TxaLR3D4QCz2YwluIqh67rMYDQaIZlMolaroVIpI5fLQZIk2LaN6XTKGMKKc4fn1aNFuqVSKcTjcdze3sIwTHQ6bSiKgk6ng4cHCbPZz4tFin32TkXo921ks1koioxSqYREIoFMJsNa3tx8YS0pGH3btsV3LqZMByQ4VdI0TXS7XfT7fby+mqydruswTYP/WZbFGMI6jnPiNKCh33O+FQoFFIvfmd39fTaAEVFFIRBF9MGFggJV/YG7uwxrJ4QXwIgwh9vtFu12mytJKQ0GA05rPB5z1Sn94XCIt7cun7VaLWw2m5MmDzCkyzQVj48lvqBpGnq9Hvff87MGXW+iXC4zhoKIqJRpLZdL5PN5bhMqyGQygaapaDTqLAGlThi/bcQ1jb1er9kJjR0xfXmpQpZlZrxarcIbW1wYO/+Vod2yelBVFdVqlbX9ONtfdCb+Nsu+yLSomhTg82REvodh9sHkz/sYhY90+K/2C7Uw30QrSEc3AAAAAElFTkSuQmCC'
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: '#top~table:first>tbody>tr:nth-child(6)'
+search:
+  path: /torrents.php
+  imdbOptionKey: '4'
+  nameOptionKey: '0'
+  params:
+    incldead: '0'
+    search_area: '{optionKey}'
+    search: '{imdb}'
+    sort: '5'
+    type: desc
+  result:
+    list: '.torrents>tbody>tr'
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: 'td:nth-child(5)'
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: '#descr'
+imdb:
+  selector: 'input[name="url"][type="text"]'
+douban:
+  selector: 'input[name="douban_id"]'
+anonymous:
+  selector: 'input[name="uplver"]'
+torrent:
+  selector: '#torrent'
+category:
+  selector: '#browsecat'
+  map:
+    movie: '' # TODO: fill in category option values
+    tv: '' # TODO: fill in category option values
+    tvPack: '' # TODO: fill in category option values
+    documentary: '' # TODO: fill in category option values
+    concert: '' # TODO: fill in category option values
+    sport: '' # TODO: fill in category option values
+    cartoon: '' # TODO: fill in category option values
+    variety: '' # TODO: fill in category option values
+    other: '' # TODO: fill in category option values
+videoCodec:
+  selector: 'select[name="codec_sel"]'
+  map:
+    h264: '' # TODO: fill in option values
+    x264: '' # TODO: fill in option values
+    hevc: '' # TODO: fill in option values
+    x265: '' # TODO: fill in option values
+    mpeg2: '' # TODO: fill in option values
+    vc1: '' # TODO: fill in option values
+    xvid: '' # TODO: fill in option values
+audioCodec:
+  selector: 'select[name="audiocodec_sel"]'
+  map:
+    aac: '' # TODO: fill in option values
+    ac3: '' # TODO: fill in option values
+    dd: '' # TODO: fill in option values
+    flac: '' # TODO: fill in option values
+    dts: '' # TODO: fill in option values
+    truehd: '' # TODO: fill in option values
+    lpcm: '' # TODO: fill in option values
+    dtshdma: '' # TODO: fill in option values
+    atmos: '' # TODO: fill in option values
+videoType:
+  selector: 'select[name="medium_sel"]'
+  map:
+    uhdbluray: '' # TODO: fill in option values
+    bluray: '' # TODO: fill in option values
+    remux: '' # TODO: fill in option values
+    encode: '' # TODO: fill in option values
+    web: '' # TODO: fill in option values
+    hdtv: '' # TODO: fill in option values
+    dvd: '' # TODO: fill in option values
+    dvdrip: '' # TODO: fill in option values
+    other: '' # TODO: fill in option values
+resolution:
+  selector: 'select[name="standard_sel"]'
+  map:
+    4320p: '' # TODO: fill in option values
+    2160p: '' # TODO: fill in option values
+    1080p: '' # TODO: fill in option values
+    1080i: '' # TODO: fill in option values
+    720p: '' # TODO: fill in option values
+    576p: '' # TODO: fill in option values
+    480p: '' # TODO: fill in option values
