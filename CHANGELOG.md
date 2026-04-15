@@ -1,3 +1,10 @@
+## [7.0.7](https://github.com/techmovie/easy-upload/compare/7.0.6...7.0.7) (2026-04-15)
+
+
+### Bug Fixes
+
+* site config ([149ed71](https://github.com/techmovie/easy-upload/commit/149ed71e8326ac4f78e851d02b6e8d93a2c718b9))
+
 ## [7.0.6](https://github.com/techmovie/easy-upload/compare/7.0.5...7.0.6) (2026-03-14)
 
 
