@@ -34,6 +34,7 @@ import './target-filler/iTS';
 import './target-filler/BYR';
 import './target-filler/Pter';
 import './target-filler/MTV';
+import './target-filler/YemaPT';
 import './target-filler/shared-nexusphp-category-change';
 import autofill from './autofill';
 

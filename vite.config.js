@@ -79,6 +79,8 @@ export default defineConfig({
           'https://hd-space.org/index.php?page=torrent-details&id=*',
           'https://speedapp.io/browse/*',
           'https://*.m-team.cc/detail/*',
+          'https://www.yemapt.org/*',
+          'https://www1.yemapt.org/*',
         ],
         exclude: [
           'https://*/torrent/peers*',
