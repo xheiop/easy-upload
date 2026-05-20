@@ -1,0 +1,101 @@
+url: "https://www.yemapt.org"
+host: www1?.yemapt.org
+siteType: YemaPT
+asSource: false
+asTarget: true
+uploadPath: /#/torrent/add
+seedDomSelector: "form.ant-form"
+needDoubanInfo: false
+name:
+  selector: "#showName"
+subtitle:
+  selector: "#shortDesc"
+description:
+  selector: "#longDesc"
+torrent:
+  selector: "#fileList"
+imdb:
+  selector: "#imdb"
+douban:
+  selector: "#douban"
+poster: "#picture"
+mediaInfo:
+  selector: "#mediaInfo"
+category:
+  selector: "#categoryId"
+  map:
+    movie: "电影"
+    tv: "剧集"
+    tvPack: "剧集"
+    cartoon: "动漫"
+    documentary: "纪录片"
+    variety: "综艺"
+    sport: "体育"
+    app: "软件"
+    game: "游戏"
+    ebook: "书籍"
+    music: "音乐"
+    concert: "MV/演唱会"
+videoType:
+  selector: "#medium"
+  map:
+    uhdbluray: "Blu-rayUHD"
+    bluray: "Blu-ray"
+    remux: "Remux"
+    encode: "Encode"
+    hdtv: "HDTV/TV"
+    web: "Web-dl"
+    dvd: "DVD"
+    dvdrip: "DVDrip"
+videoCodec:
+  selector: "#codec"
+  map:
+    h264: "H.264(x264/AVC)"
+    x264: "H.264(x264/AVC)"
+    hevc: "H.265(x265/HEVC)"
+    h265: "H.265(x265/HEVC)"
+    x265: "H.265(x265/HEVC)"
+    vc1: "Bluray(VC1)"
+    xvid: "Xvid"
+    mpeg2: "MPEG-2"
+    av1: "AV1"
+audioCodec:
+  selector: "#audiocodec"
+  map:
+    aac: "AAC"
+    ac3: "AC3(DD)"
+    dd: "AC3(DD)"
+    dd+: "E-AC3(DDP)"
+    flac: "FLAC"
+    dts: "DTS"
+    truehd: "TrueHD"
+    lpcm: "LPCM"
+    dtshdma: "DTS-HD MA"
+    atmos: "TrueHD Atmos"
+    dtsx: "DTS-HD MA"
+    ape: "APE"
+    wav: "WAV"
+    mp3: "MP3"
+resolution:
+  selector: "#standard"
+  map:
+    2160p: "2160p/4K"
+    1080p: "1080p"
+    1080i: "1080i"
+    720p: "720p"
+    576p: "SD"
+    480p: "SD"
+team:
+  selector: "#team"
+  map:
+    ourbits: "OurBits"
+    btshd: "BtsHD"
+    btstv: "BtsTV"
+    hdchina: "HDChina"
+    cmct: "CMCT"
+    hhweb: "HHWEB"
+    frds: "FRDS"
+    mteam: "MTeam"
+    qhstudio: "QHstudio"
+    ubits: "UBits"
+    other: "Other"
