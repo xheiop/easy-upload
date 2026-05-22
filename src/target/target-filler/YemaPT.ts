@@ -37,6 +37,20 @@ export const prepareYemaPTDescription = (
   return filterEmptyTags(description).trim();
 };
 
+export const getYemaPTSeason = (title: string): number | null => {
+  const season =
+    title.match(/\bS(?:eason)?\.?\s*0*(\d{1,3})(?:\b|E\d+)/i)?.[1] ||
+    title.match(/\bSeason\s+0*(\d{1,3})\b/i)?.[1] ||
+    title.match(/第\s*0*(\d{1,3})\s*季/)?.[1];
+
+  if (!season) return null;
+
+  const seasonNumber = parseInt(season, 10);
+  return Number.isFinite(seasonNumber) && seasonNumber > 0
+    ? seasonNumber
+    : null;
+};
+
 const convertQuoteToMarkdown = (quote: string, title = ''): string => {
   const normalized = quote.trim();
   if (!normalized) return '';
@@ -198,6 +212,9 @@ class YemaPT extends BaseFiller implements TargetFiller {
 
     const mediaInfo = info.mediaInfos?.[0];
     if (mediaInfo) fields.mediaInfo = mediaInfo;
+
+    const season = getYemaPTSeason(info.title);
+    if (season) fields.season = season;
 
     return fields;
   }

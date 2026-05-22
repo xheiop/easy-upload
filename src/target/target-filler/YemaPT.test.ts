@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { bbcodeToMarkdown, prepareYemaPTDescription } from './YemaPT';
+import {
+  bbcodeToMarkdown,
+  getYemaPTSeason,
+  prepareYemaPTDescription,
+} from './YemaPT';
 
 describe('YemaPT target filler helpers', () => {
   it('converts common BBCode tags to Markdown', () => {
@@ -49,5 +53,12 @@ describe('YemaPT target filler helpers', () => {
         mediaInfos: [mediaInfo],
       }),
     ).toBe('简介');
+  });
+
+  it('gets season number from common torrent title patterns', () => {
+    expect(getYemaPTSeason('Show.Name.S02E03.1080p.WEB-DL')).toBe(2);
+    expect(getYemaPTSeason('Show Name Season 03 2160p WEB-DL')).toBe(3);
+    expect(getYemaPTSeason('剧名 第4季 1080p WEB-DL')).toBe(4);
+    expect(getYemaPTSeason('Movie.Name.2024.1080p.BluRay')).toBeNull();
   });
 });
