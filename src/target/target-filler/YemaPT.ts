@@ -277,8 +277,16 @@ class YemaPT extends BaseFiller implements TargetFiller {
 
   private getAudioCodec(): string {
     const { audioCodec = '', title } = this.info!;
-    if (/^(ac3|dd|\+?dd)$/i.test(audioCodec) && /DDP|DD\+/i.test(title)) {
-      return /Atmos/i.test(title) ? 'E-AC3 Atmos' : 'E-AC3(DDP)';
+    if (/^(atmos)$/i.test(audioCodec)) {
+      return /DDP|DD\+|E-?AC-?3/i.test(title) ? 'E-AC3 Atmos' : 'TrueHD Atmos';
+    }
+    if (/^truehd$/i.test(audioCodec) && /Atmos/i.test(title)) {
+      return 'TrueHD Atmos';
+    }
+    if (/^(ac3|dd|dd\+)$/i.test(audioCodec) && /DDP|DD\+/i.test(title)) {
+      return /Atmos/i.test(title)
+        ? 'E-AC3 Atmos'
+        : 'E-AC3 (Dolby Digital Plus)';
     }
     return (this.siteInfo.audioCodec?.map?.[audioCodec] as string) || 'Other';
   }
@@ -293,9 +301,6 @@ class YemaPT extends BaseFiller implements TargetFiller {
       KR: 'KR(韩国)',
       US: 'US(美国)',
       EU: 'EU(欧洲)',
-      UK: 'UK(英国)',
-      CA: 'CA(加拿大)',
-      AU: 'AU(澳大利亚)',
     };
 
     return area && areaMap[area] ? [areaMap[area]] : ['Other'];
@@ -313,9 +318,14 @@ class YemaPT extends BaseFiller implements TargetFiller {
     if (tags.chinese_audio) result.push('国语');
     if (tags.chinese_subtitle) result.push('中字');
     if (tags.cantonese_audio) result.push('粤语');
-    if (tags.hdr10 || tags.hdr10_plus) result.push('HDR10');
+    if (tags.hdr10) result.push('HDR10');
+    if (tags.hdr10_plus) result.push('HDR10+');
     if (tags.dolby_vision) result.push('杜比视界');
-    if (/E\d+/i.test(title)) result.push('分集');
+    if (tags.dolby_atmos) result.push('杜比全景声(Atmos)');
+    if (tags.dts_x) result.push('DTS-X');
+    if (tags.diy) result.push('DIY');
+    if (tags.exclusive) result.push('首发');
+    if (/E\d+/i.test(title)) result.push('连载中');
     if (/complete|S\d{2}(?!E\d{2})/i.test(title)) result.push('完结');
     return result;
   }
