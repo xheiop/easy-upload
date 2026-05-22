@@ -77,6 +77,7 @@
 |     TTG     |            ✅             |           ✅            |
 |   TangPT    |            ❌             |           ✅            |
 |   UHDBits   |            ✅             |           ✅            |
+|   YemaPT    |            ❌             |           ✅            |
 |   ZHUQUE    |            ❌             |           ✅            |
 |    ZMPT     |            ❌             |           ✅            |
 | fearnopeer  |            ✅             |           ✅            |

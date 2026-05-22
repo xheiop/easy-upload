@@ -1,3 +1,10 @@
+## [7.0.9](https://github.com/techmovie/easy-upload/compare/7.0.8...7.0.9) (2026-05-21)
+
+
+### Features
+
+* add YemaPT target support ([#401](https://github.com/techmovie/easy-upload/issues/401)) ([919e3c7](https://github.com/techmovie/easy-upload/commit/919e3c75c4e21359f038fda09ee87ee732e33699))
+
 ## [7.0.8](https://github.com/techmovie/easy-upload/compare/7.0.7...7.0.8) (2026-05-14)
 
 

@@ -2,7 +2,7 @@
 // @name            EasyUpload PT一键转种
 // @name:en         EasyUpload - Trackers Transfer Tool
 // @namespace       https://github.com/techmovie/easy-upload
-// @version         7.0.8
+// @version         7.0.9
 // @author          birdplane
 // @description     一键转种，支持PT站点之间的种子转移。
 // @description:en  Transfer torrents between trackers with one click.
@@ -27,6 +27,8 @@
 // @match           https://hd-space.org/index.php?page=torrent-details&id=*
 // @match           https://speedapp.io/browse/*
 // @match           https://*.m-team.cc/detail/*
+// @match           https://www.yemapt.org/*
+// @match           https://www1.yemapt.org/*
 // @exclude         https://*/torrent/peers*
 // @exclude         https://*/torrent/leechers*
 // @exclude         https://*/torrent/history*
@@ -8542,6 +8544,128 @@
         }
       }
     },
+    YemaPT: {
+      url: "https://www.yemapt.org",
+      host: "www1?.yemapt.org",
+      siteType: "YemaPT",
+      asSource: false,
+      asTarget: true,
+      uploadPath: "/#/torrent/add",
+      seedDomSelector: "form.ant-form",
+      needDoubanInfo: false,
+      name: {
+        selector: "#showName"
+      },
+      subtitle: {
+        selector: "#shortDesc"
+      },
+      description: {
+        selector: "#longDesc"
+      },
+      torrent: {
+        selector: "#fileList"
+      },
+      imdb: {
+        selector: "#imdb"
+      },
+      douban: {
+        selector: "#douban"
+      },
+      poster: "#picture",
+      mediaInfo: {
+        selector: "#mediaInfo"
+      },
+      category: {
+        selector: "#categoryId",
+        map: {
+          movie: "电影",
+          tv: "剧集",
+          tvPack: "剧集",
+          cartoon: "动漫",
+          documentary: "纪录片",
+          variety: "综艺",
+          sport: "体育",
+          app: "软件",
+          game: "游戏",
+          ebook: "书籍",
+          music: "音乐",
+          concert: "MV/演唱会"
+        }
+      },
+      videoType: {
+        selector: "#medium",
+        map: {
+          uhdbluray: "Blu-rayUHD",
+          bluray: "Blu-ray",
+          remux: "Remux",
+          encode: "Encode",
+          hdtv: "HDTV/TV",
+          web: "Web-dl",
+          dvd: "DVD",
+          dvdrip: "DVDrip"
+        }
+      },
+      videoCodec: {
+        selector: "#codec",
+        map: {
+          h264: "H.264(x264/AVC)",
+          x264: "H.264(x264/AVC)",
+          hevc: "H.265(x265/HEVC)",
+          h265: "H.265(x265/HEVC)",
+          x265: "H.265(x265/HEVC)",
+          vc1: "Bluray(VC1)",
+          xvid: "Xvid",
+          mpeg2: "MPEG-2",
+          av1: "AV1"
+        }
+      },
+      audioCodec: {
+        selector: "#audiocodec",
+        map: {
+          aac: "AAC",
+          ac3: "AC3(DD)",
+          dd: "AC3(DD)",
+          "dd+": "E-AC3(DDP)",
+          flac: "FLAC",
+          dts: "DTS",
+          truehd: "TrueHD",
+          lpcm: "LPCM",
+          dtshdma: "DTS-HD MA",
+          atmos: "TrueHD Atmos",
+          dtsx: "DTS-HD MA",
+          ape: "APE",
+          wav: "WAV",
+          mp3: "MP3"
+        }
+      },
+      resolution: {
+        selector: "#standard",
+        map: {
+          "2160p": "2160p/4K",
+          "1080p": "1080p",
+          "1080i": "1080i",
+          "720p": "720p",
+          "576p": "SD",
+          "480p": "SD"
+        }
+      },
+      team: {
+        selector: "#team",
+        map: {
+          ourbits: "OurBits",
+          btshd: "BtsHD",
+          btstv: "BtsTV",
+          hdchina: "HDChina",
+          cmct: "CMCT",
+          hhweb: "HHWEB",
+          frds: "FRDS",
+          mteam: "MTeam",
+          qhstudio: "QHstudio",
+          ubits: "UBits",
+          other: "Other"
+        }
+      }
+    },
     ZHUQUE: {
       url: "https://zhuque.in",
       host: "zhuque.in",
@@ -16216,6 +16340,237 @@ $1`
     }
   }
   registry$1.register(new MTV());
+  class YemaPT extends BaseFiller {
+    constructor() {
+      super(...arguments);
+      this.priority = 10;
+    }
+    canHandle(siteName) {
+      return siteName === "YemaPT";
+    }
+    fill(info) {
+      this.info = info;
+      window.addEventListener(
+        "torrentAddPageReady",
+        () => {
+          this.fillYemaPTForm();
+        },
+        { once: true }
+      );
+    }
+    fillYemaPTForm() {
+      var _a2;
+      const instance = this.getAntFormInstance();
+      const setFieldsValue = (_a2 = instance == null ? void 0 : instance.context) == null ? void 0 : _a2.setFieldsValue;
+      if (!setFieldsValue || !this.info) {
+        console.warn("YemaPT form instance was not found");
+        return;
+      }
+      setFieldsValue.call(instance.context, this.buildFields());
+      this.fillTorrentFileByForm(setFieldsValue.bind(instance.context));
+      this.fillSelects();
+    }
+    getAntFormInstance() {
+      const antForm = document.querySelector("form.ant-form");
+      if (!antForm) return null;
+      const fiber = this.getReactFiberNode(antForm);
+      return this.getReactComponentInstance(fiber);
+    }
+    getReactFiberNode(element) {
+      for (const key in element) {
+        if (key.startsWith("__reactFiber")) {
+          return element[key];
+        }
+      }
+      return null;
+    }
+    getReactComponentInstance(fiberNode) {
+      var _a2;
+      if (((_a2 = fiberNode == null ? void 0 : fiberNode.stateNode) == null ? void 0 : _a2.state) !== void 0) {
+        return fiberNode.stateNode;
+      }
+      let child = fiberNode == null ? void 0 : fiberNode.child;
+      while (child) {
+        const instance = this.getReactComponentInstance(child);
+        if (instance) return instance;
+        child = child.sibling;
+      }
+      return null;
+    }
+    buildFields() {
+      var _a2, _b, _c;
+      const info = this.info;
+      const fields = {
+        showName: info.title,
+        shortDesc: info.subtitle || "",
+        longDesc: this.bbcodeToMarkdown(info.description)
+      };
+      const picture = this.getPoster();
+      if (picture) fields.picture = picture;
+      const doubanId = (_b = (_a2 = info.doubanUrl) == null ? void 0 : _a2.match(/subject\/(\d+)/)) == null ? void 0 : _b[1];
+      if (doubanId) fields.douban = doubanId;
+      const imdbId = getIdByIMDbUrl(info.imdbUrl || "").replace(/^tt/i, "");
+      if (imdbId) fields.imdb = imdbId;
+      const mediaInfo = (_c = info.mediaInfos) == null ? void 0 : _c[0];
+      if (mediaInfo) fields.mediaInfo = mediaInfo;
+      return fields;
+    }
+    getPoster() {
+      var _a2, _b;
+      const { poster, description } = this.info;
+      if (poster) return poster;
+      return ((_b = (_a2 = description.match(/\[img\]([^[]+?)\[\/img\]/i)) == null ? void 0 : _a2[1]) == null ? void 0 : _b.trim()) || "";
+    }
+    bbcodeToMarkdown(text2) {
+      return text2.replace(/\[size=\d\]/gi, "").replace(/\[\/size\]/gi, "").replace(/\[font=.+?\]/gi, "").replace(/\[\/font\]/gi, "").replace(/\[color=.+?\]/gi, "").replace(/\[\/color\]/gi, "").replace(/\[img\](.*?)\[\/img\]/gi, "![_]($1)").replace(/\[b\]\s*/gi, "**").replace(/\s*\[\/b\]/gi, "**").replace(/\[i\]\s*/gi, "*").replace(/\s*\[\/i\]/gi, "*").replace(/\[url=([^\]]*?)\](.*?)\[\/url\]/gi, "[$2]($1)").replace(/\[quote\]([\s\S]*?)\[\/quote\]/gi, (_match, quote) => {
+        return `> ${quote.split("\n").join("\n> ")}
+
+`;
+      });
+    }
+    fillTorrentFileByForm(setFieldsValue) {
+      const { torrentData, title } = this.info;
+      if (!torrentData) return;
+      const blob = base64ToBlob(torrentData);
+      const torrentFileName = title.replace(/^\[.*?\](\.| )?/, "").replace(/\s/g, ".");
+      const file = new File([blob], `${torrentFileName}.torrent`, {
+        type: "application/x-bittorrent"
+      });
+      file.originFileObj = file;
+      setFieldsValue({ fileList: [file] });
+    }
+    async fillSelects() {
+      const sequence = [
+        ["medium", 0, this.getVideoType()],
+        ["standard", 1, this.getResolution()],
+        ["codec", 2, this.getVideoCodec()],
+        ["audiocodec", 3, this.getAudioCodec()],
+        ["regionList", 4, this.getRegions()],
+        ["team", 5, this.getTeam()],
+        ["tagList", 6, this.getTags()],
+        ["categoryId", 7, this.getCategory()]
+      ];
+      for (const [id, index, value] of sequence) {
+        await this.selectDropdownOption(id, index, value);
+      }
+    }
+    getCategory() {
+      var _a2, _b;
+      const map2 = (_b = (_a2 = this.siteInfo.category) == null ? void 0 : _a2.map) != null ? _b : {};
+      return map2[this.info.category] || "未分类";
+    }
+    getVideoType() {
+      var _a2, _b;
+      const { videoType } = this.info;
+      return ((_b = (_a2 = this.siteInfo.videoType) == null ? void 0 : _a2.map) == null ? void 0 : _b[videoType]) || "Other";
+    }
+    getResolution() {
+      var _a2, _b;
+      const { resolution } = this.info;
+      return ((_b = (_a2 = this.siteInfo.resolution) == null ? void 0 : _a2.map) == null ? void 0 : _b[resolution]) || "Other";
+    }
+    getVideoCodec() {
+      var _a2, _b;
+      const { videoCodec = "", videoType } = this.info;
+      if (/^(h264|x264)$/i.test(videoCodec) && /^(bluray|uhdbluray)$/i.test(videoType)) {
+        return "Bluray(AVC)";
+      }
+      if (/^(hevc|h265|x265)$/i.test(videoCodec) && /^(bluray|uhdbluray)$/i.test(videoType)) {
+        return "Bluray(HEVC)";
+      }
+      return ((_b = (_a2 = this.siteInfo.videoCodec) == null ? void 0 : _a2.map) == null ? void 0 : _b[videoCodec]) || "Other";
+    }
+    getAudioCodec() {
+      var _a2, _b;
+      const { audioCodec = "", title } = this.info;
+      if (/^(ac3|dd|\+?dd)$/i.test(audioCodec) && /DDP|DD\+/i.test(title)) {
+        return /Atmos/i.test(title) ? "E-AC3 Atmos" : "E-AC3(DDP)";
+      }
+      return ((_b = (_a2 = this.siteInfo.audioCodec) == null ? void 0 : _a2.map) == null ? void 0 : _b[audioCodec]) || "Other";
+    }
+    getRegions() {
+      const area = this.info.area;
+      const areaMap = {
+        CN: "CN(中国)",
+        HK: "HK/CN(香港)",
+        TW: "TW/CN(台湾)",
+        JP: "JP(日本)",
+        KR: "KR(韩国)",
+        US: "US(美国)",
+        EU: "EU(欧洲)",
+        UK: "UK(英国)",
+        CA: "CA(加拿大)",
+        AU: "AU(澳大利亚)"
+      };
+      return area && areaMap[area] ? [areaMap[area]] : ["Other"];
+    }
+    getTeam() {
+      var _a2, _b, _c;
+      const teamName = (_a2 = getTeamName(this.info.title)) == null ? void 0 : _a2.toLowerCase();
+      if (!teamName) return "Other";
+      return ((_c = (_b = this.siteInfo.team) == null ? void 0 : _b.map) == null ? void 0 : _c[teamName]) || "Other";
+    }
+    getTags() {
+      const { tags: tags2, title } = this.info;
+      const result = [];
+      if (tags2.chinese_audio) result.push("国语");
+      if (tags2.chinese_subtitle) result.push("中字");
+      if (tags2.cantonese_audio) result.push("粤语");
+      if (tags2.hdr10 || tags2.hdr10_plus) result.push("HDR10");
+      if (tags2.dolby_vision) result.push("杜比视界");
+      if (/E\d+/i.test(title)) result.push("分集");
+      if (/complete|S\d{2}(?!E\d{2})/i.test(title)) result.push("完结");
+      return result;
+    }
+    async selectDropdownOption(id, index, targetTitle) {
+      if (!targetTitle || Array.isArray(targetTitle) && targetTitle.length === 0) {
+        return;
+      }
+      const element = document.getElementById(id);
+      if (!element) return;
+      element.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
+      const listHolder = await this.waitForListHolder(index);
+      if (!listHolder) return;
+      const titles = Array.isArray(targetTitle) ? targetTitle : [targetTitle];
+      for (const title of titles) {
+        await this.clickOption(listHolder, title);
+      }
+    }
+    async waitForListHolder(index) {
+      for (let i = 0; i < 10; i += 1) {
+        await this.sleep(200);
+        const listHolder = document.querySelectorAll(".rc-virtual-list-holder")[index];
+        if (listHolder) return listHolder;
+      }
+      return null;
+    }
+    async clickOption(listHolder, title) {
+      const findAndClick = () => {
+        const option = Array.from(
+          listHolder.querySelectorAll(".ant-select-item-option")
+        ).find((item) => item.getAttribute("title") === title);
+        if (!option) return false;
+        option.click();
+        return true;
+      };
+      if (findAndClick()) return;
+      const holder = listHolder;
+      let currentScroll = 0;
+      let totalHeight = holder.scrollHeight;
+      holder.scrollTop = 0;
+      while (currentScroll < totalHeight) {
+        holder.scrollTop += 100;
+        currentScroll += 100;
+        await this.sleep(100);
+        if (findAndClick()) return;
+        totalHeight = holder.scrollHeight;
+      }
+    }
+    sleep(ms) {
+      return new Promise((resolve28) => setTimeout(resolve28, ms));
+    }
+  }
+  registry$1.register(new YemaPT());
   class SharedNexusPHPCategoryChange extends BaseFiller {
     constructor() {
       super(...arguments);

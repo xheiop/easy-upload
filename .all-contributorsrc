@@ -1,6 +1,6 @@
 {
   "projectName": "easy-upload",
-  "projectOwner": "techmovie",
+  "projectOwner": "xheiop",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -151,6 +151,15 @@
       "name": "【繁星】格蕾修",
       "avatar_url": "https://avatars.githubusercontent.com/u/121101691?v=4",
       "profile": "https://github.com/Griseo-bh3rd",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mustangpt",
+      "name": "mustangpt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/168743846?v=4",
+      "profile": "https://github.com/mustangpt",
       "contributions": [
         "code"
       ]
