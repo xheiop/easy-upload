@@ -1,5 +1,9 @@
 import { getIdByIMDbUrl } from '@/common';
-import { base64ToBlob, getTeamName } from '@/target/helper/index';
+import {
+  base64ToBlob,
+  filterEmptyTags,
+  getTeamName,
+} from '@/target/helper/index';
 import { BaseFiller } from './base/base-filler';
 import { registry, TargetFiller } from './registry';
 
@@ -12,6 +16,101 @@ type ReactFiberNode = {
       setFieldsValue?: (fields: Record<string, unknown>) => void;
     };
   };
+};
+
+type ReactComponentInstance = NonNullable<ReactFiberNode['stateNode']>;
+
+export const prepareYemaPTDescription = (
+  info: Pick<TorrentInfo.Info, 'description' | 'mediaInfos'>,
+): string => {
+  let description = filterEmptyTags(info.description || '').replace(/^\s+/, '');
+
+  info.mediaInfos?.forEach((mediaInfo) => {
+    description = description.replace(mediaInfo.trim(), '');
+  });
+
+  description = description.replace(
+    /\[(mediainfo|bdinfo)\][\s\S]*?\[\/\1\]/gi,
+    '',
+  );
+
+  return filterEmptyTags(description).trim();
+};
+
+const convertQuoteToMarkdown = (quote: string, title = ''): string => {
+  const normalized = quote.trim();
+  if (!normalized) return '';
+
+  const quoteTitle = title.trim() ? `**${title.trim()}**\n` : '';
+  return `${quoteTitle}${normalized}`
+    .split('\n')
+    .map((line) => `> ${line}`)
+    .join('\n');
+};
+
+const convertFenceToMarkdown = (content: string): string => {
+  return `\n\`\`\`text\n${content.trim()}\n\`\`\`\n`;
+};
+
+export const bbcodeToMarkdown = (text: string): string => {
+  return (text || '')
+    .replace(/\r\n?/g, '\n')
+    .replace(/\[(?:size|font|color)=[^\]]*?\]/gi, '')
+    .replace(/\[\/(?:size|font|color)\]/gi, '')
+    .replace(/\[(?:left|right|center|align=[^\]]*?)\]/gi, '')
+    .replace(/\[\/(?:left|right|center|align)\]/gi, '')
+    .replace(/\[hr\]/gi, '\n---\n')
+    .replace(/\[img(?:=[^\]]*?)?\]([\s\S]*?)\[\/img\]/gi, (_match, url) => {
+      const imageUrl = url.trim();
+      return imageUrl ? `![](${imageUrl})` : '';
+    })
+    .replace(/\[url=([^\]]*?)\]([\s\S]*?)\[\/url\]/gi, (_match, url, label) => {
+      const href = url.trim();
+      const textLabel = label.trim();
+      return textLabel ? `[${textLabel}](${href})` : href;
+    })
+    .replace(/\[url\]([\s\S]*?)\[\/url\]/gi, (_match, url) => {
+      const href = url.trim();
+      return href ? `[${href}](${href})` : '';
+    })
+    .replace(/\[(?:b|strong)\]\s*([\s\S]*?)\s*\[\/(?:b|strong)\]/gi, '**$1**')
+    .replace(/\[(?:i|em)\]\s*([\s\S]*?)\s*\[\/(?:i|em)\]/gi, '*$1*')
+    .replace(/\[s\]\s*([\s\S]*?)\s*\[\/s\]/gi, '~~$1~~')
+    .replace(/\[u\]\s*([\s\S]*?)\s*\[\/u\]/gi, '$1')
+    .replace(
+      /\[(code|pre|mediainfo|bdinfo)\]([\s\S]*?)\[\/\1\]/gi,
+      (_match, _tag, code) => convertFenceToMarkdown(code),
+    )
+    .replace(
+      /\[quote=([^\]]*?)\]([\s\S]*?)\[\/quote\]/gi,
+      (_match, title, quote) => `${convertQuoteToMarkdown(quote, title)}\n`,
+    )
+    .replace(
+      /\[quote\]([\s\S]*?)\[\/quote\]/gi,
+      (_match, quote) => `${convertQuoteToMarkdown(quote)}\n`,
+    )
+    .replace(
+      /\[(?:hide|spoiler|box)(?:=([^\]]*?))?\]([\s\S]*?)\[\/(?:hide|spoiler|box)\]/gi,
+      (_match, title, content) => {
+        const heading = title?.trim() ? `**${title.trim()}**\n\n` : '';
+        return `\n${heading}${content.trim()}\n`;
+      },
+    )
+    .replace(
+      /\[comparison(?:=([^\]]*?))?\]([\s\S]*?)\[\/comparison\]/gi,
+      (_match, title, content) => {
+        const heading = title?.trim() ? `**${title.trim()}**\n\n` : '';
+        return `\n${heading}${content.trim()}\n`;
+      },
+    )
+    .replace(/\[list(?:=[^\]]*?)?\]([\s\S]*?)\[\/list\]/gi, (_match, list) =>
+      list.replace(/\[\*\]\s*/g, '\n- ').trim(),
+    )
+    .replace(/^\[\*\]\s*/gm, '- ')
+    .replace(/\[\/?\w+(?:=[^\]]*?)?\]/g, '')
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
 };
 
 class YemaPT extends BaseFiller implements TargetFiller {
@@ -62,14 +161,17 @@ class YemaPT extends BaseFiller implements TargetFiller {
     return null;
   }
 
-  private getReactComponentInstance(fiberNode: ReactFiberNode | null) {
+  private getReactComponentInstance(
+    fiberNode: ReactFiberNode | null,
+  ): ReactComponentInstance | null {
     if (fiberNode?.stateNode?.state !== undefined) {
       return fiberNode.stateNode;
     }
 
     let child = fiberNode?.child;
     while (child) {
-      const instance = this.getReactComponentInstance(child);
+      const instance: ReactComponentInstance | null =
+        this.getReactComponentInstance(child);
       if (instance) return instance;
       child = child.sibling;
     }
@@ -82,7 +184,7 @@ class YemaPT extends BaseFiller implements TargetFiller {
     const fields: Record<string, unknown> = {
       showName: info.title,
       shortDesc: info.subtitle || '',
-      longDesc: this.bbcodeToMarkdown(info.description),
+      longDesc: bbcodeToMarkdown(prepareYemaPTDescription(info)),
     };
 
     const picture = this.getPoster();
@@ -104,25 +206,6 @@ class YemaPT extends BaseFiller implements TargetFiller {
     const { poster, description } = this.info!;
     if (poster) return poster;
     return description.match(/\[img\]([^[]+?)\[\/img\]/i)?.[1]?.trim() || '';
-  }
-
-  private bbcodeToMarkdown(text: string): string {
-    return text
-      .replace(/\[size=\d\]/gi, '')
-      .replace(/\[\/size\]/gi, '')
-      .replace(/\[font=.+?\]/gi, '')
-      .replace(/\[\/font\]/gi, '')
-      .replace(/\[color=.+?\]/gi, '')
-      .replace(/\[\/color\]/gi, '')
-      .replace(/\[img\](.*?)\[\/img\]/gi, '![_]($1)')
-      .replace(/\[b\]\s*/gi, '**')
-      .replace(/\s*\[\/b\]/gi, '**')
-      .replace(/\[i\]\s*/gi, '*')
-      .replace(/\s*\[\/i\]/gi, '*')
-      .replace(/\[url=([^\]]*?)\](.*?)\[\/url\]/gi, '[$2]($1)')
-      .replace(/\[quote\]([\s\S]*?)\[\/quote\]/gi, (_match, quote) => {
-        return `> ${quote.split('\n').join('\n> ')}\n\n`;
-      });
   }
 
   private fillTorrentFileByForm(
