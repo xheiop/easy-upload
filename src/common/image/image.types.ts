@@ -29,11 +29,6 @@ export interface CheveretoResponse {
   };
 }
 
-export interface PTPImg {
-  code: string;
-  ext: string;
-}
-
 export interface ImgInfo {
   thumbnail: string;
   original: string;

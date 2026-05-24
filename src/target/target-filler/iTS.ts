@@ -6,7 +6,6 @@ import {
   getIMDBData,
   getTMDBVideosById,
   getMatchRottenTomatoes,
-  uploadToPtpImg,
   $t,
 } from '@/common';
 import { getTeamName } from '@/target/helper/index';
@@ -263,8 +262,6 @@ class ITS extends BaseFiller implements TargetFiller {
           category,
           year,
         );
-
-        await this.uploadPosterToPtpImg(replaceParams, poster);
       }
     } catch (error) {
       console.error('Error fetching IMDB data:', error);
@@ -292,22 +289,6 @@ class ITS extends BaseFiller implements TargetFiller {
       replaceParams.rtUrl = `https://www.rottentomatoes.com/${rtId}`;
     } catch (error) {
       console.error('Error fetching Rotten Tomatoes data:', error);
-    }
-  }
-
-  private async uploadPosterToPtpImg(
-    replaceParams: Record<string, string>,
-    poster: string,
-  ): Promise<void> {
-    const ptpImgApiKey = GM_getValue('easy-upload.ptp-img-api-key') || '';
-
-    if (ptpImgApiKey && poster) {
-      try {
-        const ptpImgPoster = await (await uploadToPtpImg)([poster]);
-        replaceParams.poster = ptpImgPoster ? ptpImgPoster[0] : '';
-      } catch (error) {
-        console.error('Error uploading poster to PTP image host:', error);
-      }
     }
   }
 

@@ -5,7 +5,6 @@ import {
   getIMDBData,
   transferImgToCheveretoSite,
   getIdByIMDbUrl,
-  uploadToPtpImg,
 } from '@/common';
 
 class SC extends BaseFiller implements TargetFiller {
@@ -91,21 +90,10 @@ class SC extends BaseFiller implements TargetFiller {
     if (!posterUrl) return;
 
     try {
-      let uploadedUrl: string | undefined;
-      const ptpImgApiKey = GM_getValue('easy-upload.ptp-img-api-key');
-
-      if (ptpImgApiKey) {
-        const uploadResult = await (await uploadToPtpImg)([posterUrl]);
-        uploadedUrl =
-          Array.isArray(uploadResult) && uploadResult.length > 0
-            ? uploadResult[0]
-            : undefined;
-      } else {
-        const data = await (
-          await transferImgToCheveretoSite
-        )([posterUrl], 'https://gifyu.com/json');
-        uploadedUrl = data[0]?.original;
-      }
+      const data = await (
+        await transferImgToCheveretoSite
+      )([posterUrl], 'https://gifyu.com/json');
+      const uploadedUrl = data[0]?.original;
 
       if (uploadedUrl) {
         $('#image').val(uploadedUrl);

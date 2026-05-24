@@ -4,7 +4,6 @@ import { cachedUrlToFile, throwUploadError } from './image.utils';
 import {
   ImgInfo,
   ImgBoxResponse,
-  PTPImg,
   TokenSecret,
   PixHostResponse,
   CheveretoResponse,
@@ -181,54 +180,6 @@ export const parsePixhostResponse = (data: string): ImgInfo[] => {
       original: item.show_url,
     };
   });
-};
-
-export const createPTPImgRequestConfig = (
-  imgArray: Array<string | File>,
-): { url: string; options: RequestOptions } => {
-  const apiKey = GM_getValue('easy-upload.ptp-img-api-key', '');
-  if (!apiKey) {
-    throwUploadError(
-      `${$t(CONFIG.ERROR_MESSAGES.PTPIMG_UPLOAD_FAILED)} ${$t(CONFIG.ERROR_MESSAGES.NO_API_KEY)}`,
-    );
-  }
-
-  const options: RequestOptions = {
-    method: 'POST',
-    responseType: 'json',
-  };
-
-  const isFileUpload = imgArray.length > 0 && imgArray[0] instanceof File;
-
-  if (isFileUpload) {
-    const fileArray = imgArray.filter(
-      (item): item is File => item instanceof File,
-    );
-    const formData = createFormData({ api_key: apiKey }, [
-      { fieldName: 'file-upload', file: fileArray },
-    ]);
-    options.data = formData;
-  } else {
-    const linkArray = imgArray.filter(
-      (item): item is string => typeof item === 'string',
-    );
-    options.headers = {
-      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-    };
-    options.data = `link-upload=${linkArray.join('\n')}&api_key=${apiKey}`;
-  }
-  return {
-    url: CONFIG.URLS.PTPIMG_UPLOAD,
-    options,
-  };
-};
-
-export const parsePTPImgResponse = (data: PTPImg[]): string[] => {
-  if (!data || !Array.isArray(data) || data.length < 1) {
-    throwUploadError();
-    return [];
-  }
-  return data.map((img) => `${CONFIG.URLS.PTPIMG}/${img.code}.${img.ext}`);
 };
 
 export const getCheveretoToken = async (imgHost: string): Promise<string> => {

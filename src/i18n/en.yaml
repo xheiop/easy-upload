@@ -7,8 +7,6 @@
 请求失败: Request failed
 上传失败，请重试: Upload failed, please try again
 封面上传失败: Poster upload failed
-ptpimg上传失败: PtpImg upload failed
-请到配置面板中填入ptpimg的api_key: Please enter your PtpImg API key in the settings panel
 数据加载中...: Loading data...
 获取图片列表失败: Failed to retrieve image list
 转换中...: Converting...

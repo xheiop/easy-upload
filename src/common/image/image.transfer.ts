@@ -1,17 +1,12 @@
 import { CONFIG } from './image.config';
-import { GMFetch, $t } from '@/common/utils';
-import {
-  throwUploadError,
-  withUploadErrorHandling,
-  cachedUrlToFile,
-} from '@/common/image/image.utils';
+import { GMFetch } from '@/common/utils';
+import { withUploadErrorHandling } from '@/common/image/image.utils';
 import { ImgInfo, CheveretoResponse } from '@/common/image/image.types';
 import {
   getCheveretoToken,
   createCheveretoRequestConfig,
   parseCheveretoResponse,
 } from '@/common/image/image.upload.helper';
-import { uploadToPtpImg } from './image.upload';
 
 /**
  * Transfer images from other Image hostings to Chevereto site
@@ -43,33 +38,3 @@ export const transferImgToCheveretoSite = withUploadErrorHandling(
   },
   'Chevereto',
 );
-
-/**
- * Transfer images from other Image hostings to PTPImg
- *
- * @async
- * @param {string[]} imgArray - Array of image URLs
- * @throws {ImageUploadError} If the upload fails
- * @throws {Error} If the upload fails with a non-ImageUploadError
- * @returns {Promise<string[]>}
- */
-
-export const transferImgsToPtpimg = async (
-  imgArray: Array<string>,
-): Promise<string[]> => {
-  if (!imgArray || imgArray.length < 1) {
-    return [];
-  }
-  const uploadFn = await uploadToPtpImg;
-  const isHdbHost = !!imgArray[0].match(/i\.hdbits\.org/);
-  const isPtpHost = !!imgArray[0].match(/ptpimg\.me/);
-  if (isPtpHost) {
-    throwUploadError($t(CONFIG.ERROR_MESSAGES.NO_TRANSFER_NEEDED));
-  } else if (isHdbHost) {
-    const fileArray = await Promise.all(
-      imgArray.map((item) => cachedUrlToFile(item)),
-    );
-    return await uploadFn(fileArray);
-  }
-  return await uploadFn(imgArray);
-};

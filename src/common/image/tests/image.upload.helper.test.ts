@@ -1,13 +1,4 @@
-import {
-  expect,
-  it,
-  vi,
-  beforeEach,
-  afterEach,
-  describe,
-  beforeAll,
-  afterAll,
-} from 'vitest';
+import { expect, it, vi, beforeEach, afterEach, describe } from 'vitest';
 
 import {
   createHDBRequestConfig,
@@ -17,8 +8,6 @@ import {
   parseImgboxResponse,
   createPixhostRequestConfig,
   parsePixhostResponse,
-  createPTPImgRequestConfig,
-  parsePTPImgResponse,
   getCheveretoToken,
   createCheveretoRequestConfig,
   parseCheveretoResponse,
@@ -388,79 +377,6 @@ describe('parsePixhostResponse', () => {
       expect((error as Error).message).toContain(
         'No images found in the response',
       );
-    }
-  });
-});
-
-describe('createPTPImgRequestConfig', () => {
-  beforeAll(() => {
-    vi.stubGlobal('GM_getValue', vi.fn());
-  });
-  afterAll(() => {
-    vi.unstubAllGlobals();
-  });
-  it('should create PTPImg request config correctly if files are passed', () => {
-    const files = [new File([], 'image1.jpg'), new File([], 'image2.jpg')];
-    vi.mocked(createFormData).mockReturnValueOnce(new FormData());
-    vi.mocked(GM_getValue).mockReturnValueOnce('api key');
-    const { url, options } = createPTPImgRequestConfig(files);
-    expect(url).toBe(CONFIG.URLS.PTPIMG_UPLOAD);
-    expect(options.method).toBe('POST');
-    expect(options.data).toBeInstanceOf(FormData);
-    expect(options.responseType).toBe('json');
-    expect(createFormData).toHaveBeenCalledTimes(1);
-    expect(createFormData).toHaveBeenCalledWith({ api_key: 'api key' }, [
-      { fieldName: 'file-upload', file: files },
-    ]);
-  });
-  it('should create PTPImg request config correctly if links are passed', () => {
-    const links = [
-      'http://example.com/image1.jpg',
-      'http://example.com/image2.jpg',
-    ];
-    vi.mocked(GM_getValue).mockReturnValueOnce('api key');
-    const { url, options } = createPTPImgRequestConfig(links);
-    expect(url).toBe(CONFIG.URLS.PTPIMG_UPLOAD);
-    expect(options.method).toBe('POST');
-    expect(options.responseType).toBe('json');
-    expect(options.data).toBe(
-      'link-upload=http://example.com/image1.jpg\nhttp://example.com/image2.jpg&api_key=api key',
-    );
-    expect(options.headers).toEqual({
-      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-    });
-    expect(createFormData).not.toHaveBeenCalled();
-  });
-  it('should throw error if no api key is found', () => {
-    try {
-      createPTPImgRequestConfig([]);
-      expect.fail('Should have thrown an error');
-    } catch (error) {
-      expect(error).toBeInstanceOf(Error);
-      expect(error).toBeInstanceOf(ImageUploadError);
-      expect(createFormData).not.toHaveBeenCalled();
-    }
-  });
-});
-
-describe('parsePTPImgResponse', () => {
-  it('should parse PTPImg response correctly', () => {
-    const data = [
-      {
-        code: 'code',
-        ext: 'jpg',
-      },
-    ];
-    const imgInfo = parsePTPImgResponse(data);
-    expect(imgInfo).toEqual([`${CONFIG.URLS.PTPIMG}/code.jpg`]);
-  });
-  it('should throw error if provided parameter is empty array', () => {
-    try {
-      parsePTPImgResponse([]);
-      expect.fail('Should have thrown an error');
-    } catch (error) {
-      expect(error).toBeInstanceOf(Error);
-      expect(error).toBeInstanceOf(ImageUploadError);
     }
   });
 });

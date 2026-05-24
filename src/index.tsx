@@ -5,7 +5,6 @@ import { fillTargetForm } from './target';
 import { getTorrentInfo } from '@/source';
 import { fillSearchImdb } from './site-dom/quick-search';
 import { torrentInfoStore } from '@/store/torrentInfoStore';
-import './site-dom/ptpimg';
 import './site-dom/analyze-upload-page';
 import './style.css';
 import App from './components/Container';
@@ -188,7 +187,6 @@ function transferLegacySettings() {
     'easy-seed.enabled-target-sites': 'string[]',
     'easy-seed.enabled-search-site-list': 'string[]',
     'easy-seed.enabled-batch-seed-sites': 'string[]',
-    'easy-seed.ptp-img-api-key': 'string',
     'easy-seed.quick-search-closed': 'boolean',
     'easy-seed.site-favicon-closed': 'boolean',
     'easy-seed.thanks-quote-closed': 'boolean',

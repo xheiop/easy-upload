@@ -1,19 +1,13 @@
 import { vi, describe, it, expect } from 'vitest';
-import { uploadToPtpImg } from '../image.upload';
-import {
-  transferImgToCheveretoSite,
-  transferImgsToPtpimg,
-} from '../image.transfer';
+import { transferImgToCheveretoSite } from '../image.transfer';
 import { GMFetch } from '@/common/utils';
 import {
   getCheveretoToken,
   createCheveretoRequestConfig,
   parseCheveretoResponse,
 } from '../image.upload.helper';
-import { cachedUrlToFile } from '../image.utils';
 
 vi.mock('../image.upload.helper', { spy: true });
-vi.mock('../image.upload', { spy: true });
 
 vi.mock('@/common/utils', () => ({
   GMFetch: vi.fn(),
@@ -94,56 +88,5 @@ describe('transferImgToCheveretoSite', () => {
     );
     expect(GMFetch).toHaveBeenCalledTimes(2);
     expect(parseCheveretoResponse).toHaveBeenCalledWith(expectedResponse);
-  });
-});
-
-describe('transferImgsToPtpimg', () => {
-  it('should transfer images to Ptpimg and return image URLs', async () => {
-    const urls = [
-      'http://example.com/image1.jpg',
-      'http://example.com/image2.jpg',
-    ];
-    vi.mocked(await uploadToPtpImg).mockResolvedValueOnce([
-      'http://ptpimg.me/img1.png',
-      'http://ptpimg.me/img2.png',
-    ]);
-    const result = await transferImgsToPtpimg(urls);
-    expect(result).toEqual([
-      'http://ptpimg.me/img1.png',
-      'http://ptpimg.me/img2.png',
-    ]);
-    expect(uploadToPtpImg).toHaveBeenCalledWith(urls);
-    expect(uploadToPtpImg).toHaveBeenCalledTimes(1);
-    expect(cachedUrlToFile).not.toHaveBeenCalled();
-  });
-  it('should return empty array if no images are provided', async () => {
-    const result = await transferImgsToPtpimg([]);
-    expect(result).toEqual([]);
-  });
-  it('should throw error if image is already hosted on Ptpimg', async () => {
-    const urls = ['http://ptpimg.me/img1.png'];
-    await expect(transferImgsToPtpimg(urls)).rejects.toThrowError();
-    expect(uploadToPtpImg).not.toHaveBeenCalled();
-  });
-  it('should upload images to Ptpimg if images are hosted on HDBits', async () => {
-    const urls = [
-      'http://i.hdbits.org/img1.png',
-      'http://i.hdbits.org/img2.png',
-    ];
-    const files = [new File([''], 'img1.png'), new File([''], 'img2.png')];
-    vi.mocked(cachedUrlToFile)
-      .mockResolvedValueOnce(files[0])
-      .mockResolvedValueOnce(files[1]);
-    vi.mocked(await uploadToPtpImg).mockResolvedValueOnce([
-      'http://ptpimg.me/img1.png',
-      'http://ptpimg.me/img2.png',
-    ]);
-    const result = await transferImgsToPtpimg(urls);
-    expect(result).toEqual([
-      'http://ptpimg.me/img1.png',
-      'http://ptpimg.me/img2.png',
-    ]);
-    expect(cachedUrlToFile).toHaveBeenCalledTimes(2);
-    expect(uploadToPtpImg).toHaveBeenCalledWith(files);
   });
 });

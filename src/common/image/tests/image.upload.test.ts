@@ -1,10 +1,5 @@
 import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
-import {
-  uploadToHDB,
-  uploadToImgbox,
-  uploadToPixhost,
-  uploadToPtpImg,
-} from '../image.upload';
+import { uploadToHDB, uploadToImgbox, uploadToPixhost } from '../image.upload';
 import { GMFetch } from '@/common/utils';
 
 import { cachedUrlToFile } from '../image.utils';
@@ -16,8 +11,6 @@ import {
   parseImgboxResponse,
   createPixhostRequestConfig,
   parsePixhostResponse,
-  createPTPImgRequestConfig,
-  parsePTPImgResponse,
 } from '../image.upload.helper';
 
 beforeEach(() => {
@@ -186,34 +179,5 @@ describe('uploadToPixhost', () => {
       data: formData,
     });
     expect(parsePixhostResponse).toHaveBeenCalledWith('response data');
-  });
-});
-
-describe('uploadToPtpImg', () => {
-  it('should upload images to PTPImg and return image info', async () => {
-    const imgUrls = [
-      'http://example.com/image1.jpg',
-      'http://example.com/image2.jpg',
-    ];
-    const formData = new FormData();
-    vi.mocked(createPTPImgRequestConfig).mockReturnValueOnce({
-      url: 'http://example.com/upload',
-      options: { method: 'POST', data: formData },
-    });
-    const returnedData = [
-      'https://ptpimg.me/img1.png',
-      'https://ptpimg.me/img2.png',
-    ];
-    vi.mocked(GMFetch).mockResolvedValueOnce('response data');
-    vi.mocked(parsePTPImgResponse).mockResolvedValueOnce(returnedData);
-    const uploadFn = await uploadToPtpImg;
-    const result = await uploadFn(imgUrls);
-    expect(result).toEqual(returnedData);
-    expect(createPTPImgRequestConfig).toHaveBeenCalledWith(imgUrls);
-    expect(GMFetch).toHaveBeenCalledWith('http://example.com/upload', {
-      method: 'POST',
-      data: formData,
-    });
-    expect(parsePTPImgResponse).toHaveBeenCalledWith('response data');
   });
 });

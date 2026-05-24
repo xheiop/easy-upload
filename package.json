@@ -3,7 +3,7 @@
   "description": "easy uploading torrents to other trackers",
   "version": "7.0.11",
   "main": "src/index.js",
-  "repository": "git@github.com:techmovie/easy-upload.git",
+  "repository": "git@github.com:xheiop/easy-upload.git",
   "author": "birdplane",
   "license": "MIT",
   "type": "module",
@@ -88,10 +88,10 @@
     "sharp": "^0.32.6",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.4",
-    "vite": "^5.4.8",
-    "vite-plugin-monkey": "^4.0.6",
-    "vite-plugin-svgr": "^4.2.0",
-    "vitest": "^3.0.8",
+    "vite": "^8.0.14",
+    "vite-plugin-monkey": "^8.0.5",
+    "vite-plugin-svgr": "^5.2.0",
+    "vitest": "^4.1.7",
     "yaml": "^1.10.0"
   },
   "dependencies": {

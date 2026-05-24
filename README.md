@@ -2,7 +2,7 @@
 
 [English Version](README-en.md)
 
-[安装地址 1](https://greasyfork.org/zh-CN/scripts/423199) | [安装地址 2](https://github.com/techmovie/easy-upload/raw/master/dist/easy-upload.user.js) | [加入 Telegram 群组](https://t.me/+Ss_nJoAapvRhYTM1)
+[安装地址 1](https://greasyfork.org/zh-CN/scripts/423199) | [安装地址 2](https://github.com/xheiop/easy-upload/raw/master/dist/easy-upload.user.js) | [加入 Telegram 群组](https://t.me/+Ss_nJoAapvRhYTM1)
 
 ## 关于
 
@@ -27,7 +27,7 @@ Greasemonkey 4 与以上两种脚本管理器的 API 严重不一致且只能在
 
 ## 使用教程
 
-[教程](https://github.com/techmovie/easy-upload/wiki/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
+[教程](https://github.com/xheiop/easy-upload/wiki/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
 
 ## 功能
 
@@ -36,7 +36,7 @@ Greasemonkey 4 与以上两种脚本管理器的 API 严重不一致且只能在
 - 支持批量转种，一键批量转发到选中的站点
 - 一些站点规则要求截图必须为缩略图，增加了原图转缩略图功能
 - 外站向内站转载时，需要补充豆瓣简介，增加了根据 IMDB 获取豆瓣简介的功能
-- 可以通过站点的 yaml 统一配置来进行上传页的内容填写，新增支持站点更容易。如果需要自行添加目前项目还不支持的站点，可以参考[站点配置规则](https://github.com/techmovie/easy-upload/wiki/%E5%A6%82%E4%BD%95%E5%A2%9E%E5%8A%A0%E7%9B%AE%E5%89%8D%E8%BF%98%E4%B8%8D%E6%94%AF%E6%8C%81%E7%9A%84%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE)
+- 可以通过站点的 yaml 统一配置来进行上传页的内容填写，新增支持站点更容易。如果需要自行添加目前项目还不支持的站点，可以参考[站点配置规则](https://github.com/xheiop/easy-upload/wiki/%E5%A6%82%E4%BD%95%E5%A2%9E%E5%8A%A0%E7%9B%AE%E5%89%8D%E8%BF%98%E4%B8%8D%E6%94%AF%E6%8C%81%E7%9A%84%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE)
 - 支持对当前资源的快速检索，检索站点可配置
 - 支持批量将截图转存至 ptpimg，可以解决部分站点截图无法在其他站点显示的问题
 - NexusPHP 站点上传页增加获取豆瓣简介按钮，可以一键填写副标题和简介，可用于自己发种和外站转种
@@ -65,7 +65,7 @@ Greasemonkey 4 与以上两种脚本管理器的 API 严重不一致且只能在
 
 ### 2. 提交 Issue
 
-1. 访问项目的 [Issues 页面](https://github.com/techmovie/easy-upload/issues/new?template=new-site-support-request-cn.yml)
+1. 访问项目的 [Issues 页面](https://github.com/xheiop/easy-upload/issues/new?template=new-site-support-request-cn.yml)
 2. 将剪贴板中的内容粘贴到 Issue 的`站点配置`内容框中
 3. 填写其他必要信息
 4. 提交 Issue
@@ -85,7 +85,7 @@ Greasemonkey 4 与以上两种脚本管理器的 API 严重不一致且只能在
 
 ## 后续计划
 
-参考[项目规划](https://github.com/techmovie/easy-upload/projects)
+参考[项目规划](https://github.com/xheiop/easy-upload/projects)
 
 很多站点由于没有账号或者发布权限，欢迎大佬帮忙测试以及提 PR
 

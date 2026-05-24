@@ -1,19 +1,11 @@
 import { useState, useCallback, useMemo } from 'preact/hooks';
 import { CURRENT_SITE_NAME } from '@/const';
-import {
-  $t,
-  getOriginalImgUrl,
-  transferImgToCheveretoSite,
-  transferImgsToPtpimg,
-} from '@/common';
+import { $t, getOriginalImgUrl, transferImgToCheveretoSite } from '@/common';
 import { useTorrentInfo } from '@/hooks/useTorrentInfo';
 import { ImgInfo } from '@/common/image/image.types';
 import { toast } from 'sonner';
 
 const IMAGE_HOSTS = {
-  ptpimg: {
-    name: 'ptpimg',
-  },
   gifyu: {
     name: 'gifyu',
     url: 'https://gifyu.com/json',
@@ -25,7 +17,7 @@ type ImageHostKey = keyof typeof IMAGE_HOSTS;
 const UploadImg = () => {
   const { torrentInfo, updateTorrentInfo } = useTorrentInfo();
 
-  const [selectHost, setSelectHost] = useState<ImageHostKey>('ptpimg');
+  const [selectHost, setSelectHost] = useState<ImageHostKey>('gifyu');
   const [btnDisable, setBtnDisable] = useState(false);
   const [btnText, setBtnText] = useState('转存截图');
   const [canCopy, setCanCopy] = useState(false);
@@ -55,15 +47,9 @@ const UploadImg = () => {
         throw new Error($t('图片上传失败'));
       }
 
-      let imgData: ImgInfo[] | string[] = [];
-
-      if (selectHost === 'ptpimg') {
-        imgData = await transferImgsToPtpimg(originalImgUrls);
-      } else if (selectHost === 'gifyu') {
-        imgData = await (
-          await transferImgToCheveretoSite
-        )(originalImgUrls, IMAGE_HOSTS.gifyu.url);
-      }
+      const imgData: ImgInfo[] = await (
+        await transferImgToCheveretoSite
+      )(originalImgUrls, IMAGE_HOSTS[selectHost].url);
 
       if (imgData.length === 0) {
         throw new Error($t('图片上传失败'));
@@ -77,19 +63,13 @@ const UploadImg = () => {
   }, [selectHost, torrentInfo]);
 
   const updateTorrentWithNewImages = useCallback(
-    (imgData: ImgInfo[] | string[]) => {
+    (imgData: ImgInfo[]) => {
       const { description, originalDescription } = torrentInfo;
 
-      const newScreenshots = imgData.map((img) => {
-        return selectHost !== 'ptpimg'
-          ? (img as ImgInfo)?.original
-          : (img as string);
-      });
+      const newScreenshots = imgData.map((img) => img.original);
 
-      const screenBBcodeArray = imgData.map((img) =>
-        typeof img === 'string'
-          ? `[img]${img}[/img]`
-          : `[img]${img.original}[/img]`,
+      const screenBBcodeArray = imgData.map(
+        (img) => `[img]${img.original}[/img]`,
       );
 
       const allImages =
@@ -119,7 +99,7 @@ const UploadImg = () => {
 
       return screenBBcodeArray;
     },
-    [torrentInfo, selectHost, updateTorrentInfo],
+    [torrentInfo, updateTorrentInfo],
   );
 
   const handleUploadScreenshots = useCallback(async () => {

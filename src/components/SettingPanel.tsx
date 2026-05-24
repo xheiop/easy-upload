@@ -26,9 +26,6 @@ const SettingPanel = ({
 }) => {
   const [siteList, setSiteList] = useState<SiteConfig[]>([]);
   const [featureList, setFeatureList] = useState<FeatureConfig[]>([]);
-  const [ptpImgApiKey, setPtpImgApiKey] = useState(
-    GM_getValue<string>('easy-upload.ptp-img-api-key', ''),
-  );
 
   useEffect(() => {
     const targetSitesEnabled = GM_getValue<string[]>(
@@ -79,8 +76,6 @@ const SettingPanel = ({
       GM_setValue('easy-upload.enabled-search-site-list', searchSitesEnabled);
       GM_setValue('easy-upload.enabled-batch-seed-sites', batchSeedSiteEnabled);
 
-      GM_setValue('easy-upload.ptp-img-api-key', ptpImgApiKey);
-
       featureList.forEach((feature) => {
         GM_setValue(`easy-upload.${feature.name}`, !!feature.checked);
       });
@@ -91,7 +86,7 @@ const SettingPanel = ({
       console.error('保存设置失败:', error);
       toast.error($t('保存本地站点设置失败'));
     }
-  }, [siteList, featureList, ptpImgApiKey]);
+  }, [siteList, featureList]);
 
   const handleSiteCheckChange = useCallback(
     (key: keyof Omit<SiteConfig, 'site'>, index: number) => {
@@ -187,28 +182,6 @@ const SettingPanel = ({
       <div className="panel-content-wrap">
         <div className="panel-content">
           {renderSiteConfigSections}
-
-          <h3>{$t('图床配置')}</h3>
-          <section className="site-enable-setting img-upload-setting">
-            <label>
-              ptpimg ApiKey:
-              <input
-                name="ptp-img-api-key"
-                type="text"
-                value={ptpImgApiKey}
-                onChange={(e) =>
-                  setPtpImgApiKey((e.target as HTMLInputElement).value)
-                }
-              />
-              <a
-                target="_blank"
-                href="https://github.com/techmovie/easy-upload/wiki/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96ptpimg%E7%9A%84apiKey"
-                rel="noreferrer"
-              >
-                {$t('如何获取？')}
-              </a>
-            </label>
-          </section>
 
           <h3>{$t('额外功能关闭')}</h3>
           {renderFeatureSwitches}

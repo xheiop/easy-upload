@@ -1,6 +1,6 @@
 # easy-upload
 
-[Installation address 1](https://greasyfork.org/en/scripts/423199) | [Installation address 2](https://github.com/techmovie/easy-upload/raw/master/dist/easy-upload.user.js) | [Join Telegram group](https://t.me/+Ss_nJoAapvRhYTM1)
+[Installation address 1](https://greasyfork.org/en/scripts/423199) | [Installation address 2](https://github.com/xheiop/easy-upload/raw/master/dist/easy-upload.user.js) | [Join Telegram group](https://t.me/+Ss_nJoAapvRhYTM1)
 
 ## About
 
@@ -30,7 +30,7 @@ Greasemonkey 4 is significantly inconsistent with the API of the above two scrip
 - Support batch transfer. Batch transfer to target sites with one-click.
 - Add thumbnail transfer from original image to meet screenshot requirements by some sites.
 - Support grabbing Douban movie description based on IMDB info, when some Chinese sites requires Douban info in reproducing from international sites.
-- Allow filling info on upload page by unified yaml config of the site, making it easier to add an unsupported site. If you want to add an unsupported site, please turn to [Site Configuration Rules](https://github.com/techmovie/easy-upload/wiki/How-to-Add-Unsupported-Sites)
+- Allow filling info on upload page by unified yaml config of the site, making it easier to add an unsupported site. If you want to add an unsupported site, please turn to [Site Configuration Rules](https://github.com/xheiop/easy-upload/wiki/How-to-Add-Unsupported-Sites)
 - Support quick search of current resource, and the site for searching is configurable.
 - Support batch uploading screenshots to ptpimg, which can solve the problem that screenshots of some sites cannot be displayed on other sites
 - Allows checking whether the target tracker has the current torrent by clicking the quick search button (only supports site based on NexusPHP by now).
@@ -58,7 +58,7 @@ When you find a PT site that is not supported by the script, you can follow thes
 
 ### 2. Submit Issue
 
-1. Visit the project's [Issues page](https://github.com/techmovie/easy-upload/issues/new?template=new-site-support-request.yml)
+1. Visit the project's [Issues page](https://github.com/xheiop/easy-upload/issues/new?template=new-site-support-request.yml)
 2. Paste the content from your clipboard into the `Site Configuration` section of the Issue
 3. Fill in other required information
 4. Submit the Issue
@@ -78,7 +78,7 @@ When you find a PT site that is not supported by the script, you can follow thes
 
 ## Todo
 
-Please refer [Project plan](https://github.com/techmovie/easy-upload/projects)
+Please refer [Project plan](https://github.com/xheiop/easy-upload/projects)
 
 I don't have access or upload permission to all sites, so any help, including testing and PR, would be greatly appreciated.
 
