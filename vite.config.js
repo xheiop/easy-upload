@@ -8,7 +8,6 @@ import path from 'path';
 
 const cmd = process.argv.slice(2)[0];
 const isDev = cmd === 'dev';
-const isTest = !!process.env.VITEST;
 
 const userscriptPlugins = [
   {
@@ -104,7 +103,7 @@ export default defineConfig({
     clearMocks: true,
     mockReset: true,
   },
-  plugins: [preact(), ...(isTest ? [] : userscriptPlugins)],
+  plugins: [preact(), userscriptPlugins],
   build: {
     minifyCss: true,
     target: 'chrome58',
