@@ -1,8 +1,16 @@
+## [7.0.14](https://github.com/xheiop/easy-upload/compare/7.0.13...7.0.14) (2026-06-18)
+
+
+### Features
+
+* support sanitized torrent url handoff ([#408](https://github.com/xheiop/easy-upload/issues/408)) ([c5b678a](https://github.com/xheiop/easy-upload/commit/c5b678a27618c3564c4bfbf23e14b7c6dcae0470))
+
 ## [7.0.13](https://github.com/xheiop/easy-upload/compare/7.0.12...7.0.13) (2026-06-07)
 
 
 ### Bug Fixes
 
+* guard null media info in yemapt ([#406](https://github.com/xheiop/easy-upload/issues/406)) ([9802732](https://github.com/xheiop/easy-upload/commit/98027329a8f4171f566393143c5cd2268cb0a40d))
 * update viteconfig ([e9b1ee2](https://github.com/xheiop/easy-upload/commit/e9b1ee20888ab13f49e303e18b31340cd25ef9c5))
 
 ## [7.0.12](https://github.com/xheiop/easy-upload/compare/7.0.11...7.0.12) (2026-05-24)
