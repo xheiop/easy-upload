@@ -5,6 +5,7 @@ import { fillTargetForm } from './target';
 import { getTorrentInfo } from '@/source';
 import { fillSearchImdb } from './site-dom/quick-search';
 import { torrentInfoStore } from '@/store/torrentInfoStore';
+import { hydrateTorrentDataFromUrl } from '@/target/helper';
 import './site-dom/analyze-upload-page';
 import './style.css';
 import App from './components/Container';
@@ -222,7 +223,10 @@ async function initialize() {
   if (CURRENT_SITE_INFO.asTarget) {
     const torrentInfo = await retrieveTorrentInfo();
     if (torrentInfo) {
-      fillTargetForm(torrentInfo as TorrentInfo.Info);
+      const hydratedInfo = await hydrateTorrentDataFromUrl(
+        torrentInfo as TorrentInfo.Info,
+      );
+      fillTargetForm(hydratedInfo);
     }
   }
 

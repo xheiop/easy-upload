@@ -1,3 +1,35 @@
+import {
+  GMFetch,
+  sanitizeTorrentToDataUrl,
+  TORRENT_CONTENT_TYPE,
+} from '@/common';
+import { CURRENT_SITE_INFO } from '@/const';
+
+export const hydrateTorrentDataFromUrl = async (
+  info: TorrentInfo.Info,
+): Promise<TorrentInfo.Info> => {
+  if (info.torrentData || !info.torrentUrl) {
+    return info;
+  }
+
+  try {
+    const torrentFile = await GMFetch<ArrayBuffer>(info.torrentUrl, {
+      method: 'GET',
+      responseType: 'arraybuffer',
+      timeout: 10000,
+    });
+    const announceUrl = CURRENT_SITE_INFO?.torrent?.announce;
+
+    return {
+      ...info,
+      torrentData: await sanitizeTorrentToDataUrl(torrentFile, announceUrl),
+    };
+  } catch (error) {
+    console.error('fail to fetch torrent from torrentUrl', error);
+    return info;
+  }
+};
+
 /**
  * transform base64 string to blob
  *
@@ -8,7 +40,7 @@
  */
 export const base64ToBlob = (
   base64: string,
-  contentType = 'application/x-bittorrent',
+  contentType = TORRENT_CONTENT_TYPE,
   sliceSize = 512,
 ): Blob => {
   const regStr = new RegExp(`data:${contentType};base64,`, 'i');

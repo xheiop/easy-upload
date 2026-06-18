@@ -89,6 +89,7 @@ declare namespace TorrentInfo {
     hardcodedSub?: boolean; // 是否包含硬字幕
     doubanBookInfo?: BookInfo;
     torrentData?: string;
+    torrentUrl?: string;
     musicJson?: {
       group: MusicJson.GroupInfo;
       torrent: MusicJson.Torrent;

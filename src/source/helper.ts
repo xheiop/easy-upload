@@ -1,6 +1,4 @@
-import parseTorrent, { toTorrentFile } from 'parse-torrent';
-import { GMFetch, $t } from '../common';
-import { Buffer } from 'buffer/index.js';
+import { GMFetch, $t, sanitizeTorrentToDataUrl } from '../common';
 import { CURRENT_SITE_INFO, PT_SITE, SiteName } from '@/const';
 import { toast } from 'sonner';
 import $ from 'jquery';
@@ -26,19 +24,6 @@ const getFormat = (data: string) => {
   return 'other';
 };
 
-const blobToBase64 = (blob: Blob): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.onload = (e) => {
-      resolve(e.target?.result as string);
-    };
-    fileReader.readAsDataURL(blob);
-    fileReader.onerror = () => {
-      reject(new Error('blobToBase64 error'));
-    };
-  });
-};
-
 const getTorrentFileData = async (
   selector = '',
   torrentLink = '',
@@ -60,21 +45,9 @@ const getTorrentFileData = async (
       responseType: 'arraybuffer',
       timeout: 10000,
     });
-    const result = parseTorrent(Buffer.from(file));
     const siteInfo = PT_SITE[targetSiteName as SiteName] as Site.SiteInfo;
-    const announceUrl = siteInfo?.torrent?.announce || 'tracker.com';
-    const buf = toTorrentFile({
-      ...result,
-      comment: '',
-      announce: [announceUrl],
-      info: {
-        ...result.info,
-        source: '',
-      },
-    });
-    const blob = new Blob([buf], { type: 'application/x-bittorrent' });
-    const base64 = await blobToBase64(blob);
-    return base64;
+    const announceUrl = siteInfo?.torrent?.announce;
+    return sanitizeTorrentToDataUrl(file, announceUrl);
   } catch (error) {
     toast.error(
       `${$t('error.torrentDownloadFailed')} ${$t('error.torrentDownloadManual')}`,

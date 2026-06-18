@@ -50,6 +50,7 @@ const userscriptPlugins = [
         en: 'Transfer torrents between trackers with one click.',
       },
       namespace: 'https://github.com/xheiop/easy-upload',
+      connect: ['127.0.0.1', 'localhost'],
       match: [
         'http*://*/torrents.php?id=*',
         'http*://*/torrents.php?torrentid=*',
