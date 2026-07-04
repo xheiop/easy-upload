@@ -32,10 +32,13 @@ describe('torrent-file', () => {
     expect(parsed.info.source).toHaveLength(0);
   });
 
-  it('throws when target announce is missing', async () => {
-    await expect(
-      sanitizeTorrentBuffer(createTorrentBuffer().buffer),
-    ).rejects.toThrow('Missing torrent announce URL');
+  it('keeps source announce when target announce is missing', async () => {
+    const sanitized = await sanitizeTorrentBuffer(createTorrentBuffer().buffer);
+    const parsed = await parseTorrent(Buffer.from(sanitized));
+
+    expect(parsed.announce).toEqual(['https://source.example/announce']);
+    expect(parsed.comment || '').toBe('');
+    expect(parsed.info.source).toHaveLength(0);
   });
 
   it('returns sanitized torrent data url', async () => {

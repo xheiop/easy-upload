@@ -126,13 +126,17 @@ class HanHanExtractor extends NexusPHPExtractor {
     }
     const isTV = /tv/i.test(category);
     const imdbId = imdbUrl?.match(/tt\d+/)?.[0] ?? '';
-    const doubanInfo = await getDoubanInfoByIdOrDoubanUrl(
-      doubanUrl,
-      isTV ? 'tv' : 'movie',
-      imdbId,
-    );
-    if (doubanInfo) {
-      this.info.doubanInfo = doubanInfo.format;
+    try {
+      const doubanInfo = await getDoubanInfoByIdOrDoubanUrl(
+        doubanUrl,
+        isTV ? 'tv' : 'movie',
+        imdbId,
+      );
+      if (doubanInfo) {
+        this.info.doubanInfo = doubanInfo.format;
+      }
+    } catch (error) {
+      console.warn('fail to fetch douban info for HH:', error);
     }
   }
 

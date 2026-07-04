@@ -24,16 +24,17 @@ export const sanitizeTorrentBuffer = async (
   buffer: ArrayBuffer,
   announce?: string,
 ) => {
-  if (!announce) {
+  const parsed = await parseTorrent(Buffer.from(buffer));
+  const announceList = announce ? [announce] : parsed.announce;
+
+  if (!announceList?.length) {
     throw new Error('Missing torrent announce URL');
   }
-
-  const parsed = await parseTorrent(Buffer.from(buffer));
 
   return toTorrentFile({
     ...parsed,
     comment: '',
-    announce: [announce],
+    announce: announceList,
     info: {
       ...parsed.info,
       source: '',
