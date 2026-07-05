@@ -7,18 +7,23 @@ import {
 import { BaseFiller } from './base/base-filler';
 import { registry, TargetFiller } from './registry';
 
-type ReactFiberNode = {
-  child?: ReactFiberNode;
-  sibling?: ReactFiberNode;
-  stateNode?: {
-    state?: unknown;
-    context?: {
-      setFieldsValue?: (fields: Record<string, unknown>) => void;
-    };
-  };
+type YemaPTFormInstance = {
+  setFieldsValue?: (fields: Record<string, unknown>) => void;
 };
 
-type ReactComponentInstance = NonNullable<ReactFiberNode['stateNode']>;
+type UploadFile = {
+  uid: string;
+  name: string;
+  size?: number;
+  type?: string;
+  status?: 'error' | 'done' | 'uploading' | 'removed';
+  originFileObj?: File;
+};
+
+type TorrentAddPageReadyEventDetail = {
+  dispatchCount: number;
+  form?: YemaPTFormInstance;
+};
 
 export const prepareYemaPTDescription = (
   info: Pick<TorrentInfo.Info, 'description' | 'mediaInfos'>,
@@ -142,59 +147,24 @@ class YemaPT extends BaseFiller implements TargetFiller {
     this.info = info;
     window.addEventListener(
       'torrentAddPageReady',
-      () => {
-        this.fillYemaPTForm();
-      },
+      ((event: CustomEvent<TorrentAddPageReadyEventDetail>) => {
+        console.log('YemaPT torrentAddPageReady', event.detail.dispatchCount);
+        this.fillYemaPTForm(event.detail.form);
+      }) as EventListener,
       { once: true },
     );
   }
 
-  private fillYemaPTForm(): void {
-    const instance = this.getAntFormInstance();
-    const setFieldsValue = instance?.context?.setFieldsValue;
+  private fillYemaPTForm(form?: YemaPTFormInstance): void {
+    const setFieldsValue = form?.setFieldsValue?.bind(form);
     if (!setFieldsValue || !this.info) {
       console.warn('YemaPT form instance was not found');
       return;
     }
 
-    setFieldsValue.call(instance.context, this.buildFields());
-    this.fillTorrentFileByForm(setFieldsValue.bind(instance.context));
+    setFieldsValue(this.buildFields());
+    this.fillTorrentFileByForm(setFieldsValue);
     this.fillSelects();
-  }
-
-  private getAntFormInstance() {
-    const antForm = document.querySelector('form.ant-form');
-    if (!antForm) return null;
-
-    const fiber = this.getReactFiberNode(antForm);
-    return this.getReactComponentInstance(fiber);
-  }
-
-  private getReactFiberNode(element: Element): ReactFiberNode | null {
-    for (const key in element) {
-      if (key.startsWith('__reactFiber')) {
-        return (element as unknown as Record<string, ReactFiberNode>)[key];
-      }
-    }
-    return null;
-  }
-
-  private getReactComponentInstance(
-    fiberNode: ReactFiberNode | null,
-  ): ReactComponentInstance | null {
-    if (fiberNode?.stateNode?.state !== undefined) {
-      return fiberNode.stateNode;
-    }
-
-    let child = fiberNode?.child;
-    while (child) {
-      const instance: ReactComponentInstance | null =
-        this.getReactComponentInstance(child);
-      if (instance) return instance;
-      child = child.sibling;
-    }
-
-    return null;
   }
 
   private buildFields(): Record<string, unknown> {
@@ -239,11 +209,18 @@ class YemaPT extends BaseFiller implements TargetFiller {
     const torrentFileName = title
       .replace(/^\[.*?\](\.| )?/, '')
       .replace(/\s/g, '.');
-    const file = new File([blob], `${torrentFileName}.torrent`, {
+    const firstFile = new File([blob], `${torrentFileName}.torrent`, {
       type: 'application/x-bittorrent',
-    }) as File & { originFileObj?: File };
+    });
 
-    file.originFileObj = file;
+    const file: UploadFile = {
+      uid: `easy-upload-${firstFile.name}-${firstFile.lastModified}`,
+      name: firstFile.name,
+      size: firstFile.size,
+      type: firstFile.type,
+      status: 'done',
+      originFileObj: firstFile,
+    };
     setFieldsValue({ fileList: [file] });
   }
 

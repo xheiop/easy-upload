@@ -5,7 +5,7 @@ icon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBI
 asSource: false
 asTarget: true
 uploadPath: /#/torrent/add
-seedDomSelector: "form.ant-form"
+seedDomSelector: "#root"
 needDoubanInfo: false
 name:
   selector: "#showName"
