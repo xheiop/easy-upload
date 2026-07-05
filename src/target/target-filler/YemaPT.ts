@@ -162,9 +162,11 @@ class YemaPT extends BaseFiller implements TargetFiller {
       return;
     }
 
-    setFieldsValue(this.buildFields());
+    setFieldsValue({
+      ...this.buildFields(),
+      ...this.buildSelectFields(),
+    });
     this.fillTorrentFileByForm(setFieldsValue);
-    this.fillSelects();
   }
 
   private buildFields(): Record<string, unknown> {
@@ -224,21 +226,21 @@ class YemaPT extends BaseFiller implements TargetFiller {
     setFieldsValue({ fileList: [file] });
   }
 
-  private async fillSelects(): Promise<void> {
-    const sequence = [
-      ['medium', 0, this.getVideoType()],
-      ['standard', 1, this.getResolution()],
-      ['codec', 2, this.getVideoCodec()],
-      ['audiocodec', 3, this.getAudioCodec()],
-      ['regionList', 4, this.getRegions()],
-      ['team', 5, this.getTeam()],
-      ['tagList', 6, this.getTags()],
-      ['categoryId', 7, this.getCategory()],
-    ] as const;
+  private buildSelectFields(): Record<string, unknown> {
+    const fields: Record<string, unknown> = {
+      medium: this.getVideoType(),
+      standard: this.getResolution(),
+      codec: this.getVideoCodec(),
+      audiocodec: this.getAudioCodec(),
+      regionList: this.getRegions(),
+      team: this.getTeam(),
+      categoryId: this.getCategory(),
+    };
 
-    for (const [id, index, value] of sequence) {
-      await this.selectDropdownOption(id, index, value);
-    }
+    const tags = this.getTags();
+    if (tags.length > 0) fields.tagList = tags;
+
+    return fields;
   }
 
   private getCategory(): string {
@@ -326,72 +328,6 @@ class YemaPT extends BaseFiller implements TargetFiller {
     if (/E\d+/i.test(title)) result.push('连载中');
     if (/complete|S\d{2}(?!E\d{2})/i.test(title)) result.push('完结');
     return result;
-  }
-
-  private async selectDropdownOption(
-    id: string,
-    index: number,
-    targetTitle: string | string[],
-  ): Promise<void> {
-    if (
-      !targetTitle ||
-      (Array.isArray(targetTitle) && targetTitle.length === 0)
-    ) {
-      return;
-    }
-
-    const element = document.getElementById(id);
-    if (!element) return;
-
-    element.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
-    const listHolder = await this.waitForListHolder(index);
-    if (!listHolder) return;
-
-    const titles = Array.isArray(targetTitle) ? targetTitle : [targetTitle];
-    for (const title of titles) {
-      await this.clickOption(listHolder, title);
-    }
-  }
-
-  private async waitForListHolder(index: number): Promise<Element | null> {
-    for (let i = 0; i < 10; i += 1) {
-      await this.sleep(200);
-      const listHolder = document.querySelectorAll('.rc-virtual-list-holder')[
-        index
-      ];
-      if (listHolder) return listHolder;
-    }
-    return null;
-  }
-
-  private async clickOption(listHolder: Element, title: string): Promise<void> {
-    const findAndClick = () => {
-      const option = Array.from(
-        listHolder.querySelectorAll<HTMLElement>('.ant-select-item-option'),
-      ).find((item) => item.getAttribute('title') === title);
-      if (!option) return false;
-      option.click();
-      return true;
-    };
-
-    if (findAndClick()) return;
-
-    const holder = listHolder as HTMLElement;
-    let currentScroll = 0;
-    let totalHeight = holder.scrollHeight;
-    holder.scrollTop = 0;
-
-    while (currentScroll < totalHeight) {
-      holder.scrollTop += 100;
-      currentScroll += 100;
-      await this.sleep(100);
-      if (findAndClick()) return;
-      totalHeight = holder.scrollHeight;
-    }
-  }
-
-  private sleep(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
 
