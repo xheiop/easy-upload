@@ -132,15 +132,16 @@ export const getBDInfoOrMediaInfoFromBBCode = (
   bbcode: string,
 ): { bdInfo: string[]; mediaInfo: string[] } => {
   const quoteList: string[] = [];
-  const quoteRegex = /\[quote\]([^[\]])+?\[\/quote\]/gi;
-  while (bbcode?.match(quoteRegex)?.length) {
-    const matchContent = bbcode?.match(quoteRegex)?.[0] ?? '';
-    quoteList.push(matchContent);
-    bbcode = bbcode.replace(matchContent, '');
+  const quoteRegex = /\[quote(?:=[^\]]*)?\][\s\S]*?\[\/quote\]/gi;
+  let quoteMatch: RegExpExecArray | null;
+  while ((quoteMatch = quoteRegex.exec(bbcode)) !== null) {
+    quoteList.push(quoteMatch[0]);
   }
+  bbcode = bbcode.replace(quoteRegex, '');
   const cleanQuoteContent = (quote: string) =>
     quote
-      .replace(/\[\/?quote\]/g, '')
+      .replace(/^\[quote(?:=[^\]]*)?\]/i, '')
+      .replace(/\[\/quote\]$/i, '')
       .replace(/\u200D/g, '')
       .trim();
 
@@ -148,8 +149,31 @@ export const getBDInfoOrMediaInfoFromBBCode = (
     /Disc\s?Size|\.mpls/i.test(content) ||
     /Disc\s+(Info|Title|Label)[^[]+/i.test(content);
 
-  const isMediaInfo = (content: string) =>
-    /(Unique\s*ID)|(Codec\s*ID)|(Stream\s*size)/i.test(content);
+  const isMediaInfo = (content: string) => {
+    if (/(Unique\s*ID)|(Codec\s*ID)|(Stream\s*size)/i.test(content)) {
+      return true;
+    }
+
+    // Some MediaInfo outputs omit the identifying fields above. In that case,
+    // recognize the standard section order instead of leaving the whole dump as
+    // an ordinary quote.
+    const sectionNames = content
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter((line) =>
+        /^(General|Video(?:\s*#\d+)?|Audio(?:\s*#\d+)?)$/i.test(line),
+      )
+      .map((line) => line.match(/^[A-Za-z]+/)?.[0].toLowerCase());
+    const generalIndex = sectionNames.indexOf('general');
+    const videoIndex = sectionNames.indexOf('video');
+    const audioIndex = sectionNames.indexOf('audio');
+
+    return (
+      generalIndex !== -1 &&
+      videoIndex > generalIndex &&
+      audioIndex > videoIndex
+    );
+  };
 
   const { bdInfo, mediaInfo } = quoteList.reduce(
     (acc, quote) => {
