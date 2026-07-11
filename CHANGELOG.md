@@ -1,3 +1,13 @@
+## [7.0.16](https://github.com/xheiop/easy-upload/compare/7.0.15...7.0.16) (2026-07-11)
+
+
+### Bug Fixes
+
+* 优化 YemaPT 图片与截图字段填充 ([#417](https://github.com/xheiop/easy-upload/issues/417)) ([8b66a56](https://github.com/xheiop/easy-upload/commit/8b66a5611a369ddefdfd570e9e91895822f919f5))
+* detect sectioned mediainfo in quotes ([#418](https://github.com/xheiop/easy-upload/issues/418)) ([2f57f5d](https://github.com/xheiop/easy-upload/commit/2f57f5d38fc564277453145a24a9a039d3563439))
+* map YemaPT select labels to values ([#415](https://github.com/xheiop/easy-upload/issues/415)) ([74f95bb](https://github.com/xheiop/easy-upload/commit/74f95bb8425517337af5a06e8e3301597a03b6f4))
+* restore hhanclub transfer support ([#410](https://github.com/xheiop/easy-upload/issues/410)) ([8588a0c](https://github.com/xheiop/easy-upload/commit/8588a0c119c5e6edea88e14de923eb903f1c5b01))
+
 ## [7.0.15](https://github.com/xheiop/easy-upload/compare/7.0.14...7.0.15) (2026-06-28)
 
 
@@ -396,8 +406,8 @@
 
 ### Features
 
-* support the offer page on the pter site ([#299](https://github.com/xheiop/easy-upload/issues/299)) ([59565fb](https://github.com/xheiop/easy-upload/commit/59565fb9985a55685ffa26991dbe990d9734f67c))
 * 适配猪猪 ([#301](https://github.com/xheiop/easy-upload/issues/301)) ([5c36fd1](https://github.com/xheiop/easy-upload/commit/5c36fd156cd6b1ce86187728cf7c5db0b991ce80))
+* support the offer page on the pter site ([#299](https://github.com/xheiop/easy-upload/issues/299)) ([59565fb](https://github.com/xheiop/easy-upload/commit/59565fb9985a55685ffa26991dbe990d9734f67c))
 
 ## [5.1.11](https://github.com/xheiop/easy-upload/compare/5.1.10...5.1.11) (2024-07-30)
 
@@ -1057,8 +1067,8 @@
 
 ### Bug Fixes
 
-* 修改豆瓣按钮显示判断 ([8c9044f](https://github.com/xheiop/easy-upload/commit/8c9044f7487780fc11985734c998b4f668d2ab3a))
 * 兼容部分浏览器的navigator.language ([96a131a](https://github.com/xheiop/easy-upload/commit/96a131a07b694adea655184f1ce1e0966a31a3b0))
+* 修改豆瓣按钮显示判断 ([8c9044f](https://github.com/xheiop/easy-upload/commit/8c9044f7487780fc11985734c998b4f668d2ab3a))
 
 
 ### Features
@@ -1070,10 +1080,10 @@
 
 ### Bug Fixes
 
-* cinemaz favicon ([8c838f3](https://github.com/xheiop/easy-upload/commit/8c838f349ef61ec80c6593a343d1c12c79d43ab8))
-* uploadimgclosed config ([a3158f0](https://github.com/xheiop/easy-upload/commit/a3158f01c1501a957b5781185d252d84f2c8d61e))
 * 兼容pter的图片bbcode ([0deab2a](https://github.com/xheiop/easy-upload/commit/0deab2ab44bfb68fe322b2abaa42e1c10c7b280a))
 * 站点搜索配置列表展示不全 ([439e4ae](https://github.com/xheiop/easy-upload/commit/439e4aebf3acbb95dddf4684de94395bd6414f6e))
+* cinemaz favicon ([8c838f3](https://github.com/xheiop/easy-upload/commit/8c838f349ef61ec80c6593a343d1c12c79d43ab8))
+* uploadimgclosed config ([a3158f0](https://github.com/xheiop/easy-upload/commit/a3158f01c1501a957b5781185d252d84f2c8d61e))
 
 # [3.0.0](https://github.com/xheiop/easy-upload/compare/2.4.3...3.0.0) (2022-01-08)
 
@@ -1102,8 +1112,8 @@
 
 ### Bug Fixes
 
-* imgbox reg match ([51c474e](https://github.com/xheiop/easy-upload/commit/51c474ed023eb5e9563f0c200bf483e42100d629))
 * 兼容截图获取失败 ([1f6155e](https://github.com/xheiop/easy-upload/commit/1f6155ea5a473adb2375a91bce26db9914bf166c))
+* imgbox reg match ([51c474e](https://github.com/xheiop/easy-upload/commit/51c474ed023eb5e9563f0c200bf483e42100d629))
 
 
 ### Features
@@ -1237,14 +1247,14 @@
 
 ### Bug Fixes
 
+* 适配Aither ([a89823d](https://github.com/xheiop/easy-upload/commit/a89823d2123d8b641d3e91853c0bb2edf6b38fb2)), closes [#135](https://github.com/xheiop/easy-upload/issues/135)
+* 修复蒲公英豆瓣简介缺失的问题 ([45a7616](https://github.com/xheiop/easy-upload/commit/45a76163a12506f4b8e8327058cbf15a1d712f69))
 * aither选择器 ([bdc5984](https://github.com/xheiop/easy-upload/commit/bdc5984cbb40fd6201bf8099f362b50fdd8a716e))
 * aither选择器修改 ([a1f71e8](https://github.com/xheiop/easy-upload/commit/a1f71e802831aa72e60caf81d95993eb0b64af44)), closes [#135](https://github.com/xheiop/easy-upload/issues/135)
 * English translation ([0976e60](https://github.com/xheiop/easy-upload/commit/0976e606967052cefd94ed9f577b098fdb3a7d79))
 * lemonHD name search ([ff38cd4](https://github.com/xheiop/easy-upload/commit/ff38cd4b26d61487c362f419576e04be6d54008e))
 * sc bugfix ([97e31e2](https://github.com/xheiop/easy-upload/commit/97e31e2f5fc071ad50d67778517a22493f76410b)), closes [#82](https://github.com/xheiop/easy-upload/issues/82)
 * unit3d 修改选择器 ([faa16d4](https://github.com/xheiop/easy-upload/commit/faa16d4675502c19fbd18990a4f59dd9b6d8ac24))
-* 修复蒲公英豆瓣简介缺失的问题 ([45a7616](https://github.com/xheiop/easy-upload/commit/45a76163a12506f4b8e8327058cbf15a1d712f69))
-* 适配Aither ([a89823d](https://github.com/xheiop/easy-upload/commit/a89823d2123d8b641d3e91853c0bb2edf6b38fb2)), closes [#135](https://github.com/xheiop/easy-upload/issues/135)
 
 ## [2.2.8](https://github.com/xheiop/easy-upload/compare/2.2.7...2.2.8) (2021-07-13)
 
@@ -1274,11 +1284,11 @@
 
 ### Bug Fixes
 
+* 替换&nbsp;转义字符 ([7e358aa](https://github.com/xheiop/easy-upload/commit/7e358aa09eaa1d581aff13415875b09a81c460ab))
 * exclude HDSpace upload page ([f30d335](https://github.com/xheiop/easy-upload/commit/f30d3359b7f92dc2808b81f656ce0ce43be67bdc))
 * gpw style ([7d25515](https://github.com/xheiop/easy-upload/commit/7d25515644a0130afd5ea034f18e5743f60cf8c6))
 * resolve Dependabot alerts ([7d7178b](https://github.com/xheiop/easy-upload/commit/7d7178b4d8dc1aff7ae6e973234ad26aeeb3d18f))
 * support getting original url of imgbox ([3ef78bc](https://github.com/xheiop/easy-upload/commit/3ef78bc774227948fc5e983da08c40fdde66c4ac))
-* 替换&nbsp;转义字符 ([7e358aa](https://github.com/xheiop/easy-upload/commit/7e358aa09eaa1d581aff13415875b09a81c460ab))
 
 
 ### Features
@@ -1293,40 +1303,43 @@
 
 ### Bug Fixes
 
-* 修复tg脚本 ([7047722](https://github.com/xheiop/easy-upload/commit/70477221210b6ce1d1c797b1a839c615b9f22b94))
 * 适配Blutopia和HDPOST新版详情页 ([e1f9832](https://github.com/xheiop/easy-upload/commit/e1f9832e3a61b89d57545e1e78bed6d9036f991e))
+* 修复tg脚本 ([7047722](https://github.com/xheiop/easy-upload/commit/70477221210b6ce1d1c797b1a839c615b9f22b94))
 
 
 ### Features
 
+* 剧集副标题增加集数显示 ([d129845](https://github.com/xheiop/easy-upload/commit/d1298451c4c262028ff06587aa149c494b90a54d))
 * **new site:** support 3Wmg ([4a8f4de](https://github.com/xheiop/easy-upload/commit/4a8f4de381228334cb4200e6da365fac5469e5d1))
 * **new site:** support HDMaYi ([ab9c606](https://github.com/xheiop/easy-upload/commit/ab9c6062704c46e1de2924373bee7681be208f1a))
 * **new site:** support HDSpace ([d290316](https://github.com/xheiop/easy-upload/commit/d2903169c50f5c93de19cba48f897736d9a7e845)), closes [#116](https://github.com/xheiop/easy-upload/issues/116)
 * support HaresClub(大白兔) ([ca38f6b](https://github.com/xheiop/easy-upload/commit/ca38f6b54ab94ddb888792915b46de873bfd89c3))
-* 剧集副标题增加集数显示 ([d129845](https://github.com/xheiop/easy-upload/commit/d1298451c4c262028ff06587aa149c494b90a54d))
 
 ## [2.2.4](https://github.com/xheiop/easy-upload/compare/2.2.3...2.2.4) (2021-06-26)
 
 
 ### Bug Fixes
 
+* 豆瓣海报图床替换为img9 ([bfebe56](https://github.com/xheiop/easy-upload/commit/bfebe5659eebfc3521498d91f693f97ef5403cd0))
+* 缺失aka字段导致豆瓣数据获取失败 ([4bbe0b0](https://github.com/xheiop/easy-upload/commit/4bbe0b065f2cfb26dda2baf2fb74579be818d362))
 * Remove GPW .collapse style ([#122](https://github.com/xheiop/easy-upload/issues/122)) ([5baa0c9](https://github.com/xheiop/easy-upload/commit/5baa0c9ef769d5b5aea06e94e7acb3b8c7f343fc))
 * use url variable from config ([#124](https://github.com/xheiop/easy-upload/issues/124)) ([abf1982](https://github.com/xheiop/easy-upload/commit/abf198272bc10e3198f2d108c12849cb80a4a194))
-* 缺失aka字段导致豆瓣数据获取失败 ([4bbe0b0](https://github.com/xheiop/easy-upload/commit/4bbe0b065f2cfb26dda2baf2fb74579be818d362))
-* 豆瓣海报图床替换为img9 ([bfebe56](https://github.com/xheiop/easy-upload/commit/bfebe5659eebfc3521498d91f693f97ef5403cd0))
 
 
 ### Features
 
+* 增加从标签栏获取标签的功能 ([3bf64c8](https://github.com/xheiop/easy-upload/commit/3bf64c8788215cedc3c03931ac4d93f3a80e7aff)), closes [#80](https://github.com/xheiop/easy-upload/issues/80)
 * **gpw:** autofill失败时自动勾选字幕 ([af80851](https://github.com/xheiop/easy-upload/commit/af80851d9e34b118fdc7f9ba905f16685f5f402f))
 * support selecting different imghost to re-upload(gifyu ptpimg) ([3099716](https://github.com/xheiop/easy-upload/commit/30997166636f26dcc589c1d4870aa76603c17e57)), closes [#123](https://github.com/xheiop/easy-upload/issues/123)
-* 增加从标签栏获取标签的功能 ([3bf64c8](https://github.com/xheiop/easy-upload/commit/3bf64c8788215cedc3c03931ac4d93f3a80e7aff)), closes [#80](https://github.com/xheiop/easy-upload/issues/80)
 
 ## [2.2.3](https://github.com/xheiop/easy-upload/compare/2.2.2...2.2.3) (2021-06-20)
 
 
 ### Bug Fixes
 
+* 避免正则过长报错 ([2983936](https://github.com/xheiop/easy-upload/commit/298393660a2d349a65aacbe3500b4b4008dfdc80))
+* 豆瓣数据改为直接从豆瓣源站获取 ([81afe52](https://github.com/xheiop/easy-upload/commit/81afe52bc10829621af5bb4f2fc8074588273ab0))
+* 自动激活GPW自带验证 ([#119](https://github.com/xheiop/easy-upload/issues/119)) ([62a7bb9](https://github.com/xheiop/easy-upload/commit/62a7bb93cbc456e29fea51918911e1722950e75d))
 * avz quick search ([ce94e8e](https://github.com/xheiop/easy-upload/commit/ce94e8e8be2ae20bd1ce4a20261b0f2354c60674))
 * dvd size error ([7918c5c](https://github.com/xheiop/easy-upload/commit/7918c5c2e82253f6361ad70f447a7e437d042b97))
 * fail to replace image ([21610cb](https://github.com/xheiop/easy-upload/commit/21610cb4d0211a4c8967ca4e37b5a3d5ce2a7006))
@@ -1336,9 +1349,6 @@
 * GPW processing validation ([#121](https://github.com/xheiop/easy-upload/issues/121)) ([68a4310](https://github.com/xheiop/easy-upload/commit/68a431033149c154ccda8edd401c2387a59182ca))
 * replace extra wraps behind images ([38b8a8b](https://github.com/xheiop/easy-upload/commit/38b8a8be2a019d8be251e8d3f40058d168778dbe)), closes [#97](https://github.com/xheiop/easy-upload/issues/97)
 * ttg adds function ([402c825](https://github.com/xheiop/easy-upload/commit/402c825cfd8e0648ed9745be2fe5ff1177f6d5f7))
-* 自动激活GPW自带验证 ([#119](https://github.com/xheiop/easy-upload/issues/119)) ([62a7bb9](https://github.com/xheiop/easy-upload/commit/62a7bb93cbc456e29fea51918911e1722950e75d))
-* 豆瓣数据改为直接从豆瓣源站获取 ([81afe52](https://github.com/xheiop/easy-upload/commit/81afe52bc10829621af5bb4f2fc8074588273ab0))
-* 避免正则过长报错 ([2983936](https://github.com/xheiop/easy-upload/commit/298393660a2d349a65aacbe3500b4b4008dfdc80))
 
 
 ### Features
@@ -1350,27 +1360,27 @@
 
 ### Bug Fixes
 
+* 完善GPW目标站 ([#117](https://github.com/xheiop/easy-upload/issues/117)) ([79e2cec](https://github.com/xheiop/easy-upload/commit/79e2cecceb265feb717ec062c110dabac5327dfa))
 * gpw GroupId => GroupID ([a238f47](https://github.com/xheiop/easy-upload/commit/a238f47fc651d648fbc49f5c522736c4eca3405b))
 * PTP edition tags remove freeleech ([#114](https://github.com/xheiop/easy-upload/issues/114)) ([3a42f64](https://github.com/xheiop/easy-upload/commit/3a42f64581c9b73e7b07ac8d1d188cc02ad158fa))
-* 完善GPW目标站 ([#117](https://github.com/xheiop/easy-upload/issues/117)) ([79e2cec](https://github.com/xheiop/easy-upload/commit/79e2cecceb265feb717ec062c110dabac5327dfa))
 
 
 ### Features
 
+* 完善GPW ([6c6456e](https://github.com/xheiop/easy-upload/commit/6c6456e78bfde91791d5aaf690584cee98f6abb2))
 * BHD add editionTags, mediaInfos, originalDescription ([#115](https://github.com/xheiop/easy-upload/issues/115)) ([4b5d243](https://github.com/xheiop/easy-upload/commit/4b5d24331953dfcd99a18a688c810c5203acea9c))
 * **new site:** support GPW(target) ([292cbc4](https://github.com/xheiop/easy-upload/commit/292cbc4e0efece643d8739e7b9925e8e481b5db8))
-* 完善GPW ([6c6456e](https://github.com/xheiop/easy-upload/commit/6c6456e78bfde91791d5aaf690584cee98f6abb2))
 
 ## [2.2.1](https://github.com/xheiop/easy-upload/compare/2.2.0...2.2.1) (2021-06-10)
 
 
 ### Bug Fixes
 
+* 适配新版blu ([0c6a351](https://github.com/xheiop/easy-upload/commit/0c6a3514b3e1241d38ad7e47d2285dffc4a72a7e))
+* 替换ssd上传页路径 ([80a4150](https://github.com/xheiop/easy-upload/commit/80a4150c6f578be978d64bfc2f5bb49814552369))
+* 已有中文简介的情况只更新豆瓣链接 ([53de6a7](https://github.com/xheiop/easy-upload/commit/53de6a7758d4ce9b07d65d21f27bb847b4c4f847)), closes [#108](https://github.com/xheiop/easy-upload/issues/108)
 * PTP Editon tags remove release group name ([#111](https://github.com/xheiop/easy-upload/issues/111)) ([0a185aa](https://github.com/xheiop/easy-upload/commit/0a185aa2065dd426e9252269b5d50822b4fc7000))
 * ptp多个修复 ([#110](https://github.com/xheiop/easy-upload/issues/110)) ([3d4b638](https://github.com/xheiop/easy-upload/commit/3d4b6388919dd37e02ed6526fa5e5abaeced1972))
-* 已有中文简介的情况只更新豆瓣链接 ([53de6a7](https://github.com/xheiop/easy-upload/commit/53de6a7758d4ce9b07d65d21f27bb847b4c4f847)), closes [#108](https://github.com/xheiop/easy-upload/issues/108)
-* 替换ssd上传页路径 ([80a4150](https://github.com/xheiop/easy-upload/commit/80a4150c6f578be978d64bfc2f5bb49814552369))
-* 适配新版blu ([0c6a351](https://github.com/xheiop/easy-upload/commit/0c6a3514b3e1241d38ad7e47d2285dffc4a72a7e))
 
 
 ### Features
@@ -1389,37 +1399,37 @@
 
 ### Features
 
+* 如果源站点无法获取豆瓣链接，显示获取豆瓣简介按钮 ([7a813ea](https://github.com/xheiop/easy-upload/commit/7a813ea7c7922d29eaca164368b551a691ea0589)), closes [#108](https://github.com/xheiop/easy-upload/issues/108)
+* 支持关闭显示感谢内容 ([c6f4f28](https://github.com/xheiop/easy-upload/commit/c6f4f289b9e15aae5f144509435a1d157520e547)), closes [#107](https://github.com/xheiop/easy-upload/issues/107)
 * add img transfer progress ([d02cf41](https://github.com/xheiop/easy-upload/commit/d02cf419bee130e6b0a0dc7a165b5bac0ea89705)), closes [#96](https://github.com/xheiop/easy-upload/issues/96)
 * **new site:** add PHD and  AvistaZ support (source) ([b505bbc](https://github.com/xheiop/easy-upload/commit/b505bbc2b2f0aa8ed1b50a995a2e4dac40dcffe3)), closes [#58](https://github.com/xheiop/easy-upload/issues/58)
 * **new site:** add ptn support (target) ([02e08b0](https://github.com/xheiop/easy-upload/commit/02e08b059e81b1fd54d581f67ddb8bcd2ed627d3)), closes [#98](https://github.com/xheiop/easy-upload/issues/98)
 * restore icon animation ([dfe0733](https://github.com/xheiop/easy-upload/commit/dfe0733a229df4596386237d54658003bc564fb9))
-* 如果源站点无法获取豆瓣链接，显示获取豆瓣简介按钮 ([7a813ea](https://github.com/xheiop/easy-upload/commit/7a813ea7c7922d29eaca164368b551a691ea0589)), closes [#108](https://github.com/xheiop/easy-upload/issues/108)
-* 支持关闭显示感谢内容 ([c6f4f28](https://github.com/xheiop/easy-upload/commit/c6f4f289b9e15aae5f144509435a1d157520e547)), closes [#107](https://github.com/xheiop/easy-upload/issues/107)
 
 ## [2.1.1](https://github.com/xheiop/easy-upload/compare/2.1.0...2.1.1) (2021-05-27)
 
 
 ### Bug Fixes
 
+* 补充PTP额外版本信息 ([#94](https://github.com/xheiop/easy-upload/issues/94)) ([c21676e](https://github.com/xheiop/easy-upload/commit/c21676e341076959045d14d8526ef2f33c313d58))
+* 处理PTP mediainfo得不到的情况 ([#102](https://github.com/xheiop/easy-upload/issues/102)) ([39c346f](https://github.com/xheiop/easy-upload/commit/39c346ff99e8cafbfb2d4b6c7c8bb86b27342769))
+* 更准确的获取PTP mediainfo ([#104](https://github.com/xheiop/easy-upload/issues/104)) ([d5106b0](https://github.com/xheiop/easy-upload/commit/d5106b006cfed42e581854a6d82637bf72483f06))
+* 使用response替代responseText ([025dd1a](https://github.com/xheiop/easy-upload/commit/025dd1a690f254529c83f6e4fbc7ae3a58c31f01))
+* 完善截图过滤规则 ([#93](https://github.com/xheiop/easy-upload/issues/93)) ([9f0eb1a](https://github.com/xheiop/easy-upload/commit/9f0eb1a609fa75f19ceb7d5bb073396fe077afdd))
+* 修复几个错误的tag ([#90](https://github.com/xheiop/easy-upload/issues/90)) ([664376d](https://github.com/xheiop/easy-upload/commit/664376dfde656b6494b9c6a95b42499b13e66481))
+* 修复PTP图片带链接 ([#99](https://github.com/xheiop/easy-upload/issues/99)) ([6f0882a](https://github.com/xheiop/easy-upload/commit/6f0882a6c99b1fda58dbd88fac4df2460ba2fac5))
 * add dual_audio etc tags for PTP ([#106](https://github.com/xheiop/easy-upload/issues/106)) ([8b22ebc](https://github.com/xheiop/easy-upload/commit/8b22ebcd25a14de451c2228969750847c1f802f7))
 * its 数据请求失败依旧展示模版内容 ([05b3df2](https://github.com/xheiop/easy-upload/commit/05b3df2817e233acfafc9ce0fe7562538164d66f))
 * PTP comparison支持大小写 ([#101](https://github.com/xheiop/easy-upload/issues/101)) ([4ebe6a8](https://github.com/xheiop/easy-upload/commit/4ebe6a812da8faaab6393a957169c1155c369c56))
 * PTP增加originalDescription ([#103](https://github.com/xheiop/easy-upload/issues/103)) ([93fc621](https://github.com/xheiop/easy-upload/commit/93fc6210bc385eb2fe9add1ae83ba110709fcaf9))
 * tag改为小写 ([#89](https://github.com/xheiop/easy-upload/issues/89)) ([2fa0d70](https://github.com/xheiop/easy-upload/commit/2fa0d70dd4f1bb5ee17d0e8a3b733f84b4bcb42b))
 * **uhd:** remove poster & fix videoType error ([ef35134](https://github.com/xheiop/easy-upload/commit/ef35134d872db8118387737486a4b88574802c63))
-* 使用response替代responseText ([025dd1a](https://github.com/xheiop/easy-upload/commit/025dd1a690f254529c83f6e4fbc7ae3a58c31f01))
-* 修复PTP图片带链接 ([#99](https://github.com/xheiop/easy-upload/issues/99)) ([6f0882a](https://github.com/xheiop/easy-upload/commit/6f0882a6c99b1fda58dbd88fac4df2460ba2fac5))
-* 修复几个错误的tag ([#90](https://github.com/xheiop/easy-upload/issues/90)) ([664376d](https://github.com/xheiop/easy-upload/commit/664376dfde656b6494b9c6a95b42499b13e66481))
-* 处理PTP mediainfo得不到的情况 ([#102](https://github.com/xheiop/easy-upload/issues/102)) ([39c346f](https://github.com/xheiop/easy-upload/commit/39c346ff99e8cafbfb2d4b6c7c8bb86b27342769))
-* 完善截图过滤规则 ([#93](https://github.com/xheiop/easy-upload/issues/93)) ([9f0eb1a](https://github.com/xheiop/easy-upload/commit/9f0eb1a609fa75f19ceb7d5bb073396fe077afdd))
-* 更准确的获取PTP mediainfo ([#104](https://github.com/xheiop/easy-upload/issues/104)) ([d5106b0](https://github.com/xheiop/easy-upload/commit/d5106b006cfed42e581854a6d82637bf72483f06))
-* 补充PTP额外版本信息 ([#94](https://github.com/xheiop/easy-upload/issues/94)) ([c21676e](https://github.com/xheiop/easy-upload/commit/c21676e341076959045d14d8526ef2f33c313d58))
 
 
 ### Features
 
-* comparisonImgs改为comparisons ([#87](https://github.com/xheiop/easy-upload/issues/87)) ([de3bfda](https://github.com/xheiop/easy-upload/commit/de3bfdada0bc5375d3957731655079156e6d2201))
 * 完善PTP版本标签 ([18be3b7](https://github.com/xheiop/easy-upload/commit/18be3b755612eebe439a9e89871710591e3b9564))
+* comparisonImgs改为comparisons ([#87](https://github.com/xheiop/easy-upload/issues/87)) ([de3bfda](https://github.com/xheiop/easy-upload/commit/de3bfdada0bc5375d3957731655079156e6d2201))
 
 # [2.1.0](https://github.com/xheiop/easy-upload/compare/2.0.0...2.1.0) (2021-05-15)
 
@@ -1434,20 +1444,20 @@
 
 ### Features
 
+* 优化mediainfo bbcode ([81989e9](https://github.com/xheiop/easy-upload/commit/81989e952d945e41327ff3bfbf1bdbde03c07764)), closes [#78](https://github.com/xheiop/easy-upload/issues/78)
+* 增加BTN源站点支持 ([83fa4c5](https://github.com/xheiop/easy-upload/commit/83fa4c5b1d8a388443db9dc075fa8b357ff6e5ca))
 * add button for  uploading screenshots to ptpimg ([ced863c](https://github.com/xheiop/easy-upload/commit/ced863ccfc658493a28589a21e2c0b113e54b113)), closes [#75](https://github.com/xheiop/easy-upload/issues/75) [#63](https://github.com/xheiop/easy-upload/issues/63)
 * **btn:** 完善BTN ([fce29ea](https://github.com/xheiop/easy-upload/commit/fce29ea2b14cc13873427474999fabe81edfb387)), closes [#81](https://github.com/xheiop/easy-upload/issues/81)
 * support upload image file to ptpimg ([07e5555](https://github.com/xheiop/easy-upload/commit/07e55553c8581670cc57808438a5f8b551ea9eff))
-* 优化mediainfo bbcode ([81989e9](https://github.com/xheiop/easy-upload/commit/81989e952d945e41327ff3bfbf1bdbde03c07764)), closes [#78](https://github.com/xheiop/easy-upload/issues/78)
-* 增加BTN源站点支持 ([83fa4c5](https://github.com/xheiop/easy-upload/commit/83fa4c5b1d8a388443db9dc075fa8b357ff6e5ca))
 
 # [2.0.0](https://github.com/xheiop/easy-upload/compare/1.3.0...2.0.0) (2021-05-09)
 
 
 ### Bug Fixes
 
+* 修改source站点方法判断 ([aacc4a3](https://github.com/xheiop/easy-upload/commit/aacc4a32913ce74e7f14438032c0abf39f043666))
 * **its:** 修复动画和纪录片无法获取数据的问题 ([4c03283](https://github.com/xheiop/easy-upload/commit/4c032836fb7e7eaf9c788bc74e2feb4f633d79cf))
 * **its:** 修改模板 ([1bd97a1](https://github.com/xheiop/easy-upload/commit/1bd97a162fd6cb11b3e5b2dda450641ff8ba6d59))
-* 修改source站点方法判断 ([aacc4a3](https://github.com/xheiop/easy-upload/commit/aacc4a32913ce74e7f14438032c0abf39f043666))
 
 
 ### Features
@@ -1461,22 +1471,22 @@
 ### Bug Fixes
 
 * 'mepg2' to 'mpeg2' ([ba7cd94](https://github.com/xheiop/easy-upload/commit/ba7cd9462490df257cfc708fb9e1a3a362844c5d))
+* 去除MT图片链接多余内容 ([92e4078](https://github.com/xheiop/easy-upload/commit/92e4078e1aaf51f80424b4cb29b5392f72a0af90))
+* 修复转缩略图后上传失败的图片被替换为undefined ([a175fb1](https://github.com/xheiop/easy-upload/commit/a175fb18859a2a4f929cc59c44b0b027cdc0da60))
 * **btschool:** replace urls of imdb and douban to ids ([2f1297f](https://github.com/xheiop/easy-upload/commit/2f1297f40be82c932a52f9ddda6d04bb69bd30dc))
 * **hdatmos:** add category selector change event ([d59da2b](https://github.com/xheiop/easy-upload/commit/d59da2bbc248bb444e3ebae8b82656304464ad89))
 * link to english greasyfork ([c063daf](https://github.com/xheiop/easy-upload/commit/c063daf539b4391b40f320ccf9478ad1e166d440))
 * repalce iTS upload template ([32a2ff9](https://github.com/xheiop/easy-upload/commit/32a2ff95acd173f947391f99b9396ad94d4dbb85))
 * replace space of iTS title to dot ([73272b7](https://github.com/xheiop/easy-upload/commit/73272b76f26a8a7a7f3aa40cf6c43aa8cd770617))
-* 修复转缩略图后上传失败的图片被替换为undefined ([a175fb1](https://github.com/xheiop/easy-upload/commit/a175fb18859a2a4f929cc59c44b0b027cdc0da60))
-* 去除MT图片链接多余内容 ([92e4078](https://github.com/xheiop/easy-upload/commit/92e4078e1aaf51f80424b4cb29b5392f72a0af90))
 
 
 ### Features
 
+* 支持从DouBan-Info-for-PT中获取豆瓣链接 ([92d4027](https://github.com/xheiop/easy-upload/commit/92d40273e773d8a1670ba90374b1d98ca0ed39a9))
 * add English README and Wiki pages ([29574dc](https://github.com/xheiop/easy-upload/commit/29574dc8ad58109d7cb2c29a503f9e697861262a))
 * change status text or alert to notification function ([fa8a07b](https://github.com/xheiop/easy-upload/commit/fa8a07bdbe3625b6631b51eb09aaebf35238d3d2)), closes [#57](https://github.com/xheiop/easy-upload/issues/57)
 * **localization:** support English ([18adb38](https://github.com/xheiop/easy-upload/commit/18adb384dab9ed052128d4a024ecca5777715755))
 * **search:** add btn support ([4f08f2d](https://github.com/xheiop/easy-upload/commit/4f08f2d670027100a60eb598f88cf19674ddc6f5))
-* 支持从DouBan-Info-for-PT中获取豆瓣链接 ([92d4027](https://github.com/xheiop/easy-upload/commit/92d40273e773d8a1670ba90374b1d98ca0ed39a9))
 
 
 ### Performance Improvements
@@ -1493,10 +1503,10 @@
 
 ### Features
 
+* 增加ptpimg apikey获取按钮 增加apikey获取指引 ([60dce3c](https://github.com/xheiop/easy-upload/commit/60dce3c749e5350559cf758ddb0a58bc51efaa60))
 * bB剧集标题按上传规则补充相关信息 ([377e63a](https://github.com/xheiop/easy-upload/commit/377e63a1100e53ee4501073e1aacba4bd42e2b0b)), closes [#57](https://github.com/xheiop/easy-upload/issues/57)
 * **newsite:** support Aither ([45b1fc0](https://github.com/xheiop/easy-upload/commit/45b1fc03baeb985212bf1817213ae6f0be32c832)), closes [#49](https://github.com/xheiop/easy-upload/issues/49)
 * **newsite:** support bB(target) ([fc9ab62](https://github.com/xheiop/easy-upload/commit/fc9ab62cb7a70d8aefeb8a85452e07d0a339a180)), closes [#43](https://github.com/xheiop/easy-upload/issues/43)
-* 增加ptpimg apikey获取按钮 增加apikey获取指引 ([60dce3c](https://github.com/xheiop/easy-upload/commit/60dce3c749e5350559cf758ddb0a58bc51efaa60))
 
 
 ### Performance Improvements
@@ -1508,10 +1518,10 @@
 
 ### Bug Fixes
 
-* none nexusphp sites can't get thumbnailImgs ([e6867ef](https://github.com/xheiop/easy-upload/commit/e6867efbe6603b551c566fbc05fd397a364d4efd)), closes [#51](https://github.com/xheiop/easy-upload/issues/51)
+* 单独处理pixhost的原图地址，替换为真实图片链接 ([e3d5736](https://github.com/xheiop/easy-upload/commit/e3d57367e73ce469c5e52540c28a1adbf5c2d583)), closes [#48](https://github.com/xheiop/easy-upload/issues/48)
 * 修复部分站点描述里缺mediainfo的问题 ([f97de4c](https://github.com/xheiop/easy-upload/commit/f97de4c0718bc1542272100a429801a5a2ada1a0))
 * 修改ptp title获取方法 ([72a727d](https://github.com/xheiop/easy-upload/commit/72a727d99fa3771264b8e17fe7e7d558e8ee1068))
-* 单独处理pixhost的原图地址，替换为真实图片链接 ([e3d5736](https://github.com/xheiop/easy-upload/commit/e3d57367e73ce469c5e52540c28a1adbf5c2d583)), closes [#48](https://github.com/xheiop/easy-upload/issues/48)
+* none nexusphp sites can't get thumbnailImgs ([e6867ef](https://github.com/xheiop/easy-upload/commit/e6867efbe6603b551c566fbc05fd397a364d4efd)), closes [#51](https://github.com/xheiop/easy-upload/issues/51)
 
 
 ### Features
@@ -1551,67 +1561,67 @@
 
 ### Bug Fixes
 
-* nzb站点名称修改 ([96dcc12](https://github.com/xheiop/easy-upload/commit/96dcc1216555b31910530ffd58ebae265e66ba7a))
-* 修复videoCodec识别不准确问题 ([9e83e18](https://github.com/xheiop/easy-upload/commit/9e83e1883a154ce5fc30b97f38a4458e6fe7021c))
-* 修复备胎视频编码从简略mediainfo中识别不准确的问题 ([d13dc8c](https://github.com/xheiop/easy-upload/commit/d13dc8c885c744ad5999e5e2f0421ad18155ba2c))
 * 家园ipad分类填写不准确 ([e11bdc4](https://github.com/xheiop/easy-upload/commit/e11bdc49ae662b15cb93c0cdcf49da82c5dad17b))
+* 修复备胎视频编码从简略mediainfo中识别不准确的问题 ([d13dc8c](https://github.com/xheiop/easy-upload/commit/d13dc8c885c744ad5999e5e2f0421ad18155ba2c))
+* 修复videoCodec识别不准确问题 ([9e83e18](https://github.com/xheiop/easy-upload/commit/9e83e1883a154ce5fc30b97f38a4458e6fe7021c))
+* nzb站点名称修改 ([96dcc12](https://github.com/xheiop/easy-upload/commit/96dcc1216555b31910530ffd58ebae265e66ba7a))
 
 
 ### Features
 
-* **search:** 支持豆瓣电影、豆瓣图书、TMDB快速检索 ([7c943af](https://github.com/xheiop/easy-upload/commit/7c943af74d47b26f180543a3ca40c45d0921b8b2))
-* 增加获取豆瓣图书数据功能 ([ea4134a](https://github.com/xheiop/easy-upload/commit/ea4134a8dde872a71973f369b518400500bdc436))
-* 完善bib上传页 ([4d98a1d](https://github.com/xheiop/easy-upload/commit/4d98a1da3d1de6d73c59d041c0cead5c45946631))
 * 将操作区单独抽出 增加豆瓣链接填写 ([48e0d7e](https://github.com/xheiop/easy-upload/commit/48e0d7eededc5e57d3ef8b17246b9a08ea3ddd86))
+* 完善bib上传页 ([4d98a1d](https://github.com/xheiop/easy-upload/commit/4d98a1da3d1de6d73c59d041c0cead5c45946631))
+* 增加获取豆瓣图书数据功能 ([ea4134a](https://github.com/xheiop/easy-upload/commit/ea4134a8dde872a71973f369b518400500bdc436))
 * 支持iTS(target) [#41](https://github.com/xheiop/easy-upload/issues/41) ([d4aed63](https://github.com/xheiop/easy-upload/commit/d4aed63ac9d9c33f8b6944dd80fd1dc93a753764))
+* **search:** 支持豆瓣电影、豆瓣图书、TMDB快速检索 ([7c943af](https://github.com/xheiop/easy-upload/commit/7c943af74d47b26f180543a3ca40c45d0921b8b2))
 
 ## [1.2.1](https://github.com/xheiop/easy-upload/compare/1.2.0...1.2.1) (2021-04-12)
 
 
 ### Bug Fixes
 
-* 修复完善ptp简介获取方法 ([2d770cf](https://github.com/xheiop/easy-upload/commit/2d770cf0450006ec87322cc0b18baeeb63d77694))
-* 修复电影类别识别不准确的问题 ([294e9b7](https://github.com/xheiop/easy-upload/commit/294e9b7306b056b363a07e2b7db699e70a965bb3))
 * 更改NP站点种子页面选择器 [#46](https://github.com/xheiop/easy-upload/issues/46) ([f104ec8](https://github.com/xheiop/easy-upload/commit/f104ec8d3d0d172ac83ffa5112baf8bf7a3b281f))
+* 修复电影类别识别不准确的问题 ([294e9b7](https://github.com/xheiop/easy-upload/commit/294e9b7306b056b363a07e2b7db699e70a965bb3))
+* 修复完善ptp简介获取方法 ([2d770cf](https://github.com/xheiop/easy-upload/commit/2d770cf0450006ec87322cc0b18baeeb63d77694))
 
 
 ### Features
 
 *  支持bB/HDF/iTS快速检索 ([f88da0f](https://github.com/xheiop/easy-upload/commit/f88da0f26dc150b32b0aa44a144f4e01f6d66a32))
-* **new version:** 1.2.1 ([3aa8383](https://github.com/xheiop/easy-upload/commit/3aa83833320de42b7284ccfd51ceeafad52d2784))
 * 支持hdt(source) ([3814959](https://github.com/xheiop/easy-upload/commit/38149596564e07f78d45cbc8f3c162df43c03f14))
 * 支持hdt(source) [#39](https://github.com/xheiop/easy-upload/issues/39) ([1436b32](https://github.com/xheiop/easy-upload/commit/1436b32bba59c783bc55d1bd6d2ef8ddf3cb2a31))
 * 支持KG 转出（Source） ([a0ae883](https://github.com/xheiop/easy-upload/commit/a0ae883b50ca2af7fe2e058e85e173cc67adbfea)), closes [#40](https://github.com/xheiop/easy-upload/issues/40)
+* **new version:** 1.2.1 ([3aa8383](https://github.com/xheiop/easy-upload/commit/3aa83833320de42b7284ccfd51ceeafad52d2784))
 
 # [1.2.0](https://github.com/xheiop/easy-upload/compare/1.1.4...1.2.0) (2021-04-10)
 
 
 ### Bug Fixes
 
+* 过滤script标签 [#44](https://github.com/xheiop/easy-upload/issues/44) ([7b1cb0d](https://github.com/xheiop/easy-upload/commit/7b1cb0d6419694dc497e43b30098b35cba3d596c))
+* 朋友简介完善 & 朋友增加豆瓣简介获取按钮 ([e4ad511](https://github.com/xheiop/easy-upload/commit/e4ad51136567fd6b180a307b398fc50a3abb669c))
+* 修复朋友mediainfo BBcode ([063b616](https://github.com/xheiop/easy-upload/commit/063b61673a199b1ef3e40836b1805815944dbd45))
 * HDT IMDB地址处理 [#39](https://github.com/xheiop/easy-upload/issues/39) ([bc1c212](https://github.com/xheiop/easy-upload/commit/bc1c2123c4b3c4ea0f1a941c42a6ee8235e04725))
 * pter非英语资源地区选择处理 [#45](https://github.com/xheiop/easy-upload/issues/45) ([cabfcd0](https://github.com/xheiop/easy-upload/commit/cabfcd0aa5c654f63681f2fc5e1b765ae8648191))
-* 修复朋友mediainfo BBcode ([063b616](https://github.com/xheiop/easy-upload/commit/063b61673a199b1ef3e40836b1805815944dbd45))
-* 朋友简介完善 & 朋友增加豆瓣简介获取按钮 ([e4ad511](https://github.com/xheiop/easy-upload/commit/e4ad51136567fd6b180a307b398fc50a3abb669c))
-* 过滤script标签 [#44](https://github.com/xheiop/easy-upload/issues/44) ([7b1cb0d](https://github.com/xheiop/easy-upload/commit/7b1cb0d6419694dc497e43b30098b35cba3d596c))
 
 
 ### Features
 
 * [#38](https://github.com/xheiop/easy-upload/issues/38) 修改BHD的图片bbcode ([63c8b44](https://github.com/xheiop/easy-upload/commit/63c8b44fd7d6b69de5776e409fe09bf190b675b0))
-* add license ([8881307](https://github.com/xheiop/easy-upload/commit/888130762ae293b651ef93b6d22132c3609cef9d))
-* build config ([dec25f1](https://github.com/xheiop/easy-upload/commit/dec25f10f82c4f0cf7ff9c30834d86c28da5853b))
-* **new site:** 1PTBA ([6d74d61](https://github.com/xheiop/easy-upload/commit/6d74d61a5d86f91af58d8c4268aeab2a09e40625))
-* **new version:** 1.2.0 ([cd8c949](https://github.com/xheiop/easy-upload/commit/cd8c949072666748f6ac63d67ec58c38acca56e9))
-* ptp修改简介获取方式 ([d761573](https://github.com/xheiop/easy-upload/commit/d761573b52197798c8a898f2251c47bc6c24a5a3))
-* ptp简介从官方接口中获取 对比图样式更加规范 ([a2956dd](https://github.com/xheiop/easy-upload/commit/a2956dd81f150ac76295f43dfe50735b4638c4b3))
-* update readme ([e282621](https://github.com/xheiop/easy-upload/commit/e282621b47d43eee7423c7a3f74a67846546440d))
-* 修改控制面板样式 ([eb0070c](https://github.com/xheiop/easy-upload/commit/eb0070cc077d80ce1876fd4abb5a69566fffc087))
-* 增加朋友imdb链接地址获取方式 ([a665e22](https://github.com/xheiop/easy-upload/commit/a665e22aae260ffb2816621b122c20f917f762d8))
 * 拆分站点配置 ([7dd8b0a](https://github.com/xheiop/easy-upload/commit/7dd8b0a9849a186cd3e974299d871d351f997d5b))
 * 拆分站点配置 ([1643bf3](https://github.com/xheiop/easy-upload/commit/1643bf38a1a64ae5d5fc7a2ba83290f28edef9bc))
 * 更新安装地址 ([4f3c9d2](https://github.com/xheiop/easy-upload/commit/4f3c9d2832c483788098de5c1d4171c910a15029))
 * 海报增加获取方法 ([8a0be42](https://github.com/xheiop/easy-upload/commit/8a0be4294744ca248afbe2efee742e0042e46a65))
 * 设置面板样式调整 ([6c490b3](https://github.com/xheiop/easy-upload/commit/6c490b37be54a64f46129c8e88070c9e67577b86))
+* 修改控制面板样式 ([eb0070c](https://github.com/xheiop/easy-upload/commit/eb0070cc077d80ce1876fd4abb5a69566fffc087))
+* 增加朋友imdb链接地址获取方式 ([a665e22](https://github.com/xheiop/easy-upload/commit/a665e22aae260ffb2816621b122c20f917f762d8))
+* add license ([8881307](https://github.com/xheiop/easy-upload/commit/888130762ae293b651ef93b6d22132c3609cef9d))
+* build config ([dec25f1](https://github.com/xheiop/easy-upload/commit/dec25f10f82c4f0cf7ff9c30834d86c28da5853b))
+* **new site:** 1PTBA ([6d74d61](https://github.com/xheiop/easy-upload/commit/6d74d61a5d86f91af58d8c4268aeab2a09e40625))
+* **new version:** 1.2.0 ([cd8c949](https://github.com/xheiop/easy-upload/commit/cd8c949072666748f6ac63d67ec58c38acca56e9))
+* ptp简介从官方接口中获取 对比图样式更加规范 ([a2956dd](https://github.com/xheiop/easy-upload/commit/a2956dd81f150ac76295f43dfe50735b4638c4b3))
+* ptp修改简介获取方式 ([d761573](https://github.com/xheiop/easy-upload/commit/d761573b52197798c8a898f2251c47bc6c24a5a3))
+* update readme ([e282621](https://github.com/xheiop/easy-upload/commit/e282621b47d43eee7423c7a3f74a67846546440d))
 
 ## [1.1.4](https://github.com/xheiop/easy-upload/compare/1.1.4-beta.1...1.1.4) (2021-04-06)
 
@@ -1623,9 +1633,9 @@
 
 ### Features
 
+* 支持HDT(target) ([7232c14](https://github.com/xheiop/easy-upload/commit/7232c1479bc8ceea6c032a5dfbda7deecf4e1b0d))
 * close [#37](https://github.com/xheiop/easy-upload/issues/37) ([31db72a](https://github.com/xheiop/easy-upload/commit/31db72a05d490bcd23c4c40bad6814d5fe3ef16c))
 * **new version:** 1.1.4 ([82a1676](https://github.com/xheiop/easy-upload/commit/82a16764c6fb662bea3f9a86f4b194a05f6745dd))
-* 支持HDT(target) ([7232c14](https://github.com/xheiop/easy-upload/commit/7232c1479bc8ceea6c032a5dfbda7deecf4e1b0d))
 
 ## [1.1.4-beta.1](https://github.com/xheiop/easy-upload/compare/1.1.3...1.1.4-beta.1) (2021-03-31)
 
@@ -1637,64 +1647,64 @@
 
 ### Features
 
-* **new version:** 1.1.4-beta.1 ([4dfcd9a](https://github.com/xheiop/easy-upload/commit/4dfcd9a3d018bbd9e53659e1e878e398f7a59193))
 * 支持资料站tccf mt bib ([52f8ecf](https://github.com/xheiop/easy-upload/commit/52f8ecf5bf8c7e8cc650a0331f331caad7c238f3))
 * 支持资料站tccf mt bib ([415e00c](https://github.com/xheiop/easy-upload/commit/415e00c5c61809a3b4f9a80cd150b139e6735e82))
+* **new version:** 1.1.4-beta.1 ([4dfcd9a](https://github.com/xheiop/easy-upload/commit/4dfcd9a3d018bbd9e53659e1e878e398f7a59193))
 
 ## [1.1.3](https://github.com/xheiop/easy-upload/compare/1.1.2...1.1.3) (2021-03-29)
 
 
 ### Bug Fixes
 
-* 增加bbcode「size」 ([c669f6f](https://github.com/xheiop/easy-upload/commit/c669f6fb78586a5550db2472dd829586be3df1db))
 * 家园videoType和地区获取错误修复 ([375ea93](https://github.com/xheiop/easy-upload/commit/375ea93779f683cb05f862623298e9f8e269af46))
+* 增加bbcode「size」 ([c669f6f](https://github.com/xheiop/easy-upload/commit/c669f6fb78586a5550db2472dd829586be3df1db))
 
 
 ### Features
 
-* **dev:** 增加release脚本 ([3530ef9](https://github.com/xheiop/easy-upload/commit/3530ef98db9a9a9962f76c435928640fd7456f89))
-* **dev:** 增加终端错误通知 ([a86a9ed](https://github.com/xheiop/easy-upload/commit/a86a9ed63ef06d9ba5391188e4ae7632737d2170))
-* **new version:** 1.1.3 ([501fb6f](https://github.com/xheiop/easy-upload/commit/501fb6fac53bd417091a7b44640e208f147fc32a))
 * **新站点:** ACM close [#31](https://github.com/xheiop/easy-upload/issues/31) ([51229a5](https://github.com/xheiop/easy-upload/commit/51229a5c697136c88c31a7cdfdcbac0404cce679))
+* **dev:** 增加终端错误通知 ([a86a9ed](https://github.com/xheiop/easy-upload/commit/a86a9ed63ef06d9ba5391188e4ae7632737d2170))
+* **dev:** 增加release脚本 ([3530ef9](https://github.com/xheiop/easy-upload/commit/3530ef98db9a9a9962f76c435928640fd7456f89))
+* **new version:** 1.1.3 ([501fb6f](https://github.com/xheiop/easy-upload/commit/501fb6fac53bd417091a7b44640e208f147fc32a))
 
 ## [1.1.2](https://github.com/xheiop/easy-upload/compare/1.1.1...1.1.2) (2021-03-28)
 
 
 ### Bug Fixes
 
+* 修改MT种子页选择器 close [#32](https://github.com/xheiop/easy-upload/issues/32) ([2978051](https://github.com/xheiop/easy-upload/commit/29780519cd1cfddd330369f727a07dda1cd4802a))
+* 增加获取豆瓣链接的备用方法 ([f18e7d7](https://github.com/xheiop/easy-upload/commit/f18e7d76004c24708aa9309287fc8be73fab0dbc))
 * close [#33](https://github.com/xheiop/easy-upload/issues/33) 更改ptp种子页选择器 ([f148852](https://github.com/xheiop/easy-upload/commit/f148852f8fa5a6d301ec31958f1b19e76e9fa6fd))
 * close [#34](https://github.com/xheiop/easy-upload/issues/34) ([2239af9](https://github.com/xheiop/easy-upload/commit/2239af951ba24c0a235396a9ab17bdbdf766cb7e))
 * hds页面选择器修复 ([c66b0f3](https://github.com/xheiop/easy-upload/commit/c66b0f31b1c8094344c62fbe379eae3184af30a0))
 * MT类型选择错误修复 ([fbf08e6](https://github.com/xheiop/easy-upload/commit/fbf08e6df7df3a025fcfad48e80f7da9d99e0fd0))
 * SoulVoice类型选择 ([b75518b](https://github.com/xheiop/easy-upload/commit/b75518b832468c7627532e96be93a7c39a1f2a78))
-* 修改MT种子页选择器 close [#32](https://github.com/xheiop/easy-upload/issues/32) ([2978051](https://github.com/xheiop/easy-upload/commit/29780519cd1cfddd330369f727a07dda1cd4802a))
-* 增加获取豆瓣链接的备用方法 ([f18e7d7](https://github.com/xheiop/easy-upload/commit/f18e7d76004c24708aa9309287fc8be73fab0dbc))
 
 
 ### Features
 
-* **new version:** 1.1.2 ([01589ef](https://github.com/xheiop/easy-upload/commit/01589efc929eade73b4837bf50717ef8da7f7fb0))
-* np站点增加movieName参数 ([48a04b6](https://github.com/xheiop/easy-upload/commit/48a04b67bda67e1104b2b282112217bd018c85ae))
-* uhd检索结果按大小排序 ([c193278](https://github.com/xheiop/easy-upload/commit/c1932788ae58b24bcf275fe083f160d113a2dc4d))
 * 优化豆瓣信息获取流程 ([3458885](https://github.com/xheiop/easy-upload/commit/34588850964a34710dba4eb079837531c47eb886))
 * 优化转种样式 节省页面空间 ([d276535](https://github.com/xheiop/easy-upload/commit/d2765359a52b3e69fe4d1c2d5b3446cc88f74748))
 * 增加禁转提示 close [#30](https://github.com/xheiop/easy-upload/issues/30) ([5137421](https://github.com/xheiop/easy-upload/commit/5137421aa7a8472ebb43b86a48accc73e51c6073))
 * 支持关闭转缩略图功能 ([c9c596a](https://github.com/xheiop/easy-upload/commit/c9c596aadf6e897c6dbaee76a4e52d0c445f6905))
 * 支持所有站点的快速检索 ([8b65758](https://github.com/xheiop/easy-upload/commit/8b657589dd0feb13b0e1bba3e8fc6151d25c5e67))
+* **new version:** 1.1.2 ([01589ef](https://github.com/xheiop/easy-upload/commit/01589efc929eade73b4837bf50717ef8da7f7fb0))
+* np站点增加movieName参数 ([48a04b6](https://github.com/xheiop/easy-upload/commit/48a04b67bda67e1104b2b282112217bd018c85ae))
+* uhd检索结果按大小排序 ([c193278](https://github.com/xheiop/easy-upload/commit/c1932788ae58b24bcf275fe083f160d113a2dc4d))
 
 ## [1.1.1](https://github.com/xheiop/easy-upload/compare/1.1.0...1.1.1) (2021-03-26)
 
 
 ### Bug Fixes
 
+* 回退版本 ([02b6e39](https://github.com/xheiop/easy-upload/commit/02b6e39ebbc1898c65998677314bd05faa13f367))
+* 兼容旧浏览器 ([a04ec1f](https://github.com/xheiop/easy-upload/commit/a04ec1f85befd7b20e487ca82801939d90d02b33))
+* 修复replaceAll语法兼容错误 ([b9f78f9](https://github.com/xheiop/easy-upload/commit/b9f78f9af182922cf77f02b6e9e3aa869518cef7))
+* 修改DiscFan名称 ([92db7fb](https://github.com/xheiop/easy-upload/commit/92db7fbd30ca7fa989709d7947a32a7989bdee30))
+* 优化获取截图方法 ([5ae1312](https://github.com/xheiop/easy-upload/commit/5ae13125972ebcb94517e824a8e08cb0279e3878))
 * hds选择器修改 ([0759caa](https://github.com/xheiop/easy-upload/commit/0759caa240c3a08100a459bb573e157fc3a77325))
 * NP站点替换点为空格 ([0a73441](https://github.com/xheiop/easy-upload/commit/0a734411189ba9eb729d74b6fc027b3a5257d249))
 * unit3d匹配中文页面 ([b5ccb1b](https://github.com/xheiop/easy-upload/commit/b5ccb1b8d005c86e1a13d5aab42a76bb21ebf3a8))
-* 优化获取截图方法 ([5ae1312](https://github.com/xheiop/easy-upload/commit/5ae13125972ebcb94517e824a8e08cb0279e3878))
-* 修复replaceAll语法兼容错误 ([b9f78f9](https://github.com/xheiop/easy-upload/commit/b9f78f9af182922cf77f02b6e9e3aa869518cef7))
-* 修改DiscFan名称 ([92db7fb](https://github.com/xheiop/easy-upload/commit/92db7fbd30ca7fa989709d7947a32a7989bdee30))
-* 兼容旧浏览器 ([a04ec1f](https://github.com/xheiop/easy-upload/commit/a04ec1f85befd7b20e487ca82801939d90d02b33))
-* 回退版本 ([02b6e39](https://github.com/xheiop/easy-upload/commit/02b6e39ebbc1898c65998677314bd05faa13f367))
 
 
 ### Features
@@ -1706,66 +1716,66 @@
 
 ### Bug Fixes
 
+* 不过滤含有中文的mediainfo 优化从简介中获取bdinfo的方法 ([3f6fc8b](https://github.com/xheiop/easy-upload/commit/3f6fc8bbef8578e8ba157d5ac846cc04fc1405a7))
+* 更换tmdb接口地址 ([d17b076](https://github.com/xheiop/easy-upload/commit/d17b076fa316357a37984114d12936ccb8549822))
+* 过滤空标签 ([15421bc](https://github.com/xheiop/easy-upload/commit/15421bc3f81de739ff777a8750bee7c415834c65))
+* 过滤空标签 ([117ef64](https://github.com/xheiop/easy-upload/commit/117ef6402f86ca80095f761fa3038bb36599018f))
+* 过滤空标签 ([785e1da](https://github.com/xheiop/easy-upload/commit/785e1da4d77f927b5c1f2377e065ae5ec84756b1))
+* 路首页海报使用原图 ([52ada36](https://github.com/xheiop/easy-upload/commit/52ada363bb6cc4b106a7fea272ac89ca85d52609))
+* 柠檬页面插入节点选择器修复 ([ef48089](https://github.com/xheiop/easy-upload/commit/ef48089c8b2d94928ee47dbe8c8f60f0d894a606))
+* 修复北洋标题匹配方法 ([8c4d423](https://github.com/xheiop/easy-upload/commit/8c4d4236105c0334139b5ae7890f95458a361b22))
+* 修复hds类型匹配正则 ([d77a7b0](https://github.com/xheiop/easy-upload/commit/d77a7b09b39fbb6c739d05f16dd55a461a8553f5))
+* 修复hdu上传页错误 ([ee2b11a](https://github.com/xheiop/easy-upload/commit/ee2b11af62448389b5d3fd457aaa123aa9ead5e9))
+* 修复mediainfo过滤错误 ([a7b38e3](https://github.com/xheiop/easy-upload/commit/a7b38e362e0bfc02141947180656f6d335d91c2b))
+* 优化豆瓣海报获取方法 ([dbf72d4](https://github.com/xheiop/easy-upload/commit/dbf72d4c76561239e7ce317adb40e58900292eb8))
 * ob mediainfo过滤修复 过滤非截图图片 ([8aac696](https://github.com/xheiop/easy-upload/commit/8aac696bd34e29783cdbbb64bb9427f66f7f1447))
 * ourbits不需要过滤多余换行 ([0bf5c03](https://github.com/xheiop/easy-upload/commit/0bf5c03d250c478d81dcd2ffb4cc839b4251c0e0))
 * pth支持匿名勾选 ([e97cd70](https://github.com/xheiop/easy-upload/commit/e97cd7023f010083331d0376f7f1358ba3b52a98))
 * ssd豆瓣地区过滤bbcode ([b970096](https://github.com/xheiop/easy-upload/commit/b970096e3c3b7265f8c487321e967345e2002892))
-* 不过滤含有中文的mediainfo 优化从简介中获取bdinfo的方法 ([3f6fc8b](https://github.com/xheiop/easy-upload/commit/3f6fc8bbef8578e8ba157d5ac846cc04fc1405a7))
-* 优化豆瓣海报获取方法 ([dbf72d4](https://github.com/xheiop/easy-upload/commit/dbf72d4c76561239e7ce317adb40e58900292eb8))
-* 修复hds类型匹配正则 ([d77a7b0](https://github.com/xheiop/easy-upload/commit/d77a7b09b39fbb6c739d05f16dd55a461a8553f5))
-* 修复hdu上传页错误 ([ee2b11a](https://github.com/xheiop/easy-upload/commit/ee2b11af62448389b5d3fd457aaa123aa9ead5e9))
-* 修复mediainfo过滤错误 ([a7b38e3](https://github.com/xheiop/easy-upload/commit/a7b38e362e0bfc02141947180656f6d335d91c2b))
-* 修复北洋标题匹配方法 ([8c4d423](https://github.com/xheiop/easy-upload/commit/8c4d4236105c0334139b5ae7890f95458a361b22))
-* 更换tmdb接口地址 ([d17b076](https://github.com/xheiop/easy-upload/commit/d17b076fa316357a37984114d12936ccb8549822))
-* 柠檬页面插入节点选择器修复 ([ef48089](https://github.com/xheiop/easy-upload/commit/ef48089c8b2d94928ee47dbe8c8f60f0d894a606))
-* 路首页海报使用原图 ([52ada36](https://github.com/xheiop/easy-upload/commit/52ada363bb6cc4b106a7fea272ac89ca85d52609))
-* 过滤空标签 ([15421bc](https://github.com/xheiop/easy-upload/commit/15421bc3f81de739ff777a8750bee7c415834c65))
-* 过滤空标签 ([117ef64](https://github.com/xheiop/easy-upload/commit/117ef6402f86ca80095f761fa3038bb36599018f))
-* 过滤空标签 ([785e1da](https://github.com/xheiop/easy-upload/commit/785e1da4d77f927b5c1f2377e065ae5ec84756b1))
 
 
 ### Features
 
-* **new version:** 1.0.9 ([7a3e3d5](https://github.com/xheiop/easy-upload/commit/7a3e3d545bb48c8e366a5f5a7ce6843b005fbe5d))
-* **new version:** 1.1.0 ([c36e331](https://github.com/xheiop/easy-upload/commit/c36e331c4b99605160b205c1c824f9b2fb7e09cf))
-* support hdr search ([ced60ee](https://github.com/xheiop/easy-upload/commit/ced60eee5909f4cc47009cb5f91f4d0ccf008381))
+* 简化副标题 只保留电影名 ([76682a1](https://github.com/xheiop/easy-upload/commit/76682a104b6ce6f95b9af8b39c7ab7de604198df))
 * 优化控制面板样式 ([a6c789f](https://github.com/xheiop/easy-upload/commit/a6c789ff39db76e4d20363ad6edbe49da364e898))
 * 优化控制面板样式 ([91b1c49](https://github.com/xheiop/easy-upload/commit/91b1c496bd46f7434e3282c537092e35526bb3c0))
 * 增加UHD检索 ([f0d8615](https://github.com/xheiop/easy-upload/commit/f0d8615d34d471d6b9bbaf40d9ad20d00944db88))
-* 支持路(target) ([5478f95](https://github.com/xheiop/easy-upload/commit/5478f957f3ddb6b9c17a47f06c9c5bd9dfc3a354))
 * 支持铃音 ([aae2404](https://github.com/xheiop/easy-upload/commit/aae240452aab3114425c647ed9cf0f5f4b89cc00))
-* 简化副标题 只保留电影名 ([76682a1](https://github.com/xheiop/easy-upload/commit/76682a104b6ce6f95b9af8b39c7ab7de604198df))
+* 支持路(target) ([5478f95](https://github.com/xheiop/easy-upload/commit/5478f957f3ddb6b9c17a47f06c9c5bd9dfc3a354))
+* **new version:** 1.0.9 ([7a3e3d5](https://github.com/xheiop/easy-upload/commit/7a3e3d545bb48c8e366a5f5a7ce6843b005fbe5d))
+* **new version:** 1.1.0 ([c36e331](https://github.com/xheiop/easy-upload/commit/c36e331c4b99605160b205c1c824f9b2fb7e09cf))
+* support hdr search ([ced60ee](https://github.com/xheiop/easy-upload/commit/ced60eee5909f4cc47009cb5f91f4d0ccf008381))
 
 ## [1.0.8](https://github.com/xheiop/easy-upload/compare/1.0.7...1.0.8) (2021-03-22)
 
 
 ### Bug Fixes
 
-* **ssd:** 兼容无豆瓣信息种子 ([0c1e33b](https://github.com/xheiop/easy-upload/commit/0c1e33b4d15d549dd479b436f1767e9e32c59e89))
-* **ssd:** 纪录片catogory获取失败 ([abf853d](https://github.com/xheiop/easy-upload/commit/abf853d579923720fdcadd16be0408229d9bdce6))
-* 兼容北洋标题中含有空格的情况 ([998b88d](https://github.com/xheiop/easy-upload/commit/998b88da6788f43619e6bc2c88ae5dd89379c273))
 * 北洋 [#26](https://github.com/xheiop/easy-upload/issues/26) ([c6f195a](https://github.com/xheiop/easy-upload/commit/c6f195a62b316c847d9c3c53ea720f0743467e2e))
-* 南洋电影title选择器修改 ([b861a82](https://github.com/xheiop/easy-upload/commit/b861a82c6428fdb8bb145bb98fc25b3cc78b6bd6))
 * 过滤Spoiler后的冒号 ([18fca0d](https://github.com/xheiop/easy-upload/commit/18fca0da00edb29a2b04c24d842f4ef0da3cf8e6))
+* 兼容北洋标题中含有空格的情况 ([998b88d](https://github.com/xheiop/easy-upload/commit/998b88da6788f43619e6bc2c88ae5dd89379c273))
+* 南洋电影title选择器修改 ([b861a82](https://github.com/xheiop/easy-upload/commit/b861a82c6428fdb8bb145bb98fc25b3cc78b6bd6))
+* **ssd:** 纪录片catogory获取失败 ([abf853d](https://github.com/xheiop/easy-upload/commit/abf853d579923720fdcadd16be0408229d9bdce6))
+* **ssd:** 兼容无豆瓣信息种子 ([0c1e33b](https://github.com/xheiop/easy-upload/commit/0c1e33b4d15d549dd479b436f1767e9e32c59e89))
 
 
 ### Features
 
+* 适配北洋 [#26](https://github.com/xheiop/easy-upload/issues/26) ([93c1aa9](https://github.com/xheiop/easy-upload/commit/93c1aa9c66b04e20338cd508f4657a366be18202))
+* 完善南洋英文名填写 ([8c77f85](https://github.com/xheiop/easy-upload/commit/8c77f85dc4cd994311c8672216504e3795e38067))
 * hdpost适配bbcode ([8ed3976](https://github.com/xheiop/easy-upload/commit/8ed3976b9fcdbfa55499acb1cae4c57a54bf6bb8))
 * **new site:** HDPOST ([366ed64](https://github.com/xheiop/easy-upload/commit/366ed641f55d9d393dba01144c60b66a056021d4))
 * **new site:** HDPOST ([3a64d1f](https://github.com/xheiop/easy-upload/commit/3a64d1fc3c21018c4f385b9b78a630dac772cba7))
 * **new version:** 1.0.8 ([a415975](https://github.com/xheiop/easy-upload/commit/a415975d5977035c68bd3d190757ef9cc74266cf))
 * unit3d站点剧集适配 ([af50c49](https://github.com/xheiop/easy-upload/commit/af50c49b51388f0a3f1d0346503dfe6248fa28f9))
-* 完善南洋英文名填写 ([8c77f85](https://github.com/xheiop/easy-upload/commit/8c77f85dc4cd994311c8672216504e3795e38067))
-* 适配北洋 [#26](https://github.com/xheiop/easy-upload/issues/26) ([93c1aa9](https://github.com/xheiop/easy-upload/commit/93c1aa9c66b04e20338cd508f4657a366be18202))
 
 ## [1.0.7](https://github.com/xheiop/easy-upload/compare/1.0.6...1.0.7) (2021-03-20)
 
 
 ### Bug Fixes
 
-* pter hide标签替换为quote ([f8b6aef](https://github.com/xheiop/easy-upload/commit/f8b6aef3ea354e8d4d68b1bf26b90c18c28621a3))
 * 部分站点上传页报错 ([75c9388](https://github.com/xheiop/easy-upload/commit/75c93880cc0cd718c31a66aecda50800da166456))
+* pter hide标签替换为quote ([f8b6aef](https://github.com/xheiop/easy-upload/commit/f8b6aef3ea354e8d4d68b1bf26b90c18c28621a3))
 
 
 ### Features
@@ -1777,40 +1787,40 @@
 
 ### Bug Fixes
 
+* 副标题电影名称修复 ([5e48c82](https://github.com/xheiop/easy-upload/commit/5e48c82830886cc9404c890189895d72c69456b3))
+* 副标题兼容无中文名称的电影 ([1db749d](https://github.com/xheiop/easy-upload/commit/1db749db50200bc9d6aaf08ae8f56622df6206dd))
 * ptp引用嵌套问题 ([72600ff](https://github.com/xheiop/easy-upload/commit/72600ffe4d4a9ac5fe7230eaeaad8275d66fc481))
 * ssd命名规范以及mediainfo替换 ([c85dc2f](https://github.com/xheiop/easy-upload/commit/c85dc2fc6cbbc5d3303ab5ecd228f6a40d35143f))
-* 副标题兼容无中文名称的电影 ([1db749d](https://github.com/xheiop/easy-upload/commit/1db749db50200bc9d6aaf08ae8f56622df6206dd))
-* 副标题电影名称修复 ([5e48c82](https://github.com/xheiop/easy-upload/commit/5e48c82830886cc9404c890189895d72c69456b3))
 
 
 ### Features
 
-* **new version:** 1.0.6 ([6947ae3](https://github.com/xheiop/easy-upload/commit/6947ae3808634e3c31eac9b3670bdd31666e4586))
 * 增加制作组自动填写 ([d2cee86](https://github.com/xheiop/easy-upload/commit/d2cee86a6fa39b6ed6c957949e6e5148775f0025))
 * 支持自动填写海报 ([19fbdef](https://github.com/xheiop/easy-upload/commit/19fbdef148758d90b5e468cf9d7e4cb65bc2c53a))
+* **new version:** 1.0.6 ([6947ae3](https://github.com/xheiop/easy-upload/commit/6947ae3808634e3c31eac9b3670bdd31666e4586))
 
 ## [1.0.5](https://github.com/xheiop/easy-upload/compare/1.0.4...1.0.5) (2021-03-18)
 
 
 ### Bug Fixes
 
+* 更改部分站点插入节点 避免脚本内容插入到简介以下 ([428f93a](https://github.com/xheiop/easy-upload/commit/428f93a5859c871207d017f292c104443ed59e16))
+* 内站判断应包含SSD ([9c763fa](https://github.com/xheiop/easy-upload/commit/9c763fab7ada1f98eebd864e1e6abfc222687ef2))
 * ptp标题获取 ([57a1855](https://github.com/xheiop/easy-upload/commit/57a1855a87f91f653b83e5fdb2748e4d9ea2fe87))
 * ssd bugfix ([280a3bb](https://github.com/xheiop/easy-upload/commit/280a3bb62b1ac36ed029d45c248d2788af35bd40))
 * tmdb获取id失败 ([6acaf7a](https://github.com/xheiop/easy-upload/commit/6acaf7aec0b6b4916aa5087efeb383b0b8f7848f))
-* 内站判断应包含SSD ([9c763fa](https://github.com/xheiop/easy-upload/commit/9c763fab7ada1f98eebd864e1e6abfc222687ef2))
-* 更改部分站点插入节点 避免脚本内容插入到简介以下 ([428f93a](https://github.com/xheiop/easy-upload/commit/428f93a5859c871207d017f292c104443ed59e16))
 
 
 ### Features
 
+* 站点按字母顺序排列 ([884a444](https://github.com/xheiop/easy-upload/commit/884a444e7813c58ac7972d6fd6226aeddd18d9c8))
+* 支持Bdc nzb.in检索 ([2019262](https://github.com/xheiop/easy-upload/commit/20192624528cafdefb75ff0cc4924fd57cbb7783))
 * **new site:** HDAI ([d34754f](https://github.com/xheiop/easy-upload/commit/d34754f2fd57c46a21d7fa0bda0a37632d9fae1e))
 * **new version:** 1.0.5 ([be92929](https://github.com/xheiop/easy-upload/commit/be92929abf7068be3a3a78e1b20bf1bf6c9276cb))
 * ssd去豆瓣简介多余换行 ([ce93b62](https://github.com/xheiop/easy-upload/commit/ce93b626b7537f872dfc7fd5386d0dc475f7e0a3))
 * ttg种子未完成加载时 增加提示 避免简介获取不完整 ([c046486](https://github.com/xheiop/easy-upload/commit/c0464869abcba807a9928569f26b629198c48ea6))
 * update match url ([7a64026](https://github.com/xheiop/easy-upload/commit/7a640261145902a504d36040a01e2aeaf57ec966))
 * update ssd config ([3499646](https://github.com/xheiop/easy-upload/commit/3499646c4b4ad48cfac739a10ef289d614592da6))
-* 支持Bdc nzb.in检索 ([2019262](https://github.com/xheiop/easy-upload/commit/20192624528cafdefb75ff0cc4924fd57cbb7783))
-* 站点按字母顺序排列 ([884a444](https://github.com/xheiop/easy-upload/commit/884a444e7813c58ac7972d6fd6226aeddd18d9c8))
 
 ## [1.0.4](https://github.com/xheiop/easy-upload/compare/1.0.3...1.0.4) (2021-03-17)
 
@@ -1822,15 +1832,22 @@
 
 ### Features
 
-* update version 1.0.4 ([463d758](https://github.com/xheiop/easy-upload/commit/463d75857ff1b4f8b1eb5dc680ff516bcb54c613))
-* 增加支持站点列表 开发相关的内容移至WiKi ([546f0f4](https://github.com/xheiop/easy-upload/commit/546f0f410fe576ce60f6d1bc9f0fb35f9fd4d927))
 * 豆瓣frodo接口失效 暂时删除相关代码 ([c6aad58](https://github.com/xheiop/easy-upload/commit/c6aad586fe3068886f7d6deb16d037590851feec))
+* 增加支持站点列表 开发相关的内容移至WiKi ([546f0f4](https://github.com/xheiop/easy-upload/commit/546f0f410fe576ce60f6d1bc9f0fb35f9fd4d927))
+* update version 1.0.4 ([463d758](https://github.com/xheiop/easy-upload/commit/463d75857ff1b4f8b1eb5dc680ff516bcb54c613))
 
 ## [1.0.3](https://github.com/xheiop/easy-upload/compare/1.0.2...1.0.3) (2021-03-16)
 
 
 ### Bug Fixes
 
+* 截图和对比图分开处理 ([d87c993](https://github.com/xheiop/easy-upload/commit/d87c9938ad1a3230964e47ac33b5f22293863291))
+* 烧包清空本地缓存 ([5041a81](https://github.com/xheiop/easy-upload/commit/5041a81eb55d1cc749c055e9d625bf6b4690ce26))
+* 完善hdb方法 ([106c311](https://github.com/xheiop/easy-upload/commit/106c3117ccbcf857fa093f9634d9d150ead0c444))
+* 修复音频参数获取不准确的问题 ([d8fdddf](https://github.com/xheiop/easy-upload/commit/d8fdddfbe407c6cd62cca19f83be4ef87493e3c6))
+* 修复jq问题 ([6c9c002](https://github.com/xheiop/easy-upload/commit/6c9c0025c8a9cf8cbd756e2ad542f75ba0333617))
+* 修复ssd和hdh bug ([fcd44c4](https://github.com/xheiop/easy-upload/commit/fcd44c4d8559e457da6e7f2cc8b14243bea3f696))
+* 源站点优化处理 ([f607514](https://github.com/xheiop/easy-upload/commit/f60751445a7e6b4b7a7e5ab1b96a98bbfce3ec5f))
 * add grant ([e64e3c4](https://github.com/xheiop/easy-upload/commit/e64e3c4c67923af00c84de497bc465af739c1b24))
 * bhd bugs ([3075904](https://github.com/xheiop/easy-upload/commit/3075904492ead6c66c4aa2071bc8b74e49b04665))
 * bug修复 ([a8042d7](https://github.com/xheiop/easy-upload/commit/a8042d7eafe0a5912786f078a800b0a924b6d7c5))
@@ -1847,17 +1864,46 @@
 * ssd fix ([a4d9698](https://github.com/xheiop/easy-upload/commit/a4d96988fff01aad3946744d2b375f24ddb25af2))
 * target bugs ([c36ca9f](https://github.com/xheiop/easy-upload/commit/c36ca9fcf4cb588abcd497f51fc80e99c7cc0221))
 * ttg 柠檬完善 ([ab6b7a8](https://github.com/xheiop/easy-upload/commit/ab6b7a8bec2f66e9aebd26ee7a80c4c9f15213f5))
-* 修复jq问题 ([6c9c002](https://github.com/xheiop/easy-upload/commit/6c9c0025c8a9cf8cbd756e2ad542f75ba0333617))
-* 修复ssd和hdh bug ([fcd44c4](https://github.com/xheiop/easy-upload/commit/fcd44c4d8559e457da6e7f2cc8b14243bea3f696))
-* 修复音频参数获取不准确的问题 ([d8fdddf](https://github.com/xheiop/easy-upload/commit/d8fdddfbe407c6cd62cca19f83be4ef87493e3c6))
-* 完善hdb方法 ([106c311](https://github.com/xheiop/easy-upload/commit/106c3117ccbcf857fa093f9634d9d150ead0c444))
-* 截图和对比图分开处理 ([d87c993](https://github.com/xheiop/easy-upload/commit/d87c9938ad1a3230964e47ac33b5f22293863291))
-* 源站点优化处理 ([f607514](https://github.com/xheiop/easy-upload/commit/f60751445a7e6b4b7a7e5ab1b96a98bbfce3ec5f))
-* 烧包清空本地缓存 ([5041a81](https://github.com/xheiop/easy-upload/commit/5041a81eb55d1cc749c055e9d625bf6b4690ce26))
 
 
 ### Features
 
+* 更改脚本名 ([f5b93fd](https://github.com/xheiop/easy-upload/commit/f5b93fdf041d91a4c1ce32ce10c2cb7c77908086))
+* 获取准确分类 ([ec24976](https://github.com/xheiop/easy-upload/commit/ec249765a25df6e80cac38eb55e88ccef31451b2))
+* 检索增加kg ([e344fbc](https://github.com/xheiop/easy-upload/commit/e344fbc9758179232b590f20cdffaa5c78e69da4))
+* 快速检索增加站点 ([8daf962](https://github.com/xheiop/easy-upload/commit/8daf962be6f0962e28d53fab1eccc1d7e03acd31))
+* 内外站简介内容修改 ([6839328](https://github.com/xheiop/easy-upload/commit/68393287fac881e514c968beb31ac0b51f3b28de))
+* 内站方法完善 ([68a077b](https://github.com/xheiop/easy-upload/commit/68a077ba7cf2dc91b8a464c7a2ffedd49464cc9f))
+* 内站适配 ([5306612](https://github.com/xheiop/easy-upload/commit/5306612aa13411787e308dd22653704ac938442b))
+* 匿名和标签勾选 ([a288d2c](https://github.com/xheiop/easy-upload/commit/a288d2cd64383ae57fd0521bdcac0b00f331a14e))
+* 适配mt最新域名 ([550f5a8](https://github.com/xheiop/easy-upload/commit/550f5a80033b9f60e70ed5611685329434df89fc))
+* 添加ob和天空配置 ([41109a7](https://github.com/xheiop/easy-upload/commit/41109a72670c186fc725253de0e1329904246b21))
+* 添加ssd支持 ([e802ac4](https://github.com/xheiop/easy-upload/commit/e802ac4bb6938948c6460a26bee61c07a96f938a))
+* 添加ssd支持 ([d82685a](https://github.com/xheiop/easy-upload/commit/d82685abee192c97e9095d4be36f21029044689d))
+* 完善简介 增加豆瓣信息 ([ed45982](https://github.com/xheiop/easy-upload/commit/ed4598264028f8d5021c561ca3921c78bf6a3385))
+* 完善内战 ([54d871a](https://github.com/xheiop/easy-upload/commit/54d871a3ffc37bf821886c96b2f6145df438dff9))
+* 完善站点信息获取方法 ([805e07b](https://github.com/xheiop/easy-upload/commit/805e07bb1d758698ffd0a8b333f838a6e98e1a2e))
+* 完善站点信息获取方法 ([6fc4d83](https://github.com/xheiop/easy-upload/commit/6fc4d834836473146784e38a4321030a711430ae))
+* 完善注释 ([da79cb9](https://github.com/xheiop/easy-upload/commit/da79cb91b962d367b6ef7de2a6fda05f0dd6e76b))
+* 完善HDAtmos source 配置 ([0869233](https://github.com/xheiop/easy-upload/commit/0869233bc7c3b9c6cba8cab0b434961192b757c3))
+* 完善hdh ([83f3632](https://github.com/xheiop/easy-upload/commit/83f3632d599162c5cf1b0744618811c77c07fdb6))
+* 细节优化 ([f7eb122](https://github.com/xheiop/easy-upload/commit/f7eb1229c172420e5f7dc05ea88fe178ee6e3bd4))
+* 新增 esbuild 构建脚本 ([e6581ea](https://github.com/xheiop/easy-upload/commit/e6581eae39b2433a6ddfc582e66c409c09ca488f))
+* 新增getInfoFromMediaInfo ([0bb00c7](https://github.com/xheiop/easy-upload/commit/0bb00c751193d2957fcf97e00f495138be1fde45))
+* 新增hdb支持 ([2745891](https://github.com/xheiop/easy-upload/commit/274589129a753e558d26124f881a4ec31db73248))
+* 新增hdb支持 ([e2559ad](https://github.com/xheiop/easy-upload/commit/e2559ad646c269da15ad835b459c14aeb25074c8))
+* 修复内站适配bug ([c205022](https://github.com/xheiop/easy-upload/commit/c205022193e8050f8e4396086fe5ec215a636f0b))
+* 样式修改 ([3cb2cfa](https://github.com/xheiop/easy-upload/commit/3cb2cfab9ebeb92cb40b41a07f34314e91b9cd10))
+* 音频编码 ([706403e](https://github.com/xheiop/easy-upload/commit/706403e223ffd1dda13f55ab6a8d8e4f31d555c5))
+* 优化豆瓣和缩略图的获取方法 ([1af84f0](https://github.com/xheiop/easy-upload/commit/1af84f0ebab9dd974a2e0b2a36499a395db941c8))
+* 优化缩略图转换方法 ([857ee7a](https://github.com/xheiop/easy-upload/commit/857ee7af4893fb8af24f1df85c3a28254cc59d86))
+* 增加本地调试详细说明 ([7fbc978](https://github.com/xheiop/easy-upload/commit/7fbc978b00fea691cc968f383667f04684af18ef))
+* 增加种子来源声明 ([99d162c](https://github.com/xheiop/easy-upload/commit/99d162ce143623455b4d9b06c7ebf5b46fd05307))
+* 支持柠檬上传 ([e8195ce](https://github.com/xheiop/easy-upload/commit/e8195cea4e14094e4ee6116158e095354b88e4f4))
+* 支持转载到当前站点 ([3a11272](https://github.com/xheiop/easy-upload/commit/3a1127244540fc0ebd87ff325195972f722f2ceb))
+* 重构 ([92b06f0](https://github.com/xheiop/easy-upload/commit/92b06f03df34b93d5fc61a5dac6c6c980438da01))
+* 重构代码 ([54bff7e](https://github.com/xheiop/easy-upload/commit/54bff7e295c401832449a6b613d0f90acd612b40))
+* 转缩略图方法修改 增加BHD BLU站点检索 ([e7fc8b8](https://github.com/xheiop/easy-upload/commit/e7fc8b81395ec2995643913444dda856a94d5dcc))
 * add HDAtmos support ([3fab931](https://github.com/xheiop/easy-upload/commit/3fab93124f124c5cc691933c5244a781d6420245))
 * add hdhome config ([90be536](https://github.com/xheiop/easy-upload/commit/90be53668c9363c6d50e06d211e5b0d572e7e99b))
 * add tccf support ([876e88d](https://github.com/xheiop/easy-upload/commit/876e88d93bcf4e06ce19f4a776c141276fe192f3))
@@ -1886,8 +1932,8 @@
 * nexusphp common ([a687387](https://github.com/xheiop/easy-upload/commit/a6873870d37597692e226eff6e8866fc1d4560b4))
 * pter config ([df2599a](https://github.com/xheiop/easy-upload/commit/df2599a970f51b055ae92a8d608c4a4082592b89))
 * pthome support ([c2436f2](https://github.com/xheiop/easy-upload/commit/c2436f2ede530432e0d018f4f5060c4d12b995a0))
-* ptp新增getInfoFromMediaInfo ([f877931](https://github.com/xheiop/easy-upload/commit/f877931392e1cb5799244b13340cd9e62ed64e16))
 * ptp方法优化 ([c93d617](https://github.com/xheiop/easy-upload/commit/c93d617f1797123423b138f6386b68f6726cd03d))
+* ptp新增getInfoFromMediaInfo ([f877931](https://github.com/xheiop/easy-upload/commit/f877931392e1cb5799244b13340cd9e62ed64e16))
 * readme增加站点配置说明 ([ad4ea1a](https://github.com/xheiop/easy-upload/commit/ad4ea1abd1c3a525c350a52ec93ce8102c1ec216))
 * split module ([413f27c](https://github.com/xheiop/easy-upload/commit/413f27cefe0956fcfac3ef319bae6fad6a28ac18))
 * ssd完善功能 ([2832c87](https://github.com/xheiop/easy-upload/commit/2832c87510afac8c9615ed8f43058fb0667f061d))
@@ -1905,39 +1951,3 @@
 * update version 1.0.1 ([2c96332](https://github.com/xheiop/easy-upload/commit/2c96332ce8d67b137f313ceed62aa07914cd2a35))
 * update version 1.0.2 ([5762839](https://github.com/xheiop/easy-upload/commit/5762839206e275541d0417548bd7be1f10f21b1c))
 * update version 1.0.3 ([6b0b540](https://github.com/xheiop/easy-upload/commit/6b0b5403fca9099726ad538f3a5ba6aede805c4e))
-* 优化缩略图转换方法 ([857ee7a](https://github.com/xheiop/easy-upload/commit/857ee7af4893fb8af24f1df85c3a28254cc59d86))
-* 优化豆瓣和缩略图的获取方法 ([1af84f0](https://github.com/xheiop/easy-upload/commit/1af84f0ebab9dd974a2e0b2a36499a395db941c8))
-* 修复内站适配bug ([c205022](https://github.com/xheiop/easy-upload/commit/c205022193e8050f8e4396086fe5ec215a636f0b))
-* 内外站简介内容修改 ([6839328](https://github.com/xheiop/easy-upload/commit/68393287fac881e514c968beb31ac0b51f3b28de))
-* 内站方法完善 ([68a077b](https://github.com/xheiop/easy-upload/commit/68a077ba7cf2dc91b8a464c7a2ffedd49464cc9f))
-* 内站适配 ([5306612](https://github.com/xheiop/easy-upload/commit/5306612aa13411787e308dd22653704ac938442b))
-* 匿名和标签勾选 ([a288d2c](https://github.com/xheiop/easy-upload/commit/a288d2cd64383ae57fd0521bdcac0b00f331a14e))
-* 增加本地调试详细说明 ([7fbc978](https://github.com/xheiop/easy-upload/commit/7fbc978b00fea691cc968f383667f04684af18ef))
-* 增加种子来源声明 ([99d162c](https://github.com/xheiop/easy-upload/commit/99d162ce143623455b4d9b06c7ebf5b46fd05307))
-* 完善HDAtmos source 配置 ([0869233](https://github.com/xheiop/easy-upload/commit/0869233bc7c3b9c6cba8cab0b434961192b757c3))
-* 完善hdh ([83f3632](https://github.com/xheiop/easy-upload/commit/83f3632d599162c5cf1b0744618811c77c07fdb6))
-* 完善内战 ([54d871a](https://github.com/xheiop/easy-upload/commit/54d871a3ffc37bf821886c96b2f6145df438dff9))
-* 完善注释 ([da79cb9](https://github.com/xheiop/easy-upload/commit/da79cb91b962d367b6ef7de2a6fda05f0dd6e76b))
-* 完善站点信息获取方法 ([805e07b](https://github.com/xheiop/easy-upload/commit/805e07bb1d758698ffd0a8b333f838a6e98e1a2e))
-* 完善站点信息获取方法 ([6fc4d83](https://github.com/xheiop/easy-upload/commit/6fc4d834836473146784e38a4321030a711430ae))
-* 完善简介 增加豆瓣信息 ([ed45982](https://github.com/xheiop/easy-upload/commit/ed4598264028f8d5021c561ca3921c78bf6a3385))
-* 快速检索增加站点 ([8daf962](https://github.com/xheiop/easy-upload/commit/8daf962be6f0962e28d53fab1eccc1d7e03acd31))
-* 支持柠檬上传 ([e8195ce](https://github.com/xheiop/easy-upload/commit/e8195cea4e14094e4ee6116158e095354b88e4f4))
-* 支持转载到当前站点 ([3a11272](https://github.com/xheiop/easy-upload/commit/3a1127244540fc0ebd87ff325195972f722f2ceb))
-* 新增 esbuild 构建脚本 ([e6581ea](https://github.com/xheiop/easy-upload/commit/e6581eae39b2433a6ddfc582e66c409c09ca488f))
-* 新增getInfoFromMediaInfo ([0bb00c7](https://github.com/xheiop/easy-upload/commit/0bb00c751193d2957fcf97e00f495138be1fde45))
-* 新增hdb支持 ([2745891](https://github.com/xheiop/easy-upload/commit/274589129a753e558d26124f881a4ec31db73248))
-* 新增hdb支持 ([e2559ad](https://github.com/xheiop/easy-upload/commit/e2559ad646c269da15ad835b459c14aeb25074c8))
-* 更改脚本名 ([f5b93fd](https://github.com/xheiop/easy-upload/commit/f5b93fdf041d91a4c1ce32ce10c2cb7c77908086))
-* 样式修改 ([3cb2cfa](https://github.com/xheiop/easy-upload/commit/3cb2cfab9ebeb92cb40b41a07f34314e91b9cd10))
-* 检索增加kg ([e344fbc](https://github.com/xheiop/easy-upload/commit/e344fbc9758179232b590f20cdffaa5c78e69da4))
-* 添加ob和天空配置 ([41109a7](https://github.com/xheiop/easy-upload/commit/41109a72670c186fc725253de0e1329904246b21))
-* 添加ssd支持 ([e802ac4](https://github.com/xheiop/easy-upload/commit/e802ac4bb6938948c6460a26bee61c07a96f938a))
-* 添加ssd支持 ([d82685a](https://github.com/xheiop/easy-upload/commit/d82685abee192c97e9095d4be36f21029044689d))
-* 细节优化 ([f7eb122](https://github.com/xheiop/easy-upload/commit/f7eb1229c172420e5f7dc05ea88fe178ee6e3bd4))
-* 获取准确分类 ([ec24976](https://github.com/xheiop/easy-upload/commit/ec249765a25df6e80cac38eb55e88ccef31451b2))
-* 转缩略图方法修改 增加BHD BLU站点检索 ([e7fc8b8](https://github.com/xheiop/easy-upload/commit/e7fc8b81395ec2995643913444dda856a94d5dcc))
-* 适配mt最新域名 ([550f5a8](https://github.com/xheiop/easy-upload/commit/550f5a80033b9f60e70ed5611685329434df89fc))
-* 重构 ([92b06f0](https://github.com/xheiop/easy-upload/commit/92b06f03df34b93d5fc61a5dac6c6c980438da01))
-* 重构代码 ([54bff7e](https://github.com/xheiop/easy-upload/commit/54bff7e295c401832449a6b613d0f90acd612b40))
-* 音频编码 ([706403e](https://github.com/xheiop/easy-upload/commit/706403e223ffd1dda13f55ab6a8d8e4f31d555c5))
