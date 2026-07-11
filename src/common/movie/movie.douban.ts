@@ -136,7 +136,7 @@ export const getDoubanTVItemData = async (
 ): Promise<DoubanBasicData> => {
   const { title } = doubanData;
   const seasonNumber =
-    torrentTitle?.match(/S(?!eason)?0?(\d+)\.?(EP?\d+)?/i)?.[1] ?? '1';
+    torrentTitle?.match(/S(?:eason)?\s*0?(\d+)/i)?.[1] ?? '1';
   if (parseInt(seasonNumber, 10) === 1) {
     return doubanData;
   }

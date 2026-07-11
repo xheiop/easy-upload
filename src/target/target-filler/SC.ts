@@ -6,6 +6,7 @@ import {
   transferImgToCheveretoSite,
   getIdByIMDbUrl,
 } from '@/common';
+import { clearUrlFileCache } from '@/common/image/image.utils';
 
 class SC extends BaseFiller implements TargetFiller {
   priority = 10;
@@ -90,9 +91,10 @@ class SC extends BaseFiller implements TargetFiller {
     if (!posterUrl) return;
 
     try {
-      const data = await (
-        await transferImgToCheveretoSite
-      )([posterUrl], 'https://gifyu.com/json');
+      const data = await transferImgToCheveretoSite(
+        [posterUrl],
+        'https://gifyu.com/json',
+      );
       const uploadedUrl = data[0]?.original;
 
       if (uploadedUrl) {
@@ -100,6 +102,8 @@ class SC extends BaseFiller implements TargetFiller {
       }
     } catch (error) {
       console.error('Failed to upload poster:', error);
+    } finally {
+      clearUrlFileCache();
     }
   }
 }

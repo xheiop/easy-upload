@@ -68,22 +68,21 @@ export const base64ToBlob = (
  * @param {string} description
  * @returns {string}
  */
+const EMPTY_TAG_REG =
+  /\[(?!info)([a-zA-Z]+\d?)(?:=(?:\w|\s)+)?\]\s*\[\/(\w+)\]/g;
+
 export const filterEmptyTags = (description: string): string => {
-  // eslint-disable-next-line prefer-regex-literals
-  const reg = new RegExp(
-    '\\[(?!info)([a-zA-Z]+\\d?)(?:=(?:\\w|\\s)+)?\\]\\s*\\[\\/(\\w+)\\]',
-    'g',
-  );
-  if (description.match(reg)) {
-    description = description.replace(reg, (_match, p1, p2) => {
-      if (p1 === p2) {
-        return '';
-      }
-      return _match;
-    });
-    return filterEmptyTags(description);
+  const filtered = description.replace(EMPTY_TAG_REG, (_match, p1, p2) => {
+    if (p1 === p2) {
+      return '';
+    }
+    return _match;
+  });
+  // mismatched pairs are kept as-is; only recurse when something was removed
+  if (filtered !== description) {
+    return filterEmptyTags(filtered);
   }
-  return description;
+  return filtered;
 };
 
 export const getTeamName = (title: string) => {
@@ -132,7 +131,9 @@ export const filterNexusDescription = (
   screenshots: string[],
 ) => {
   let filterDescription = '';
-  const quoteList = description.match(/\[quote(=\w+)?\](.|\n)+?\[\/quote\]/g);
+  const quoteList = description.match(
+    /\[quote(?:=[^\]]*)?\][\s\S]+?\[\/quote\]/g,
+  );
   if (quoteList && quoteList.length > 0) {
     quoteList.forEach((quote) => {
       const isMediaInfoOrBDInfo = quote.match(
@@ -173,7 +174,7 @@ export const buildPTPDescription = (info: TorrentInfo.Info) => {
   );
   // fix [comparison] [img], url同行
   text = text.replace(
-    /\[comparison.*\][\s\S]*\[\/comparison\]/gi,
+    /\[comparison[^\]]*\][\s\S]*?\[\/comparison\]/gi,
     (comparisonText) => {
       return comparisonText
         .replace(/\[img\]/g, '')

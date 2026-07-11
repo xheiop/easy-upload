@@ -22,12 +22,26 @@ export const throwUploadError = (
 
 const urlFileCache = new Map<string, Promise<File>>();
 
+/**
+ * Release the files held by the url-to-file cache. Call this when an upload
+ * flow finishes so the image data doesn't stay in memory for the page's
+ * whole lifetime.
+ */
+export const clearUrlFileCache = () => {
+  urlFileCache.clear();
+};
+
 export const cachedUrlToFile = async (url: string): Promise<File> => {
   if (!url) {
     throw new Error('URL is required to convert to file');
   }
   if (!urlFileCache.has(url)) {
-    urlFileCache.set(url, urlToFile(url));
+    const filePromise = urlToFile(url);
+    // drop failed conversions so a transient error doesn't poison the cache
+    filePromise.catch(() => {
+      urlFileCache.delete(url);
+    });
+    urlFileCache.set(url, filePromise);
   }
   return urlFileCache.get(url)!;
 };
@@ -165,14 +179,14 @@ export const URLStrategies: UrlTransformStrategy[] = [
  * @param {R} options.defaultResult - Default result to return on error
  * @returns {(...args: P) => Promise<R>} Wrapped function with error handling
  */
-export const withUploadErrorHandling = async <P extends unknown[], R>(
+export const withUploadErrorHandling = <P extends unknown[], R>(
   uploadFn: (...args: P) => Promise<R>,
   serviceName: string,
   options: {
     validateFirstArg?: boolean;
     defaultResult?: R;
   } = {},
-): Promise<(...args: P) => Promise<R>> => {
+): ((...args: P) => Promise<R>) => {
   const { validateFirstArg = true, defaultResult = [] as unknown as R } =
     options;
 

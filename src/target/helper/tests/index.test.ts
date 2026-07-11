@@ -2,7 +2,12 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import parseTorrent, { toTorrentFile } from 'parse-torrent';
 import { Buffer } from 'buffer/index.js';
 import { GMFetch } from '@/common/utils';
-import { hydrateTorrentDataFromUrl } from '@/target/helper';
+import {
+  hydrateTorrentDataFromUrl,
+  filterEmptyTags,
+  filterNexusDescription,
+  buildPTPDescription,
+} from '@/target/helper';
 
 vi.mock('@/common/utils', () => ({
   GMFetch: vi.fn(),
@@ -121,5 +126,66 @@ describe('hydrateTorrentDataFromUrl', () => {
       'fail to fetch torrent from torrentUrl',
       error,
     );
+  });
+});
+
+describe('filterEmptyTags', () => {
+  it('removes matching empty tag pairs recursively', () => {
+    expect(filterEmptyTags('before[quote][b] [/b][/quote]after')).toBe(
+      'beforeafter',
+    );
+  });
+
+  it('keeps non-empty tags', () => {
+    expect(filterEmptyTags('[b]bold[/b]')).toBe('[b]bold[/b]');
+  });
+
+  it('does not recurse forever on mismatched adjacent tags', () => {
+    const description = 'text [b] [/i] more';
+    expect(filterEmptyTags(description)).toBe(description);
+  });
+});
+
+describe('filterNexusDescription', () => {
+  it('keeps mediainfo quotes with parameters and drops Chinese-only quotes', () => {
+    const mediaInfoQuote =
+      '[quote=some user]Unique ID : 1234\nCodec ID : V_MPEGH/ISO/HEVC[/quote]';
+    const chineseQuote = '[quote]中文简介内容[/quote]';
+    const result = filterNexusDescription(
+      `${mediaInfoQuote}\n${chineseQuote}`,
+      [],
+    );
+    expect(result).toContain(mediaInfoQuote);
+    expect(result).not.toContain(chineseQuote);
+  });
+
+  it('appends screenshots as img bbcode', () => {
+    const result = filterNexusDescription('', ['https://img.example/1.png']);
+    expect(result).toContain('[img]https://img.example/1.png[/img]');
+  });
+});
+
+describe('buildPTPDescription', () => {
+  it('handles multiple comparison blocks independently', () => {
+    const originalDescription = [
+      '[comparison=Source, Encode]',
+      '[img]https://ptpimg.me/aaa111.png[/img]',
+      '[/comparison]',
+      'keep this line [img]https://ptpimg.me/keep.png[/img]',
+      '[comparison=Old, New]',
+      '[img]https://ptpimg.me/bbb222.png[/img]',
+      '[/comparison]',
+    ].join('\n');
+    const info = createTorrentInfo({ originalDescription });
+
+    const result = buildPTPDescription(info);
+
+    // the text between the two blocks must survive untouched
+    expect(result).toContain(
+      'keep this line [img]https://ptpimg.me/keep.png[/img]',
+    );
+    expect(result).toContain('[comparison=Source, Encode]');
+    expect(result).toContain('[comparison=Old, New]');
+    expect(result.match(/\[\/comparison\]/g)).toHaveLength(2);
   });
 });

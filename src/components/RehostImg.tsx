@@ -1,6 +1,7 @@
 import { useState, useCallback, useMemo } from 'preact/hooks';
 import { CURRENT_SITE_NAME } from '@/const';
 import { $t, getOriginalImgUrl, transferImgToCheveretoSite } from '@/common';
+import { clearUrlFileCache } from '@/common/image/image.utils';
 import { I18nKey } from '@/common/utils/utils.types';
 import { useTorrentInfo } from '@/hooks/useTorrentInfo';
 import { ImgInfo } from '@/common/image/image.types';
@@ -48,9 +49,10 @@ const UploadImg = () => {
         throw new Error($t('error.imageUploadFailed'));
       }
 
-      const imgData: ImgInfo[] = await (
-        await transferImgToCheveretoSite
-      )(originalImgUrls, IMAGE_HOSTS[selectHost].url);
+      const imgData: ImgInfo[] = await transferImgToCheveretoSite(
+        originalImgUrls,
+        IMAGE_HOSTS[selectHost].url,
+      );
 
       if (imgData.length === 0) {
         throw new Error($t('error.imageUploadFailed'));
@@ -126,6 +128,7 @@ const UploadImg = () => {
       toast.error(errorMessage);
       console.error('截图转存失败:', error);
     } finally {
+      clearUrlFileCache();
       setBtnText('rehost.btnUpload');
       setBtnDisable(false);
     }

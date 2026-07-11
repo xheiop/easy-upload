@@ -31,16 +31,19 @@ export const getFilterBBCode = (content: Element): string => {
   if (content) {
     const bbCodes = htmlToBBCode(content);
     return (
-      bbCodes?.replace(/\[quote\]((.|\n)*?)\[\/quote\]/g, (match, p1) => {
-        if (p1) {
-          return CONFIG.NEXUS_FILTER_KEYWORDS.some((keyword) =>
-            p1.includes(keyword),
-          )
-            ? ''
-            : match;
-        }
-        return match;
-      }) ?? ''
+      bbCodes?.replace(
+        /\[quote(?:=[^\]]*)?\]([\s\S]*?)\[\/quote\]/g,
+        (match, p1) => {
+          if (p1) {
+            return CONFIG.NEXUS_FILTER_KEYWORDS.some((keyword) =>
+              p1.includes(keyword),
+            )
+              ? ''
+              : match;
+          }
+          return match;
+        },
+      ) ?? ''
     );
   }
   return '';
@@ -64,10 +67,10 @@ export const refineCategory = (
   const isSeasonPack = (title: string, subtitle: string) =>
     /全.+?集/.test(subtitle) || title?.match(/s\d+(\s|\.)+/i)?.length;
   const isEpisode = (title: string, subtitle: string) =>
-    /(s0?\d{1,2})?e(p)?\d{1,2}/i.test(title) || /第[^\s]集/.test(subtitle);
+    /(s0?\d{1,2})?e(p)?\d{1,2}/i.test(title) || /第[^\s]+?集/.test(subtitle);
 
   const movieGenre =
-    (description + doubanInfo).match(/(类\s+别)\s+(.+)?/)?.[2] ?? '';
+    (description + (doubanInfo ?? '')).match(/(类\s+别)\s+(.+)?/)?.[2] ?? '';
   if (isAnimation(movieGenre)) {
     return 'cartoon';
   }
@@ -265,9 +268,9 @@ export const getMediaTags = ({
       }
     }
   }
-  if (/dtsx|atmos/gi.test(audioCodec)) {
+  if (/dtsx/i.test(audioCodec)) {
     mediaTags.dts_x = true;
-  } else if (/atmos/gi.test(audioCodec)) {
+  } else if (/atmos/i.test(audioCodec)) {
     mediaTags.dolby_atmos = true;
   }
   return mediaTags;

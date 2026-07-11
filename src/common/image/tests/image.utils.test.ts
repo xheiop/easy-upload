@@ -14,6 +14,7 @@ import {
   ImageUploadError,
   withUploadErrorHandling,
   cachedUrlToFile,
+  clearUrlFileCache,
   getImageBBCodeMatches,
 } from '../image.utils';
 
@@ -528,7 +529,7 @@ describe('cachedUrlToFile', () => {
     expect(urlToFile).toHaveBeenCalledWith(url1);
     expect(urlToFile).toHaveBeenCalledWith(url2);
   });
-  it('should handle urlToFile errors correctly', async () => {
+  it('should not cache failed conversions so they can be retried', async () => {
     const url = 'https://example.com/invalid.jpg';
     const mockError = new Error('Failed to fetch');
     vi.mocked(urlToFile).mockRejectedValue(mockError);
@@ -536,7 +537,33 @@ describe('cachedUrlToFile', () => {
     await expect(cachedUrlToFile(url)).rejects.toThrow(mockError);
     expect(urlToFile).toHaveBeenCalledTimes(1);
     await expect(cachedUrlToFile(url)).rejects.toThrow(mockError);
-    expect(urlToFile).toHaveBeenCalledTimes(1);
+    expect(urlToFile).toHaveBeenCalledTimes(2);
+  });
+  it('should fetch again after the cache is cleared', async () => {
+    const url = 'https://example.com/cleared.jpg';
+    const file = new File(['file content'], 'cleared.jpg', {
+      type: 'image/jpeg',
+    });
+    vi.mocked(urlToFile).mockResolvedValue(file);
+
+    await cachedUrlToFile(url);
+    clearUrlFileCache();
+    await cachedUrlToFile(url);
+
+    expect(urlToFile).toHaveBeenCalledTimes(2);
+  });
+  it('should succeed on retry after a failed conversion', async () => {
+    const url = 'https://example.com/flaky.jpg';
+    const file = new File(['file content'], 'flaky.jpg', {
+      type: 'image/jpeg',
+    });
+    vi.mocked(urlToFile)
+      .mockRejectedValueOnce(new Error('Failed to fetch'))
+      .mockResolvedValueOnce(file);
+
+    await expect(cachedUrlToFile(url)).rejects.toThrow('Failed to fetch');
+    await expect(cachedUrlToFile(url)).resolves.toStrictEqual(file);
+    expect(urlToFile).toHaveBeenCalledTimes(2);
   });
   it('should handle empty URL correctly', async () => {
     const emptyUrl = '';

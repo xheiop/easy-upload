@@ -592,7 +592,6 @@ Menu
 01:14:32.343 : Chapter 8`;
     const mediaParser = new MediaInfoParser(source);
     const result = mediaParser.parse();
-    console.log(result);
     expect(result.duration).toBe(1 * 3600 + 22 * 60);
     expect(result.fileSize).toBe(4.19 * 1024 ** 3);
     expect(result.fileName).toBe(
@@ -807,5 +806,34 @@ describe('MediaInfoParse.parseResolution', () => {
     expect(mediaParser.parseResolution(200, 100)).toBe('200x100');
     expect(mediaParser.parseResolution(0, 0)).toBe('');
     expect(mediaParser.parseResolution(NaN, NaN)).toBe('');
+  });
+});
+
+describe('MediaInfoParser.splitIntoSections with colons in values', () => {
+  const source = [
+    'General',
+    'Complete name : Mission Impossible: Fallout.mkv',
+    'Format : Matroska',
+    'File size : 1.36 GiB',
+    'Duration : 2 h 27 min',
+    '',
+    'Video',
+    'Format : AVC',
+    'Display aspect ratio : 2.39:1',
+    'Width : 1 920 pixels',
+    'Height : 800 pixels',
+    '',
+    'Audio',
+    'Format : AC-3',
+  ].join('\n');
+
+  it('keeps the full value after the first colon', () => {
+    const result = new MediaInfoParser(source).parse();
+    expect(result.fileName).toBe('Mission Impossible: Fallout.mkv');
+  });
+
+  it('returns an empty channelName when Channel(s) is missing', () => {
+    const result = new MediaInfoParser(source).parse();
+    expect(result.audioTracks[0].channelName).toBe('');
   });
 });

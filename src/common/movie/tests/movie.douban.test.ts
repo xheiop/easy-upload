@@ -4,6 +4,7 @@ import {
   getDoubanBasicDataByQuery,
   getDoubanBookInfo,
   getDoubanCreditsData,
+  getDoubanTVItemData,
   getIMDbIDFromDouban,
   getMobileDoubanInfo,
 } from '../movie.douban';
@@ -253,5 +254,62 @@ describe('getDoubanBookInfo', () => {
       responseType: 'json',
     });
     expect(bookInfo).toBe(mockData);
+  });
+});
+
+describe('getDoubanTVItemData', () => {
+  const suggestHtml = `
+    <div class="result-list">
+      <div class="result">
+        <h3><a href="https://movie.douban.com/subject/456789/">某剧 第2季</a></h3>
+      </div>
+    </div>`;
+
+  it('returns the original data for season 1 without searching', async () => {
+    vi.mocked(GMFetch).mockClear();
+    const doubanData = {
+      id: '123',
+      season: '1',
+      isTV: true,
+      title: '某剧 第1季',
+    };
+    const result = await getDoubanTVItemData(
+      doubanData,
+      'Some.Show.S01.1080p.WEB-DL',
+    );
+    expect(result).toBe(doubanData);
+    expect(GMFetch).not.toHaveBeenCalled();
+  });
+
+  it('searches the matching season for SXX style titles', async () => {
+    vi.mocked(GMFetch).mockClear();
+    vi.mocked(GMFetch).mockResolvedValue(suggestHtml);
+    const doubanData = {
+      id: '123',
+      season: '1',
+      isTV: true,
+      title: '某剧 第1季',
+    };
+    const result = await getDoubanTVItemData(
+      doubanData,
+      'Some.Show.S02.1080p.WEB-DL',
+    );
+    expect(result.id).toBe('456789');
+  });
+
+  it('extracts the season from "Season N" style titles', async () => {
+    vi.mocked(GMFetch).mockClear();
+    vi.mocked(GMFetch).mockResolvedValue(suggestHtml);
+    const doubanData = {
+      id: '123',
+      season: '1',
+      isTV: true,
+      title: '某剧 第1季',
+    };
+    const result = await getDoubanTVItemData(
+      doubanData,
+      'Some Show Season 2 1080p WEB-DL',
+    );
+    expect(result.id).toBe('456789');
   });
 });

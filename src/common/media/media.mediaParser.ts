@@ -68,7 +68,10 @@ export class MediaInfoParser extends MediaParser {
         continue;
       }
       if (currentSectionType) {
-        const [key, value] = trimmedLine.split(':').map((s) => s.trim());
+        // split on the first colon only so values like "16:9" or paths keep intact
+        const [key, value] = trimmedLine
+          .split(/:([\s\S]*)/)
+          .map((s) => s?.trim());
         if (key && value) {
           currentSectionLines[key] = value;
         }
@@ -145,9 +148,9 @@ export class MediaInfoParser extends MediaParser {
     } = audio;
     let channelName = '';
     const channelNumber = parseInt(audioChannels, 10);
-    if (channelNumber && channelNumber >= 6) {
+    if (channelNumber >= 6) {
       channelName = `${channelNumber - 1}.1`;
-    } else {
+    } else if (channelNumber) {
       channelName = `${channelNumber}.0`;
     }
 

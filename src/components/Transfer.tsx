@@ -11,6 +11,7 @@ import { I18nKey } from '@/common/utils/utils.types';
 import { useTorrentInfo } from '@/hooks/useTorrentInfo';
 import { toast } from 'sonner';
 import { ImgInfo } from '@/common/image/image.types';
+import { clearUrlFileCache } from '@/common/image/image.utils';
 
 const IMAGE_HOSTS = {
   imgbox: {
@@ -123,15 +124,16 @@ const Transfer = () => {
       let uploadedImgs: ImgInfo[] = [];
 
       if (imgHost === 'HDB') {
-        uploadedImgs = await (await uploadToHDB)(images, torrentInfo.title);
+        uploadedImgs = await uploadToHDB(images, torrentInfo.title);
       } else if (imgHost === 'imgbb' || imgHost === 'gifyu') {
-        uploadedImgs = await (
-          await transferImgToCheveretoSite
-        )(images, selectedHost.url);
+        uploadedImgs = await transferImgToCheveretoSite(
+          images,
+          selectedHost.url,
+        );
       } else if (imgHost === 'pixhost') {
-        uploadedImgs = await (await uploadToPixhost)(images);
+        uploadedImgs = await uploadToPixhost(images);
       } else if (imgHost === 'imgbox') {
-        uploadedImgs = await (await uploadToImgbox)(images);
+        uploadedImgs = await uploadToImgbox(images);
       }
       const imgsBBCodeArray = uploadedImgs.map(
         (img) => `[url=${img.original}][img]${img.thumbnail}[/img][/url]`,
@@ -156,6 +158,7 @@ const Transfer = () => {
       toast.error((error as Error).message);
       console.error('缩略图转换失败:', error);
     } finally {
+      clearUrlFileCache();
       setBtnText('transfer.btnConvert');
       setBtnDisable(false);
     }
