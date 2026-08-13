@@ -2,7 +2,7 @@
 // @name            EasyUpload PT一键转种
 // @name:en         EasyUpload - Trackers Transfer Tool
 // @namespace       https://github.com/xheiop/easy-upload
-// @version         7.0.16
+// @version         7.0.17
 // @author          birdplane
 // @description     一键转种，支持PT站点之间的种子转移。
 // @description:en  Transfer torrents between trackers with one click.
@@ -757,9 +757,18 @@
 		throw new ImageUploadError(message || $t(CONFIG$4.ERROR_MESSAGES.UPLOAD_FAILED), originalError);
 	};
 	var urlFileCache = new Map();
+	var clearUrlFileCache = () => {
+		urlFileCache.clear();
+	};
 	var cachedUrlToFile = async (url) => {
 		if (!url) throw new Error("URL is required to convert to file");
-		if (!urlFileCache.has(url)) urlFileCache.set(url, urlToFile(url));
+		if (!urlFileCache.has(url)) {
+			const filePromise = urlToFile(url);
+			filePromise.catch(() => {
+				urlFileCache.delete(url);
+			});
+			urlFileCache.set(url, filePromise);
+		}
 		return urlFileCache.get(url);
 	};
 	var HdBitsStrategy = class {
@@ -841,7 +850,7 @@
 		new BeyondHdStrategy(),
 		new PixHostStrategy()
 	];
-	var withUploadErrorHandling = async (uploadFn, serviceName, options = {}) => {
+	var withUploadErrorHandling = (uploadFn, serviceName, options = {}) => {
 		const { validateFirstArg = true, defaultResult = [] } = options;
 		return async (...args) => {
 			try {
@@ -1150,7 +1159,7 @@
 					continue;
 				}
 				if (currentSectionType) {
-					const [key, value] = trimmedLine.split(":").map((s) => s.trim());
+					const [key, value] = trimmedLine.split(/:([\s\S]*)/).map((s) => s === null || s === void 0 ? void 0 : s.trim());
 					if (key && value) currentSectionLines[key] = value;
 				}
 			}
@@ -1196,8 +1205,8 @@
 			const { Format: audioFormat = "", "Format profile": formatProfile = "", "Commercial name": commercialName = "", "Channel(s)": audioChannels = "", ID: id = "", Default: isDefault = "", Forced: isForced = "", Language: language = "" } = audio;
 			let channelName = "";
 			const channelNumber = parseInt(audioChannels, 10);
-			if (channelNumber && channelNumber >= 6) channelName = `${channelNumber - 1}.1`;
-			else channelName = `${channelNumber}.0`;
+			if (channelNumber >= 6) channelName = `${channelNumber - 1}.1`;
+			else if (channelNumber) channelName = `${channelNumber}.0`;
 			const codec = this.determineAudioCodec(audioFormat, commercialName, formatProfile);
 			return {
 				channelName,
@@ -1880,7 +1889,7 @@
 	var getDoubanTVItemData = async (doubanData, torrentTitle) => {
 		var _torrentTitle$match$, _torrentTitle$match;
 		const { title } = doubanData;
-		const seasonNumber = (_torrentTitle$match$ = torrentTitle === null || torrentTitle === void 0 || (_torrentTitle$match = torrentTitle.match(/S(?!eason)?0?(\d+)\.?(EP?\d+)?/i)) === null || _torrentTitle$match === void 0 ? void 0 : _torrentTitle$match[1]) !== null && _torrentTitle$match$ !== void 0 ? _torrentTitle$match$ : "1";
+		const seasonNumber = (_torrentTitle$match$ = torrentTitle === null || torrentTitle === void 0 || (_torrentTitle$match = torrentTitle.match(/S(?:eason)?\s*0?(\d+)/i)) === null || _torrentTitle$match === void 0 ? void 0 : _torrentTitle$match[1]) !== null && _torrentTitle$match$ !== void 0 ? _torrentTitle$match$ : "1";
 		if (parseInt(seasonNumber, 10) === 1) return doubanData;
 		return await getDoubanBasicDataByQuery(title === null || title === void 0 ? void 0 : title.replace(/第.+?季/, `第${seasonNumber}季`));
 	};
@@ -4199,16 +4208,14 @@
 		}
 		return new Blob(byteArrays, { type: contentType });
 	};
+	var EMPTY_TAG_REG = /\[(?!info)([a-zA-Z]+\d?)(?:=(?:\w|\s)+)?\]\s*\[\/(\w+)\]/g;
 	var filterEmptyTags = (description) => {
-		const reg = new RegExp("\\[(?!info)([a-zA-Z]+\\d?)(?:=(?:\\w|\\s)+)?\\]\\s*\\[\\/(\\w+)\\]", "g");
-		if (description.match(reg)) {
-			description = description.replace(reg, (_match, p1, p2) => {
-				if (p1 === p2) return "";
-				return _match;
-			});
-			return filterEmptyTags(description);
-		}
-		return description;
+		const filtered = description.replace(EMPTY_TAG_REG, (_match, p1, p2) => {
+			if (p1 === p2) return "";
+			return _match;
+		});
+		if (filtered !== description) return filterEmptyTags(filtered);
+		return filtered;
 	};
 	var getTeamName = (title) => {
 		var _teamMatch$1$replace$, _teamMatch$;
@@ -4241,7 +4248,7 @@
 	};
 	var filterNexusDescription = (description, screenshots) => {
 		let filterDescription = "";
-		const quoteList = description.match(/\[quote(=\w+)?\](.|\n)+?\[\/quote\]/g);
+		const quoteList = description.match(/\[quote(?:=[^\]]*)?\][\s\S]+?\[\/quote\]/g);
 		if (quoteList && quoteList.length > 0) quoteList.forEach((quote) => {
 			const isMediaInfoOrBDInfo = quote.match(/Disc\s?Size|\.mpls|Unique\s?ID|唯一ID|Resolution/i);
 			if (!quote.match(/[\u4e00-\u9fa5]+/i) || isMediaInfoOrBDInfo) filterDescription += `${quote}\n`;
@@ -4257,7 +4264,7 @@
 		text = text.replace(/^(?!\[img\])https:\/\/ptpimg.me.*?png(?!\[\/img\])$/gim, (imgUrl) => {
 			return `[img]${imgUrl}[/img]`;
 		});
-		text = text.replace(/\[comparison.*\][\s\S]*\[\/comparison\]/gi, (comparisonText) => {
+		text = text.replace(/\[comparison[^\]]*\][\s\S]*?\[\/comparison\]/gi, (comparisonText) => {
 			return comparisonText.replace(/\[img\]/g, "").replace(/\[\/img\]/g, "").split("https://ptpimg.me").join("\nhttps://ptpimg.me").replace(/\s*\n\s*/g, "\n");
 		});
 		text = text.replace(/\[hide(.*)?\]\s*\[url=https:\/\/ptpimg.me.*?png\]\[img\][\s\S]*?\[\/hide\]/gi, (imgText) => {
@@ -5200,10 +5207,12 @@
 			if (!posterUrl) return;
 			try {
 				var _data$;
-				const uploadedUrl = (_data$ = (await (await transferImgToCheveretoSite)([posterUrl], "https://gifyu.com/json"))[0]) === null || _data$ === void 0 ? void 0 : _data$.original;
+				const uploadedUrl = (_data$ = (await transferImgToCheveretoSite([posterUrl], "https://gifyu.com/json"))[0]) === null || _data$ === void 0 ? void 0 : _data$.original;
 				if (uploadedUrl) (0, jquery.default)("#image").val(uploadedUrl);
 			} catch (error) {
 				console.error("Failed to upload poster:", error);
+			} finally {
+				clearUrlFileCache();
 			}
 		}
 	};
@@ -7408,7 +7417,7 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 		if (content) {
 			var _bbCodes$replace;
 			const bbCodes = htmlToBBCode(content);
-			return (_bbCodes$replace = bbCodes === null || bbCodes === void 0 ? void 0 : bbCodes.replace(/\[quote\]((.|\n)*?)\[\/quote\]/g, (match, p1) => {
+			return (_bbCodes$replace = bbCodes === null || bbCodes === void 0 ? void 0 : bbCodes.replace(/\[quote(?:=[^\]]*)?\]([\s\S]*?)\[\/quote\]/g, (match, p1) => {
 				if (p1) return CONFIG.NEXUS_FILTER_KEYWORDS.some((keyword) => p1.includes(keyword)) ? "" : match;
 				return match;
 			})) !== null && _bbCodes$replace !== void 0 ? _bbCodes$replace : "";
@@ -7424,8 +7433,8 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 			var _title$match;
 			return /全.+?集/.test(subtitle) || (title === null || title === void 0 || (_title$match = title.match(/s\d+(\s|\.)+/i)) === null || _title$match === void 0 ? void 0 : _title$match.length);
 		};
-		const isEpisode = (title, subtitle) => /(s0?\d{1,2})?e(p)?\d{1,2}/i.test(title) || /第[^\s]集/.test(subtitle);
-		const movieGenre = (_match$ = (_match = (description + doubanInfo).match(/(类\s+别)\s+(.+)?/)) === null || _match === void 0 ? void 0 : _match[2]) !== null && _match$ !== void 0 ? _match$ : "";
+		const isEpisode = (title, subtitle) => /(s0?\d{1,2})?e(p)?\d{1,2}/i.test(title) || /第[^\s]+?集/.test(subtitle);
+		const movieGenre = (_match$ = (_match = (description + (doubanInfo !== null && doubanInfo !== void 0 ? doubanInfo : "")).match(/(类\s+别)\s+(.+)?/)) === null || _match === void 0 ? void 0 : _match[2]) !== null && _match$ !== void 0 ? _match$ : "";
 		if (isAnimation(movieGenre)) return "cartoon";
 		if (isDocumentary(movieGenre)) return "documentary";
 		if (isSeasonPack(title, subtitle)) return "tvPack";
@@ -7513,8 +7522,8 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 		if (hdrFormats) {
 			for (const [key, value] of Object.entries(hdrMap)) if (hdrFormats.includes(key)) mediaTags[value] = true;
 		}
-		if (/dtsx|atmos/gi.test(audioCodec)) mediaTags.dts_x = true;
-		else if (/atmos/gi.test(audioCodec)) mediaTags.dolby_atmos = true;
+		if (/dtsx/i.test(audioCodec)) mediaTags.dts_x = true;
+		else if (/atmos/i.test(audioCodec)) mediaTags.dolby_atmos = true;
 		return mediaTags;
 	};
 	var getTagsFromSource = (source) => {
@@ -19259,10 +19268,10 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 				setBtnDisable(true);
 				const selectedHost = IMAGE_HOSTS$1[imgHost];
 				let uploadedImgs = [];
-				if (imgHost === "HDB") uploadedImgs = await (await uploadToHDB)(images, torrentInfo.title);
-				else if (imgHost === "imgbb" || imgHost === "gifyu") uploadedImgs = await (await transferImgToCheveretoSite)(images, selectedHost.url);
-				else if (imgHost === "pixhost") uploadedImgs = await (await uploadToPixhost)(images);
-				else if (imgHost === "imgbox") uploadedImgs = await (await uploadToImgbox)(images);
+				if (imgHost === "HDB") uploadedImgs = await uploadToHDB(images, torrentInfo.title);
+				else if (imgHost === "imgbb" || imgHost === "gifyu") uploadedImgs = await transferImgToCheveretoSite(images, selectedHost.url);
+				else if (imgHost === "pixhost") uploadedImgs = await uploadToPixhost(images);
+				else if (imgHost === "imgbox") uploadedImgs = await uploadToImgbox(images);
 				const imgsBBCodeArray = uploadedImgs.map((img) => `[url=${img.original}][img]${img.thumbnail}[/img][/url]`);
 				if (uploadedImgs.length) {
 					const { screenshots = [] } = torrentInfo;
@@ -19277,6 +19286,7 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 				ue.error(error.message);
 				console.error("缩略图转换失败:", error);
 			} finally {
+				clearUrlFileCache();
 				setBtnText("transfer.btnConvert");
 				setBtnDisable(false);
 			}
@@ -19333,7 +19343,7 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 				const originalImgUrlPromises = screenshots.map((img) => getOriginalImgUrl(img));
 				const originalImgUrls = await Promise.all(originalImgUrlPromises);
 				if (originalImgUrls.length === 0) throw new Error($t("error.imageUploadFailed"));
-				const imgData = await (await transferImgToCheveretoSite)(originalImgUrls, IMAGE_HOSTS[selectHost].url);
+				const imgData = await transferImgToCheveretoSite(originalImgUrls, IMAGE_HOSTS[selectHost].url);
 				if (imgData.length === 0) throw new Error($t("error.imageUploadFailed"));
 				return imgData;
 			} catch (error) {
@@ -19376,6 +19386,7 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 				ue.error(errorMessage);
 				console.error("截图转存失败:", error);
 			} finally {
+				clearUrlFileCache();
 				setBtnText("rehost.btnUpload");
 				setBtnDisable(false);
 			}
