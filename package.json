@@ -88,7 +88,7 @@
     "sharp": "^0.32.6",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.4",
-    "vite": "^8.0.14",
+    "vite": "^8.0.16",
     "vite-plugin-monkey": "^8.0.5",
     "vite-plugin-svgr": "^5.2.0",
     "vitest": "^4.1.7",
