@@ -85,23 +85,32 @@
     "ora": "^5.4.0",
     "parse-torrent": "^11.0.16",
     "prettier": "^3.5.3",
-    "sharp": "^0.32.6",
+    "sharp": "^0.35.5",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.4",
-    "vite": "^8.0.16",
+    "vite": "^8.3.6",
     "vite-plugin-monkey": "^8.0.5",
     "vite-plugin-svgr": "^5.2.0",
-    "vitest": "^4.1.7",
+    "vitest": "^4.1.12",
     "yaml": "^1.10.0"
   },
   "dependencies": {
     "@preact/compat": "^17.0.3",
     "crypto-js": "^4.2.0",
-    "dompurify": "^3.2.4",
+    "dompurify": "^3.4.17",
     "jquery": "^3.7.1",
     "path-browserify": "^1.0.1",
     "preact": "^10.24.1",
     "sonner": "^1.5.0"
   },
-  "packageManager": "yarn@4.5.3+sha512.3003a14012e2987072d244c720506549c1aab73ee728208f1b2580a9fd67b92d61ba6b08fe93f6dce68fd771e3af1e59a0afa28dd242dd0940d73b95fedd4e90"
+  "packageManager": "yarn@4.5.3+sha512.3003a14012e2987072d244c720506549c1aab73ee728208f1b2580a9fd67b92d61ba6b08fe93f6dce68fd771e3af1e59a0afa28dd242dd0940d73b95fedd4e90",
+  "resolutions": {
+    "lodash": "^4.18.1",
+    "tmp": "^0.2.6",
+    "uuid": "^11.1.1",
+    "glob@npm:^10.4.1": "^14.0.2",
+    "glob@npm:^13.0.0": "^14.0.2",
+    "minimatch@npm:^9.0.4": "^11.0.1",
+    "minimatch@npm:^10.2.2": "^11.0.1"
+  }
 }
