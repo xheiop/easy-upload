@@ -2,34 +2,70 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'node:url';
 
+const VERSION_HEADER = /^#{1,3}\s+\[?(\d+\.\d+\.\d+[^\]\s]*)\]?.*$/m;
+
 function formatChangelog(content) {
   if (!content) return '';
   return content
-    .replace(/\*{2}(.+)?\*{2}/g, '<b>$1</b>')
+    .replace(/\*{2}(.+?)\*{2}/g, '<b>$1</b>')
     .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
+}
+
+/**
+ * 取出 CHANGELOG 中最新一个版本的内容（从第一个版本标题到下一个版本标题或文件末尾）
+ */
+export function getLatestRelease(changeLogData) {
+  const lines = changeLogData.split(/\r?\n/);
+  const start = lines.findIndex((line) => VERSION_HEADER.test(line));
+  if (start === -1) {
+    throw new Error('CHANGELOG 中没有找到版本标题');
+  }
+  let end = lines.findIndex(
+    (line, index) => index > start && VERSION_HEADER.test(line),
+  );
+  if (end === -1) end = lines.length;
+  const version = lines[start].match(VERSION_HEADER)[1];
+  return { version, body: lines.slice(start + 1, end).join('\n') };
+}
+
+/**
+ * 按「### 标题」拆分版本内容，返回 { 标题: 条目内容 }
+ */
+export function getSections(body) {
+  const sections = {};
+  let current = null;
+  body.split('\n').forEach((line) => {
+    const header = line.match(/^#{3,}\s+(.+?)\s*$/);
+    if (header) {
+      current = header[1];
+      sections[current] = [];
+    } else if (current && line.trim()) {
+      sections[current].push(line);
+    }
+  });
+  Object.keys(sections).forEach((key) => {
+    sections[key] = sections[key].join('\n');
+  });
+  return sections;
+}
+
+function formatSection(content, emoji) {
+  if (!content) return '';
+  return formatChangelog(content.replace(/^\s*[*-]\s+/gm, `${emoji} `));
 }
 
 export default function createTgChannelMsg(core) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const changeLogPath = path.join(__dirname, '..', 'CHANGELOG.md');
   const changeLogData = fs.readFileSync(changeLogPath, 'UTF-8');
-  const recentLog = changeLogData.match(
-    /(#{1,}\s\[\d\.\d\.\d{1,}(.+)?\](.|\n)+?)#{1,}\s\[\d\.\d\.\d{1,}(.+)?\]/,
-  )[1];
-  const newVersion = recentLog.match(/\[\d\.\d\.\d{1,}(.+)?\]/)[0];
+  const { version, body } = getLatestRelease(changeLogData);
+  const sections = getSections(body);
 
-  let featureContent = recentLog.match(/#{3}\s+Features((.|\n)+?)\n{3}/) || '';
-  featureContent = featureContent && featureContent[1] ? featureContent[1] : '';
-  let bugContent = recentLog.match(/#{3}\s+Bug Fixes((.|\n)+?)\n{3}/) || '';
-  bugContent = bugContent && bugContent[1] ? bugContent[1] : '';
-  let perfContent =
-    recentLog.match(/#{3}\s+Performance Improvements((.|\n)+?)\n{3}/) || '';
-  perfContent = perfContent && perfContent[1] ? perfContent[1] : '';
-  featureContent = formatChangelog(featureContent.replace(/\n\*\s/g, '\n🔨 '));
-  bugContent = formatChangelog(bugContent.replace(/\n\*\s/g, '\n🐛 '));
-  perfContent = formatChangelog(perfContent.replace(/\n\*\s/g, '\n🎉 '));
+  const featureContent = formatSection(sections.Features, '🔨');
+  const bugContent = formatSection(sections['Bug Fixes'], '🐛');
+  const perfContent = formatSection(sections['Performance Improvements'], '🎉');
   let tgMsg = `
-📣 <b>更新至${newVersion}</b>
+📣 <b>更新至${version}</b>
 
 👉 <a href="https://greasyfork.org/zh-CN/scripts/423199">安装地址1</a>
 👉 <a href="https://github.com/xheiop/easy-upload/raw/master/dist/easy-upload.user.js">安装地址2</a>
@@ -38,18 +74,7 @@ export default function createTgChannelMsg(core) {
 `;
   tgMsg += bugContent ? `\n<b>修复</b>\n${bugContent}\n` : '';
   tgMsg += featureContent ? `\n<b>功能</b>\n${featureContent}\n` : '';
-  tgMsg += perfContent ? `\n<b>优化</b>\n${perfContent}` : '';
+  tgMsg += perfContent ? `\n<b>优化</b>\n${perfContent}\n` : '';
   core.exportVariable('tgMsg', tgMsg);
   return tgMsg;
 }
-
-// const mockCore = {
-//   exportVariable: (name, value) => {
-//     console.log(`${name}:\n${value}`);
-//   },
-//   setFailed: (message) => {
-//     console.error(`错误: ${message}`);
-//   },
-// };
-
-// createTgChannelMsg(mockCore);

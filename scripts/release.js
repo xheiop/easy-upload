@@ -25,7 +25,8 @@ if (currentBranch !== CURRENT_BRANCH) {
 checkGitTreeClean();
 bump({
   tag: false,
-  commit: 'chore: update pkg version %s',
+  commit: false,
+  push: false,
 }).then((data) => {
   const { newVersion } = data;
   const spinner = ora({
