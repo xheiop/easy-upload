@@ -1,0 +1,217 @@
+url: https://hdwing.org
+host: hdwing.org
+siteType: NexusPHP
+icon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACPVBMVEUQYakSYqkRYqkPYKgTY6oRYamIsNRpm8kHW6YjbrCgwN0+f7ldlMS90+e+1Oe70uY9frkGWqUKXaceaq6oxd/G2epjl8YFWqWPtdYEWaQsc7Pf6vNSjcGDrdLl7vWRtteNs9ZHhbwudbSGr9OPtdeUuNgAVaIocbGHsNQLXaff6fMmb7BrncmQtte80+eevtwibK9FhLzj7PVSjMDA1ei3z+X3+vze6fPk7fX4+vxOir+0zeRRjMBtn8ro8PYLXqcMXqeLstUAU6Elb7AKXaZQi8BtnsqErtPW5PBbk8RaksOjwt1flcVTjcGTt9iOtNapxuCAq9EpcbLH2utKh75yoszg6vTd6PIDWKRNib7g6/Tm7vZ5ps8kbrAOYKgXZqscaa0sdLMNX6gYZqsrc7ItdLMdaq4LXaYOXqcMXaYIWqUNX6cOX6cKXKYLXKUqgMA1jsoNXqY0jMgqgL8VZ646k84dcbUofr4zi8gWaK4fc7Yid7lEoNdOq98rgcAUZq1auehFodYLW6Qcb7NnyfMsgsFCndRYt+YdcbQthMILW6URYqpWtOZBnNRZuOkbbrNWtedEn9ZlxvMrgcFBm9RWteYccLQ2j8sSZKtXtudDn9YQYqkbbrJYt+hmx/Rt0Po6lM5ZuOdBnNMgdLdNqd4ZbLFCndUIV6JAm9JYuOdAmtNCnNRDntYyicZFoNc+l9EXaa9gwe1DndVEn9cwiMUccLNoyvRSr+I0jMkWaa4KWqQXaq9Mqd1Zuen///9eDam/AAAAAWJLR0S+pNyDwwAAAAd0SU1FB+UECgYZKlRWekkAAAGBSURBVBjTY2BgZGJmYGFlYmFhYWUGsliAXAZGNnYOTi5uHl4+fgFBIWERUTFxoBSvhKSUtIysnLyEgqKSsoSKKjsTUFBBTV1aRoNPU5NPQ0ZLW01Hl5GBRU/fwNDIWMOEkdFEQ0ZaSpOJkYGBxdTM3MLSCiHIDLKO39rG1s4GLmjvIASyyNHJ2RxoposL0ExzZzVXNyaY7e4enl7ePr52tr5+/kCLAgLFg4JDQu3Cwq0iIqWjomMcGBgYYoXjWNTjExKlpOKTklOkUtPimBmYHdIzmO0zM+2FsrJzMjWzcpOACpnz8gsKGYqKC0tKy8orKkurMoCCDNU1tXX1DY1NzS2tbe0dLZ1dQLHunt7yvv4JE5v6J02eMnXapOkzgI7vnjlr9pwZc2GC8+YvyAGqXLho8ZKlM5ctX9pSvGLltEmrVq9hYmBYO3Hd+g3tGzdN7F2zecvWbduX7QDZvmNNBsOquXNrdy7bsWv3nr1r84BBz8wAVM7U3d0NpIFWdAMJAMLpbshyyXdQAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTA0LTEwVDA2OjI1OjQyKzAwOjAweA92GAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wNC0xMFQwNjoyNTo0MiswMDowMAlSzqQAAAAASUVORK5CYII=
+asSource: true
+asTarget: true
+seedDomSelector: ".table_details>tbody>tr:nth-child(1)"
+torrentDownloadLinkSelector: 'a[href*="download.php?hash="]'
+torrent:
+  selector: "#torrent"
+uploadPath: /upload.php
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrent_list>tbody>tr"
+    url: '.tbname td a[href*="details.php?id="]'
+    name: '.tbname td a[href*="details.php?id="]'
+    size: ".t_size"
+name:
+  selector: "#name"
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: "#descr"
+poster: "#cover"
+imdb:
+  selector: 'input[name="url"][type="text"]'
+douban:
+  selector: 'input[name="dburl"]'
+anonymous:
+  selector: 'input[name="uplver"]'
+category:
+  selector: "#browsecat"
+  map:
+    movie:
+      - "20"
+      - "17"
+      - "16"
+      - "9"
+      - "410"
+      - "27"
+    tv:
+      - "13"
+      - "25"
+      - "26"
+      - "24"
+      - "27"
+    tvPack:
+      - "20"
+      - "21"
+      - "22"
+      - "23"
+      - "27"
+    documentary:
+      - "20"
+      - "5"
+      - "27"
+    concert: "402"
+    sport: "15"
+    cartoon: "14"
+    variety: "401"
+    music: "408"
+    ebook: "404"
+    other: "409"
+videoCodec:
+  selector: 'select[name="codec_sel"]'
+  map:
+    h264: "1"
+    hevc: "10"
+    x264: "6"
+    x265: "10"
+    h265: "10"
+    mpeg2: "4"
+    mpeg4:
+      - "1"
+      - "27"
+    vc1: "2"
+    xvid: "3"
+    dvd: "4"
+audioCodec:
+  selector: 'select[name="audiocodec_sel"]'
+  map:
+    aac: "6"
+    ac3: "8"
+    dd: "8"
+    dd+: "8"
+    dts: "3"
+    truehd: "13"
+    lpcm: "11"
+    dtshdma: "12"
+    atmos: "15"
+    dtsx: "14"
+    flac: "1"
+videoType:
+  selector: 'select[name="medium_sel"]'
+  map:
+    uhdbluray:
+      - "11"
+      - "20"
+      - "410"
+    bluray:
+      - "11"
+      - "20"
+    remux: "6"
+    encode: "5"
+    web: "21"
+    hdtv: "13"
+    dvd: "14"
+    dvdrip: "4"
+    other: "15"
+resolution:
+  selector: 'select[name="standard_sel"]'
+  map:
+    2160p:
+      - "17"
+      - "13"
+      - "25"
+      - "26"
+      - "24"
+      - "21"
+      - "22"
+      - "23"
+      - "410"
+    1080p:
+      - "11"
+      - "17"
+      - "13"
+      - "25"
+      - "26"
+      - "24"
+      - "21"
+      - "22"
+      - "23"
+    1080i:
+      - "12"
+      - "16"
+      - "13"
+      - "25"
+      - "26"
+      - "24"
+      - "21"
+      - "22"
+      - "23"
+    720p:
+      - "13"
+      - "9"
+      - "13"
+      - "25"
+      - "26"
+      - "24"
+      - "21"
+      - "22"
+      - "23"
+    576p: "15"
+    480p: "15"
+area:
+  map:
+    CN:
+      - "25"
+      - "22"
+    US:
+      - "13"
+      - "21"
+    EU:
+      - "13"
+      - "21"
+    HK:
+      - "25"
+      - "22"
+    TW:
+      - "25"
+      - "22"
+    JP:
+      - "24"
+      - "23"
+    KR:
+      - "26"
+      - "23"
+team:
+  selector: 'select[name="team_sel"]'
+  map:
+    hdchina: "15"
+    hdctv: "16"
+    ihd: "12"
+    hdwing: "10"
+    hdwtv: "11"
+    kishd: "17"
+    openmv: "7"
+    hdc: "22"
+    diy: "23"
+    khq: "6"
+    exren: "30"
+    joma: "26"
+    anonymous: "25"
+    crss: "24"
+    ebp: "18"
+    don: "19"
+    esir: "20"
+    trollhd: "29"
+    wiki: "9"
+    beast: "4"
+    cmct: "2"
+    ngb: "8"
+    lu9998: "21"
+    taichi: "28"
+    u2: "27"
+    enichi: "31"
+    arey: "32"
+    other: "5"

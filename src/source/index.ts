@@ -30,6 +30,7 @@ import './info-extractors/kg';
 import './info-extractors/hdt';
 import './info-extractors/hdspace';
 import './info-extractors/gazelle-music';
+import './info-extractors/hdc';
 
 export async function getTorrentInfo(): Promise<TorrentInfo.Info | null> {
   if (!CURRENT_SITE_INFO) {

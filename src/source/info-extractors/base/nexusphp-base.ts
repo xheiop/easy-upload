@@ -134,7 +134,7 @@ export abstract class NexusPHPExtractor
       size: '',
     };
     const metaInfo = $(
-      "td.rowhead:contains('基本信息'), td.rowhead:contains('基本資訊'),.layui-table td:contains('基本信息')",
+      "td.rowhead:contains('基本信息'), td.info_box>ul>li:contains('基本信息'), td.rowhead:contains('基本資訊'),.layui-table td:contains('基本信息')",
     )
       .next()
       .text()

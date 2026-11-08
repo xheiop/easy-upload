@@ -29,6 +29,7 @@
 |   HDArea    |            ✅             |           ✅            |
 |   HDAtmos   |            ❌             |           ✅            |
 |   HDBits    |            ✅             |           ✅            |
+|   HDChina   |            ✅             |           ✅            |
 |   HDDolby   |            ✅             |           ✅            |
 |   HDFans    |            ✅             |           ✅            |
 |   HDHome    |            ✅             |           ✅            |
