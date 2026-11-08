@@ -46,9 +46,31 @@ export const cachedUrlToFile = async (url: string): Promise<File> => {
   return urlFileCache.get(url)!;
 };
 
+/**
+ * Check whether a URL's hostname is the given host or one of its subdomains.
+ * Avoids substring checks that would accept e.g. `https://evil.com/?imgbox.com`.
+ */
+export const isUrlOnHost = (url: string, host: string): boolean => {
+  try {
+    // protocol-relative urls (`//host/path`) are valid in BBCode too
+    const { hostname } = new URL(url.startsWith('//') ? `https:${url}` : url);
+    return hostname === host || hostname.endsWith(`.${host}`);
+  } catch {
+    return false;
+  }
+};
+
+/**
+ * Check whether any URL inside the BBCode is on the given host.
+ */
+export const bbCodeHasHost = (bbCode: string, host: string): boolean => {
+  const urls = bbCode.match(/(?:https?:)?\/\/[^\s[\]"'<>]+/gi) ?? [];
+  return urls.some((url) => isUrlOnHost(url, host));
+};
+
 export class HdBitsStrategy implements UrlTransformStrategy {
   matches(url: string): boolean {
-    return url.includes('img.hdbits.org');
+    return isUrlOnHost(url, 'img.hdbits.org');
   }
 
   async transform(url: string): Promise<string> {
@@ -72,7 +94,7 @@ export class HdBitsStrategy implements UrlTransformStrategy {
 
 export class PterClubStrategy implements UrlTransformStrategy {
   matches(url: string, bbCode: string): boolean {
-    return bbCode.includes('img.pterclub.net');
+    return bbCodeHasHost(bbCode, 'img.pterclub.net');
   }
 
   async transform(url: string, bbCode: string): Promise<string> {
@@ -86,7 +108,7 @@ export class PterClubStrategy implements UrlTransformStrategy {
 
 export class ImageBoxStrategy implements UrlTransformStrategy {
   matches(url: string, bbCode: string): boolean {
-    return bbCode.includes('imgbox.com');
+    return bbCodeHasHost(bbCode, 'imgbox.com');
   }
 
   async transform(url: string, bbCode: string): Promise<string> {
@@ -105,7 +127,7 @@ export class ImageBoxStrategy implements UrlTransformStrategy {
 
 export class ImageBamStrategy implements UrlTransformStrategy {
   matches(url: string): boolean {
-    return url.includes('imagebam.com');
+    return isUrlOnHost(url, 'imagebam.com');
   }
 
   async transform(url: string): Promise<string> {
@@ -129,7 +151,7 @@ export class ImageBamStrategy implements UrlTransformStrategy {
 
 export class BeyondHdStrategy implements UrlTransformStrategy {
   matches(url: string, bbCode: string): boolean {
-    return bbCode.includes('beyondhd.co');
+    return bbCodeHasHost(bbCode, 'beyondhd.co');
   }
 
   async transform(url: string, bbCode: string): Promise<string> {
@@ -146,7 +168,7 @@ export class BeyondHdStrategy implements UrlTransformStrategy {
 
 export class PixHostStrategy implements UrlTransformStrategy {
   matches(url: string, bbCode: string): boolean {
-    return bbCode.includes('pixhost.to');
+    return bbCodeHasHost(bbCode, 'pixhost.to');
   }
 
   async transform(url: string, bbCode: string): Promise<string> {

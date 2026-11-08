@@ -108,7 +108,8 @@ class KG extends BaseFiller implements TargetFiller {
     \nSynopsis:\n[quote]${description}[/quote]
     \n\n${screenshots.map((img) => `[img]${encodeURI(img)}[/img]`).join('')}`;
 
-    $('#bbcodetextarea').html(descriptionBBCode);
+    // set the value as plain text; .html() would parse and run any <script> in it
+    $('#bbcodetextarea').val(descriptionBBCode);
 
     const [mainGenre, otherGenre = ''] = genre;
     $('select[name="genre_main_id"]').val(

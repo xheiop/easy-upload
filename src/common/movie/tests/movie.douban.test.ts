@@ -56,6 +56,29 @@ describe('getDoubanAwards', () => {
     );
   });
 
+  it('should decode entities and drop every tag, including scripts and comments', async () => {
+    vi.mocked(GMFetch).mockResolvedValue(`
+      <div id="content"><div><div class="article">
+        <div class="awards">
+          <div class="hd"><h2><a href="#">第1届测试奖</a><span class="year">&nbsp;(2024)</span></h2></div>
+          <ul class="award">
+            <li>最佳影片<!-- comment --></li>
+            <li><a href="#">Tom &amp; Jerry</a></li>
+          </ul>
+          <ul class="award">
+            <li><img src="x" onerror="alert(1)">最佳导演</li>
+            <li>&lt;script&gt;转义文本&lt;/script&gt;</li>
+          </ul>
+          <script>alert(1)</script>
+        </div>
+      </div></div></div>`);
+    const awards = await getDoubanAwards('123456');
+    expect(awards).toBe(
+      '第1届测试奖  (2024)\n最佳影片 Tom&Jerry\n最佳导演 <script>转义文本</script>alert(1)',
+    );
+    expect(awards).not.toMatch(/<img|onerror=|<a |<li|<!--/);
+  });
+
   it('should return empty string if no awards found', async () => {
     vi.mocked(GMFetch).mockResolvedValue('');
     const awards = await getDoubanAwards('123456');

@@ -25,13 +25,16 @@ export const getDoubanAwards = async (doubanId: string): Promise<string> => {
   if (!awardsDom) {
     return '';
   }
-  return awardsDom?.innerHTML
+  const html = awardsDom.innerHTML
     .replace(/[ \n]/g, '')
     .replace(/<\/li><li>/g, '</li> <li>')
     .replace(/<\/a><span/g, '</a> <span')
-    .replace(/<(div|ul)[^>]*>/g, '\n')
-    .replace(/<[^>]+>/g, '')
-    .replace(/&nbsp;/g, ' ')
+    .replace(/<(div|ul)[^>]*>/g, '\n');
+  // let the DOM strip the tags instead of a regex, so no markup can survive
+  const text =
+    new DOMParser().parseFromString(html, 'text/html').body.textContent ?? '';
+  return text
+    .replace(/\u00a0/g, ' ')
     .replace(/ +\n/g, '\n')
     .trim();
 };

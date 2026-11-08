@@ -16,6 +16,8 @@ import {
   cachedUrlToFile,
   clearUrlFileCache,
   getImageBBCodeMatches,
+  isUrlOnHost,
+  bbCodeHasHost,
 } from '../image.utils';
 
 beforeEach(() => {
@@ -660,5 +662,79 @@ describe('getImageBBCodeMatches', () => {
   it('should return [] for invalid bbcode', () => {
     const matches = getImageBBCodeMatches('invalid bbcode');
     expect(matches).toEqual([]);
+  });
+});
+
+describe('host matching', () => {
+  it('isUrlOnHost should only accept the host or its subdomains', () => {
+    expect(isUrlOnHost('https://imgbox.com/a.png', 'imgbox.com')).toBe(true);
+    expect(isUrlOnHost('https://thumbs2.imgbox.com/a.png', 'imgbox.com')).toBe(
+      true,
+    );
+    expect(isUrlOnHost('https://evil.com/?imgbox.com', 'imgbox.com')).toBe(
+      false,
+    );
+    expect(isUrlOnHost('https://imgbox.com.evil.com/a', 'imgbox.com')).toBe(
+      false,
+    );
+    expect(isUrlOnHost('https://notimgbox.com/a', 'imgbox.com')).toBe(false);
+    expect(isUrlOnHost('not a url', 'imgbox.com')).toBe(false);
+    expect(isUrlOnHost('', 'imgbox.com')).toBe(false);
+    expect(isUrlOnHost('//thumbs2.imgbox.com/a.png', 'imgbox.com')).toBe(true);
+    expect(isUrlOnHost('https://IMGBOX.COM/a.png', 'imgbox.com')).toBe(true);
+    expect(isUrlOnHost('https://imgbox.com:8080/a.png', 'imgbox.com')).toBe(
+      true,
+    );
+    expect(isUrlOnHost('https://user@imgbox.com/a', 'imgbox.com')).toBe(true);
+    expect(isUrlOnHost('https://imgbox.com@evil.com/a', 'imgbox.com')).toBe(
+      false,
+    );
+  });
+
+  it('bbCodeHasHost should check every url in the bbcode', () => {
+    expect(
+      bbCodeHasHost(
+        '[url=https://imgbox.com/x][img]https://thumbs2.imgbox.com/a_t.png[/img][/url]',
+        'imgbox.com',
+      ),
+    ).toBe(true);
+    expect(
+      bbCodeHasHost(
+        '[img]https://evil.com/img.pterclub.net/a.png[/img]',
+        'img.pterclub.net',
+      ),
+    ).toBe(false);
+  });
+
+  it('bbCodeHasHost should handle real-world bbcode variants', () => {
+    expect(
+      bbCodeHasHost(
+        '[URL=https://imgbox.com/x][IMG]https://thumbs2.imgbox.com/a_t.png[/IMG][/URL]',
+        'imgbox.com',
+      ),
+    ).toBe(true);
+    expect(
+      bbCodeHasHost('[img]//thumbs2.imgbox.com/a_t.png[/img]', 'imgbox.com'),
+    ).toBe(true);
+    expect(bbCodeHasHost('https://beyondhd.co/image.jpg', 'beyondhd.co')).toBe(
+      true,
+    );
+    expect(bbCodeHasHost('imgbox.com/a.png', 'imgbox.com')).toBe(false);
+    expect(bbCodeHasHost('', 'imgbox.com')).toBe(false);
+  });
+
+  it('strategies should not match spoofed hosts', () => {
+    expect(
+      new HdBitsStrategy().matches('https://evil.com/?img.hdbits.org'),
+    ).toBe(false);
+    expect(
+      new ImageBamStrategy().matches('https://imagebam.com.evil.com/a'),
+    ).toBe(false);
+    expect(
+      new ImageBoxStrategy().matches(
+        '',
+        '[img]https://evil.com/imgbox.com/a_t.png[/img]',
+      ),
+    ).toBe(false);
   });
 });

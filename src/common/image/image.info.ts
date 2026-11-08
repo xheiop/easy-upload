@@ -22,7 +22,7 @@ export const getImgInfoFromBBCode = async (
   if (!originalUrl) {
     throw new Error('Invalid BBCode - No original URL found');
   }
-  const thumbnailUrl = bbcode.match(/\[img\]((.|\s)*?)\[/)?.[1]?.trim() ?? '';
+  const thumbnailUrl = bbcode.match(/\[img\]([^[]*)\[/)?.[1]?.trim() ?? '';
   if (!thumbnailUrl) {
     throw new Error('Invalid BBCode - No thumbnail URL found');
   }

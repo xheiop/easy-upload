@@ -69,6 +69,18 @@ describe('getImgInfoFromBBCode', () => {
     expect(getOriginalImgUrl).toBeCalledTimes(1);
     expect(getOriginalImgUrl).toBeCalledWith(bbCode);
   });
+  it('should not hang on long whitespace runs after [img]', async () => {
+    vi.mocked(getOriginalImgUrl).mockResolvedValue(
+      'https://example.com/original.png',
+    );
+    const bbCode = `[url=https://example.com/original.png][img]${' '.repeat(50000)}`;
+    const start = Date.now();
+    await expect(getImgInfoFromBBCode(bbCode)).rejects.toThrow(
+      'Invalid BBCode - No thumbnail URL found',
+    );
+    expect(Date.now() - start).toBeLessThan(1000);
+  });
+
   it('should throw error if [img] BBCode is empty', async () => {
     const bbCode = '[url=https://example.com/origina][img][/img][/url]';
     const originalImgUrl = 'https://example.com/original.png';
