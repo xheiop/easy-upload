@@ -1,3 +1,29 @@
+# [7.1.0](https://github.com/xheiop/easy-upload/compare/7.0.18...7.1.0) (2026-11-15)
+
+
+### Bug Fixes
+
+* **analyzer:** keep every form control in the retrieved site config ([#445](https://github.com/xheiop/easy-upload/issues/445)) ([c8bf905](https://github.com/xheiop/easy-upload/commit/c8bf905e747f114945149299a3dad4d06f450ca7)), closes [#362](https://github.com/xheiop/easy-upload/issues/362) [#341](https://github.com/xheiop/easy-upload/issues/341) [#334](https://github.com/xheiop/easy-upload/issues/334)
+* **release:** merge release commits and fix changelog parsing for tg message ([6232bc1](https://github.com/xheiop/easy-upload/commit/6232bc1d704425c96ab568d4d81191fc52d41400))
+* **security:** resolve code scanning alerts and KG description injection ([198ad8a](https://github.com/xheiop/easy-upload/commit/198ad8a873f77fbeb87eb5eaf3abeb293a23d517))
+
+
+### Features
+
+* **config:** add alingPT site config ([#434](https://github.com/xheiop/easy-upload/issues/434)) ([0c7b648](https://github.com/xheiop/easy-upload/commit/0c7b6487dce787c3ec43b933525b546ea2b387d4))
+* **config:** add CBG site config ([#437](https://github.com/xheiop/easy-upload/issues/437)) ([f5d6282](https://github.com/xheiop/easy-upload/commit/f5d628283ae618c690fe7d5c86576e0888c1386d))
+* **config:** add CSPT site config ([#440](https://github.com/xheiop/easy-upload/issues/440)) ([fd58bf6](https://github.com/xheiop/easy-upload/commit/fd58bf63340a36da046117e7bd9965a3e7090cf7))
+* **config:** add HaiDan site config ([#433](https://github.com/xheiop/easy-upload/issues/433)) ([c3b3d1a](https://github.com/xheiop/easy-upload/commit/c3b3d1aed4b0acb1fe2590a57e803aeff5151e36)), closes [#414](https://github.com/xheiop/easy-upload/issues/414)
+* **config:** add HDVideo site config ([#444](https://github.com/xheiop/easy-upload/issues/444)) ([51fdb70](https://github.com/xheiop/easy-upload/commit/51fdb7092b8b83761d34cc8571c40074dd4a8839))
+* **config:** add itzmx site config ([#438](https://github.com/xheiop/easy-upload/issues/438)) ([3261683](https://github.com/xheiop/easy-upload/commit/32616835d8c01812c321d603185a298a77a3d8a1))
+* **config:** add LongPT site config ([#435](https://github.com/xheiop/easy-upload/issues/435)) ([2f0206b](https://github.com/xheiop/easy-upload/commit/2f0206bf675820be6c9e500c00f15ce1f1284c12))
+* **config:** add NovaHD site config ([#436](https://github.com/xheiop/easy-upload/issues/436)) ([d9e93f2](https://github.com/xheiop/easy-upload/commit/d9e93f2964863aa9b1f429b252c19ff577e4e0f4))
+* **config:** add OshenPT site config ([#441](https://github.com/xheiop/easy-upload/issues/441)) ([e52f3e1](https://github.com/xheiop/easy-upload/commit/e52f3e1420ae93f252c1a6856cfc5049c904124d))
+* **config:** add PandaPT site config ([#442](https://github.com/xheiop/easy-upload/issues/442)) ([ae3c3cc](https://github.com/xheiop/easy-upload/commit/ae3c3cc07bfbb231fa4358725046298b2caa173e))
+* **config:** add PTGTK site config ([#439](https://github.com/xheiop/easy-upload/issues/439)) ([e05de1f](https://github.com/xheiop/easy-upload/commit/e05de1faf96f0268e6b0f5655bcd96b8677b9547))
+* **config:** add SewerPT site config ([#443](https://github.com/xheiop/easy-upload/issues/443)) ([a894270](https://github.com/xheiop/easy-upload/commit/a8942700aa5a82017feb80996f3f76a22c4ad0f6))
+* **site-config:** accept new sites only as tested pull requests ([#446](https://github.com/xheiop/easy-upload/issues/446)) ([cce8563](https://github.com/xheiop/easy-upload/commit/cce85630f3e31e0610bd15028c6e35567893fdcc))
+
 ## [7.0.18](https://github.com/xheiop/easy-upload/compare/7.0.17...7.0.18) (2026-11-08)
 
 
