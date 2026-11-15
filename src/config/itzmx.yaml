@@ -1,0 +1,55 @@
+url: https://pt.itzmx.com
+host: pt.itzmx.com
+siteType: NexusPHP
+icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAChklEQVQ4ja2US4iOcRTGnyyUhUshTBjDoJlxG9chybjmMjYyubOglIxCyUYWFhNSRsiHhrLCgiQUcmmykJJcSkrf0LhlmBm3MN9P5/N809vXLC1O7//9X55zzvOcc4Tgf5pQxj/fQVtAa0AfvNcEagS9tqVBLaC3Xqd9Ht/WJGBYM2gCaJAvfQXNAw22DQUNBB0BLQYVgEaBRnr/dA4wF+5v0BzQaNAX0E9QJWi9z2+DhoNSdrQD1AC6ARqbD3gSVOMIS72ut4NNoKugM6AxoGOg2aC9oLWgE6BpoFNJwPDYBVRm6wZaCloIWueHO+3wqB3tBq0AHQdNzQd8BboMmmjA66BndlQFWg46nIhwLmgXaAroAqgiCfjHHJ0HFYLGW6AQZRGoHDQTdMnrOu9XOeKbTjmVL8pmqzkCtNGiPDfYMNAq8/rLGQXoOKcd0WWSgE0+LLX1N4dLQANA20HL7KzGIH1B1a6EQnPbAbjP0ZUZuMIiRO1NB30DvbS690DzvW5xzZY7q7YAfO9HUaAlJvoK6KPL5akpOQgqAtW6k9oSLddsirIRfjapK+21xA9uuSSCt0M+K7LC9T6rs+opq92eS3kD6KyVK3Yqq0HhsrvbrNh89gJ1BfXxfg/fm5QVxoD33fCVjvAd6BHoDmi/wSaDzoEe+DvLPVwLuga6mz9tgpMZVjntvRcWqMDKNti2Ov1t2TT/3c3kA7YmABu9FyPrsft5iMuptysi7i1wdnH/U2cRRsrRKU9MdPB6wKkFYKQe58FXrIPHXDM87CzC6NV+oDegPSa7p4s6+jmUjXKKUgs6orui/WIod0zs5DyMoXAR9MMW/Ru9GtM8f9znAgngXK228xdLuAS2ypxFdQAAAABJRU5ErkJggg=='
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrents>tbody>tr"
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: "td:nth-child(5)"
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+# TODO: the raw config cannot show NexusPHP's IMDb input (its `url` key is the page URL); check that `input[name="url"]` exists on the form.
+imdb:
+  selector: 'input[name="url"][type="text"]'
+torrent:
+  selector: 'input[name="file"]'
+# The form has no codec, medium, Douban, MediaInfo or anonymous fields.
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: "401"
+    tv: "402"
+    tvPack: "402"
+    cartoon: "405"
+    music: "408"
+    # TODO: there is also a 蓝光 category ("414"); check whether Blu-ray discs must go there instead of 电影/电视剧.
+resolution:
+  selector: 'select[name="standard_sel"]'
+  map:
+    2160p: "3"
+    1080p: "1"
+    1080i: "1"
+    720p: "2"
+team:
+  selector: 'select[name="team_sel"]'
+  map:
+    other: "1"
