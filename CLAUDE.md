@@ -62,6 +62,8 @@ The core data structure passed between source and target. Key fields: `title`, `
 
 ### Adding a New Supported Site
 
+For a "new site" issue, use the `site-config` skill (`.claude/skills/site-config/`): mapping rules are in `scripts/site-config/rules.md`, and `node scripts/generate-site-config.mjs <issue> --help` covers parsing the issue, validating the YAML, fetching the icon and opening a draft PR. `yarn icon <SiteName>` refetches a config's icon. Manual steps:
+
 1. Create `src/config/<SITENAME>.yaml` with selectors and value maps
 2. If the site uses a standard engine (NexusPHP, Unit3D, AVistaZ), existing extractors/fillers may work automatically
 3. For custom behavior, create `src/source/info-extractors/<SiteName>.ts` and/or `src/target/target-filler/<SiteName>.ts` extending the base class and registering with the registry

@@ -6,3 +6,4 @@ bun.lockb
 .yarn
 coverage
 .env
+.claude/settings.local.json
