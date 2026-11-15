@@ -1,0 +1,131 @@
+url: https://pt.novahd.top
+host: pt.novahd.top
+siteType: NexusPHP
+icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAADiklEQVQ4jaWVfUxTVxjGK8w/jVmiqGAQyAoSpB8gbqlzYkKcSQWtUmWFQQWG7TosRgy6MC4MpSoQR8immEYgWdR1KkFlfkVZcGB00tiW2q4dpbRAL18SIBSUe3mWW6sSQ63J3uQk9zzvfX/nOffmvIfFWiAA1iKACABBBDDPb3RmrmEFasTiQI1GE8hivc35jPmAtxr8F/oIT+FUbVTwROO+z50/5XD08qUfv04+b0jm9J0WqQzV8lKrpirlSV3eYl+gNy7GL+6MnP679Nl4s3zWWr57wv5rhbnnSs1nnoVuyzrGytbjr0Miaqj3X5ADfTJG927/HaBG7BGn/siRo1+NGd2JOesPidTY3csY7mxv6a/bHuq+JnVaFOH4TcSZHu61YXh4qNFrJsAncLzp6wJafwwvTJWU66yQ7ipJB/mobZa8o1ZONGwzdysicHk396XL3AXS5WzwC5y8uEuJhwcx3VFIT7ZkwyhfN+c8dxxDf/7eM/pL0qgpOwRXxbxZl9kAst9R79+hOklJN4kxod5KT11IhoOIhz6VjcHT+Rit/RI6SRCa9vCpAZMOpNN+3j+wdqPy5c8CWKRr6P7D0Rip3ICnqSGwbA+dcxXzoEtfiWYGaNRiwG7zD3x+cr1y5iQX7UnL6HbBcoyUroM5LwLGHSFwFa6FTrIC1/fyqD7dIzitJrV/YAXvgLs8Bo+FK+gbYUvQo2DDnh8G+xE+Bkr4eLp3OVrSeJSj4w5sTx58gMNjnAPu0mh0JgfRLXGrYS7aBrKQDXtBJHryP4FBsgo3v+JSlks1MF6qefVTCOI9wDLet1NENLSiYLpVyEOXKm/EVcwnHYowdMvC54zSUNxN51DGqhzoqnLPLwRcxJyS18doTBWf6z7OhV4STnVmbkRXuVQ7VCY4MVgUA3vBWvyzn41WaRxlqsyCoTq3zq/DsWrBN9OnEmDMYs/ocwWwlIjMrh+3xAx+z+0ePMqDVRFDP8hJmDVVZcNQLTvjG0iwPOJIhWDrZHEsetPDaWNmArTfJTYzOlnErXATcbApY6nH+z+lLCoJOsszTjE5jdfMgoFW4qPejLC8tsSVqvrNUbILaYJgRrcd4q9xyKKede+LxP2M+Be3FEJt29E0DpMj5juc1yh99jx4c3phUMS9Lcv2nPuCvelwSsqS9748f85snxlMZya8n2LB2v/ReD3BwCFmrgCWz/b/H4BcID3aC54/AAAAAElFTkSuQmCC'
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrents>tbody>tr"
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: "td:nth-child(5)"
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+# TODO: the raw config cannot show NexusPHP's IMDb input (its `url` key is the page URL); check that `input[name="url"]` exists on the form.
+imdb:
+  selector: 'input[name="url"][type="text"]'
+# PT-Gen field; gets the Douban link, as in Piggo.yaml.
+douban:
+  selector: 'input[name="pt_gen"]'
+mediaInfo:
+  selector: 'textarea[name="technical_info"]'
+torrent:
+  selector: 'input[name="file"]'
+# No anonymous-upload checkbox in the raw config.
+# TODO: tags — `tags[4][]` checkboxes collapsed into one entry in the raw config; map them from the real form.
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: "401"
+    tv: "402"
+    tvPack: "402"
+    variety: "403"
+    documentary: "404"
+    cartoon: "405"
+    # MV/演唱会
+    concert: "406"
+    sport: "407"
+    music: "409"
+    other: "410"
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    h264: "1"
+    x264: "1"
+    vc1: "2"
+    xvid: "3"
+    mpeg4: "3"
+    mpeg2: "4"
+    dvd: "4"
+    other: "5"
+    hevc: "6"
+    h265: "6"
+    x265: "6"
+audioCodec:
+  selector: 'select[name="audiocodec_sel[4]"]'
+  map:
+    flac: "1"
+    ape: "2"
+    dts: "3"
+    mp3: "4"
+    aac: "6"
+    # TrueHD Atmos
+    atmos: "8"
+    dd+: "9"
+    ac3: "10"
+    dd: "10"
+    lpcm: "11"
+    truehd: "12"
+    dtshdma: "13"
+    dtsx: "14"
+    wav: "15"
+    other: "15"
+videoType:
+  selector: 'select[name="medium_sel[4]"]'
+  map:
+    bluray: "1"
+    hddvd: "2"
+    remux: "3"
+    hdtv: "5"
+    encode: "7"
+    dvdrip: "7"
+    cd: "8"
+    uhdbluray: "10"
+    web: "11"
+    # TODO: the form has both "DVD" ("12") and "DVDR" ("6"); confirm which one DVD discs use.
+    dvd: "12"
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    1080p: "1"
+    1080i: "2"
+    720p: "3"
+    576p: "4"
+    480p: "4"
+    2160p: "5"
+    4320p: "6"
+team:
+  selector: 'select[name="team_sel[4]"]'
+  map:
+    hds: "1"
+    hdsky: "1"
+    chd: "2"
+    mysilu: "3"
+    wiki: "4"
+    other: "5"
+    frds: "6"
+    beast: "7"
+    cmct: "8"
+    tlf: "9"
+    mteam: "10"
+    beitai: "11"
+    agsv: "12"
+    hdhome: "13"
+    ttg: "14"
+    nhdweb: "15"
