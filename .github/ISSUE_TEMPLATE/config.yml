@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 新增支持站点 / Add a new site
+    url: https://github.com/xheiop/easy-upload/blob/master/CONTRIBUTING.md
+    about: 不再接受站点支持请求 Issue，请按贡献指南生成站点配置、测试后提交 PR。New-site requests are no longer accepted as issues; follow the contributing guide and open a tested pull request.

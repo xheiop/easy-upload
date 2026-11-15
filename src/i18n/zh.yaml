@@ -21,7 +21,7 @@ app.quickTransfer: 一键转种
 app.batchSearch: 批量检索
 app.batchSearchDesc: 同时打开多个搜索标签页
 app.exportPageConfig: 获取页面配置
-app.configCopied: 配置已复制到剪贴板,请黏贴到创建的Github Issue中
+app.configCopied: 页面配置已复制到剪贴板，可按仓库的 CONTRIBUTING.md 用它生成站点配置并提交 PR
 
 settings.targetSites: 转种站点启用
 settings.batchSites: 批量转种启用

@@ -3,6 +3,9 @@ description: "Suggest an idea for this project"
 labels: enhancement
 title: "[FEATURE]"
 body:
+  - type: markdown
+    attributes:
+      value: Requests for new site support are no longer accepted. To add a site, follow the [contributing guide](https://github.com/xheiop/easy-upload/blob/master/CONTRIBUTING-en.md) and open a tested pull request.
   - type: checkboxes
     attributes:
       label: Is there an existing issue for this?
