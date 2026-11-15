@@ -1,0 +1,136 @@
+url: https://pandapt.net
+host: pandapt.net
+siteType: NexusPHP
+icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAC9ElEQVQ4jZ2VP0jbQRTHYxKxGZz8E1EIgpsg6KCLtGRyEBwUFxdx8c/UKVDoYIvSSVARl1Yj0llcbCUV1EUXSZMhKrg00kBsojGB2NT87u73Le/ld+kvUQvtwePu3Xu/z7279/LiAPAMwGsAHwGsAwgqpYKGYfBMerUIIdhu6evWtwEAbgeAeZSGwH8O0zSltXxJwM+Wcq+UIqi4vr4W+/v7IplMsq73tcRiMXF0dCSKxaK2/7IYQQJ+opVSik/JZDLo6uqCw+HA8vJy6aT7ewghYBgGy8jICNunpqbYLqXUt1t3mKa5y/cVgoEHBwfsvLKywh5KKRSLRdzd3TFMj9HRUbS0tPBhtucKloE6wnQ6jfn50rMuLCwgEAggm82yfnp6irGxMXwJhZBMJrG4uKgPfQjUDytl6X13dnY4UpfThb29PY7wzews7zU0NCCRSJRvgMcirAaGw1/hbWqC//kLRCJRHB8fM9jX1ob+/n7kcjmdYfwVaDsV6e8J5H6kcJvNIhKJoFD4idS3OHK3WTvsaaB2oNM3NjY4GZatYr66usLNzY19TzwK1Fnc3t7mt/L7/dja2sL5+TkuLi4QjUbx4f17eJubsba2VgpNiKeBlhEzMzMMdLvdPNfX16OjowMejwdOp5P3Jicn2dcoBfEQSPk4OzvD0tISent7+SP6mMqGyoXK5OTkBJ2dnWzr6+vjJGUymUqgUoqBhmHInp6eisja29uRz+ftkWB6epptdXV1PA8PD1cCpZQMTKVSsrGxETU1NRyZhs7NzVm+wObmJu/b7T6fj5LHQOpO5QjpygMDA+xUW1vLYFq3trbqa2FiYqJU7C4XC62HhoYqI9TNgYCxWAxer5cdx8fHMTg4WP550bi8vMTq6ipnn3y6u7s5+zbgn+YgpaSik/F4XB4eHlJNUqGzWDVa1vP5vAyHw7JQKLBe3b7e6bIph/KPo7rBegC8BRCiZmsYxi4Jva0WuoVdaI98rIRSgw6ZpvmK/gJ+AyvOJDXYggueAAAAAElFTkSuQmCC'
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrents>tbody>tr"
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: "td:nth-child(5)"
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+# TODO: the raw config cannot show NexusPHP's IMDb input (its `url` key is the page URL); check that `input[name="url"]` exists on the form.
+imdb:
+  selector: 'input[name="url"][type="text"]'
+# PT-Gen field; gets the Douban link, as in Piggo.yaml.
+douban:
+  selector: 'input[name="pt_gen"]'
+mediaInfo:
+  selector: 'textarea[name="technical_info"]'
+torrent:
+  selector: 'input[name="file"]'
+# No anonymous-upload checkbox in the raw config.
+# TODO: tags — `tags[4][]` checkboxes collapsed into one entry in the raw config; map them from the real form.
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: "401"
+    tv: "402"
+    tvPack: "402"
+    variety: "403"
+    documentary: "404"
+    cartoon: "405"
+    sport: "407"
+    music: "408"
+    other: "409"
+    # 演唱会/音乐会. 音乐短片 ("406") is for music videos.
+    concert: "413"
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    h264: "1"
+    x264: "1"
+    vc1: "2"
+    xvid: "3"
+    mpeg4: "3"
+    mpeg2: "4"
+    dvd: "4"
+    other: "5"
+    hevc: "6"
+    h265: "6"
+    x265: "6"
+audioCodec:
+  selector: 'select[name="audiocodec_sel[4]"]'
+  map:
+    truehd: "1"
+    dtsx: "2"
+    # DTS-HD
+    dtshdma: "3"
+    dts: "4"
+    ac3: "5"
+    dd: "5"
+    dd+: "6"
+    aac: "7"
+    # TrueHD Atmos
+    atmos: "8"
+    lpcm: "9"
+    mp3: "10"
+    flac: "11"
+    ape: "12"
+    wav: "15"
+    other: "16"
+videoType:
+  selector: 'select[name="medium_sel[4]"]'
+  map:
+    bluray: "1"
+    hddvd: "2"
+    remux: "3"
+    # UHDTV ("12") cannot be told apart from HDTV.
+    hdtv: "5"
+    # DVDR
+    dvd: "6"
+    encode: "7"
+    dvdrip: "7"
+    cd: "8"
+    web: "10"
+    uhdbluray: "11"
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    1080p: "1"
+    1080i: "2"
+    720p: "3"
+    2160p: "5"
+    4320p: "6"
+    576p: "7"
+    480p: "7"
+area:
+  selector: 'select[name="source_sel[4]"]'
+  map:
+    US: "1"
+    EU: "1"
+    HK: "2"
+    TW: "2"
+    JP: "3"
+    KR: "4"
+    OT: "6"
+    CN: "7"
+team:
+  selector: 'select[name="team_sel[4]"]'
+  map:
+    # TODO: three options are all named Panda (压制组 "1", 原盘diy组 "6", 原盘Remux组 "10"); only the encode one is mapped.
+    panda: "1"
+    other: "5"
+    # 流媒体组; "19" is the per-episode variant.
+    ailmweb: "7"
+    ailmtv: "8"
+    ailmupscale: "14"
+    catedu: "15"
