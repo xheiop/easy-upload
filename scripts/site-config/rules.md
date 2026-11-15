@@ -14,18 +14,57 @@ Also look at two or three existing configs of the same engine whose form uses th
 
 ## Input: the raw config
 
-The raw config is produced by the "[EASY-UPLOAD] Retrieve Site Config" button (`src/site-dom/analyze-upload-page.tsx`). It is a YAML map with one entry per named form control on the upload page:
+The raw config is produced by the "[EASY-UPLOAD] Retrieve Site Config" button (`src/site-dom/collect-form-controls.ts`). `node scripts/generate-site-config.mjs <issue> --context` prints it and says which format it is (`rawFormat`). Current issues use v2:
+
+```yaml
+version: 2
+page:
+  url: https://example.com
+  host: example.com
+  uploadPath: /upload.php
+fields:
+  - name: url                   # the control's name attribute
+    selector: input[name="url"] # selector for exactly this control
+    tag: input                  # input | select | textarea
+    type: text                  # inputs only
+  - name: type
+    selector: "#browsecat"
+    tag: select
+    id: browsecat
+    options: [{ text: Movies/电影, value: "401" }, ...]
+  - name: tags[4][]
+    selector: input[name="tags[4][]"][value="5"]
+    tag: input
+    type: checkbox
+    value: "5"                  # checkboxes and radio buttons only
+    label: 中字
+```
+
+- `page` holds the page metadata; `fields` lists every named control on the page in document order. Several entries can share a `name`.
+- `selector` matches only that control. It is the plain `tag[name="…"]` selector when the name is unique, otherwise `[value="…"]` for a checkbox or radio button, `#id`, `[type="…"]`, or the name selector scoped to an ancestor's id. Use it as given. In the rare case that no unique selector exists, the entry has an `index` (its position among the matches of `selector`); flag such a field with a `# TODO:` instead of using it.
+- `id` is listed whenever the control has one, `label` when the page labels it.
+
+### Things to watch for in v2
+
+1. **Multi-section NexusPHP pages** have one `<select name="type">` per section, usually `#browsecat` (movies/TV, mode 4) and `#specialcat` (music, books, software, mode 5). The section's other dropdowns and tags carry its mode number (`medium_sel[4]`, `tags[4][]`; `source_sel[5]`). Map `category` from the video section's select and use its `#id` selector, never `select[name="type"]`, which matches both. The validator warns about selectors that match several controls.
+2. **Tags**: each checkbox is its own entry with `value` and `label`. Map labels to tag keys (中字 → `chinese_subtitle`, 国语 → `chinese_audio`, DIY → `diy`, HDR → `hdr`, …) and use the checkbox's selector, e.g. `input[name="tags[4][]"][value="5"]`. A selector that matches the whole group would tick every box, so the validator rejects it.
+3. **IMDb**: on NexusPHP it is the input named `url`, which v2 lists like any other field.
+4. Irrelevant controls are included too: the header search box, hidden tokens, BBCode toolbar buttons (`b`, `i`, `u`, `IMG`, `list`, `quote`, ...), bonus/sticky/promotion selects, NFO uploads, season/episode inputs. Ignore them.
+
+### Older raw configs (v1)
+
+Issues filed before v2 have a single map keyed by control name, with `url`, `host` and `uploadPath` at the top level next to the fields:
 
 - `<select>`: `<name>: { selector: 'select[name="<name>"]', options: [{ text, value }, ...] }`
 - `<input>`: `<name>: { selector: 'input[name="<name>"]', type, label }`
 - `<textarea>`: `<name>: { selector: 'textarea[name="<name>"]' }`
-- plus the top-level `url`, `host` and `uploadPath` of the page.
 
-Known gaps in the raw config:
+Controls that share a name overwrote each other, which leaves these gaps:
 
-1. The top-level `url` overwrites any form field that is also named `url`. On NexusPHP the IMDb link input is `input[name="url"]`, so it is missing from the raw config. For NexusPHP sites use `imdb: { selector: 'input[name="url"][type="text"]' }` unless the raw config shows a different IMDb field.
-2. Inputs that share a name collapse into a single entry, losing their individual values and labels (for example tag checkbox groups such as `tags[4][]` or `tag_list[]`). Do not invent per-tag selectors from such an entry. Only fill `tags` from individually named checkboxes; otherwise leave `tags` out and add a `# TODO: tags` comment.
-3. Irrelevant controls are included too: hidden tokens, BBCode toolbar buttons (`b`, `i`, `u`, `IMG`, `list`, `quote`, ...), bonus/sticky/promotion selects, NFO uploads, season/episode inputs. Ignore them.
+1. The top-level `url` overwrote the form field named `url`. On NexusPHP that is the IMDb input, so it is missing. For NexusPHP sites use `imdb: { selector: 'input[name="url"][type="text"]' }` unless the raw config shows a different IMDb field. The validator accepts this one guess for v1 raw configs only.
+2. Checkboxes that share a name (`tags[4][]`, `tag_list[]`) collapsed into a single entry with one label and no values. Do not invent per-tag selectors from such an entry: leave `tags` out and add a `# TODO: tags` comment.
+3. On multi-section NexusPHP pages the second `<select name="type">` (`#specialcat`) overwrote the first (`#browsecat`). If `type` lists only music/books/software while the `[4]` selects (`medium_sel[4]`, `codec_sel[4]`, …) are clearly video, the video categories are lost. Leave `category` as a `# TODO:` and ask the reporter to re-run the button with the current easy-upload release; do not guess category values.
+4. Irrelevant controls are included as in v2.
 
 ## Output schema
 
@@ -49,11 +88,11 @@ The output YAML follows the `Site.SiteInfo` TypeScript interface (`src/types/ind
 - `mediaInfo`: `{ selector }`, a dedicated MediaInfo textarea (omit if absent)
 - `anonymous`: `{ selector }`, the anonymous upload checkbox (NexusPHP `uplver`; omit if absent)
 - `torrent`: `{ selector }`, the .torrent file input
-- `tags`: map of tag key to the CSS selector of its checkbox
+- `tags`: map of tag key to the CSS selector of its checkbox (the checkbox's own `selector` from a v2 raw config)
 - `category`: `{ selector, map }`
 - `videoCodec`, `audioCodec`, `videoType`, `resolution`, `source`, `area`, `team`: `{ selector, map }`. Omit `selector` when the site has no dedicated dropdown for that attribute (see the intersection logic below); omit the whole field when the site has no such concept at all.
 
-Selectors come directly from the raw config. Do not invent selectors for fields the raw config does not contain (the NexusPHP IMDb case above is the only exception).
+Selectors come directly from the raw config. Do not invent selectors for fields the raw config does not contain (the NexusPHP IMDb case for v1 raw configs is the only exception).
 
 ## Semantic keys
 

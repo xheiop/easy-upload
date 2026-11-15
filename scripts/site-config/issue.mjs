@@ -1,4 +1,5 @@
 import YAML from 'yaml';
+import { normalizeRaw, rawPage } from './raw.mjs';
 
 export const SITE_TYPES = ['NexusPHP', 'UNIT3D', 'Gazelle', 'Other'];
 
@@ -94,7 +95,8 @@ export function parseIssue({ title = '', body = '' }) {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) {
     throw new IssueFormatError('The site configuration is not a YAML map.');
   }
-  if (!raw.url && !raw.host) {
+  const { version, page } = normalizeRaw(raw);
+  if (!page.url && !page.host) {
     throw new IssueFormatError(
       'The site configuration has no `url`/`host`; it does not look like the output of the "Retrieve Site Config" button.',
     );
@@ -105,14 +107,17 @@ export function parseIssue({ title = '', body = '' }) {
     siteType,
     rawYaml,
     raw,
+    rawVersion: version,
     notes: cleanNotes(pickSection(sections, SECTION_ALIASES.notes)),
   };
 }
 
+/** Host of the uploaded page, from a raw config in either shape. */
 function hostOf(raw) {
-  if (raw.host) return String(raw.host);
+  const page = rawPage(raw);
+  if (page.host) return page.host;
   try {
-    return new URL(String(raw.url)).host;
+    return new URL(page.url).host;
   } catch {
     return '';
   }
