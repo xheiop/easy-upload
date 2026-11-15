@@ -33,7 +33,7 @@ Open your AI coding assistant in the repository and ask something like:
 Follow scripts/site-config/rules.md to write src/config/<SiteName>.yaml from <SiteName>.raw.yaml. Validate it with yarn site-config and fix every error.
 ```
 
-- Tools that read `AGENTS.md` (Codex, Cursor, GitHub Copilot, ...) and Claude Code (through its `site-config` skill) find the guide on their own. Point any other tool at `scripts/site-config/rules.md` first
+- The repository ships a `site-config` skill in the Agent Skills format at `.agents/skills/site-config/`. Codex, GitHub Copilot, Cursor and Gemini CLI load it on their own, and Claude Code loads it through the `.claude/skills/site-config` symlink. Tools that read `AGENTS.md` find the guide too. Point any other tool at `scripts/site-config/rules.md` first
 - The site name becomes the site key shown in the UI and saved in users' settings, so it is hard to change later. Follow the style of the existing names in `src/config/`, such as `HDHome`, `PTer` or `qingwa`
 - You can also write the config by hand following `scripts/site-config/rules.md`
 

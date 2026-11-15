@@ -33,7 +33,7 @@
 按照 scripts/site-config/rules.md，根据 <站点名>.raw.yaml 生成 src/config/<站点名>.yaml，用 yarn site-config 校验并修复所有错误。
 ```
 
-- 支持 `AGENTS.md` 的工具（Codex、Cursor、GitHub Copilot 等）和 Claude Code（`site-config` skill）会自动找到这份规则；其他工具先让它读 `scripts/site-config/rules.md` 即可
+- 仓库带有 `site-config` skill（Agent Skills 格式，位于 `.agents/skills/site-config/`），Codex、GitHub Copilot、Cursor、Gemini CLI 会自动加载，Claude Code 通过软链接 `.claude/skills/site-config` 加载；读取 `AGENTS.md` 的工具也能找到这份规则。其他工具先让它读 `scripts/site-config/rules.md` 即可
 - 站点名会成为界面上显示、用户设置里保存的站点 key，之后很难修改。请参考 `src/config/` 里已有的命名，例如 `HDHome`、`PTer`、`qingwa`
 - 不用 AI 也可以，按 `scripts/site-config/rules.md` 手写
 

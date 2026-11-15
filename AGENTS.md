@@ -65,7 +65,7 @@ The core data structure passed between source and target. Key fields: `title`, `
 
 New sites arrive as pull requests that the contributor has tested on the real upload page; new-site issues are no longer accepted. `CONTRIBUTING.md` describes the process for contributors.
 
-To write or fix a site config, follow `scripts/site-config/rules.md`: the workflow, the raw config format produced by the "[EASY-UPLOAD] Retrieve Site Config" button, the output schema and the mapping rules. `yarn site-config --raw <file> --name <Name>` validates the config against the raw config and fetches the icon; `yarn icon <SiteName>` refetches an icon. In short:
+To write or fix a site config, follow `scripts/site-config/rules.md`: the workflow, the raw config format produced by the "[EASY-UPLOAD] Retrieve Site Config" button, the output schema and the mapping rules. The `site-config` skill in `.agents/skills/` (symlinked from `.claude/skills/` for Claude Code) points there too. `yarn site-config --raw <file> --name <Name>` validates the config against the raw config and fetches the icon; `yarn icon <SiteName>` refetches an icon. In short:
 
 1. Create `src/config/<SITENAME>.yaml` with selectors and value maps
 2. If the site uses a standard engine (NexusPHP, Unit3D, AVistaZ), existing extractors/fillers may work automatically
