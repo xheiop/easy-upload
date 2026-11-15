@@ -1,431 +1,308 @@
-import Anthropic from '@anthropic-ai/sdk';
-import yaml from 'js-yaml';
+#!/usr/bin/env node
+/**
+ * Deterministic helpers for turning a "new site" GitHub issue into
+ * src/config/<Name>.yaml. The mapping itself is written by hand or by Claude
+ * Code (see .claude/skills/site-config and scripts/site-config/rules.md):
+ *
+ *   --context  issue ─► parsed raw config, site type, suggested name
+ *   (default)  YAML ─► validate against the raw config ─► fetch icon ─► write
+ *   --pr       ... ─► commit to feat/new-site-<name> ─► draft PR
+ *
+ * Run with --help for usage.
+ */
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import got from 'got';
-import decodeIco from 'decode-ico';
-import sharp from 'sharp';
+import { parseArgs } from 'util';
+import YAML from 'yaml';
+import {
+  parseIssue,
+  suggestSiteName,
+  hostOf,
+  IssueFormatError,
+} from './site-config/issue.mjs';
+import {
+  CONFIG_DIR,
+  loadExistingConfigs,
+  collectVocabulary,
+  findSameHost,
+  validateConfig,
+} from './site-config/validate.mjs';
+import { fetchIconDataUri, hasIcon, injectIcon } from './site-config/icon.mjs';
+import {
+  resolveRepo,
+  fetchIssue,
+  upsertDraftPR,
+} from './site-config/github.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const HELP = `Usage: node scripts/generate-site-config.mjs <issue-number> [options]
 
-// ── Env ──────────────────────────────────────────────────────────────────────
-const ANTHROPIC_BASE_URL = process.env.ANTHROPIC_BASE_URL;
-const ANTHROPIC_AUTH_TOKEN = process.env.ANTHROPIC_AUTH_TOKEN;
-const ISSUE_BODY = process.env.ISSUE_BODY || '';
-const ISSUE_NUMBER = process.env.ISSUE_NUMBER;
-const ISSUE_TITLE = process.env.ISSUE_TITLE || '';
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const REPO = process.env.REPO; // "owner/repo"
+Helpers for turning a "new site" issue into src/config/<Name>.yaml. Write the
+mapping by hand or with Claude Code (.claude/skills/site-config), following
+scripts/site-config/rules.md; this script does the deterministic parts.
 
-if (!ANTHROPIC_BASE_URL) throw new Error('Missing ANTHROPIC_BASE_URL');
-if (!ANTHROPIC_AUTH_TOKEN) throw new Error('Missing ANTHROPIC_AUTH_TOKEN');
-if (!GITHUB_TOKEN) throw new Error('Missing GITHUB_TOKEN');
-if (!REPO) throw new Error('Missing REPO');
-if (!ISSUE_NUMBER) throw new Error('Missing ISSUE_NUMBER');
+Modes:
+  --context            Print the parsed issue (site type, suggested name, notes, raw config)
+  (default)            Validate src/config/<Name>.yaml against the issue's raw config,
+                       fetch the icon if it is empty, and write the file back
 
-// ── Parse issue body ──────────────────────────────────────────────────────────
+Options:
+  --name <Name>        Config file name = site key (default: guessed from the issue title)
+  --from <file>        Validate this file instead; the result goes to src/config/<Name>.yaml
+  --dry-run            Print the result instead of writing it
+  --force              Ignore an already configured host or an existing file with that name
+  --no-icon            Do not fetch the favicon
+  --pr                 Then commit the file to feat/new-site-<name> and open a draft PR
+  --repo <owner/name>  GitHub repository (default: the current gh repo)
+  --body-file <file>   Read the issue body from a file instead of GitHub (title via --title)
+  --title <text>       Issue title to use with --body-file
+  -h, --help           Show this help
 
-/**
- * Extract the raw YAML block from the issue body.
- * The issue template puts it in a "Site Configuration" section wrapped in ```yaml ... ```.
- */
-function extractRawYaml(body) {
-  const match = body.match(/```yaml\s*([\s\S]*?)```/);
-  if (!match) return null;
-  return match[1].trim();
-}
+Reading issues and opening PRs needs gh to be logged in.
+`;
 
-/**
- * Extract the site type (NexusPHP / UNIT3D / Gazelle / Other) from the issue body.
- * GitHub issue forms render dropdown selections as plain text lines.
- */
-function extractSiteType(body) {
-  for (const type of ['NexusPHP', 'UNIT3D', 'Gazelle', 'Other']) {
-    if (body.includes(type)) return type;
+const log = (...args) => console.error(...args);
+
+/** An expected stop (bad issue, site already exists...): print the message, no stack. */
+class Problem extends Error {}
+
+function parseCli() {
+  const { values, positionals } = parseArgs({
+    allowPositionals: true,
+    options: {
+      name: { type: 'string' },
+      from: { type: 'string' },
+      context: { type: 'boolean' },
+      'dry-run': { type: 'boolean' },
+      force: { type: 'boolean' },
+      'no-icon': { type: 'boolean' },
+      pr: { type: 'boolean' },
+      repo: { type: 'string' },
+      'body-file': { type: 'string' },
+      title: { type: 'string' },
+      help: { type: 'boolean', short: 'h' },
+    },
+  });
+  const issueNumber = positionals[0];
+  if (issueNumber && !/^\d+$/.test(issueNumber)) {
+    throw new Error(`Invalid issue number: ${issueNumber}`);
   }
-  return 'Other';
+  return { opts: values, issueNumber };
 }
 
-// ── Few-shot examples ────────────────────────────────────────────────────────
+function validationMarkdown({ errors, warnings }) {
+  if (!errors.length && !warnings.length) {
+    return '✅ The validator found no problems.';
+  }
+  return [
+    ...errors.map((e) => `- ❌ ${e}`),
+    ...warnings.map((w) => `- ⚠️ ${w}`),
+  ].join('\n');
+}
 
-const PTHOME_YAML = fs.readFileSync(
-  path.join(__dirname, '../src/config/PTHome.yaml'),
-  'utf8',
-);
-const HDHOME_YAML = fs.readFileSync(
-  path.join(__dirname, '../src/config/HDHome.yaml'),
-  'utf8',
-);
-const BLUTOPIA_YAML = fs.readFileSync(
-  path.join(__dirname, '../src/config/Blutopia.yaml'),
-  'utf8',
-);
+function printReport({ errors, warnings }) {
+  if (!errors.length && !warnings.length) log('✓ Validator found no problems.');
+  errors.forEach((e) => log(`✗ ${e}`));
+  warnings.forEach((w) => log(`! ${w}`));
+}
 
-// ── Prompt ───────────────────────────────────────────────────────────────────
+function prBody({ name, host, issue, result }) {
+  return [
+    `## New site: ${name} (${host})`,
+    '',
+    `Config for #${issue.number}, validated by \`scripts/generate-site-config.mjs\` against the raw config in the issue.`,
+    '',
+    '### Validator',
+    validationMarkdown(result),
+    '',
+    '### Review checklist',
+    '- [ ] Every ❌ above is fixed and every `# TODO` comment is resolved',
+    '- [ ] `category` / `videoType` / `resolution` maps select the right options (watch combined categories)',
+    '- [ ] `videoCodec` / `audioCodec` / `source` maps are correct',
+    '- [ ] Selectors point at the right fields (`imdb`, `anonymous`, `tags` in particular)',
+    '- [ ] `icon` is filled in',
+    '- [ ] Tested by filling the upload form on the real site',
+    '',
+    `Re-validate after editing: \`node scripts/generate-site-config.mjs ${issue.number} --name ${name}\``,
+    '',
+    `Closes #${issue.number}`,
+  ].join('\n');
+}
 
-const SYSTEM_PROMPT = `You are an expert at configuring the easy-upload userscript, which automates cross-tracker torrent uploading between private torrent trackers (PT sites).
+function branchFor(name, host) {
+  const slug = name
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  const fallback = host.replace(/[^a-z0-9.-]+/gi, '-').toLowerCase();
+  return `feat/new-site-${slug || fallback}`;
+}
 
-Your task is to convert a raw site configuration (scraped from an upload page by the analyze-upload-page tool) into a properly formatted easy-upload YAML config file.
+function loadIssue(opts, issueNumber, getRepo) {
+  if (opts['body-file']) {
+    return {
+      number: issueNumber ? Number(issueNumber) : undefined,
+      title: opts.title || '',
+      body: fs.readFileSync(opts['body-file'], 'utf8'),
+      url: '',
+    };
+  }
+  return fetchIssue(getRepo(), issueNumber);
+}
 
-## Schema
+async function run({ opts, issueNumber, getRepo }) {
+  if (!issueNumber && !opts['body-file']) {
+    throw new Error('Pass an issue number (or --body-file). See --help.');
+  }
+  if (opts.pr && !issueNumber) throw new Error('--pr needs an issue number.');
+  if (opts.pr && opts['dry-run']) {
+    throw new Error('--pr and --dry-run cannot be combined.');
+  }
 
-The output YAML must follow the \`Site.SiteInfo\` TypeScript interface. Key fields:
-
-- \`url\`: full site URL (e.g. https://example.com)
-- \`host\`: hostname only (e.g. example.com)
-- \`siteType\`: NexusPHP | UNIT3D | Gazelle | Other
-- \`icon\`: leave as empty string "" — the maintainer fills this by running \`node ./scripts/icoFetcher.js <SiteName>\`
-- \`asSource\`: false
-- \`asTarget\`: true
-- \`uploadPath\`: path from the raw config
-- \`seedDomSelector\`: CSS selector for where to insert the script UI (e.g. \`'#top~table:first>tbody>tr:nth-child(3)'\`); leave as "#top~table:first>tbody>tr:nth-child(6)" if unknown and the site has a NexusPHP-style upload form, otherwise leave as empty string ""
-- \`search\`: search config with \`path\`, optional \`imdbOptionKey\`/\`nameOptionKey\`, \`params\`, \`result\`
-- \`name\`: { selector } — title input
-- \`subtitle\`: { selector } — subtitle/aka input
-- \`description\`: { selector } — description textarea
-- \`imdb\`: { selector } — IMDb URL/ID input
-- \`douban\`: { selector } — Douban ID input (omit if absent)
-- \`anonymous\`: { selector } — anonymous upload toggle (omit if absent)
-- \`torrent\`: { selector } — .torrent file input
-- \`tags\`: map of tag key → CSS selector for checkbox inputs
-- \`category\`: { selector, map }
-- \`videoCodec\`: { selector, map } — omit selector if no dedicated dropdown
-- \`audioCodec\`: { selector, map } — omit selector if no dedicated dropdown
-- \`source\`: { selector, map } — physical/digital source dropdown (NexusPHP sites often have \`source_sel\`)
-- \`videoType\`: { selector, map } — omit selector if no dedicated dropdown
-- \`resolution\`: { selector, map } — omit selector if no dedicated dropdown
-- \`area\`: { selector, map } — region/area dropdown (omit if absent)
-- \`team\`: { selector, map } — encode group dropdown (omit if absent)
-
-## Semantic key reference
-
-**category**: movie, tv, tvPack, documentary, concert, sport, cartoon(anime), variety, music, other
-**videoCodec**: h264, x264, hevc, x265, h265, mpeg2, vc1, xvid, dvd
-**audioCodec**: aac, ac3, dd, dd+, flac, dts, truehd, lpcm, dtshdma, atmos, dtsx
-**videoType**: bluray, remux, encode, web, hdtv, dvd, dvdrip, uhdbluray, other
-**source**: uhdbluray, bluray, hdtv, dvd, web, vhs, hddvd
-**resolution**: 4320p, 2160p, 1080p, 1080i, 720p, 576p, 480p
-**area**: CN, US, EU, HK, TW, JP, KR, OT
-**tags**: chinese_audio, cantonese_audio, chinese_subtitle, diy, hdr, hdr10_plus, dolby_vision
-
-## Critical: intersection filtering logic
-
-PT sites — especially NexusPHP — often combine multiple attributes into a single category dropdown.
-For example, a site may have categories like: "Movies Blu-ray 1080p", "Movies Remux 2160p", "TV Encode 720p".
-In these cases there are NO separate dropdowns for videoType or resolution; they are encoded in the category.
-
-easy-upload resolves the correct category value by taking the **intersection** of the arrays
-from all applicable attribute maps (category ∩ videoType ∩ resolution ∩ ...).
-
-**How to build arrays for multi-attribute sites:**
-
-1. In \`category.map\`, list ALL category option values that belong to each semantic type.
-   e.g. \`movie\` gets every option value whose text begins with "Movie" or "Movies".
-
-2. For \`videoType\`, \`resolution\`, \`videoCodec\`, etc.:
-   - If the site HAS a dedicated dropdown for that attribute, put its option value as the **first element** of the array (this is critical — the first element is used to fill the separate dropdown).
-   - Then append every category option value whose text implies that attribute.
-   - Example: resolution 1080p on a site with both a resolution dropdown and mixed categories →
-     \`['2', '414', '420', '429']\` where \`'2'\` is the resolution dropdown value and the rest
-     are category option values whose text contains "1080p".
-
-3. If the site does NOT have a dedicated dropdown for that attribute, omit the \`selector\`
-   key entirely and only provide a \`map\` with the relevant category option values.
-
-4. The intersection logic finds which single category value appears in ALL relevant maps,
-   giving the precise category option to select.
-
-**Identifying mixed-attribute categories:**
-- Option texts like "Movies Remux 1080p", "TV Encode 720p", "Documentaries Blu-ray 4K"
-  are clear signals that the category mixes type + resolution (and possibly more).
-- In such cases, omit \`selector\` from \`videoType\` and \`resolution\` and build their maps
-  from the category option values.
-
-## General mapping rules
-
-1. Read each option's \`text\` carefully to identify its semantic meaning.
-2. The option's \`value\` is what goes into the map.
-3. An option matching multiple semantics (e.g. "H.264 / x264") → include under both keys.
-4. If you cannot confidently map an option, add a \`# TODO:\` YAML comment on that line.
-5. Only include top-level fields that are present in the raw config.
-6. Selectors come directly from the raw config.
-
-## Few-shot examples
-
-### Example 1: NexusPHP site with separate dropdowns for each attribute (PTHome)
-
-\`\`\`yaml
-${PTHOME_YAML}\`\`\`
-
-### Example 2: NexusPHP site with mixed-attribute categories requiring intersection (HDHome)
-
-\`\`\`yaml
-${HDHOME_YAML}\`\`\`
-
-### Example 3: UNIT3D site (Blutopia)
-
-\`\`\`yaml
-${BLUTOPIA_YAML}\`\`\`
-
-## Output format
-
-Respond with ONLY the final YAML — no explanation, no markdown fences, no commentary outside the YAML.
-The first line of your response must be \`url:\`.`;
-
-// ── Favicon fetcher ───────────────────────────────────────────────────────────
-
-async function fetchFaviconBase64(siteUrl) {
+  // 1. Issue
+  const issue = loadIssue(opts, issueNumber, getRepo);
+  let parsed;
   try {
-    const imgBuffer = await got(`${siteUrl}/favicon.ico`, {
-      responseType: 'buffer',
-    }).buffer();
-
-    const imgList = decodeIco(imgBuffer);
-    if (imgList.length === 0) return null;
-
-    const icon = imgList[0];
-    const nonPngIcons = sharp(icon.data, {
-      raw: {
-        width: icon.width,
-        height: icon.height,
-        channels: 4,
-      },
-    });
-    const sharpImg = icon.type === 'png' ? sharp(icon.data) : nonPngIcons;
-
-    const pngBuffer = await sharpImg.resize({ width: 20 }).png().toBuffer();
-    return `data:image/png;base64,${pngBuffer.toString('base64')}`;
+    parsed = parseIssue(issue);
   } catch (err) {
-    console.warn(`Failed to fetch favicon from ${siteUrl}: ${err.message}`);
-    return null;
-  }
-}
-
-// ── Claude API call ──────────────────────────────────────────────────────────
-
-async function generateConfig(rawYaml, siteType) {
-  const client = new Anthropic({
-    authToken: ANTHROPIC_AUTH_TOKEN,
-    baseURL: ANTHROPIC_BASE_URL,
-  });
-
-  const userMessage = `Convert this raw site config to easy-upload format.
-
-Site type: ${siteType}
-
-Raw config:
-${rawYaml}`;
-
-  const response = await client.messages.create({
-    model: 'claude-sonnet-4-6',
-    max_tokens: 4096,
-    system: SYSTEM_PROMPT,
-    messages: [{ role: 'user', content: userMessage }],
-  });
-
-  return response.content[0].text.trim();
-}
-
-// ── GitHub API helpers ───────────────────────────────────────────────────────
-
-const GH_API = 'https://api.github.com';
-const GH_HEADERS = {
-  Authorization: `Bearer ${GITHUB_TOKEN}`,
-  Accept: 'application/vnd.github+json',
-  'X-GitHub-Api-Version': '2022-11-28',
-  'Content-Type': 'application/json',
-};
-
-async function ghFetch(path, options = {}) {
-  const res = await fetch(`${GH_API}${path}`, {
-    ...options,
-    headers: { ...GH_HEADERS, ...(options.headers || {}) },
-  });
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`GitHub API ${path} → ${res.status}: ${text}`);
-  }
-  return res.json();
-}
-
-async function postComment(body) {
-  await ghFetch(`/repos/${REPO}/issues/${ISSUE_NUMBER}/comments`, {
-    method: 'POST',
-    body: JSON.stringify({ body }),
-  });
-}
-
-async function getDefaultBranch() {
-  const repo = await ghFetch(`/repos/${REPO}`);
-  return repo.default_branch;
-}
-
-async function getBranchSha(branch) {
-  const ref = await ghFetch(
-    `/repos/${REPO}/git/ref/heads/${encodeURIComponent(branch)}`,
-  );
-  return ref.object.sha;
-}
-
-async function createBranch(branchName, sha) {
-  await ghFetch(`/repos/${REPO}/git/refs`, {
-    method: 'POST',
-    body: JSON.stringify({ ref: `refs/heads/${branchName}`, sha }),
-  });
-}
-
-async function createFile(branchName, filePath, content, commitMessage) {
-  const encoded = Buffer.from(content, 'utf8').toString('base64');
-  await ghFetch(`/repos/${REPO}/contents/${filePath}`, {
-    method: 'PUT',
-    body: JSON.stringify({
-      message: commitMessage,
-      content: encoded,
-      branch: branchName,
-    }),
-  });
-}
-
-async function createDraftPR(branchName, defaultBranch, title, body) {
-  return ghFetch(`/repos/${REPO}/pulls`, {
-    method: 'POST',
-    body: JSON.stringify({
-      title,
-      body,
-      head: branchName,
-      base: defaultBranch,
-      draft: true,
-    }),
-  });
-}
-
-// ── Main ─────────────────────────────────────────────────────────────────────
-
-async function main() {
-  // 1. Parse issue
-  const rawYaml = extractRawYaml(ISSUE_BODY);
-  if (!rawYaml) {
-    await postComment(
-      '> [!WARNING]\n> Could not find a YAML code block in the issue body. ' +
-        'Please paste the output of the **[EASY-UPLOAD] Retrieve Site Config** button ' +
-        'inside a ` ```yaml ``` ` block under the "Site Configuration" section.',
-    );
-    process.exit(0);
-  }
-
-  const siteType = extractSiteType(ISSUE_BODY);
-  console.log(`Detected site type: ${siteType}`);
-  console.log(`Raw YAML length: ${rawYaml.length} chars`);
-
-  // 2. Call Claude
-  let generatedYaml;
-  try {
-    generatedYaml = await generateConfig(rawYaml, siteType);
-  } catch (err) {
-    await postComment(
-      `> [!ERROR]\n> Failed to call Claude API: ${err.message}\n\nPlease ask the maintainer to run the generation manually.`,
-    );
+    if (err instanceof IssueFormatError) {
+      throw new Problem(
+        `${err.message} Ask the reporter to paste the output of the "[EASY-UPLOAD] Retrieve Site Config" button.`,
+      );
+    }
     throw err;
   }
+  const host = hostOf(parsed.raw);
+  const name = opts.name || suggestSiteName(issue.title, parsed.raw);
+  if (/[\\/]/.test(name) || name.startsWith('.')) {
+    throw new Error(`Invalid site name: ${name}`);
+  }
+  const relPath = `src/config/${name}.yaml`;
+  const outPath = path.join(CONFIG_DIR, `${name}.yaml`);
 
-  // 3. Extract host from generated YAML for branch/file naming
-  let host;
-  let siteUrl;
-  try {
-    const parsed = yaml.load(generatedYaml);
-    host = parsed.host;
-    siteUrl = parsed.url;
-    if (!host) throw new Error('No host field in generated YAML');
-  } catch (err) {
-    await postComment(
-      `> [!WARNING]\n> Claude returned YAML that could not be parsed: ${err.message}\n\nHere is the raw output for manual review:\n\n\`\`\`yaml\n${generatedYaml}\n\`\`\``,
+  const existing = loadExistingConfigs();
+  const sameName = (e) => e.name.toLowerCase() === name.toLowerCase();
+
+  log(`Issue ${issue.number ? `#${issue.number} ` : ''}${issue.title}`);
+  log(`Site: ${host} (${parsed.siteType}) -> ${relPath}`);
+
+  // 2. Context mode
+  if (opts.context) {
+    const existingFile = existing.find(sameName)?.file;
+    const configuredAs = findSameHost(existing, host);
+    const header = {
+      issue: issue.number ? `#${issue.number} ${issue.title}` : issue.title,
+      issueUrl: issue.url || undefined,
+      siteType: parsed.siteType,
+      host,
+      suggestedName: name,
+      output: existingFile
+        ? `src/config/${existingFile} (exists)`
+        : `${relPath} (new)`,
+      alreadyConfiguredAs: configuredAs.length ? configuredAs : undefined,
+      notes: parsed.notes || undefined,
+    };
+    process.stdout.write(
+      `${YAML.stringify(JSON.parse(JSON.stringify(header)))}\n# Raw config from the issue\n${parsed.rawYaml}\n`,
     );
-    process.exit(0);
+    return;
   }
 
-  // Fetch favicon and inject into icon field
-  if (siteUrl) {
-    const iconBase64 = await fetchFaviconBase64(siteUrl);
-    if (iconBase64) {
-      const iconLine = `icon: '${iconBase64}'`;
-      if (/^icon:/m.test(generatedYaml)) {
-        generatedYaml = generatedYaml.replace(/^icon:.*$/m, iconLine);
-      } else {
-        generatedYaml = generatedYaml.replace(
-          /^(url:.*\n)/m,
-          `$1${iconLine}\n`,
-        );
-      }
-      console.log('Favicon fetched and injected into icon field');
+  // 3. Refuse to duplicate an existing site. The file being validated does not
+  // count when it lives in src/config (real on-disk name: macOS is case-insensitive).
+  const inputPath = opts.from
+    ? fs.realpathSync.native(opts.from)
+    : fs.existsSync(outPath) && fs.realpathSync.native(outPath);
+  const inputName =
+    inputPath && path.dirname(inputPath) === fs.realpathSync.native(CONFIG_DIR)
+      ? path.basename(inputPath, '.yaml')
+      : null;
+  const others = existing.filter((e) => e.name !== inputName);
+  const clash = others.find(sameName);
+  const sameHost = findSameHost(others, host);
+  if (!inputPath) {
+    throw new Problem(
+      `${relPath} does not exist yet. Write it first (see .claude/skills/site-config), pass --from <file>, or run with --context.`,
+    );
+  }
+  if (sameHost.length && !opts.force) {
+    const where = sameHost.map((n) => `src/config/${n}.yaml`).join(', ');
+    throw new Problem(
+      `${host} is already configured in ${where}. Use --force to continue anyway.`,
+    );
+  }
+  if (clash && !opts.force && !opts['dry-run']) {
+    throw new Problem(
+      `src/config/${clash.file} already exists. Pick another --name or pass --force.`,
+    );
+  }
+
+  // 4. Validate
+  let yamlText = fs.readFileSync(inputPath, 'utf8');
+  const vocab = collectVocabulary(existing);
+  const result = validateConfig(yamlText, { raw: parsed.raw, vocab });
+
+  // 5. Icon
+  if (!opts['no-icon'] && result.config && !hasIcon(result.config)) {
+    const siteUrl = result.config.url || parsed.raw.url;
+    try {
+      yamlText = injectIcon(yamlText, await fetchIconDataUri(siteUrl));
+      log('Icon fetched.');
+    } catch (err) {
+      result.warnings.push(
+        `Could not fetch the favicon from ${siteUrl} (${err.message}); retry later with \`yarn icon ${name}\`.`,
+      );
     }
   }
 
-  // Sanitize hostname for use in branch names and filenames
-  const safeName = host.replace(/[^a-zA-Z0-9._-]/g, '-');
-  const branchName = `feat/new-site-${safeName}`;
-  const configFileName = `${safeName}.yaml`;
-  const configFilePath = `src/config/${configFileName}`;
+  printReport(result);
 
-  // 4. Post comment with generated YAML
-  const issueComment =
-    `## Generated Site Config\n\n` +
-    `Claude has generated the following \`${configFilePath}\` based on the raw config in this issue.\n\n` +
-    `**Please review the mappings carefully** — especially the \`category\`, \`videoType\`, \`videoCodec\`, \`audioCodec\`, and \`resolution\` maps.\n\n` +
-    `\`\`\`yaml\n${generatedYaml}\n\`\`\`\n\n` +
-    `A draft PR has been / will be created with this file. Edit it directly on the branch if corrections are needed.`;
-
-  await postComment(issueComment);
-  console.log('Posted comment with generated YAML');
-
-  // 5. Create branch + file + draft PR
-  const defaultBranch = await getDefaultBranch();
-  const sha = await getBranchSha(defaultBranch);
-
-  try {
-    await createBranch(branchName, sha);
-    console.log(`Created branch: ${branchName}`);
-  } catch (err) {
-    // Branch may already exist if the action ran twice
-    if (!err.message.includes('422')) throw err;
-    console.log(`Branch ${branchName} already exists, skipping creation`);
+  // 6. Output
+  if (opts['dry-run']) {
+    process.stdout.write(yamlText);
+    return;
   }
+  fs.writeFileSync(outPath, yamlText);
+  log(`Wrote ${relPath}`);
 
-  const commitMessage =
-    `feat(config): add ${safeName} site config\n\n` +
-    `Auto-generated from issue #${ISSUE_NUMBER} via Claude API.\n` +
-    `Closes #${ISSUE_NUMBER}`;
-
-  await createFile(branchName, configFilePath, generatedYaml, commitMessage);
-  console.log(`Committed ${configFilePath}`);
-
-  const prBody =
-    `## New site: ${host}\n\n` +
-    `Auto-generated from issue #${ISSUE_NUMBER}.\n\n` +
-    `### Review checklist\n` +
-    `- [ ] \`category\` map is correct\n` +
-    `- [ ] \`videoType\` map is correct\n` +
-    `- [ ] \`videoCodec\` map is correct\n` +
-    `- [ ] \`audioCodec\` map is correct\n` +
-    `- [ ] \`resolution\` map is correct\n` +
-    `- [ ] \`selector\` values point to the correct form fields\n` +
-    `- [ ] \`icon\` has been filled in\n` +
-    `- [ ] Tested on the actual site\n\n` +
-    `Closes #${ISSUE_NUMBER}`;
-
-  const issueLabel = ISSUE_TITLE
-    ? ISSUE_TITLE.replace(/^\[.*?\]\s*/, '').trim()
-    : host;
-  const pr = await createDraftPR(
-    branchName,
-    defaultBranch,
-    `feat(config): add ${issueLabel} (${host}) site config`,
-    prBody,
-  );
-  console.log(`Created draft PR: ${pr.html_url}`);
+  // 7. Draft PR
+  if (!opts.pr) return;
+  if (!result.config) {
+    throw new Problem('The YAML does not parse, so no PR was opened.');
+  }
+  const pr = upsertDraftPR({
+    repo: getRepo(),
+    branch: branchFor(name, host),
+    filePath: relPath,
+    content: yamlText,
+    commitMessage: `feat(config): add ${name} site config\n\nCloses #${issue.number}.`,
+    title: `feat(config): add ${name} (${host}) site config`,
+    body: prBody({ name, host, issue, result }),
+    log,
+  });
+  log(`${pr.created ? 'Opened' : 'Updated'} draft PR: ${pr.url}`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+async function main() {
+  let cli;
+  try {
+    cli = parseCli();
+  } catch (err) {
+    log(`${err.message}\n\n${HELP}`);
+    process.exit(2);
+  }
+  if (cli.opts.help) {
+    process.stdout.write(HELP);
+    return;
+  }
+
+  let repo;
+  const getRepo = () => (repo ??= resolveRepo(cli.opts.repo));
+  try {
+    await run({ ...cli, getRepo });
+  } catch (err) {
+    log(err instanceof Problem ? err.message : err.stack || err.message);
+    process.exit(1);
+  }
+}
+
+main();
