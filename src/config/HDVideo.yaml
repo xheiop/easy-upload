@@ -1,0 +1,115 @@
+url: https://hdvideo.top
+host: hdvideo.top
+siteType: NexusPHP
+icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAADbklEQVQ4jd1Te0iTcRT9sqygSJKKHhhRQRFlMaIycSIRZZaWYZZmpqK5adY2yWq6b5Z+NafWak6HtvkcY5qPqLV8bZGaranbNNcq/bKorKaVcyW6eWNj6yEiBP1TBw78uPeec+/lx0WQ/xMA02ACkcmKkCDJdAQFp98TqJONk4p+AkWtdciUNZPCNpGK7wy4fLZc3jVXIpO5qtXqOROdkXxZy5YDWCUr+uotMkcqneXIR+XfPxeY1yTNr1Ml0KU6LO5Or/K69lNz+dPParm+X9/RZ+h99tqg73raw05KuuxiXwlBPBOLShfG10BCxWO8Vte31BrDcXzx1ty2Hh/RSyi+r7kW8+BzJ61jBLDG5xbewz4Qd/WDQv0cvoxYLKaRMWjv1t9wrDFvVVLFk+U0CQTGMIsc02XWdu7ybRwA35z64TPZYjT1LZhOieqH/YJPMRm88qCIXMm6eCrjCI6/egMAoGlVGmxCQbNuu1ta7Zg7dgeOZ5dX0VWDpHSNgcLoNspOfwCIlXVqBO2vWUUAQL+renShQecf3GrsSHkBvlb9l6HhRquhslX53mYYmKOguqbIYBGmsKws0AOhxgA7ms2ws+mr+eCjb0C7rRVj3UbhyW6AUIGiNA8fiPXTAoQIWkzFwrLDQ6ZR7ZPefkgtuffAZrg+obh6ZrQI1sXlfPI8W9Cw81pdzd7Marlbav3wErQOjl4syV3LUXYQWAqIJjNPhF+XMY5R2D3syBhiQ6s6sqquZfzM5TJYs5uShRjfvVvkFpT1bNYeFuyKYFQBwHRrE0ml1NsljD/m6o+aSUnsK87hwo8e8TxouikJHVQ1eUFb+ea2Nq0Hmcl7QU7mgHcw3RSJlhKRUCp3h9P6OLPX4XRgJmMpjg/xicimzNjGgEgypiNdKOQj/lngGl1gWR0vNHqRuO9DTl4dCIlNN4fFouO++6PA0zuIZRPuJbHJC3xoEJ7IGezHcQ+H4dYwLH9FwEWQisTigymFBcsSBOOEkvYhYqFqbB+9yExJzBgVsTI+cmhUDXE7kQpgv7BLvLL54VeEmzYExG1AEGSmw5CSW7jsEItPSMvmL0EzuIuj0Bz35Ib2jeer5ZvTzqOE+oxz7i1cdDVXIplrl/z52U0Bp59PgGm287Of4C+wxcHa2V6DomAn+oPIX57sH8R3MP7hLVGpwQAAAAAASUVORK5CYII='
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrents>tbody>tr"
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: "td:nth-child(5)"
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+imdb:
+  selector: 'input[name="url"][type="text"]'
+# PT-Gen field; gets the Douban link, as in Piggo.yaml.
+douban:
+  selector: 'input[name="pt_gen"]'
+torrent:
+  selector: 'input[name="file"]'
+# No anonymous-upload checkbox in the raw config.
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: "401"
+    tv: "402"
+    tvPack: "402"
+    variety: "403"
+    documentary: "404"
+    cartoon: "405"
+    # 音轨 (audio tracks)
+    music: "406"
+    sport: "407"
+    concert: "408"
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    h264: "7"
+    x264: "7"
+    hevc: "6"
+    h265: "6"
+    x265: "6"
+    vc1: "8"
+    mpeg2: "9"
+    dvd: "9"
+    # No MPEG-4/Xvid option; these go to Other.
+    mpeg4: "11"
+    xvid: "11"
+    other: "11"
+audioCodec:
+  selector: 'select[name="audiocodec_sel[4]"]'
+  map:
+    aac: "21"
+    ac3: "9"
+    dd: "9"
+    dd+: "10"
+    flac: "1"
+    dts: "17"
+    truehd: "11"
+    # TrueHD_Atmos. DDP Atmos/EAC3 ("23") cannot be told apart from the `atmos` key.
+    atmos: "14"
+    lpcm: "8"
+    dtshdma: "3"
+    dtsx: "16"
+    ape: "2"
+    mp3: "18"
+    wav: "12"
+    other: "7"
+videoType:
+  selector: 'select[name="medium_sel[4]"]'
+  map:
+    uhdbluray: "10"
+    bluray: "11"
+    remux: "12"
+    encode: "13"
+    dvdrip: "13"
+    web: "14"
+    hdtv: "16"
+    dvd: "18"
+    cd: "20"
+    other: "19"
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    4320p: "5"
+    2160p: "6"
+    1080p: "8"
+    1080i: "9"
+    720p: "10"
+    # No SD option; these go to Other.
+    576p: "11"
+    480p: "11"
+team:
+  selector: 'select[name="team_sel[4]"]'
+  map:
+    hdvmv: "2"
+    hdvweb: "1"
+    hdv: "5"
+    other: "4"
