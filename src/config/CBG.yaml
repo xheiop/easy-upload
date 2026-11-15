@@ -1,0 +1,101 @@
+url: https://cangbao.ge
+host: cangbao.ge
+siteType: NexusPHP
+icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAE9ElEQVQ4jS2OW1Nb5xWG90w7RjKxAJ0lEOgIEgftzdbW+YCETkhCaCMJSYBOYMB2O9RJPDaOYyczcdO6M+60SS/atD+gaS+apNOb5qZ/oEn+R/7Ek5Hsi/XNWut732e9gnF9n7lAA/1mE4N4hFHqYpZPWVT6rKaHOONDNnNj/JkRK7HBdGdX+lONafsYo9TBKLbQr6uY1msIC4EDLKKKYauFITgB9jAEJ+IBy9ER3tQIV2KMM/Gmd0RGWOQhBvEEk3SMQexiElvYpEPm/AcI5o0DnKEJsIle7LCw1cWdGuOIjTDKQyzKiMXImMXICJMywhQa4oiOcKXOWQj2MIgdrFITt6KiX28g2LbqeMMqi3KL2/4W6cY53/zr99iUEfbIGF/mjN7FNZ271/h2zrFFzrDIff799Z/Ite7xjr+JU2nilhtYN+sIK1IdT0jFF2ujW29zMjjlv3+/4Ys/f0KvP2Aw7PHyxX1evnjAYHjM8XA8/fv2y2f0z0YsbDTxhRs4pTorUm0CrOKSG6xGD7Fvt6genhLLtvji12OqjQ6F+oA/vrrmD7+5z07lhHqjzd8+PSOabdNon7IkqXhCDSbBHMEqwnKwMqVPIjvlJvtql4PuBd2TPsH8fXRrp1wNVS4HKu+sHbOVPad3coraPad20MYhvoWJNZY2KwiGtRLmQJUlsY47dEg8W+fh5RE/fv8pX/3zt3gSl2hXmmicLZzRMV//4xN+/P/LqSaeU1mWGlg3KhgDeyz4Sgg6T4k5bxmfUqNUP6LTbtKsV7i5rPLDfx7zv68+Znv3AnHnjG+/vOG7bx7y5KKKWqvSbjXJlVWcwTJ3PGV07iLCgq+Awb/HcnCPUa/Gswcqn7/osluocqzmeXKvRnWvSqVc5eZqn5NmgWKpxmfPezy9OqB/WMLsL2BYK3LHU0CY8+Qx+0vMekvEEjmeXpR4fFHh+S8PudevsiGm+fC6zfPrDqKc4+qkwrNfqFPNk7MioXB6CjKsFpiEE/S+PHpvnvnVIq7gLpdqiruHSR4Ncjzo5nj96IC/ftTiLx+1eP2owb2jDO+eZjlvxBnvx1laSzPvLWBcLWD25xEs/hy29QLGtSJWf55aNsX7/RyV3V0EXZyzepKjgkKnGKZfTUx31VyGX3XTVNJxHOs5rIEC9sAuptUsgs6ZYd6dxbiax7m1y2A/xdNRllfvNei2O3gCKcyuNDZvBm8gTbfV4tXDOjeDHXrlOI7ADjpXDp1rhzlXBmHy6L055r27LHiyyNsROuUYSUXmQo3y7qDIVXePq94e753mGe+HicsSak5B3Aox55qEyaL3ZZl3ZxAMriR6Twajd3Ihi9GdIhlWkOQ0R+UU/aLE66skv7ub4DgX5DAfQxSjxGWRheUY8+4dDO4MRk8agzuNcMcRQ7OYRLuUYnY5zR3nDiaXQiosUk5IZBWRD7ohHrdlcmGJclwiGZLQO2S0S298M/Yk2sUEOkcMYdYeY8aWmEKntZTgtiOG1rKFw7WOy7PB0soGi8ubrLg2sS9vcsskoZ347FE09vgbvz3GrD2KoLVF0dgm0Dga+wQcn85ae4QZi8yMRUJr3eaWJcTPzBF+bgmjsYWYsU7qrdcaQ2ONMrsYQbhtU5ixRNBYI28Fb3qNNYzWKqO1ydy2yWjtMjM2BY01xC3TNrfM0vTIzMRnUdDaFeYcIX4C83ussLc2qeUAAAAASUVORK5CYII='
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrents>tbody>tr"
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: "td:nth-child(5)"
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+# TODO: the raw config cannot show NexusPHP's IMDb input (its `url` key is the page URL); check that `input[name="url"]` exists on the form.
+imdb:
+  selector: 'input[name="url"][type="text"]'
+mediaInfo:
+  selector: 'textarea[name="technical_info"]'
+anonymous:
+  selector: 'input[name="uplver"]'
+torrent:
+  selector: 'input[name="file"]'
+# No Douban field in the raw config.
+# TODO: tags — `tags[4][]` checkboxes collapsed into one entry in the raw config; map them from the real form.
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: "401"
+    tv: "402"
+    tvPack: "402"
+    # TODO: the form has both 动画 ("403") and 动漫 ("404"); confirm which one anime belongs in.
+    cartoon: "403"
+    variety: "405"
+    documentary: "406"
+    music: "407"
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    hevc: "10"
+    h265: "10"
+    x265: "10"
+    h264: "6"
+    x264: "6"
+    vc1: "5"
+    mpeg4: "4"
+    xvid: "4"
+    mpeg2: "3"
+    dvd: "3"
+audioCodec:
+  selector: 'select[name="audiocodec_sel[4]"]'
+  map:
+    lpcm: "16"
+    truehd: "15"
+    atmos: "15"
+    flac: "7"
+    dd+: "5"
+    aac: "4"
+    # DTS-HD MA and DTS:X go to DTS.
+    dts: "3"
+    dtshdma: "3"
+    dtsx: "3"
+    ac3: "2"
+    dd: "2"
+    mp3: "1"
+videoType:
+  selector: 'select[name="medium_sel[4]"]'
+  map:
+    uhdbluray: "9"
+    remux: "8"
+    bluray: "7"
+    web: "6"
+    # UHDTV ("5") cannot be told apart from HDTV.
+    hdtv: "4"
+    encode: "3"
+    dvdrip: "3"
+    dvd: "2"
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    4320p: "7"
+    2160p: "6"
+    1080p: "4"
+    1080i: "4"
+    720p: "3"
+    480p: "1"
