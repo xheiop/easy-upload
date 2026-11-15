@@ -1,0 +1,102 @@
+url: https://www.oshen.win
+host: www.oshen.win
+siteType: NexusPHP
+icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAEqElEQVQ4jXWVeUxUVxTGB7emTVNNmpporXWptqBBCyJuBFGaIipilSiUWLUBCVDUulCY1gFURAuCRFpAROuwyFiUKBSoqQgBbFL6B7WNRpbZx2HevGUYGGd5933NvIEpRHuS+7Z7z+9+J+fc8ySSVxngE6PA1NA2TAPg86oloTLlrFAZpr3SXybDFDfgf5x9/GRDb0aXm5bulbO742vYc18qLK0J9Zxm3022Oeaq4Z1xEeNyfDzjP3tXpp23+TIdEXWNPhFfw1bvr2N7E+4M21JbnEhp4ZHcSvBVq4NPbQOi5JbDoihgihcQVUHN3VphPviH2tnC2vi+J0MOqtfgID0UkN4OpDQ7kNxoRUqjhfw2YCdq1kUeG52ufhZQMfxfAGZ5RMJHEl6mn7+3mus6dB/I7SakaQAQAAjuC8A3PLW74m6xJLGBExIbLDjz0IoOpcM9R3SjQH77iFrRg5leYEQpnRhba7Hur+ewq5rhP1ewxO4kwt9Gl0AEwOYUkN5qxd6bLA7UW7CjikVao8UNFOS9ToSVm5ltxfqPPMnAFMmagqEPoq/Tg3EKG2KqGbJPwYnSSn63oW1AVIJOlQO7qljE1bL4TM7gWOMwHDyES10jQtSNYWwrNe3xZL7Nk/Ut5eYHMTftiKo083vkjAgp7hxB4i0Wdpcn9vz2EWypoLG90ozUOxycPFDYYXVtq+IRWUafdXPclSICN12mCqLlL7C1giK7r9MioOzRCNYXmyDvGRXfNSyPWDmN8FIKKfUsnLyA/LZhPuK6HRGl9L1Jhbah0BQbeWUYn/4wRHaUU56QO6wIuWTEzgoK/ZRL/FbTM4o1BUYk1TGiwrz7nBBWwiC8xDQYlKt72wtc/b3BL6zQ6Np0yYTIkiExxqIHwwi5aBSH9C4rAl08cOCGGXGVFHgCnG3msL7AiPBiE4LzDYFeYGD6wMx155//E1pI45Oi58TtXHDfgqBcAzZfNCI4z4CmxzYR2v7sBeKvUmLIOU0sgnL1ZFMxh+Cz+oQJJ0UiCc411K3Lt2LjBYMY34VmDiuydAjJM2DVaT2iLxvBjIp7oerRCDgbQdZdBv6nNCSkgEPQaV2ZZGKqA2T6zFW5Fqw/o+PdTnmNLPwytFidrUNwjg6+GVoUtoj1J2aeFwDpzwx8MzT82nMsAmTabsnEVC/L1G1fIdUi6JRWLNrTDQw+PKFGwLdarMzUwD9DIz7/qbRj3E7WUMKSYyrXx9/p4S816H2lhve9XWK1VLVwdtIgtSHnuQjMuU3jrYP98DuuxrLjaiw/qRIWpA3yX/xodBEB7iicR+U0Fn5tJCuzbPBL13bPO6p5fVKbuvKA7Td7yo63OQjpfGrj10rVZEHKgLD0qAa+J4bw3mEa8i6HWAnf1JqZ2YcG7y07qc5eckS9aFI/dN9/6rDdruwEChs5UvKrHdc6XAjMNGF+ihaLUpWmxWmqh3OTlEWR5w3JALJVJkeAtylIJONj7FC7LexJ4IzYPtUb8X3MjLhnvZKYp7Vzk5XHFh9Wbpx/RDUnsAzTX2q/bliMYqqXMWFGpO88o5qzVqZZ/ssz4bWXnMc2H/s1TMfEpjpm/wKGwpZwtxj8+AAAAABJRU5ErkJggg=='
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrents>tbody>tr"
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: "td:nth-child(5)"
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+# TODO: the raw config cannot show NexusPHP's IMDb input (its `url` key is the page URL); check that `input[name="url"]` exists on the form.
+imdb:
+  selector: 'input[name="url"][type="text"]'
+torrent:
+  selector: 'input[name="file"]'
+# No Douban, MediaInfo or anonymous-upload fields in the raw config.
+# TODO: tags — `tags[4][]` checkboxes collapsed into one entry in the raw config; map them from the real form.
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: "401"
+    tv: "402"
+    tvPack: "402"
+    variety: "403"
+    documentary: "404"
+    cartoon: "405"
+    # MV(音乐视频)
+    concert: "406"
+    sport: "407"
+    # TODO: music mapped to 音乐; there is also 高清音乐 ("408").
+    music: "409"
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    h264: "1"
+    x264: "1"
+    vc1: "2"
+    xvid: "3"
+    mpeg4: "3"
+    mpeg2: "4"
+    dvd: "4"
+    other: "5"
+    hevc: "10"
+    h265: "10"
+    x265: "10"
+videoType:
+  selector: 'select[name="medium_sel[4]"]'
+  map:
+    # No separate UHD Blu-ray option.
+    uhdbluray: "1"
+    bluray: "1"
+    hddvd: "2"
+    remux: "3"
+    hdtv: "5"
+    # DVDR
+    dvd: "6"
+    encode: "7"
+    dvdrip: "7"
+    cd: "8"
+    # TODO: the medium list has no WEB-DL option, so `web` is not mapped; ask the site which option WEB-DL uses.
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    1080p: "1"
+    1080i: "2"
+    720p: "3"
+    576p: "4"
+    480p: "4"
+    2160p: "5"
+team:
+  selector: 'select[name="team_sel[4]"]'
+  map:
+    hds: "1"
+    chd: "2"
+    mysilu: "3"
+    wiki: "4"
+    other: "5"
+    cmct: "6"
+    scsg: "7"
+    hdtime: "8"
+    pthome: "9"
+    oshenpt: "10"
+    52pt: "11"
