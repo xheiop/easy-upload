@@ -21,7 +21,7 @@ app.quickTransfer: 원클릭 전송
 app.batchSearch: 일괄 검색
 app.batchSearchDesc: 여러 검색 탭 동시에 열기
 app.exportPageConfig: 페이지 설정 내보내기
-app.configCopied: 설정이 클립보드에 복사되었습니다. 생성한 Github Issue에 붙여넣으세요.
+app.configCopied: 페이지 설정이 클립보드에 복사되었습니다. 이 사이트를 추가하려면 저장소의 CONTRIBUTING.md를 참고하세요.
 
 settings.targetSites: 전송 대상 사이트 활성화
 settings.batchSites: 일괄 전송 사이트 활성화

@@ -1,8 +1,13 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import YAML from 'yaml';
 import { collectFormControls } from '../../src/site-dom/collect-form-controls';
-import { hostOf, IssueFormatError, parseIssue } from './issue.mjs';
-import { normalizeRaw } from './raw.mjs';
+import {
+  guessSiteType,
+  hostOf,
+  parseRawConfig,
+  RawConfigError,
+  suggestSiteName,
+} from './raw.mjs';
 import { validateConfig } from './validate.mjs';
 
 const page = {
@@ -38,7 +43,10 @@ const uploadPage = ({ imdb = true } = {}) => `
     <input type="checkbox" name="uplver" value="yes" />匿名发布
   </form>`;
 
-// How the issue form renders, with the button's own fence pasted inside the template's.
+// What the button puts on the clipboard.
+const clipboard = (rawYaml) => `\`\`\`yaml\n${rawYaml}\`\`\``;
+
+// An old "new site" issue: the button's fence pasted inside the template's.
 const issueBody = (rawYaml) =>
   [
     '### 站点架构',
@@ -55,7 +63,10 @@ const issueBody = (rawYaml) =>
     '',
     '### 其他',
     '',
-    '_No response_',
+    'Some notes with their own block:',
+    '```',
+    'not: yaml: at all',
+    '```',
   ].join('\n');
 
 const v2Raw = (options) => {
@@ -128,25 +139,24 @@ const config = ({
     },
   });
 
-describe('parseIssue', () => {
+describe('parseRawConfig', () => {
   beforeEach(() => {
     document.body.innerHTML = '';
   });
 
-  it('reads a v2 raw config with every control', () => {
-    const parsed = parseIssue({
-      title: '[新站点] 我的PT',
-      body: issueBody(v2Raw()),
-    });
-    expect(parsed.rawVersion).toBe(2);
-    expect(hostOf(parsed.raw)).toBe('cc.mypt.cc');
+  it('reads a v2 raw config with every control, fenced or bare', () => {
+    const rawYaml = v2Raw();
+    const fenced = parseRawConfig(clipboard(rawYaml));
+    expect(parseRawConfig(rawYaml)).toEqual(fenced);
 
-    const { page: rawPage, fields } = normalizeRaw(parsed.raw);
-    expect(rawPage).toEqual({
+    expect(fenced.version).toBe(2);
+    expect(hostOf(fenced.page)).toBe('cc.mypt.cc');
+    expect(fenced.page).toEqual({
       url: 'https://cc.mypt.cc',
       host: 'cc.mypt.cc',
       uploadPath: '/upload.php',
     });
+    const { fields } = fenced;
     expect(fields.find((f) => f.name === 'url')?.selector).toBe(
       'input[name="url"]',
     );
@@ -156,18 +166,13 @@ describe('parseIssue', () => {
     expect(fields.filter((f) => f.name === 'tags[4][]')).toHaveLength(3);
   });
 
-  it('still reads a v1 raw config', () => {
-    const parsed = parseIssue({
-      title: '[新站点] 我的PT',
-      body: issueBody(v1Raw),
-    });
-    expect(parsed.rawVersion).toBe(1);
-    expect(hostOf(parsed.raw)).toBe('cc.mypt.cc');
-
-    const { page: rawPage, fields } = normalizeRaw(parsed.raw);
-    expect(rawPage.url).toBe('https://cc.mypt.cc');
-    expect(rawPage.uploadPath).toBe('/upload.php');
-    expect(fields.map((f) => f.name)).toEqual([
+  it('still reads a v1 raw config, also from an old issue body', () => {
+    const parsed = parseRawConfig(issueBody(v1Raw));
+    expect(parsed.version).toBe(1);
+    expect(hostOf(parsed.page)).toBe('cc.mypt.cc');
+    expect(parsed.page.url).toBe('https://cc.mypt.cc');
+    expect(parsed.page.uploadPath).toBe('/upload.php');
+    expect(parsed.fields.map((f) => f.name)).toEqual([
       'file',
       'name',
       'descr',
@@ -176,14 +181,26 @@ describe('parseIssue', () => {
       'tags[4][]',
       'uplver',
     ]);
-    expect(fields.find((f) => f.name === 'type')?.tag).toBe('select');
+    expect(parsed.fields.find((f) => f.name === 'type')?.tag).toBe('select');
   });
 
-  it('rejects a v2 raw config without page url or host', () => {
-    const raw = YAML.stringify({ version: 2, page: {}, fields: [] });
-    expect(() => parseIssue({ body: issueBody(raw) })).toThrow(
-      IssueFormatError,
-    );
+  it('rejects input that is not a raw config', () => {
+    const noPage = YAML.stringify({ version: 2, page: {}, fields: [] });
+    expect(() => parseRawConfig(noPage)).toThrow(RawConfigError);
+    expect(() => parseRawConfig('')).toThrow(RawConfigError);
+    expect(() => parseRawConfig('- a\n- b')).toThrow(RawConfigError);
+  });
+
+  it('guesses the engine and a name', () => {
+    expect(guessSiteType(parseRawConfig(v2Raw()))).toBe('NexusPHP');
+    expect(
+      guessSiteType({
+        page: { uploadPath: '/torrents/create' },
+        fields: [{ name: 'category_id' }, { name: 'type_id' }],
+      }),
+    ).toBe('UNIT3D');
+    expect(suggestSiteName('cc.mypt.cc')).toBe('mypt');
+    expect(suggestSiteName('pt.ying.us.kg')).toBe('ying');
   });
 });
 

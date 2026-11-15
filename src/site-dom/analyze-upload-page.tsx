@@ -39,8 +39,11 @@ const AnalyzeUploadPage = () => {
   );
 };
 
+// NexusPHP and most engines upload at */upload*, UNIT3D at /torrents/create.
+const isUploadPage = /upload|\/torrents\/create/i.test(location.pathname);
+
 if (
-  location.pathname.includes('upload') &&
+  isUploadPage &&
   !CURRENT_SITE_INFO?.asTarget &&
   window.self === window.top
 ) {

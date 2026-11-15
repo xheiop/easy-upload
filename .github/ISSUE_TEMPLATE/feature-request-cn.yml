@@ -3,6 +3,9 @@ description: 提出一个建议或者需要的新功能
 labels: enhancement
 title: "[FEATURE]"
 body:
+  - type: markdown
+    attributes:
+      value: 不再接受站点支持请求。想支持新站点，请按 [贡献指南](https://github.com/xheiop/easy-upload/blob/master/CONTRIBUTING.md) 生成配置、测试后提交 PR。
   - type: checkboxes
     id: search-issue
     attributes:

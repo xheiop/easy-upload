@@ -30,7 +30,7 @@ Greasemonkey 4 is significantly inconsistent with the API of the above two scrip
 - Support batch transfer. Batch transfer to target sites with one-click.
 - Add thumbnail transfer from original image to meet screenshot requirements by some sites.
 - Support grabbing Douban movie description based on IMDB info, when some Chinese sites requires Douban info in reproducing from international sites.
-- Allow filling info on upload page by unified yaml config of the site, making it easier to add an unsupported site. If you want to add an unsupported site, please turn to [Site Configuration Rules](https://github.com/xheiop/easy-upload/wiki/How-to-Add-Unsupported-Sites)
+- Allow filling info on upload page by unified yaml config of the site, making it easier to add an unsupported site. If you want to add an unsupported site, see the [contributing guide](CONTRIBUTING-en.md)
 - Support quick search of current resource, and the site for searching is configurable.
 - Support batch uploading screenshots to ptpimg, which can solve the problem that screenshots of some sites cannot be displayed on other sites
 - Allows checking whether the target tracker has the current torrent by clicking the quick search button (only supports site based on NexusPHP by now).
@@ -45,23 +45,15 @@ Greasemonkey 4 is significantly inconsistent with the API of the above two scrip
 - Enable batch transfer: click “batch reproduce” button to open target sites for group transfer.
 - Enable site search: configure the quick search list to define the searching scope.
 
-## How to Generate Configuration for Unsupported Sites
+## Adding a New Site
 
-When you find a PT site that is not supported by the script, you can follow these steps to generate a configuration file and submit it to the author:
+Issues requesting support for a new site are no longer accepted; new sites come in as pull requests that the contributor has tested on the site. An AI coding assistant can write the site config:
 
-### 1. Generate Configuration File
+1. On the site's torrent upload page, click the green `[EASY-UPLOAD]Export page config` button in the bottom right corner and save the raw config it copies to the clipboard
+2. Have your AI assistant follow [`scripts/site-config/rules.md`](scripts/site-config/rules.md) to write `src/config/<SiteName>.yaml`, then validate it with `yarn site-config`
+3. Test it on the site with the development build, then open a pull request
 
-1. Visit the torrent upload page of the PT site you want to support
-2. A green `[EASY-UPLOAD]Retrieve Site Config` button will appear in the bottom right corner
-3. Click the button, and the script will automatically analyze the form elements on the page and generate a configuration
-4. The configuration will be automatically copied to your clipboard
-
-### 2. Submit Issue
-
-1. Visit the project's [Issues page](https://github.com/xheiop/easy-upload/issues/new?template=new-site-support-request.yml)
-2. Paste the content from your clipboard into the `Site Configuration` section of the Issue
-3. Fill in other required information
-4. Submit the Issue
+The [contributing guide](CONTRIBUTING-en.md) has the details.
 
 ## Cautions
 
@@ -80,7 +72,7 @@ When you find a PT site that is not supported by the script, you can follow thes
 
 Please refer [Project plan](https://github.com/xheiop/easy-upload/projects)
 
-I don't have access or upload permission to all sites, so any help, including testing and PR, would be greatly appreciated.
+I don't have access or upload permission to all sites, so any help, including testing and PR, would be greatly appreciated. See the [contributing guide](CONTRIBUTING-en.md).
 
 ## Supported Sites
 

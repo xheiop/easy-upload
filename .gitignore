@@ -7,3 +7,5 @@ bun.lockb
 coverage
 .env
 .claude/settings.local.json
+# Raw configs copied by the "Retrieve Site Config" button (see CONTRIBUTING.md)
+*.raw.yaml

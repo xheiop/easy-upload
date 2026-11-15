@@ -21,7 +21,7 @@ app.quickTransfer: One-click transfer
 app.batchSearch: Batch search
 app.batchSearchDesc: Open multiple search tabs simultaneously
 app.exportPageConfig: Export page config
-app.configCopied: Configuration copied to clipboard. Paste it into the GitHub issue you create.
+app.configCopied: Page config copied to clipboard. To add this site, follow CONTRIBUTING.md in the repository.
 
 settings.targetSites: Enable sites for transfer
 settings.batchSites: Enable sites for batch transfer
