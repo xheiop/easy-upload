@@ -1,0 +1,137 @@
+url: https://cspt.top
+host: cspt.top
+siteType: NexusPHP
+icon: 'data:image/png;base64,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'
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrents>tbody>tr"
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: "td:nth-child(5)"
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+# TODO: the raw config cannot show NexusPHP's IMDb input (its `url` key is the page URL); check that `input[name="url"]` exists on the form.
+imdb:
+  selector: 'input[name="url"][type="text"]'
+# PT-Gen field; gets the Douban link, as in Piggo.yaml.
+douban:
+  selector: 'input[name="pt_gen"]'
+mediaInfo:
+  selector: 'textarea[name="technical_info"]'
+anonymous:
+  selector: 'input[name="uplver"]'
+torrent:
+  selector: 'input[name="file"]'
+# TODO: tags — `tags[4][]` checkboxes collapsed into one entry in the raw config; map them from the real form.
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: "401"
+    tv: "402"
+    tvPack: "402"
+    variety: "403"
+    documentary: "404"
+    cartoon: "405"
+    # MV
+    concert: "406"
+    sport: "407"
+    # HQ音乐
+    music: "408"
+    other: "409"
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    h264: "1"
+    x264: "1"
+    hevc: "2"
+    h265: "2"
+    x265: "2"
+    vc1: "3"
+    mpeg2: "4"
+    dvd: "4"
+    # No MPEG-4/Xvid option; these go to Other.
+    mpeg4: "5"
+    xvid: "5"
+    other: "5"
+audioCodec:
+  selector: 'select[name="audiocodec_sel[4]"]'
+  map:
+    aac: "9"
+    ape: "10"
+    # TrueHD Atmos
+    atmos: "11"
+    dd+: "12"
+    ac3: "13"
+    dd: "13"
+    lpcm: "14"
+    truehd: "15"
+    dtsx: "16"
+    dtshdma: "17"
+    dts: "18"
+    wav: "20"
+    mp3: "21"
+    flac: "22"
+    other: "23"
+# The medium dropdown is named `source_sel` on this site.
+videoType:
+  selector: 'select[name="source_sel[4]"]'
+  map:
+    bluray: "7"
+    uhdbluray: "8"
+    remux: "9"
+    encode: "10"
+    dvdrip: "10"
+    web: "11"
+    hdtv: "12"
+    dvd: "13"
+    cd: "14"
+    other: "16"
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    480p: "4"
+    720p: "5"
+    1080p: "6"
+    1080i: "6"
+    2160p: "7"
+    4320p: "8"
+    # No 576p option; it goes to Other.
+    576p: "9"
+team:
+  selector: 'select[name="team_sel[4]"]'
+  map:
+    hds: "1"
+    chd: "2"
+    mysilu: "3"
+    wiki: "4"
+    other: "5"
+    hspt: "8"
+    hsweb: "9"
+    mteam: "10"
+    tnp: "11"
+    tptv: "12"
+    mweb: "13"
+    qhstudio: "14"
+    adweb: "15"
+    frds: "16"
+    hhweb: "17"
+    csweb: "18"
+    cspt: "19"
+    haresweb: "20"
