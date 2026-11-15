@@ -1,0 +1,107 @@
+url: https://pt.aling.de
+host: pt.aling.de
+siteType: NexusPHP
+icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAEv0lEQVQ4jXWUe1BUVRzHl7L8o6ZyJlmWvZfd+1o2l1mQJQVMrgvLaxFWV3YXF1kQZJGFRQRMEJkVlCwfqChpWtNjlPJRE+Y4VhNWgqnValiOaVAapqbhoxgtdu+3uQs6PvA387tn7j3nfs73fOd+r0TycAWJl+Tk5GCKZU/JKeUAx3Fup9P5xAPrHrunHx8ZRy1xUhLMUguNrAZl6mhfqEwGkiR3x8TE8JGRkRqe559+xLtBoz4A8JhUHvqljqSQwIQPEQQhKBQKMAwj0DR9g2EYL8dxyyIiIrQEQUwiSXKqRqMhR91CPJpKrVqjVCgEglKCoCmwLCuwLOtnGAZ3mmVZyAn5TalUOkgQxO0QeehlmqZbH/REotVqq1QqFVQcJ3AsC7HvBYkqGYYR4X6WYRBCyFGsjoZFHYmQMBIPeUex7KoQuRwhJOkTFSqGFYobBOAiRLwPqGQYQcHQQizF+eIVLEiK8t71DkDAv2qbbWubywV7TKw/PoyGiiARHCLFc9JgyEgCSpoGpaTAsQEgxA6jKf94mQy0UrkgQPN4PIHjpibxhiNr1w0JHftwrHGF8HNVA7qsJXgn3YrqWD10CgZx4RMQrYuCTEmB5piAchXLCTRFgVOrc4bVjQA35OTvONW6Gu81uHwdSxtwuXE1/iiuxZXSegw4l2Cvw4X1BfPgmZ6B7BfjkBmtQ6gyDNIwwk/TNF4IDy+8+6k8r1PLOsyFv++cl4WWpjzhu+a16HdU4byzDr86F+NcQRXOel7DwLk+fF7rRF9JPj40OrAkPknInTgZaordotVqn5JMN5kyRWCcOiKjK7cU3XON2NGyUuhs24IucyG6zUXoy6tE72w3DtQsgff7YzjW8SYu1eSjM7sE+80FQm9hDRxTEqwB/3JnzcpPiYubsT7Z7P2zdDHezzP40w3TQCtIzM0yobPtdZxo3Yzti+oQRSsxUaNGQXY6jrvm4GhOGZqnpvrbjTnIi+e3SDa4x0qKDOnL16WZhzpmzcUP9lLhp+ZCbFtbD1fGRLxS5cDg9UsAbuHIV5+i2BiFujmJWFqShZMuJ7qt89FpKfJvTpmJ+VMS99lra8dJPBbLkw1ZOZNjo6M9GxPNg381FeHwu8uEg6vs6Gn34L+rl4DBAdy40Iej2xbicKsdH1eY8bW9AG+lZAv7Z+bjE+u8fxbm2CvuD7Ru3LPL9dPP7jSasKl0js+7d5dw/WyPcPvqBdzs78XgxXO4cf40jn+2S9heWy1sNdn9R20l/r9dHnTlu3+LS3ipIi0t7ZkA66DHM0Yc20y2Fu/scmw25/l69nyAof4+9PZ8i+OHvsAv3iO41ncaPXt2o7uuET8WVuGEoyJgVVOK6ZCEZcfezZxnJMdGvV7h1qd+1D4j9+Zqk+3KNofz4soyNyory4VFL1cLFSaz0J5q+fcbawk2ZdrO1CQZzxQkGLYn8XzavZyHypKYOKkoNWNavbPoQFNlOVwZJt+K8gX+t1tehctsOpmVoHfwPB9l4PmY+5SNUkGQDGealbBjF1SX1b0xw3atXqW7tV4T799YXdlf6S5unzBh/J0fbJCoyiMZTtojK7BoJI4N8alrmjMt1sbJhlUOJlIfmOf5MeL8aKD/AbDIRbXvcgoLAAAAAElFTkSuQmCC'
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrents>tbody>tr"
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: "td:nth-child(5)"
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+# TODO: the raw config cannot show NexusPHP's IMDb input (its `url` key is the page URL); check that `input[name="url"]` exists on the form.
+imdb:
+  selector: 'input[name="url"][type="text"]'
+# PT-Gen field; gets the Douban link, as in Piggo.yaml.
+douban:
+  selector: 'input[name="pt_gen"]'
+mediaInfo:
+  selector: 'textarea[name="technical_info"]'
+anonymous:
+  selector: 'input[name="uplver"]'
+torrent:
+  selector: 'input[name="file"]'
+# TODO: tags — `tags[4][]` checkboxes collapsed into one entry in the raw config; map them from the real form.
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: "401"
+    tv: "402"
+    tvPack: "402"
+    documentary: "404"
+    cartoon: "405"
+videoCodec:
+  selector: 'select[name="codec_sel[4]"]'
+  map:
+    h264: "1"
+    x264: "1"
+    hevc: "2"
+    h265: "2"
+    x265: "2"
+    mpeg2: "4"
+    dvd: "4"
+    vc1: "5"
+    # No MPEG-4/Xvid option; these go to Other.
+    mpeg4: "6"
+    xvid: "6"
+    other: "6"
+videoType:
+  selector: 'select[name="medium_sel[4]"]'
+  map:
+    # No separate UHD Blu-ray option. "Blu-ray DIY" ("2") is not picked automatically.
+    uhdbluray: "1"
+    bluray: "1"
+    remux: "3"
+    hdtv: "4"
+    web: "5"
+    dvd: "6"
+    encode: "7"
+    dvdrip: "7"
+    other: "8"
+resolution:
+  selector: 'select[name="standard_sel[4]"]'
+  map:
+    4320p: "1"
+    2160p: "2"
+    1080p: "3"
+    1080i: "3"
+    720p: "4"
+    576p: "5"
+    480p: "5"
+area:
+  selector: 'select[name="source_sel[4]"]'
+  map:
+    CN: "1"
+    HK: "2"
+    TW: "3"
+    JP: "4"
+    # TODO: option "5" is labelled 朝鲜; confirm it means Korea.
+    KR: "5"
+    # 欧米
+    US: "10"
+    EU: "10"
+    OT: "11"
+team:
+  selector: 'select[name="team_sel[4]"]'
+  map:
+    aling: "1"
+    alingweb: "2"
+    other: "3"
