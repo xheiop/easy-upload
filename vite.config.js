@@ -56,6 +56,7 @@ const userscriptPlugins = [
         'movie.douban.com',
         'm.douban.com',
         'www.douban.com',
+        'api.themoviedb.org',
       ],
       match: [
         'http*://*/torrents.php?id=*',

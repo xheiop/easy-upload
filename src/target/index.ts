@@ -26,6 +26,7 @@ import './target-filler/TJUPT';
 import './target-filler/RED';
 import './target-filler/KG';
 import './target-filler/PTP';
+import './target-filler/ANT';
 import './target-filler/MTeam';
 import './target-filler/GazelleMusic';
 import './target-filler/GPW';
