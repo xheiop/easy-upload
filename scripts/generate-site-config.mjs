@@ -27,6 +27,7 @@ import {
   findSameHost,
   validateConfig,
 } from './site-config/validate.mjs';
+import { rawPage } from './site-config/raw.mjs';
 import { fetchIconDataUri, hasIcon, injectIcon } from './site-config/icon.mjs';
 import {
   resolveRepo,
@@ -199,6 +200,10 @@ async function run({ opts, issueNumber, getRepo }) {
         ? `src/config/${existingFile} (exists)`
         : `${relPath} (new)`,
       alreadyConfiguredAs: configuredAs.length ? configuredAs : undefined,
+      rawFormat:
+        parsed.rawVersion === 2
+          ? 'v2'
+          : 'v1 (older analyzer, see "Older raw configs" in rules.md)',
       notes: parsed.notes || undefined,
     };
     process.stdout.write(
@@ -243,7 +248,7 @@ async function run({ opts, issueNumber, getRepo }) {
 
   // 5. Icon
   if (!opts['no-icon'] && result.config && !hasIcon(result.config)) {
-    const siteUrl = result.config.url || parsed.raw.url;
+    const siteUrl = result.config.url || rawPage(parsed.raw).url;
     try {
       yamlText = injectIcon(yamlText, await fetchIconDataUri(siteUrl));
       log('Icon fetched.');

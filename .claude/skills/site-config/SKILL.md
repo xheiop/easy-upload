@@ -26,7 +26,7 @@ You write the mapping; `scripts/generate-site-config.mjs` does the deterministic
 
 ## Gotchas
 
-- The raw config cannot show NexusPHP's IMDb input (`input[name="url"]`) or individual tag checkboxes. rules.md explains how to handle both. The validator accepts `input[name="url"]` for `imdb` for this reason.
+- Check `rawFormat` in the `--context` output. A v2 raw config lists every control, including NexusPHP's IMDb input (`input[name="url"]`), each tag checkbox and both category selects of multi-section sites. Older v1 raw configs lose all three; rules.md ("Older raw configs") explains how to handle them, and the validator accepts the `input[name="url"]` IMDb guess for v1 only.
 - Validator errors are deterministic facts: a value that is not an option, or a selector for a field that is not on the form. Fix them. Warnings, such as unknown keys or a missing field, need judgment.
 - `yarn build` rewrites the tracked `dist/easy-upload.user.js`; restore it (`git checkout -- dist/easy-upload.user.js`) instead of committing it with a config.
 - If rules.md turns out wrong or incomplete while you work on an issue, propose an edit to it.
