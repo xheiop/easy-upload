@@ -1,0 +1,100 @@
+url: https://www.haidan.cc
+host: www.haidan.cc
+siteType: NexusPHP
+icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAEgElEQVQ4jY1Ua2wVRRReHiI0CLTcuztntlowLTESQUElolFRIg9FolhekUeFNrXt5XZnZvfuvXtnZlsuLSHllYDQH0IFCQGLiiZK4oME/VMl/DGaoL9QxB/EEFCLoXSP2VuoKUji+bEzO3Pmyzkn3/cZxi1RbVSPOGocHRHvtaFHxv/a0MPbqD/Fp40T4/OGZMPYlJG6eyDnmZE38+8Uw+LPm+P9Ukl4Q8Z2pnOr3lTAe/IgVmZJKikJa1MmSxv/JwKzeW5AeY0wN0xrAfcnTd0GCbxOg9srCa9XRMgC9TFenXJnjLLYMk2c+XE3t1Y1LG4vBLGnQP0fApOtUFR8r8E5o4B9p4FfU+CcCam4EFJ+OQCnNg/sQAt1UQHvvDGi4bdVmAWxUlN+JbSdsxLEpRA8VCCivOmiMj3U1MPAFH9pEOcL5RlUlJ/WwB6I36KBxXEZcekBsKck4QsUpFdIIq6GxEdpepE/IYN5043Cezm2TnKiXMKNsqUeatPHbJnbl7dYV97mjrScA5KkFxQB66CuRALbt8n2URLnojTFNb/Ui7ZOb4oOLn4DdzzagO+tXoXdq1dj55x6PPRaDXZMS0VtVem+nMl722iALeD9mjedlYNlttpulQL+jj/O/3PXE414bO2qqGvRevyw9nXsfK4e355Xi/tfXI9dL63Hw8tq8PDytXgqXNK/uYqjd4/3ha5IP6sr9OgbFeqSPOGvKsLez5a6l3fOTOG7r9RE7VVNGCQEKuJitjSDuYSHQVJgZpzALVNT2LVoXX9hEkO/zNPZylQyU5oZP0CVJJstCT+rgPeHtohikKAsg5vuVxjSHCrLRU0FSlNgK81he6VGaWVQlAiUREShLf5QIM4rYJ8M0oZbfLICdkQBv65tgUdqD+LebXuwaVYthuUDgMrmKKY2Yq42g8c7unHnY+0xZVBRcU4C/+wmfYzU2FQyD87WkLq9MsGwY0ZrdPqDHlyyfAnOnjwLCw8FKBMObn5Y4Yo5SzF5n4k93/Tg11u/7JeEo7T43oDwCm3oUQMtE/60IvwrRfmn0mK/bKzw8WPRjYd2HcRwYYBtlQFKi2FbVYDbX27H7dkOPLnvc+x8YQcqYNcV8J8V5SckZc8XATXokuZEM8TAGsSZFhKTmffvX/hWtG1aIconmjG03SJoaLm4f95u3DI1xOyEDZGOlUL5icBy1mVJ6sFB2uiJjVQB+ygsSkn0aiquBIlm1JYogsXnxdV2MUikURGGutyNipKk4qIEdkDbXvm/gEmnUgLfK4nYnLf4UgX8x9AWfQr474rGOhZXFeV9CsTfioqrrXZRkhekxZskOAUJ/FsJfOaghmPgTqPurgEaifmb7Gw8n2PKYo0huBdiSoQgjrfQzDUFrDuk/FwL9S4pwqqL8jWcMbG5DDGGm9XmKXtEWWyjpmxKtVE9SoI4qYClsyCeVMB/U5QtC6iYqwg7lTObFw8xhv8w1yEXcWIO3BkZKz1pTcWa0TnLeVxPdGl859PGKamy1LiBvKHvbgM+esP675RwJ9v/B0CDNADQaO3rAAAAAElFTkSuQmCC"
+asSource: false
+asTarget: true
+uploadPath: /upload.php
+seedDomSelector: "#top~table:first>tbody>tr:nth-child(6)"
+search:
+  path: /torrents.php
+  imdbOptionKey: "4"
+  nameOptionKey: "0"
+  params:
+    incldead: "0"
+    search_area: "{optionKey}"
+    search: "{imdb}"
+    sort: "5"
+    type: desc
+  result:
+    list: ".torrents>tbody>tr"
+    url: '.torrentname td a[href*="details.php?id="]'
+    name: '.torrentname td a[href*="details.php?id="]'
+    size: "td:nth-child(5)"
+name:
+  selector: 'input[name="name"]'
+subtitle:
+  selector: 'input[name="small_descr"]'
+description:
+  selector: 'textarea[name="descr"]'
+imdb:
+  selector: 'input[name="url"][type="text"]'
+douban:
+  selector: 'input[name="durl"]'
+torrent:
+  selector: 'input[name="file"]'
+# No anonymous-upload checkbox in the raw config; `team_suffix` is a free-text input, so no `team` map.
+category:
+  selector: 'select[name="type"]'
+  map:
+    movie: "401"
+    tv: "402"
+    tvPack: "402"
+    documentary: "404"
+    concert: "406"
+    sport: "407"
+    cartoon: "405"
+    variety: "403"
+    music: "408"
+    other: "409"
+videoCodec:
+  selector: 'select[name="codec_sel"]'
+  map:
+    h264: "1"
+    x264: "1"
+    hevc: "11"
+    x265: "11"
+    h265: "11"
+    mpeg2: "4"
+    mpeg4: "13"
+    vc1: "2"
+    xvid: "13"
+    dvd: "4"
+    other: "5"
+audioCodec:
+  selector: 'select[name="audiocodec_sel"]'
+  map:
+    aac: "6"
+    ac3: "10"
+    dd: "10"
+    dd+: "10"
+    flac: "1"
+    dts: "3"
+    truehd: "13"
+    lpcm: "11"
+    dtshdma: "12"
+    atmos: "13"
+    dtsx: "12"
+    ape: "2"
+    mp3: "4"
+    other: "7"
+videoType:
+  selector: 'select[name="medium_sel"]'
+  map:
+    uhdbluray: "9"
+    bluray: "1"
+    remux: "3"
+    encode: "7"
+    web: "11"
+    hdtv: "5"
+    dvd: "6"
+    dvdrip: "7"
+resolution:
+  selector: 'select[name="standard_sel"]'
+  map:
+    2160p: "1"
+    1080p: "2"
+    1080i: "3"
+    720p: "4"
+    576p: "5"
+    480p: "5"
