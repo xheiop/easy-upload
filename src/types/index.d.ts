@@ -431,6 +431,8 @@ declare module '*.css';
 
 declare function Remaster(): void;
 declare function AutoFill(): void;
+declare function TMDbAutofill(onLoad?: boolean): void;
+declare function MediaInfoExtract(): void;
 declare function fill_field(selector: number, value: string): void;
 declare function add_screenshot(): void;
 declare function fillField(selector: string, value: string): void;

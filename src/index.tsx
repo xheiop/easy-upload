@@ -14,6 +14,7 @@ import $ from 'jquery';
 const SPECIAL_SITE_CONFIGS = {
   specialSiteNames: [
     'PTP',
+    'ANT',
     'BTN',
     'GPW',
     'RED',
