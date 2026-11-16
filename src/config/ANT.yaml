@@ -2,14 +2,35 @@ url: https://anthelion.me
 host: anthelion.me
 siteType: gazelle
 icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAAAsSAAALEgHS3X78AAAEuUlEQVQ4jZ2VXWwUVRTHpxVEI48+ERKM1mg1mhBk597tNlURQ0hUXipE2Jn96LZJDURfSPzKJgLbmdkttS19QPwgEkRn5s6dmd1uW1poJKRiJRIC7c70u7QFa9UEHtQW2GPuLKyogJWT3IeZc+4v5/zPPfdy3P+0OEBptQr3cfdiVb29SwTdaQmS3CGRDr0l6s6TngOghIE5DkoWR4JC4Ibm7LJIZmKorucnqP/mMoTtsR2i7gQFMvyql20cSm/GLgpY9fn4A9H2yaG67lkI0aFZkQyhaHZqOpKZBEEb3B3v7V0CLPYu0JJbFsc2iEZOEohzYZs+0BZOT+yMZqegpmMaajpnvt966OzK2tOw9A6lQ4lXAsdxqLHvwfXJrofYYnDWBAAoDaqDybpjP0MoPTaw+ci5ctFw+0XdlYrl364JXBxK/bL5BJLpaSTTX5FMZ3nJOLBa/nIFiwnqTjCk514J0WGj9uiPELbG8iJ1Nv0NGo/HC5kpdBeSjSks01o+ofF8gm7kZVKPFPMlLNN1WLa9jSE6WslKj3XO5CP2GIRI7l2PwzpfraremeJT9ubKtuNQ8VEnBPb1XEW7VV+hfKuMl4wfsGwuBFqOApaN9wuZ5vaKxP1qm+byAnGFoDnyXLFUn0RW8pJRjmTa79/bDlgiYT5h8n6ZbuQ/PFKO92ZG2H+kmIAbM1d4WX+c7dtGBt8WSO5M/YnLEM1O7ykCccpOYMWy/LK5gm/KlPMSWY8V67dASzeDK7iBvOhvzAAvG/OB1m5Ajel32L5ox3R/3bE5iLZfANFw7SIQKVRjGTBg4dvaXvXxSaho6rjGQL49WqW/qV2rbO0BL9OUpbE4QXfbIukJBgPRGDp1Uz4OSTSNFRNYKT5ZfwE3aKt5iWxBknGK6VbR3PHZ2oSKUcqeqdp/EpBkUK9k9XyZqA2sC6qDVYLh+opdxor9NVIs6ktoLweauwDL5i+8ZLyHGukzWKabkGJt8LRuJiuxZIYDivUs+xYNVxKJOyca7pRIHFKcGF6hIV+DKeCU3Rpo7QGsWAtex5uyeV7SdtyUhm+ij/AyPYgTZK13fKyRvljnDNT1zEEkM3m4qOFTcfV+1mmUtEZZ6ThpXcep9O+oQRUqJAvxCv1u7R5tnb+5iwRaukY9/azhp0XqzgvEuV7TMQMiHd5eHDlvSuLqcpy0BivbesGfyiywzvoatNcYmGWLG9NbkGzsCyQzPIsPmyNfsJkWiZMPW6NXotZw2V8zd0NMnNRXIck4jmVa75P14POffAtMAiTT+YqUHViz//RSTzvq7PRuHOIuxLzxG/n0jvPMxpA5eMkMY4l+gCQ9umbXwceYr9Z2Hg7quQPR9kl2TK6G7TGI2GMX3zjc/6hX6z+vMQZiq+AoOLN5WBbLXqgSSa5VNNy5WOdFEAx3IWSO5CPp8Wtb1bPeZVs8g/+2AowFrKndvzSo507Eui5BrOvS9ZA5nBeJM88mI5we/yOkD2wuwP77jSmmLhCnL5KZ8LKKZibyDC4SZzBsjAYWC+NuuYFLajqn+mq7Z9l4zYeIc0YkzpvV6vnlzKney+snGM7rQeoEg8a58mooAJjGd9Fs8cZA7J3hblzIt7M/ARbzzPYHmemRAAAAAElFTkSuQmCC'
-asSource: false
+asSource: true
 asTarget: true
+needDoubanInfo: true
 uploadPath: /upload.php
 seedDomSelector: ''
 search:
   path: /torrents.php
   params:
     searchstr: '{imdb}'
+sourceInfo:
+  # Flags in a torrent's release line ("1080p / BluRay / H265 / EAC3 / HDR10 /
+  # DV / Commentary / Subs / MKV / Group"), by their text on the page and by
+  # their upload-form value. IMAX, Remastered and 3D have no tag key.
+  editionTags:
+    Directors: director_s_cut
+    Director's Cut: director_s_cut
+    Extended: extended_edition
+    Uncut: uncut
+    Unrated: unrated
+    Criterion: the_criterion_collection
+    HDR10: hdr10
+    HDR10+: hdr10_plus
+    DV: dolby_vision
+    Atmos: dolby_atmos
+    English Dub: english_dub
+    EnglishDub: english_dub
+    Commentary: with_commentary
+    Remux: remux
+    Scene: scene
 # The film fields (title, year, poster, genres, IMDb ID, description) are
 # filled by the site's own TMDb Autofill, which the ANT filler triggers.
 description:

@@ -18,6 +18,7 @@ import './info-extractors/ttg';
 import './info-extractors/hanhan';
 import './info-extractors/mt';
 import './info-extractors/ptp';
+import './info-extractors/ant';
 import './info-extractors/uhd';
 import './info-extractors/gpw';
 import './info-extractors/unit3d';
