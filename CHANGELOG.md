@@ -1,3 +1,15 @@
+## [7.1.2](https://github.com/xheiop/easy-upload/compare/7.1.1...7.1.2) (2026-11-16)
+
+
+### Bug Fixes
+
+* update audience dom selector ([120d2de](https://github.com/xheiop/easy-upload/commit/120d2de31d7b611c175ee95e44769dfc2c727c00))
+
+
+### Features
+
+* **target:** fill upload forms from douban for self-made uploads ([#448](https://github.com/xheiop/easy-upload/issues/448)) ([3ed3061](https://github.com/xheiop/easy-upload/commit/3ed3061e56b61630415140f1b7a04f6d6529622e)), closes [#369](https://github.com/xheiop/easy-upload/issues/369)
+
 ## [7.1.1](https://github.com/xheiop/easy-upload/compare/7.1.0...7.1.1) (2026-11-16)
 
 
