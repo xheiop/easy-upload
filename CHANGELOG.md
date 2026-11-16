@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/xheiop/easy-upload/compare/7.1.0...7.1.1) (2026-11-16)
+
+
+### Features
+
+* **target:** support Anthelion (ANT) as an upload target ([#447](https://github.com/xheiop/easy-upload/issues/447)) ([4cbbab3](https://github.com/xheiop/easy-upload/commit/4cbbab3bfc220be3a3e4cec0f1aba39991c05fc4))
+
 # [7.1.0](https://github.com/xheiop/easy-upload/compare/7.0.18...7.1.0) (2026-11-15)
 
 
