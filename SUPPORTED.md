@@ -6,6 +6,7 @@
 |    52pt     |            ✅             |           ✅            |
 |     ACM     |            ✅             |           ✅            |
 |    AGSV     |            ✅             |           ✅            |
+|     ANT     |            ✅             |           ✅            |
 |   Aither    |            ✅             |           ✅            |
 |   Animez    |            ❌             |           ✅            |
 |  Audiences  |            ✅             |           ✅            |
