@@ -51,8 +51,9 @@ rehost.toastFailed: 转存失败
 douban.btnFetchIntro: 获取豆瓣简介
 douban.btnFetchBookIntro: 获取豆瓣读书简介
 douban.errorMissingUrl: 缺少豆瓣链接
-douban.errorInvalidUrl: 请填写正确链接
 douban.placeholderManualUrl: 手动输入豆瓣链接
+douban.errorNoLink: 请先填写豆瓣或 IMDb 链接
+douban.autofillTip: 根据豆瓣或 IMDb 链接补全副标题、简介、链接、类型和地区，已填写的内容不会被覆盖
 
 siteList.confirmForbidden: 本种子可能禁止转载，确定要继续转载么？
 siteList.errorNoTorrentInfo: 请先获取种子信息

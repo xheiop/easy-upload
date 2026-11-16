@@ -90,6 +90,41 @@ describe('getDoubanAwards', () => {
 });
 
 describe('getIMDbIDFromDouban', () => {
+  it('should read the IMDb ID from the mobile desc api first', async () => {
+    vi.mocked(GMFetch).mockResolvedValueOnce({
+      html: `<table><tbody>
+        <tr><td>语言</td><td>英语</td></tr>
+        <tr>
+          <td>IMDb</td>
+          <td>tt0111161</td>
+        </tr>
+      </tbody></table>`,
+    });
+    const imdbId = await getIMDbIDFromDouban('1292052', 'tv');
+    expect(GMFetch).toHaveBeenCalledTimes(1);
+    expect(GMFetch).toHaveBeenCalledWith(
+      `${CONFIG.URLS.DOUBAN_MOBILE_API}/tv/1292052/desc?for_mobile=1&ck=`,
+      {
+        headers: { Referer: 'https://m.douban.com/tv/subject/1292052' },
+        responseType: 'json',
+      },
+    );
+    expect(imdbId).toBe('tt0111161');
+  });
+
+  it('should fall back to the subject page when the desc api fails', async () => {
+    vi.mocked(GMFetch)
+      .mockRejectedValueOnce(new Error('Forbidden'))
+      .mockResolvedValueOnce(
+        `<div id="info"><span class="pl">IMDb:</span> tt0111161</div>`,
+      );
+    const imdbId = await getIMDbIDFromDouban('1292052');
+    expect(GMFetch).toHaveBeenLastCalledWith(
+      'https://movie.douban.com/subject/1292052/',
+    );
+    expect(imdbId).toBe('tt0111161');
+  });
+
   it('should return the IMDb ID of the movie', async () => {
     vi.mocked(GMFetch).mockResolvedValue(`
       <div id="info">

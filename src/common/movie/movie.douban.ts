@@ -40,15 +40,57 @@ export const getDoubanAwards = async (doubanId: string): Promise<string> => {
 };
 
 /**
- * Get IMDb ID from Douban URL
+ * Read the IMDb ID from the info table of the mobile desc api
  *
  * @async
  * @param {string} doubanId
+ * @param {('movie' | 'tv')} type
+ * @returns {Promise<string>}
+ */
+const getIMDbIDFromDoubanDesc = async (
+  doubanId: string,
+  type: 'movie' | 'tv',
+): Promise<string> => {
+  const data = await GMFetch<{ html?: string }>(
+    `${CONFIG.URLS.DOUBAN_MOBILE_API}/${type}/${doubanId}/desc?for_mobile=1&ck=`,
+    {
+      headers: {
+        Referer: `https://m.douban.com/${type}/subject/${doubanId}`,
+      },
+      responseType: 'json',
+    },
+  );
+  const doc = new DOMParser().parseFromString(data?.html ?? '', 'text/html');
+  const imdbCell = Array.from(doc.querySelectorAll('td')).find(
+    (td) => td.textContent?.trim() === 'IMDb',
+  );
+  const imdbId = imdbCell?.nextElementSibling?.textContent?.trim() ?? '';
+  return /^tt\d+$/.test(imdbId) ? imdbId : '';
+};
+
+/**
+ * Get IMDb ID from Douban URL
+ *
+ * The mobile api comes first: the desktop subject page is often answered
+ * with an anti-bot challenge page instead of the subject.
+ *
+ * @async
+ * @param {string} doubanId
+ * @param {('movie' | 'tv')} type
  * @returns {Promise<string>}
  */
 export const getIMDbIDFromDouban = async (
   doubanId: string,
+  type: 'movie' | 'tv' = 'movie',
 ): Promise<string> => {
+  try {
+    const imdbId = await getIMDbIDFromDoubanDesc(doubanId, type);
+    if (imdbId) {
+      return imdbId;
+    }
+  } catch {
+    // fall back to the desktop page
+  }
   const doubanPage = await GMFetch<string>(
     CONFIG.URLS.DOUBAN_SUBJECT(doubanId),
   );

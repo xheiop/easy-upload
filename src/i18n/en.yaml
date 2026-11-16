@@ -51,8 +51,9 @@ rehost.toastFailed: Rehost failed
 douban.btnFetchIntro: Fetch Douban info
 douban.btnFetchBookIntro: Fetch Douban book info
 douban.errorMissingUrl: Missing Douban link
-douban.errorInvalidUrl: Please enter a valid link
 douban.placeholderManualUrl: Enter Douban link
+douban.errorNoLink: Please enter a Douban or IMDb link first
+douban.autofillTip: Fill in the subtitle, description, links, category and area from the Douban or IMDb link. Fields that are already filled are kept
 
 siteList.confirmForbidden: This torrent may be prohibited from transfer. Are you sure you want to continue?
 siteList.errorNoTorrentInfo: Please load torrent info first

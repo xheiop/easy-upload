@@ -170,6 +170,25 @@ describe('DoubanFormatter', () => {
     expect(format).toContain('8.5 (100人评分)');
   });
 
+  it('should keep the IMDb link when the IMDb rating request fails', async () => {
+    vi.mocked(getMobileDoubanInfo).mockResolvedValue(mockDoubanData);
+    vi.mocked(getIMDbIDFromDouban).mockResolvedValue('tt123456');
+    vi.mocked(getIMDBRating).mockRejectedValue(new Error('403'));
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const { format, imdbLink } = await converter.format();
+    expect(imdbLink).toBe('https://www.imdb.com/title/tt123456/');
+    expect(format).toContain('8.5 (100人评分)');
+  });
+
+  it('should not throw error if the awards page fails', async () => {
+    vi.mocked(getMobileDoubanInfo).mockResolvedValue(mockDoubanData);
+    vi.mocked(getDoubanAwards).mockRejectedValue(new Error('challenge'));
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const { format } = await converter.format();
+    expect(format).not.toContain('获奖情况');
+    expect(format).toContain('8.5 (100人评分)');
+  });
+
   it('should not throw error if credits data is empty', async () => {
     vi.mocked(getMobileDoubanInfo).mockResolvedValue(mockDoubanData);
     vi.mocked(getDoubanCreditsData).mockResolvedValue({ items: [] });

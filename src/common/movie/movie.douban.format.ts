@@ -116,7 +116,7 @@ export class DoubanFormatter {
   private async fetchAllData() {
     try {
       const [awards, credits, info, imdbData] = await Promise.all([
-        getDoubanAwards(this.doubanId),
+        this.fetchAwards(),
         getDoubanCreditsData(this.doubanId, this.type),
         getMobileDoubanInfo(this.doubanId, this.type),
         this.fetchIMDbData(),
@@ -129,12 +129,26 @@ export class DoubanFormatter {
     }
   }
 
-  private async fetchIMDbData() {
-    if (!this.imdbId) {
-      this.imdbId = await getIMDbIDFromDouban(this.doubanId);
+  // awards and the IMDb rating are extras, do not lose the rest over them
+  private async fetchAwards() {
+    try {
+      return await getDoubanAwards(this.doubanId);
+    } catch (e) {
+      console.warn('failed to fetch douban awards', e);
+      return '';
     }
-    if (this.imdbId) {
-      return await getIMDBRating(this.imdbId);
+  }
+
+  private async fetchIMDbData() {
+    try {
+      if (!this.imdbId) {
+        this.imdbId = await getIMDbIDFromDouban(this.doubanId, this.type);
+      }
+      if (this.imdbId) {
+        return await getIMDBRating(this.imdbId);
+      }
+    } catch (e) {
+      console.warn('failed to fetch IMDb data', e);
     }
     return null;
   }
