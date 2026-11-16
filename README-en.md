@@ -32,7 +32,7 @@ Greasemonkey 4 is significantly inconsistent with the API of the above two scrip
 - Support grabbing Douban movie description based on IMDB info, when some Chinese sites requires Douban info in reproducing from international sites.
 - Allow filling info on upload page by unified yaml config of the site, making it easier to add an unsupported site. If you want to add an unsupported site, see the [contributing guide](CONTRIBUTING-en.md)
 - Support quick search of current resource, and the site for searching is configurable.
-- Support batch uploading screenshots to ptpimg, which can solve the problem that screenshots of some sites cannot be displayed on other sites
+- Support batch uploading screenshots to another image host, which can solve the problem that screenshots of some sites cannot be displayed on other sites
 - Allows checking whether the target tracker has the current torrent by clicking the quick search button (only supports site based on NexusPHP by now).
 - Supports torrent cleaning, and after transferring to the target site, automatically attaches the cleaned torrent file without the need for manual addition.
 
