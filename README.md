@@ -12,6 +12,7 @@
 
 可以通过以下链接了解项目架构和使用指南等信息。
 
+[GitHub Wiki](https://github.com/xheiop/easy-upload/wiki)
 [Zread](https://zread.ai/techmovie/easy-upload)
 [DeepWiki](https://deepwiki.com/techmovie/easy-upload)
 

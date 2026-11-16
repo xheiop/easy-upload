@@ -10,6 +10,7 @@ Easy-upload is a userscript that supports reproducing torrents for mainstream Ch
 
 You can learn about the project architecture and usage guidelines through the following links.
 
+[GitHub Wiki](https://github.com/xheiop/easy-upload/wiki)
 [Zread](https://zread.ai/techmovie/easy-upload)
 [DeepWiki](https://deepwiki.com/techmovie/easy-upload)
 
@@ -22,6 +23,10 @@ Fully compatible, but Violentmonkey may not be able to run this script in older 
 ### ~~[Greasemonkey](https://www.greasespot.net/)~~
 
 Greasemonkey 4 is significantly inconsistent with the API of the above two script managers and only runs on Firefox, so this script is not supported Greasemonkey. Both of the above are highly recommended.
+
+## Usage Guide
+
+[Usage Guide](https://github.com/xheiop/easy-upload/wiki/Usage-Guide)
 
 ## Features
 
