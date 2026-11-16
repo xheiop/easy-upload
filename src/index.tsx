@@ -2,6 +2,7 @@ import { render } from 'preact';
 import { CURRENT_SITE_NAME, CURRENT_SITE_INFO } from './const';
 import { getLocationSearchValueByKey } from '@/common';
 import { fillTargetForm } from './target';
+import autofill from './target/autofill';
 import { getTorrentInfo } from '@/source';
 import { fillSearchImdb } from './site-dom/quick-search';
 import { torrentInfoStore } from '@/store/torrentInfoStore';
@@ -228,6 +229,9 @@ async function initialize() {
         torrentInfo as TorrentInfo.Info,
       );
       fillTargetForm(hydratedInfo);
+    } else {
+      // uploading a torrent of your own: still offer the douban button
+      autofill();
     }
   }
 

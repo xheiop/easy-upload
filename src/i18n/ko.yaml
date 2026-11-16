@@ -51,8 +51,9 @@ rehost.toastFailed: 다시 호스팅 실패
 douban.btnFetchIntro: 더우반 정보 가져오기
 douban.btnFetchBookIntro: 더우반 도서 정보 가져오기
 douban.errorMissingUrl: 더우반 링크 누락
-douban.errorInvalidUrl: 올바른 링크를 입력하세요.
 douban.placeholderManualUrl: 더우반 링크 입력
+douban.errorNoLink: 먼저 더우반 또는 IMDb 링크를 입력하세요
+douban.autofillTip: 더우반 또는 IMDb 링크로 부제목, 소개, 링크, 카테고리, 지역을 채웁니다. 이미 입력된 내용은 유지됩니다
 
 siteList.confirmForbidden: 이 토렌트의 전송이 금지될 수 있습니다, 계속하겠습니까?
 siteList.errorNoTorrentInfo: 먼저 토렌트 정보를 불러오세요

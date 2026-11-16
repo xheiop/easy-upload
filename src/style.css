@@ -254,6 +254,12 @@ svg.setting-svg{
 #auto-fill-douban{
   font-size: 14px;
   display:inline-block;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+#auto-fill-douban:disabled{
+  color: #a0cfff;
+  cursor: wait;
 }
 .easy-upload-setting-panel *{
   padding: 0;
