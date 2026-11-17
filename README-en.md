@@ -1,5 +1,15 @@
 # easy-upload
 
+[![Greasy Fork](https://img.shields.io/greasyfork/v/423199?label=Greasy%20Fork&color=670000)](https://greasyfork.org/en/scripts/423199)
+[![Installs](https://img.shields.io/greasyfork/dt/423199?label=installs)](https://greasyfork.org/en/scripts/423199)
+[![Rating](https://img.shields.io/greasyfork/rating-count/423199)](https://greasyfork.org/en/scripts/423199/feedback)
+[![Test](https://github.com/xheiop/easy-upload/actions/workflows/test.yml/badge.svg)](https://github.com/xheiop/easy-upload/actions/workflows/test.yml)
+[![Build](https://github.com/xheiop/easy-upload/actions/workflows/build.yml/badge.svg)](https://github.com/xheiop/easy-upload/actions/workflows/build.yml)
+[![License](https://img.shields.io/github/license/xheiop/easy-upload)](LICENSE)
+[![All Contributors](https://img.shields.io/github/all-contributors/xheiop/easy-upload/master)](#contributors)
+[![Telegram](https://img.shields.io/badge/Telegram-join-26A5E4?logo=telegram&logoColor=white)](https://t.me/+Ss_nJoAapvRhYTM1)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/xheiop/easy-upload)
+
 [Installation address 1](https://greasyfork.org/en/scripts/423199) | [Installation address 2](https://github.com/xheiop/easy-upload/raw/master/dist/easy-upload.user.js) | [Join Telegram group](https://t.me/+Ss_nJoAapvRhYTM1)
 
 ## About
@@ -11,8 +21,8 @@ Easy-upload is a userscript that supports reproducing torrents for mainstream Ch
 You can learn about the project architecture and usage guidelines through the following links.
 
 [GitHub Wiki](https://github.com/xheiop/easy-upload/wiki)
-[Zread](https://zread.ai/techmovie/easy-upload)
-[DeepWiki](https://deepwiki.com/techmovie/easy-upload)
+[Zread](https://zread.ai/xheiop/easy-upload)
+[DeepWiki](https://deepwiki.com/xheiop/easy-upload)
 
 ## Compatibility
 

@@ -1,5 +1,15 @@
 # easy-upload
 
+[![Greasy Fork](https://img.shields.io/greasyfork/v/423199?label=Greasy%20Fork&color=670000)](https://greasyfork.org/zh-CN/scripts/423199)
+[![Installs](https://img.shields.io/greasyfork/dt/423199?label=installs)](https://greasyfork.org/zh-CN/scripts/423199)
+[![Rating](https://img.shields.io/greasyfork/rating-count/423199)](https://greasyfork.org/zh-CN/scripts/423199/feedback)
+[![Test](https://github.com/xheiop/easy-upload/actions/workflows/test.yml/badge.svg)](https://github.com/xheiop/easy-upload/actions/workflows/test.yml)
+[![Build](https://github.com/xheiop/easy-upload/actions/workflows/build.yml/badge.svg)](https://github.com/xheiop/easy-upload/actions/workflows/build.yml)
+[![License](https://img.shields.io/github/license/xheiop/easy-upload)](LICENSE)
+[![All Contributors](https://img.shields.io/github/all-contributors/xheiop/easy-upload/master)](#致谢)
+[![Telegram](https://img.shields.io/badge/Telegram-join-26A5E4?logo=telegram&logoColor=white)](https://t.me/+Ss_nJoAapvRhYTM1)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/xheiop/easy-upload)
+
 [English Version](README-en.md)
 
 [安装地址 1](https://greasyfork.org/zh-CN/scripts/423199) | [安装地址 2](https://github.com/xheiop/easy-upload/raw/master/dist/easy-upload.user.js) | [加入 Telegram 群组](https://t.me/+Ss_nJoAapvRhYTM1)
@@ -13,8 +23,8 @@
 可以通过以下链接了解项目架构和使用指南等信息。
 
 [GitHub Wiki](https://github.com/xheiop/easy-upload/wiki)
-[Zread](https://zread.ai/techmovie/easy-upload)
-[DeepWiki](https://deepwiki.com/techmovie/easy-upload)
+[Zread](https://zread.ai/xheiop/easy-upload)
+[DeepWiki](https://deepwiki.com/xheiop/easy-upload)
 
 ## 兼容性
 
