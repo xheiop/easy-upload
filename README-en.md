@@ -39,6 +39,8 @@ Greasemonkey 4 is significantly inconsistent with the API of the above two scrip
 - Support quick search of current resource, and the site for searching is configurable.
 - Support batch uploading screenshots to another image host, which can solve the problem that screenshots of some sites cannot be displayed on other sites
 - Allows checking whether the target tracker has the current torrent by clicking the quick search button (only supports site based on NexusPHP by now).
+- Transfers music torrents between RED, Orpheus and DicMusic, filling in the album and release info and attaching the source site's rip log files unchanged.
+- When transferring to one of these music sites, opens the "add format" page of the target's torrent group if it already has the same album. When the match is not certain, the possible groups are only listed on the upload page for you to choose from. Automatic merging can be turned off under "Extra feature toggles" in the settings.
 - Supports torrent cleaning, and after transferring to the target site, automatically attaches the cleaned torrent file without the need for manual addition.
 
   ![](https://ptpimg.me/4475d0.gif)
@@ -63,7 +65,7 @@ The [contributing guide](CONTRIBUTING-en.md) has the details.
 ## Cautions
 
 - **PLEASE CHECK OVER YOUR TORRENT UPLOAD FOR ANY ERRORS, EASY UPLOAD IS NOT ALWAYS PERFECT FOR EVERY SITE**
-- For now, transfer of music, MV and anime is not supported. The type info may not be automatically filled.
+- Apart from music transfers between RED, Orpheus and DicMusic, transfer of music, MV and anime is not supported for now. The type info may not be automatically filled.
 - Irrelevant pictures to screenshots may still be retained when reproduced from Chinese sites to international ones, though filtering work has been done. They need to be deleted manually.
 - Most international sites require full MediaInfo data while even some official resources in Chinese sites fail to provide it. In this case, MediaInfo data needs a manual extraction.
 - For the image loading strategy of ToTheGlory, wait and click the reproduce button only after the page fully loaded, otherwise resource info will be obtained partially.
