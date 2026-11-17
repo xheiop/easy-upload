@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/github/license/xheiop/easy-upload)](LICENSE)
 [![All Contributors](https://img.shields.io/github/all-contributors/xheiop/easy-upload/master)](#致谢)
 [![Telegram](https://img.shields.io/badge/Telegram-join-26A5E4?logo=telegram&logoColor=white)](https://t.me/+Ss_nJoAapvRhYTM1)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/xheiop/easy-upload)
+[![Ask DeepWiki](https://img.shields.io/badge/Ask-DeepWiki-1f6feb)](https://deepwiki.com/xheiop/easy-upload)
 
 [English Version](README-en.md)
 
