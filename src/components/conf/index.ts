@@ -79,5 +79,11 @@ const FeatureSwitchList: FeatureSwitchItem[] = [
     type: 'checkbox',
     key: 'doubanClosed',
   },
+  {
+    name: 'music-group-merge-closed',
+    des: 'feature.disableMusicGroupMerge',
+    type: 'checkbox',
+    key: 'musicGroupMergeClosed',
+  },
 ];
 export { FeatureSwitchList, SiteListConfig };

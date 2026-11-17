@@ -6,6 +6,10 @@ import $ from 'jquery';
 import { Buffer } from 'buffer/index';
 import { base64ToBlob } from '@/target/helper/index';
 import { REDSearchResultResponse } from '../types';
+import {
+  applyExistingMusicGroup,
+  showAutoMergedGroupNotice,
+} from '@/target/helper/music-group';
 
 class GazelleMusic extends BaseFiller implements TargetFiller {
   priority = 10;
@@ -22,13 +26,17 @@ class GazelleMusic extends BaseFiller implements TargetFiller {
       return;
     }
 
-    const { name, year } = musicJson.group;
+    const { name } = musicJson.group;
 
     // 检查是否有组ID，如果没有，尝试搜索现有专辑
     const groupId = getLocationSearchValueByKey('groupid');
     if (!groupId) {
-      // 搜索现有专辑并重定向
-      await this.searchAndRedirectToGroup(name, year);
+      // 找到可信的已有专辑时，跳转到它的添加格式页面
+      if (await this.searchAndRedirectToGroup(musicJson)) {
+        return;
+      }
+    } else {
+      showAutoMergedGroupNotice(CURRENT_SITE_INFO, groupId);
     }
 
     // 针对不同站点的特殊处理
@@ -40,35 +48,19 @@ class GazelleMusic extends BaseFiller implements TargetFiller {
     this.fillTorrentFile();
   }
 
-  private async searchAndRedirectToGroup(
-    name: string,
-    year: number,
-  ): Promise<boolean> {
-    try {
-      const searchResult = await GMFetch<REDSearchResultResponse>(
-        `/ajax.php?action=browse&searchstr=${encodeURIComponent(name)} ${year}`,
-        {
-          responseType: 'json',
-        },
-      );
-
-      if (
-        searchResult.status === 'success' &&
-        searchResult.response.results.length > 0
-      ) {
-        const groupId = searchResult.response.results[0].groupId;
-        const timestampMatchArray =
-          location.hash && location.hash.match(/(^|#)timestamp=([^#]*)(#|$)/);
-        const timestamp = timestampMatchArray?.[2] ?? '';
-
-        location.href = `${CURRENT_SITE_INFO.url}${CURRENT_SITE_INFO.uploadPath}?groupid=${groupId}#timestamp=${timestamp}`;
-        return true;
-      }
-    } catch (error) {
-      console.error('Error searching for group:', error);
-    }
-
-    return false;
+  private async searchAndRedirectToGroup(musicJson: {
+    group: MusicJson.GroupInfo;
+    torrent: MusicJson.Torrent;
+  }): Promise<boolean> {
+    return applyExistingMusicGroup({
+      release: musicJson,
+      siteInfo: CURRENT_SITE_INFO,
+      search: (query) =>
+        GMFetch<REDSearchResultResponse>(
+          `/ajax.php?action=browse&searchstr=${encodeURIComponent(query)}`,
+          { responseType: 'json' },
+        ),
+    });
   }
 
   private async processSiteSpecificLogic(musicJson: {
