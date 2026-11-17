@@ -1,7 +1,11 @@
 import { registry, TargetFiller } from './registry';
 import { BaseFiller } from './base/base-filler';
 import { CURRENT_SITE_INFO, CURRENT_SITE_NAME } from '@/const';
-import { getLocationSearchValueByKey, GMFetch } from '@/common';
+import {
+  getLocationSearchValueByKey,
+  GMFetch,
+  keepRipLogFilesAttached,
+} from '@/common';
 import $ from 'jquery';
 import { Buffer } from 'buffer/index';
 import { base64ToBlob } from '@/target/helper/index';
@@ -46,6 +50,9 @@ class GazelleMusic extends BaseFiller implements TargetFiller {
     this.fillJsonToUploadTable(musicJson, name);
 
     this.fillTorrentFile();
+
+    // the JSON import rebuilds the form, so the logs are kept attached
+    keepRipLogFilesAttached(info.musicInfo?.logFiles, name);
   }
 
   private async searchAndRedirectToGroup(musicJson: {
