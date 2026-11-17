@@ -1,3 +1,15 @@
+## [7.1.3](https://github.com/xheiop/easy-upload/compare/7.1.2...7.1.3) (2026-11-17)
+
+
+### Bug Fixes
+
+* **music:** upload the original rip logs when transferring to Gazelle music sites ([#449](https://github.com/xheiop/easy-upload/issues/449)) ([7add077](https://github.com/xheiop/easy-upload/commit/7add07756ab3247f2e345d556c7eaebcc86b6fc1)), closes [#365](https://github.com/xheiop/easy-upload/issues/365)
+
+
+### Features
+
+* **target:** match existing music groups strictly and allow turning auto merge off ([#450](https://github.com/xheiop/easy-upload/issues/450)) ([06b699f](https://github.com/xheiop/easy-upload/commit/06b699ffd279b23da152ee79fc614ac9315bf8be))
+
 ## [7.1.2](https://github.com/xheiop/easy-upload/compare/7.1.1...7.1.2) (2026-11-16)
 
 

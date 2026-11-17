@@ -2,7 +2,7 @@
 // @name            EasyUpload PT一键转种
 // @name:en         EasyUpload - Trackers Transfer Tool
 // @namespace       https://github.com/xheiop/easy-upload
-// @version         7.1.2
+// @version         7.1.3
 // @author          birdplane
 // @description     一键转种，支持PT站点之间的种子转移。
 // @description:en  Transfer torrents between trackers with one click.
@@ -225,6 +225,7 @@
 			"feature.disableSiteFavicon": "Hide site icons",
 			"feature.hideThanksQuote": "Hide acknowledgments",
 			"feature.hideDouban": "Hide Douban button and link field",
+			"feature.disableMusicGroupMerge": "Don't merge music uploads into an existing torrent group automatically (RED / Orpheus / DicMusic)",
 			"transfer.btnConvert": "Convert to thumbnails",
 			"transfer.btnConverting": "Converting...",
 			"transfer.toastSuccess": "Conversion successful!",
@@ -243,7 +244,18 @@
 			"siteList.errorBatchNotConfigured": "Please configure batch transfer list first",
 			"siteList.errorOpenFailed": "Failed to open upload page",
 			"siteList.errorBatchFailed": "Batch transfer failed",
-			"siteList.toastBatchOpened": "Transfer tabs opened. Switch to each to continue."
+			"siteList.toastBatchOpened": "Transfer tabs opened. Switch to each to continue.",
+			"musicGroup.autoMerged": "Picked this existing torrent group on the target site automatically:",
+			"musicGroup.uploadAsNewGroup": "Wrong group? Upload as a new group",
+			"musicGroup.ambiguous": "Several existing torrent groups may be this release, so none was picked. Check them and choose one:",
+			"musicGroup.suggest": "The target site may already have this release, but the match is not certain enough to merge automatically:",
+			"musicGroup.useGroup": "Add to this group",
+			"musicGroup.close": "Close",
+			"musicGroup.diffTitle": "title differs",
+			"musicGroup.diffArtist": "artist differs",
+			"musicGroup.diffYear": "year differs",
+			"musicGroup.diffReleaseType": "release type differs",
+			"musicGroup.sameCatalogue": "same catalogue number"
 		},
 		ko: {
 			"common.retrieveFailed": "가져오기 실패",
@@ -282,6 +294,7 @@
 			"feature.disableSiteFavicon": "사이트 아이콘 숨기기",
 			"feature.hideThanksQuote": "감사 내용 숨기기",
 			"feature.hideDouban": "더우반 버튼 및 링크 필드 숨기기",
+			"feature.disableMusicGroupMerge": "음악 업로드 시 대상 사이트의 기존 토렌트 그룹에 자동으로 합치지 않기 (RED / Orpheus / DicMusic)",
 			"transfer.btnConvert": "썸네일로 변환",
 			"transfer.btnConverting": "변환 중...",
 			"transfer.toastSuccess": "변환됨!",
@@ -300,7 +313,18 @@
 			"siteList.errorBatchNotConfigured": "먼저 일괄 전송 목록을 설정하세요",
 			"siteList.errorOpenFailed": "업로드 페이지 열기 실패",
 			"siteList.errorBatchFailed": "일괄 전송 실패",
-			"siteList.toastBatchOpened": "전송 페이지가 열렸습니다. 해당 페이지로 이동하여 작업하세요."
+			"siteList.toastBatchOpened": "전송 페이지가 열렸습니다. 해당 페이지로 이동하여 작업하세요.",
+			"musicGroup.autoMerged": "대상 사이트의 기존 토렌트 그룹을 자동으로 선택했습니다:",
+			"musicGroup.uploadAsNewGroup": "잘못된 그룹인가요? 새 그룹으로 업로드",
+			"musicGroup.ambiguous": "같은 릴리스로 보이는 그룹이 여러 개라 자동으로 합치지 않았습니다. 확인 후 직접 선택하세요:",
+			"musicGroup.suggest": "대상 사이트에 이미 이 릴리스가 있을 수 있지만, 확실하지 않아 자동으로 합치지 않았습니다:",
+			"musicGroup.useGroup": "이 그룹에 추가",
+			"musicGroup.close": "닫기",
+			"musicGroup.diffTitle": "앨범명이 다름",
+			"musicGroup.diffArtist": "아티스트가 다름",
+			"musicGroup.diffYear": "연도가 다름",
+			"musicGroup.diffReleaseType": "릴리스 유형이 다름",
+			"musicGroup.sameCatalogue": "카탈로그 번호가 같음"
 		},
 		zh: {
 			"common.retrieveFailed": "获取失败",
@@ -339,6 +363,7 @@
 			"feature.disableSiteFavicon": "关闭站点图标显示",
 			"feature.hideThanksQuote": "不显示致谢内容",
 			"feature.hideDouban": "不显示豆瓣按钮和豆瓣链接",
+			"feature.disableMusicGroupMerge": "音乐转种时不自动合并到目标站已有的种子组（RED / Orpheus / DicMusic）",
 			"transfer.btnConvert": "转缩略图",
 			"transfer.btnConverting": "转换中...",
 			"transfer.toastSuccess": "转换成功！",
@@ -357,7 +382,18 @@
 			"siteList.errorBatchNotConfigured": "请先设置群转列表",
 			"siteList.errorOpenFailed": "打开上传页面失败",
 			"siteList.errorBatchFailed": "批量转种失败",
-			"siteList.toastBatchOpened": "转种页面已打开，请前往对应页面操作"
+			"siteList.toastBatchOpened": "转种页面已打开，请前往对应页面操作",
+			"musicGroup.autoMerged": "已自动选择目标站已有的种子组：",
+			"musicGroup.uploadAsNewGroup": "选错了？改为新建种子组",
+			"musicGroup.ambiguous": "目标站有多个可能相同的种子组，没有自动合并，请确认后手动选择：",
+			"musicGroup.suggest": "目标站可能已有这张专辑，但匹配不够确定，没有自动合并：",
+			"musicGroup.useGroup": "添加到此种子组",
+			"musicGroup.close": "关闭",
+			"musicGroup.diffTitle": "专辑名不完全一致",
+			"musicGroup.diffArtist": "艺人不一致",
+			"musicGroup.diffYear": "年份不同",
+			"musicGroup.diffReleaseType": "发行类型不同",
+			"musicGroup.sameCatalogue": "目录号相同"
 		}
 	};
 	var HTMLToBBCodeConverter = class {
@@ -2037,963 +2073,6 @@
 			return null;
 		}
 	};
-	var alphabet = "0123456789abcdef";
-	var encodeLookup = [];
-	var decodeLookup = [];
-	for (let i = 0; i < 256; i++) {
-		encodeLookup[i] = alphabet[i >> 4 & 15] + alphabet[i & 15];
-		if (i < 16) {
-			if (i < 10) decodeLookup[48 + i] = i;
-			else decodeLookup[87 + i] = i;
-		}
-	}
-	var arr2hex = (data) => {
-		const length = data.length;
-		let string = "";
-		let i = 0;
-		while (i < length) string += encodeLookup[data[i++]];
-		return string;
-	};
-	var hex2arr = (str) => {
-		const sizeof = str.length >> 1;
-		const length = sizeof << 1;
-		const array = new Uint8Array(sizeof);
-		let n = 0;
-		let i = 0;
-		while (i < length) array[n++] = decodeLookup[str.charCodeAt(i++)] << 4 | decodeLookup[str.charCodeAt(i++)];
-		return array;
-	};
-	var concat = (chunks, size = 0) => {
-		const length = chunks.length || 0;
-		if (!size) {
-			let i = length;
-			while (i--) size += chunks[i].length;
-		}
-		const b = new Uint8Array(size);
-		let offset = size;
-		let i = length;
-		while (i--) {
-			offset -= chunks[i].length;
-			b.set(chunks[i], offset);
-		}
-		return b;
-	};
-	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-	var lookup = typeof Uint8Array === "undefined" ? [] : new Uint8Array(256);
-	for (var i$2 = 0; i$2 < chars.length; i$2++) lookup[chars.charCodeAt(i$2)] = i$2;
-	var encode$1 = function(arraybuffer) {
-		var bytes = new Uint8Array(arraybuffer), i, len = bytes.length, base64 = "";
-		for (i = 0; i < len; i += 3) {
-			base64 += chars[bytes[i] >> 2];
-			base64 += chars[(bytes[i] & 3) << 4 | bytes[i + 1] >> 4];
-			base64 += chars[(bytes[i + 1] & 15) << 2 | bytes[i + 2] >> 6];
-			base64 += chars[bytes[i + 2] & 63];
-		}
-		if (len % 3 === 2) base64 = base64.substring(0, base64.length - 1) + "=";
-		else if (len % 3 === 1) base64 = base64.substring(0, base64.length - 2) + "==";
-		return base64;
-	};
-	var decoder = new TextDecoder();
-	var arr2text = (data, enc) => {
-		if (!enc) return decoder.decode(data);
-		return new TextDecoder(enc).decode(data);
-	};
-	var encoder = new TextEncoder();
-	var text2arr = (str) => encoder.encode(str);
-	var arr2base = (data) => encode$1(data);
-	var scope = typeof window !== "undefined" ? window : self;
-	var crypto = scope.crypto || scope.msCrypto || {};
-	var subtle = crypto.subtle || crypto.webkitSubtle;
-	var formatMap = {
-		hex: arr2hex,
-		base64: arr2base
-	};
-	var hash = async (data, format, algo = "sha-1") => {
-		if (!subtle) throw new Error("no web crypto support");
-		if (typeof data === "string") data = text2arr(data);
-		const out = new Uint8Array(await subtle.digest(algo, data));
-		return format ? formatMap[format](out) : out;
-	};
-	function digitCount(value) {
-		const sign = value < 0 ? 1 : 0;
-		value = Math.abs(Number(value || 1));
-		return Math.floor(Math.log10(value)) + 1 + sign;
-	}
-	function getType(value) {
-		if (ArrayBuffer.isView(value)) return "arraybufferview";
-		if (Array.isArray(value)) return "array";
-		if (value instanceof Number) return "number";
-		if (value instanceof Boolean) return "boolean";
-		if (value instanceof Set) return "set";
-		if (value instanceof Map) return "map";
-		if (value instanceof String) return "string";
-		if (value instanceof ArrayBuffer) return "arraybuffer";
-		return typeof value;
-	}
-	function encode(data, buffer, offset) {
-		const buffers = [];
-		let result = null;
-		encode._encode(buffers, data);
-		result = concat(buffers);
-		encode.bytes = result.length;
-		if (ArrayBuffer.isView(buffer)) {
-			buffer.set(result, offset);
-			return buffer;
-		}
-		return result;
-	}
-	encode.bytes = -1;
-	encode._floatConversionDetected = false;
-	encode._encode = function(buffers, data) {
-		if (data == null) return;
-		switch (getType(data)) {
-			case "object":
-				encode.dict(buffers, data);
-				break;
-			case "map":
-				encode.dictMap(buffers, data);
-				break;
-			case "array":
-				encode.list(buffers, data);
-				break;
-			case "set":
-				encode.listSet(buffers, data);
-				break;
-			case "string":
-				encode.string(buffers, data);
-				break;
-			case "number":
-				encode.number(buffers, data);
-				break;
-			case "boolean":
-				encode.number(buffers, data);
-				break;
-			case "arraybufferview":
-				encode.buffer(buffers, new Uint8Array(data.buffer, data.byteOffset, data.byteLength));
-				break;
-			case "arraybuffer": encode.buffer(buffers, new Uint8Array(data));
-		}
-	};
-	var buffE = new Uint8Array([101]);
-	var buffD = new Uint8Array([100]);
-	var buffL = new Uint8Array([108]);
-	encode.buffer = function(buffers, data) {
-		buffers.push(text2arr(data.length + ":"), data);
-	};
-	encode.string = function(buffers, data) {
-		buffers.push(text2arr(text2arr(data).byteLength + ":" + data));
-	};
-	encode.number = function(buffers, data) {
-		if (Number.isInteger(data)) return buffers.push(text2arr("i" + BigInt(data) + "e"));
-		const maxLo = 2147483648;
-		const hi = data / maxLo << 0;
-		const lo = data % maxLo << 0;
-		const val = hi * maxLo + lo;
-		buffers.push(text2arr("i" + val + "e"));
-		if (val !== data && !encode._floatConversionDetected) {
-			encode._floatConversionDetected = true;
-			console.warn("WARNING: Possible data corruption detected with value \"" + data + "\":", "Bencoding only defines support for integers, value was converted to \"" + val + "\"");
-			console.trace();
-		}
-	};
-	encode.dict = function(buffers, data) {
-		buffers.push(buffD);
-		let j = 0;
-		let k;
-		const keys = Object.keys(data).sort();
-		const kl = keys.length;
-		for (; j < kl; j++) {
-			k = keys[j];
-			if (data[k] == null) continue;
-			encode.string(buffers, k);
-			encode._encode(buffers, data[k]);
-		}
-		buffers.push(buffE);
-	};
-	encode.dictMap = function(buffers, data) {
-		buffers.push(buffD);
-		const keys = Array.from(data.keys()).sort();
-		for (const key of keys) {
-			if (data.get(key) == null) continue;
-			ArrayBuffer.isView(key) ? encode._encode(buffers, key) : encode.string(buffers, String(key));
-			encode._encode(buffers, data.get(key));
-		}
-		buffers.push(buffE);
-	};
-	encode.list = function(buffers, data) {
-		let i = 0;
-		const c = data.length;
-		buffers.push(buffL);
-		for (; i < c; i++) {
-			if (data[i] == null) continue;
-			encode._encode(buffers, data[i]);
-		}
-		buffers.push(buffE);
-	};
-	encode.listSet = function(buffers, data) {
-		buffers.push(buffL);
-		for (const item of data) {
-			if (item == null) continue;
-			encode._encode(buffers, item);
-		}
-		buffers.push(buffE);
-	};
-	var INTEGER_START = 105;
-	var STRING_DELIM = 58;
-	var DICTIONARY_START = 100;
-	var LIST_START = 108;
-	var END_OF_TYPE = 101;
-	function getIntFromBuffer(buffer, start, end) {
-		let sum = 0;
-		let sign = 1;
-		for (let i = start; i < end; i++) {
-			const num = buffer[i];
-			if (num < 58 && num >= 48) {
-				sum = sum * 10 + (num - 48);
-				continue;
-			}
-			if (i === start && num === 43) continue;
-			if (i === start && num === 45) {
-				sign = -1;
-				continue;
-			}
-			if (num === 46) break;
-			throw new Error("not a number: buffer[" + i + "] = " + num);
-		}
-		return sum * sign;
-	}
-	function decode$1(data, start, end, encoding) {
-		if (data == null || data.length === 0) return null;
-		if (typeof start !== "number" && encoding == null) {
-			encoding = start;
-			start = void 0;
-		}
-		if (typeof end !== "number" && encoding == null) {
-			encoding = end;
-			end = void 0;
-		}
-		decode$1.position = 0;
-		decode$1.encoding = encoding || null;
-		decode$1.data = !ArrayBuffer.isView(data) ? text2arr(data) : new Uint8Array(data.slice(start, end));
-		decode$1.bytes = decode$1.data.length;
-		return decode$1.next();
-	}
-	decode$1.bytes = 0;
-	decode$1.position = 0;
-	decode$1.data = null;
-	decode$1.encoding = null;
-	decode$1.next = function() {
-		switch (decode$1.data[decode$1.position]) {
-			case DICTIONARY_START: return decode$1.dictionary();
-			case LIST_START: return decode$1.list();
-			case INTEGER_START: return decode$1.integer();
-			default: return decode$1.buffer();
-		}
-	};
-	decode$1.find = function(chr) {
-		let i = decode$1.position;
-		const c = decode$1.data.length;
-		const d = decode$1.data;
-		while (i < c) {
-			if (d[i] === chr) return i;
-			i++;
-		}
-		throw new Error("Invalid data: Missing delimiter \"" + String.fromCharCode(chr) + "\" [0x" + chr.toString(16) + "]");
-	};
-	decode$1.dictionary = function() {
-		decode$1.position++;
-		const dict = {};
-		while (decode$1.data[decode$1.position] !== END_OF_TYPE) {
-			const buffer = decode$1.buffer();
-			let key = arr2text(buffer);
-			if (key.includes("�")) key = arr2hex(buffer);
-			dict[key] = decode$1.next();
-		}
-		decode$1.position++;
-		return dict;
-	};
-	decode$1.list = function() {
-		decode$1.position++;
-		const lst = [];
-		while (decode$1.data[decode$1.position] !== END_OF_TYPE) lst.push(decode$1.next());
-		decode$1.position++;
-		return lst;
-	};
-	decode$1.integer = function() {
-		const end = decode$1.find(END_OF_TYPE);
-		const number = getIntFromBuffer(decode$1.data, decode$1.position + 1, end);
-		decode$1.position += end + 1 - decode$1.position;
-		return number;
-	};
-	decode$1.buffer = function() {
-		let sep = decode$1.find(STRING_DELIM);
-		const length = getIntFromBuffer(decode$1.data, decode$1.position, sep);
-		const end = ++sep + length;
-		decode$1.position = end;
-		return decode$1.encoding ? arr2text(decode$1.data.slice(sep, end)) : decode$1.data.slice(sep, end);
-	};
-	function listLength(list) {
-		let length = 2;
-		for (const value of list) length += encodingLength$1(value);
-		return length;
-	}
-	function mapLength(map) {
-		let length = 2;
-		for (const [key, value] of map) {
-			const keyLength = text2arr(key).byteLength;
-			length += digitCount(keyLength) + 1 + keyLength;
-			length += encodingLength$1(value);
-		}
-		return length;
-	}
-	function objectLength(value) {
-		let length = 2;
-		const keys = Object.keys(value);
-		for (let i = 0; i < keys.length; i++) {
-			const keyLength = text2arr(keys[i]).byteLength;
-			length += digitCount(keyLength) + 1 + keyLength;
-			length += encodingLength$1(value[keys[i]]);
-		}
-		return length;
-	}
-	function stringLength(value) {
-		const length = text2arr(value).byteLength;
-		return digitCount(length) + 1 + length;
-	}
-	function arrayBufferLength(value) {
-		const length = value.byteLength - value.byteOffset;
-		return digitCount(length) + 1 + length;
-	}
-	function encodingLength$1(value) {
-		const length = 0;
-		if (value == null) return length;
-		const type = getType(value);
-		switch (type) {
-			case "arraybufferview": return arrayBufferLength(value);
-			case "string": return stringLength(value);
-			case "array":
-			case "set": return listLength(value);
-			case "number": return 1 + digitCount(Math.floor(value)) + 1;
-			case "bigint": return 1 + value.toString().length + 1;
-			case "object": return objectLength(value);
-			case "map": return mapLength(value);
-			default: throw new TypeError(`Unsupported value of type "${type}"`);
-		}
-	}
-	var bencode_default = {
-		encode,
-		decode: decode$1,
-		byteLength: encodingLength$1,
-		encodingLength: encodingLength$1
-	};
-	var require___vite_browser_external = __commonJSMin(((exports, module) => {
-		module.exports = {};
-	}));
-	require___vite_browser_external();
-	self.Blob;
-	self.File;
-	self.FormData;
-	self.Headers;
-	self.Request;
-	self.Response;
-	self.AbortController;
-	self.AbortSignal;
-	self.fetch;
-	var byteTable = [
-		255,
-		255,
-		26,
-		27,
-		28,
-		29,
-		30,
-		31,
-		255,
-		255,
-		255,
-		255,
-		255,
-		255,
-		255,
-		255,
-		255,
-		0,
-		1,
-		2,
-		3,
-		4,
-		5,
-		6,
-		7,
-		8,
-		9,
-		10,
-		11,
-		12,
-		13,
-		14,
-		15,
-		16,
-		17,
-		18,
-		19,
-		20,
-		21,
-		22,
-		23,
-		24,
-		25,
-		255,
-		255,
-		255,
-		255,
-		255,
-		255,
-		0,
-		1,
-		2,
-		3,
-		4,
-		5,
-		6,
-		7,
-		8,
-		9,
-		10,
-		11,
-		12,
-		13,
-		14,
-		15,
-		16,
-		17,
-		18,
-		19,
-		20,
-		21,
-		22,
-		23,
-		24,
-		25,
-		255,
-		255,
-		255,
-		255,
-		255
-	];
-	var decode = function(encoded) {
-		if (!ArrayBuffer.isView(encoded) && typeof encoded !== "string") throw new TypeError("base32.decode only takes Buffer or string as parameter");
-		let shiftIndex = 0;
-		let plainDigit = 0;
-		let plainChar;
-		let plainPos = 0;
-		if (!ArrayBuffer.isView(encoded)) encoded = text2arr(encoded);
-		const decoded = new Uint8Array(Math.ceil(encoded.length * 5 / 8));
-		for (let i = 0; i < encoded.length; i++) {
-			if (encoded[i] === 61) break;
-			const encodedByte = encoded[i] - 48;
-			if (encodedByte < byteTable.length) {
-				plainDigit = byteTable[encodedByte];
-				if (shiftIndex <= 3) {
-					shiftIndex = (shiftIndex + 5) % 8;
-					if (shiftIndex === 0) {
-						plainChar |= plainDigit;
-						decoded[plainPos] = plainChar;
-						plainPos++;
-						plainChar = 0;
-					} else plainChar |= 255 & plainDigit << 8 - shiftIndex;
-				} else {
-					shiftIndex = (shiftIndex + 5) % 8;
-					plainChar |= 255 & plainDigit >>> shiftIndex;
-					decoded[plainPos] = plainChar;
-					plainPos++;
-					plainChar = 255 & plainDigit << 8 - shiftIndex;
-				}
-			} else throw new Error("Invalid input - it is not base32 encoded string");
-		}
-		return decoded.subarray(0, plainPos);
-	};
-	function parseRange(range) {
-		const generateRange = (start, end = start) => Array.from({ length: end - start + 1 }, (cur, idx) => idx + start);
-		return range.reduce((acc, cur, idx, arr) => {
-			const r = cur.split("-").map((cur) => parseInt(cur));
-			return acc.concat(generateRange(...r));
-		}, []);
-	}
-	function magnetURIDecode(uri) {
-		const result = {};
-		const data = uri.split("magnet:?")[1];
-		(data && data.length >= 0 ? data.split("&") : []).forEach((param) => {
-			const keyval = param.split("=");
-			if (keyval.length !== 2) return;
-			const key = keyval[0];
-			let val = keyval[1];
-			if (key === "dn") val = decodeURIComponent(val).replace(/\+/g, " ");
-			if (key === "tr" || key === "xs" || key === "as" || key === "ws") val = decodeURIComponent(val);
-			if (key === "kt") val = decodeURIComponent(val).split("+");
-			if (key === "ix") val = Number(val);
-			if (key === "so") val = parseRange(decodeURIComponent(val).split(","));
-			if (result[key]) {
-				if (!Array.isArray(result[key])) result[key] = [result[key]];
-				result[key].push(val);
-			} else result[key] = val;
-		});
-		let m;
-		if (result.xt) (Array.isArray(result.xt) ? result.xt : [result.xt]).forEach((xt) => {
-			if (m = xt.match(/^urn:btih:(.{40})/)) result.infoHash = m[1].toLowerCase();
-			else if (m = xt.match(/^urn:btih:(.{32})/)) result.infoHash = arr2hex(decode(m[1]));
-			else if (m = xt.match(/^urn:btmh:1220(.{64})/)) result.infoHashV2 = m[1].toLowerCase();
-		});
-		if (result.xs) (Array.isArray(result.xs) ? result.xs : [result.xs]).forEach((xs) => {
-			if (m = xs.match(/^urn:btpk:(.{64})/)) result.publicKey = m[1].toLowerCase();
-		});
-		if (result.infoHash) result.infoHashBuffer = hex2arr(result.infoHash);
-		if (result.infoHashV2) result.infoHashV2Buffer = hex2arr(result.infoHashV2);
-		if (result.publicKey) result.publicKeyBuffer = hex2arr(result.publicKey);
-		if (result.dn) result.name = result.dn;
-		if (result.kt) result.keywords = result.kt;
-		result.announce = [];
-		if (typeof result.tr === "string" || Array.isArray(result.tr)) result.announce = result.announce.concat(result.tr);
-		result.urlList = [];
-		if (typeof result.as === "string" || Array.isArray(result.as)) result.urlList = result.urlList.concat(result.as);
-		if (typeof result.ws === "string" || Array.isArray(result.ws)) result.urlList = result.urlList.concat(result.ws);
-		result.peerAddresses = [];
-		if (typeof result["x.pe"] === "string" || Array.isArray(result["x.pe"])) result.peerAddresses = result.peerAddresses.concat(result["x.pe"]);
-		result.announce = Array.from(new Set(result.announce));
-		result.urlList = Array.from(new Set(result.urlList));
-		result.peerAddresses = Array.from(new Set(result.peerAddresses));
-		return result;
-	}
-	var require_path_browserify = __commonJSMin(((exports, module) => {
-		function assertPath(path) {
-			if (typeof path !== "string") throw new TypeError("Path must be a string. Received " + JSON.stringify(path));
-		}
-		function normalizeStringPosix(path, allowAboveRoot) {
-			var res = "";
-			var lastSegmentLength = 0;
-			var lastSlash = -1;
-			var dots = 0;
-			var code;
-			for (var i = 0; i <= path.length; ++i) {
-				if (i < path.length) code = path.charCodeAt(i);
-				else if (code === 47) break;
-				else code = 47;
-				if (code === 47) {
-					if (lastSlash === i - 1 || dots === 1) {} else if (lastSlash !== i - 1 && dots === 2) {
-						if (res.length < 2 || lastSegmentLength !== 2 || res.charCodeAt(res.length - 1) !== 46 || res.charCodeAt(res.length - 2) !== 46) {
-							if (res.length > 2) {
-								var lastSlashIndex = res.lastIndexOf("/");
-								if (lastSlashIndex !== res.length - 1) {
-									if (lastSlashIndex === -1) {
-										res = "";
-										lastSegmentLength = 0;
-									} else {
-										res = res.slice(0, lastSlashIndex);
-										lastSegmentLength = res.length - 1 - res.lastIndexOf("/");
-									}
-									lastSlash = i;
-									dots = 0;
-									continue;
-								}
-							} else if (res.length === 2 || res.length === 1) {
-								res = "";
-								lastSegmentLength = 0;
-								lastSlash = i;
-								dots = 0;
-								continue;
-							}
-						}
-						if (allowAboveRoot) {
-							if (res.length > 0) res += "/..";
-							else res = "..";
-							lastSegmentLength = 2;
-						}
-					} else {
-						if (res.length > 0) res += "/" + path.slice(lastSlash + 1, i);
-						else res = path.slice(lastSlash + 1, i);
-						lastSegmentLength = i - lastSlash - 1;
-					}
-					lastSlash = i;
-					dots = 0;
-				} else if (code === 46 && dots !== -1) ++dots;
-				else dots = -1;
-			}
-			return res;
-		}
-		function _format(sep, pathObject) {
-			var dir = pathObject.dir || pathObject.root;
-			var base = pathObject.base || (pathObject.name || "") + (pathObject.ext || "");
-			if (!dir) return base;
-			if (dir === pathObject.root) return dir + base;
-			return dir + sep + base;
-		}
-		var posix = {
-			resolve: function resolve() {
-				var resolvedPath = "";
-				var resolvedAbsolute = false;
-				var cwd;
-				for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
-					var path;
-					if (i >= 0) path = arguments[i];
-					else {
-						if (cwd === void 0) cwd = process.cwd();
-						path = cwd;
-					}
-					assertPath(path);
-					if (path.length === 0) continue;
-					resolvedPath = path + "/" + resolvedPath;
-					resolvedAbsolute = path.charCodeAt(0) === 47;
-				}
-				resolvedPath = normalizeStringPosix(resolvedPath, !resolvedAbsolute);
-				if (resolvedAbsolute) {
-					if (resolvedPath.length > 0) return "/" + resolvedPath;
-					else return "/";
-				} else if (resolvedPath.length > 0) return resolvedPath;
-				else return ".";
-			},
-			normalize: function normalize(path) {
-				assertPath(path);
-				if (path.length === 0) return ".";
-				var isAbsolute = path.charCodeAt(0) === 47;
-				var trailingSeparator = path.charCodeAt(path.length - 1) === 47;
-				path = normalizeStringPosix(path, !isAbsolute);
-				if (path.length === 0 && !isAbsolute) path = ".";
-				if (path.length > 0 && trailingSeparator) path += "/";
-				if (isAbsolute) return "/" + path;
-				return path;
-			},
-			isAbsolute: function isAbsolute(path) {
-				assertPath(path);
-				return path.length > 0 && path.charCodeAt(0) === 47;
-			},
-			join: function join() {
-				if (arguments.length === 0) return ".";
-				var joined;
-				for (var i = 0; i < arguments.length; ++i) {
-					var arg = arguments[i];
-					assertPath(arg);
-					if (arg.length > 0) {
-						if (joined === void 0) joined = arg;
-						else joined += "/" + arg;
-					}
-				}
-				if (joined === void 0) return ".";
-				return posix.normalize(joined);
-			},
-			relative: function relative(from, to) {
-				assertPath(from);
-				assertPath(to);
-				if (from === to) return "";
-				from = posix.resolve(from);
-				to = posix.resolve(to);
-				if (from === to) return "";
-				var fromStart = 1;
-				for (; fromStart < from.length; ++fromStart) if (from.charCodeAt(fromStart) !== 47) break;
-				var fromEnd = from.length;
-				var fromLen = fromEnd - fromStart;
-				var toStart = 1;
-				for (; toStart < to.length; ++toStart) if (to.charCodeAt(toStart) !== 47) break;
-				var toLen = to.length - toStart;
-				var length = fromLen < toLen ? fromLen : toLen;
-				var lastCommonSep = -1;
-				var i = 0;
-				for (; i <= length; ++i) {
-					if (i === length) {
-						if (toLen > length) {
-							if (to.charCodeAt(toStart + i) === 47) return to.slice(toStart + i + 1);
-							else if (i === 0) return to.slice(toStart + i);
-						} else if (fromLen > length) {
-							if (from.charCodeAt(fromStart + i) === 47) lastCommonSep = i;
-							else if (i === 0) lastCommonSep = 0;
-						}
-						break;
-					}
-					var fromCode = from.charCodeAt(fromStart + i);
-					if (fromCode !== to.charCodeAt(toStart + i)) break;
-					else if (fromCode === 47) lastCommonSep = i;
-				}
-				var out = "";
-				for (i = fromStart + lastCommonSep + 1; i <= fromEnd; ++i) if (i === fromEnd || from.charCodeAt(i) === 47) {
-					if (out.length === 0) out += "..";
-					else out += "/..";
-				}
-				if (out.length > 0) return out + to.slice(toStart + lastCommonSep);
-				else {
-					toStart += lastCommonSep;
-					if (to.charCodeAt(toStart) === 47) ++toStart;
-					return to.slice(toStart);
-				}
-			},
-			_makeLong: function _makeLong(path) {
-				return path;
-			},
-			dirname: function dirname(path) {
-				assertPath(path);
-				if (path.length === 0) return ".";
-				var code = path.charCodeAt(0);
-				var hasRoot = code === 47;
-				var end = -1;
-				var matchedSlash = true;
-				for (var i = path.length - 1; i >= 1; --i) {
-					code = path.charCodeAt(i);
-					if (code === 47) {
-						if (!matchedSlash) {
-							end = i;
-							break;
-						}
-					} else matchedSlash = false;
-				}
-				if (end === -1) return hasRoot ? "/" : ".";
-				if (hasRoot && end === 1) return "//";
-				return path.slice(0, end);
-			},
-			basename: function basename(path, ext) {
-				if (ext !== void 0 && typeof ext !== "string") throw new TypeError("\"ext\" argument must be a string");
-				assertPath(path);
-				var start = 0;
-				var end = -1;
-				var matchedSlash = true;
-				var i;
-				if (ext !== void 0 && ext.length > 0 && ext.length <= path.length) {
-					if (ext.length === path.length && ext === path) return "";
-					var extIdx = ext.length - 1;
-					var firstNonSlashEnd = -1;
-					for (i = path.length - 1; i >= 0; --i) {
-						var code = path.charCodeAt(i);
-						if (code === 47) {
-							if (!matchedSlash) {
-								start = i + 1;
-								break;
-							}
-						} else {
-							if (firstNonSlashEnd === -1) {
-								matchedSlash = false;
-								firstNonSlashEnd = i + 1;
-							}
-							if (extIdx >= 0) {
-								if (code === ext.charCodeAt(extIdx)) {
-									if (--extIdx === -1) end = i;
-								} else {
-									extIdx = -1;
-									end = firstNonSlashEnd;
-								}
-							}
-						}
-					}
-					if (start === end) end = firstNonSlashEnd;
-					else if (end === -1) end = path.length;
-					return path.slice(start, end);
-				} else {
-					for (i = path.length - 1; i >= 0; --i) if (path.charCodeAt(i) === 47) {
-						if (!matchedSlash) {
-							start = i + 1;
-							break;
-						}
-					} else if (end === -1) {
-						matchedSlash = false;
-						end = i + 1;
-					}
-					if (end === -1) return "";
-					return path.slice(start, end);
-				}
-			},
-			extname: function extname(path) {
-				assertPath(path);
-				var startDot = -1;
-				var startPart = 0;
-				var end = -1;
-				var matchedSlash = true;
-				var preDotState = 0;
-				for (var i = path.length - 1; i >= 0; --i) {
-					var code = path.charCodeAt(i);
-					if (code === 47) {
-						if (!matchedSlash) {
-							startPart = i + 1;
-							break;
-						}
-						continue;
-					}
-					if (end === -1) {
-						matchedSlash = false;
-						end = i + 1;
-					}
-					if (code === 46) {
-						if (startDot === -1) startDot = i;
-						else if (preDotState !== 1) preDotState = 1;
-					} else if (startDot !== -1) preDotState = -1;
-				}
-				if (startDot === -1 || end === -1 || preDotState === 0 || preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) return "";
-				return path.slice(startDot, end);
-			},
-			format: function format(pathObject) {
-				if (pathObject === null || typeof pathObject !== "object") throw new TypeError("The \"pathObject\" argument must be of type Object. Received type " + typeof pathObject);
-				return _format("/", pathObject);
-			},
-			parse: function parse(path) {
-				assertPath(path);
-				var ret = {
-					root: "",
-					dir: "",
-					base: "",
-					ext: "",
-					name: ""
-				};
-				if (path.length === 0) return ret;
-				var code = path.charCodeAt(0);
-				var isAbsolute = code === 47;
-				var start;
-				if (isAbsolute) {
-					ret.root = "/";
-					start = 1;
-				} else start = 0;
-				var startDot = -1;
-				var startPart = 0;
-				var end = -1;
-				var matchedSlash = true;
-				var i = path.length - 1;
-				var preDotState = 0;
-				for (; i >= start; --i) {
-					code = path.charCodeAt(i);
-					if (code === 47) {
-						if (!matchedSlash) {
-							startPart = i + 1;
-							break;
-						}
-						continue;
-					}
-					if (end === -1) {
-						matchedSlash = false;
-						end = i + 1;
-					}
-					if (code === 46) {
-						if (startDot === -1) startDot = i;
-						else if (preDotState !== 1) preDotState = 1;
-					} else if (startDot !== -1) preDotState = -1;
-				}
-				if (startDot === -1 || end === -1 || preDotState === 0 || preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
-					if (end !== -1) {
-						if (startPart === 0 && isAbsolute) ret.base = ret.name = path.slice(1, end);
-						else ret.base = ret.name = path.slice(startPart, end);
-					}
-				} else {
-					if (startPart === 0 && isAbsolute) {
-						ret.name = path.slice(1, startDot);
-						ret.base = path.slice(1, end);
-					} else {
-						ret.name = path.slice(startPart, startDot);
-						ret.base = path.slice(startPart, end);
-					}
-					ret.ext = path.slice(startDot, end);
-				}
-				if (startPart > 0) ret.dir = path.slice(0, startPart - 1);
-				else if (isAbsolute) ret.dir = "/";
-				return ret;
-			},
-			sep: "/",
-			delimiter: ":",
-			win32: null,
-			posix: null
-		};
-		posix.posix = posix;
-		module.exports = posix;
-	}));
-	var require_queue_microtask = __commonJSMin(((exports, module) => {
-		var promise;
-		module.exports = typeof queueMicrotask === "function" ? queueMicrotask.bind(typeof window !== "undefined" ? window : global) : (cb) => (promise || (promise = Promise.resolve())).then(cb).catch((err) => setTimeout(() => {
-			throw err;
-		}, 0));
-	}));
-	var import_path_browserify = __toESM(require_path_browserify(), 1);
-	require_queue_microtask();
-	async function parseTorrent(torrentId) {
-		if (typeof torrentId === "string" && /^(stream-)?magnet:/.test(torrentId)) {
-			const torrentObj = magnetURIDecode(torrentId);
-			if (!torrentObj.infoHash) throw new Error("Invalid torrent identifier");
-			return torrentObj;
-		} else if (typeof torrentId === "string" && (/^[a-f0-9]{40}$/i.test(torrentId) || /^[a-z2-7]{32}$/i.test(torrentId))) return magnetURIDecode(`magnet:?xt=urn:btih:${torrentId}`);
-		else if (ArrayBuffer.isView(torrentId) && torrentId.length === 20) return magnetURIDecode(`magnet:?xt=urn:btih:${arr2hex(torrentId)}`);
-		else if (ArrayBuffer.isView(torrentId)) return await decodeTorrentFile(torrentId);
-		else if (torrentId && torrentId.infoHash) {
-			torrentId.infoHash = torrentId.infoHash.toLowerCase();
-			if (!torrentId.announce) torrentId.announce = [];
-			if (typeof torrentId.announce === "string") torrentId.announce = [torrentId.announce];
-			if (!torrentId.urlList) torrentId.urlList = [];
-			return torrentId;
-		} else throw new Error("Invalid torrent identifier");
-	}
-	async function decodeTorrentFile(torrent) {
-		if (ArrayBuffer.isView(torrent)) torrent = bencode_default.decode(torrent);
-		ensure(torrent.info, "info");
-		ensure(torrent.info["name.utf-8"] || torrent.info.name, "info.name");
-		ensure(torrent.info["piece length"], "info['piece length']");
-		ensure(torrent.info.pieces, "info.pieces");
-		if (torrent.info.files) torrent.info.files.forEach((file) => {
-			ensure(typeof file.length === "number", "info.files[0].length");
-			ensure(file["path.utf-8"] || file.path, "info.files[0].path");
-		});
-		else ensure(typeof torrent.info.length === "number", "info.length");
-		const result = {
-			info: torrent.info,
-			infoBuffer: bencode_default.encode(torrent.info),
-			name: arr2text(torrent.info["name.utf-8"] || torrent.info.name),
-			announce: []
-		};
-		result.infoHashBuffer = await hash(result.infoBuffer);
-		result.infoHash = arr2hex(result.infoHashBuffer);
-		if (torrent.info.private !== void 0) result.private = !!torrent.info.private;
-		if (torrent["creation date"]) result.created = new Date(torrent["creation date"] * 1e3);
-		if (torrent["created by"]) result.createdBy = arr2text(torrent["created by"]);
-		if (ArrayBuffer.isView(torrent.comment)) result.comment = arr2text(torrent.comment);
-		if (Array.isArray(torrent["announce-list"]) && torrent["announce-list"].length > 0) torrent["announce-list"].forEach((urls) => {
-			urls.forEach((url) => {
-				result.announce.push(arr2text(url));
-			});
-		});
-		else if (torrent.announce) result.announce.push(arr2text(torrent.announce));
-		if (ArrayBuffer.isView(torrent["url-list"])) torrent["url-list"] = torrent["url-list"].length > 0 ? [torrent["url-list"]] : [];
-		result.urlList = (torrent["url-list"] || []).map((url) => arr2text(url));
-		result.announce = Array.from(new Set(result.announce));
-		result.urlList = Array.from(new Set(result.urlList));
-		let sum = 0;
-		result.files = (torrent.info.files || [torrent.info]).map((file, i) => {
-			const parts = [].concat(result.name, file["path.utf-8"] || file.path || []).map((p) => ArrayBuffer.isView(p) ? arr2text(p) : p);
-			sum += file.length;
-			return {
-				path: import_path_browserify.default.join.apply(null, [import_path_browserify.default.sep].concat(parts)).slice(1),
-				name: parts[parts.length - 1],
-				length: file.length,
-				offset: sum - file.length
-			};
-		});
-		result.length = sum;
-		const lastFile = result.files[result.files.length - 1];
-		result.pieceLength = torrent.info["piece length"];
-		result.lastPieceLength = (lastFile.offset + lastFile.length) % result.pieceLength || result.pieceLength;
-		result.pieces = splitPieces(torrent.info.pieces);
-		return result;
-	}
-	function encodeTorrentFile(parsed) {
-		const torrent = { info: parsed.info };
-		torrent["announce-list"] = (parsed.announce || []).map((url) => {
-			if (!torrent.announce) torrent.announce = url;
-			url = text2arr(url);
-			return [url];
-		});
-		torrent["url-list"] = parsed.urlList || [];
-		if (parsed.private !== void 0) torrent.private = Number(parsed.private);
-		if (parsed.created) torrent["creation date"] = parsed.created.getTime() / 1e3 | 0;
-		if (parsed.createdBy) torrent["created by"] = parsed.createdBy;
-		if (parsed.comment) torrent.comment = parsed.comment;
-		return bencode_default.encode(torrent);
-	}
-	function splitPieces(buf) {
-		const pieces = [];
-		for (let i = 0; i < buf.length; i += 20) pieces.push(arr2hex(buf.slice(i, i + 20)));
-		return pieces;
-	}
-	function ensure(bool, fieldName) {
-		if (!bool) throw new Error(`Torrent is missing required field: ${fieldName}`);
-	}
 	var require_base64_js = __commonJSMin(((exports) => {
 		exports.byteLength = byteLength;
 		exports.toByteArray = toByteArray;
@@ -4212,6 +3291,1116 @@
 			return table;
 		})();
 	}))();
+	var bytesToBase64 = (bytes) => import_buffer.Buffer.from(bytes).toString("base64");
+	var base64ToBytes = (base64) => new Uint8Array(import_buffer.Buffer.from(base64, "base64"));
+	var decodeRipLogText = (bytes) => {
+		let encoding = "utf-8";
+		if (bytes[0] === 255 && bytes[1] === 254) encoding = "utf-16le";
+		else if (bytes[0] === 254 && bytes[1] === 255) encoding = "utf-16be";
+		return new TextDecoder(encoding).decode(bytes);
+	};
+	var isRipLogContent = (bytes) => {
+		if (bytes.length === 0) return false;
+		const head = decodeRipLogText(bytes.subarray(0, 512)).trimStart();
+		return head.length > 0 && !head.startsWith("<") && !head.startsWith("{");
+	};
+	var sha256Hex = async (bytes) => {
+		var _globalThis$crypto;
+		const subtle = (_globalThis$crypto = globalThis.crypto) === null || _globalThis$crypto === void 0 ? void 0 : _globalThis$crypto.subtle;
+		if (!subtle) return null;
+		const digest = await subtle.digest("SHA-256", new Uint8Array(bytes));
+		return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+	};
+	var getValidRipLogIds = (ids) => ids.map((id) => String(id).trim()).filter((id) => /^[1-9]\d*$/.test(id));
+	var fetchRipLogFromApi = async (torrentId, logId) => {
+		try {
+			var _result$response, _result$response2;
+			const result = await GMFetch(`/ajax.php?action=riplog&id=${torrentId}&logid=${logId}`, { responseType: "json" });
+			const encoded = (result === null || result === void 0 ? void 0 : result.status) === "success" ? (_result$response = result.response) === null || _result$response === void 0 ? void 0 : _result$response.log : null;
+			if (!encoded) return null;
+			const bytes = base64ToBytes(encoded);
+			const expected = (_result$response2 = result.response) === null || _result$response2 === void 0 || (_result$response2 = _result$response2.log_sha256) === null || _result$response2 === void 0 ? void 0 : _result$response2.toLowerCase();
+			if (expected) {
+				const actual = await sha256Hex(bytes);
+				if (actual && actual !== expected) {
+					console.warn(`rip log ${logId} does not match its sha256`);
+					return null;
+				}
+			}
+			return isRipLogContent(bytes) ? bytes : null;
+		} catch (error) {
+			console.warn(`fail to fetch rip log ${logId} from api`, error);
+			return null;
+		}
+	};
+	var RAW_LOG_HREF_REGEX = /type=riplog/i;
+	var RAW_LOG_TEXT_REGEX = /raw|download|原始|下载/i;
+	var UNSAFE_LOG_HREF_REGEX = /auth=|action=(edit|remove|delete|take_|rescore|adjust)|report/i;
+	var findRawLogLink = (section) => {
+		var _ref, _anchors$find, _anchor$getAttribute2;
+		const anchors = Array.from(section.querySelectorAll("a[href]")).filter((anchor) => {
+			var _anchor$getAttribute;
+			const href = (_anchor$getAttribute = anchor.getAttribute("href")) !== null && _anchor$getAttribute !== void 0 ? _anchor$getAttribute : "";
+			return href !== "" && !href.startsWith("#") && !/^javascript:/i.test(href) && !UNSAFE_LOG_HREF_REGEX.test(href);
+		});
+		const anchor = (_ref = (_anchors$find = anchors.find((a) => {
+			var _a$getAttribute;
+			return RAW_LOG_HREF_REGEX.test((_a$getAttribute = a.getAttribute("href")) !== null && _a$getAttribute !== void 0 ? _a$getAttribute : "");
+		})) !== null && _anchors$find !== void 0 ? _anchors$find : anchors.find((a) => {
+			var _a$textContent;
+			return RAW_LOG_TEXT_REGEX.test((_a$textContent = a.textContent) !== null && _a$textContent !== void 0 ? _a$textContent : "");
+		})) !== null && _ref !== void 0 ? _ref : anchors.find((a) => a.classList.contains("brackets"));
+		return (_anchor$getAttribute2 = anchor === null || anchor === void 0 ? void 0 : anchor.getAttribute("href")) !== null && _anchor$getAttribute2 !== void 0 ? _anchor$getAttribute2 : null;
+	};
+	var fetchRipLogsFromPage = async (logPageUrl) => {
+		let html;
+		try {
+			html = await GMFetch(logPageUrl);
+		} catch (error) {
+			console.warn("fail to fetch log page", error);
+			return {
+				files: [],
+				texts: []
+			};
+		}
+		const doc = new DOMParser().parseFromString(html, "text/html");
+		const texts = Array.from(doc.querySelectorAll("pre"), (pre) => {
+			var _pre$textContent;
+			return (_pre$textContent = pre.textContent) !== null && _pre$textContent !== void 0 ? _pre$textContent : "";
+		}).filter(Boolean);
+		const pageUrl = new URL(logPageUrl, location.href);
+		const files = [];
+		for (const section of Array.from(doc.querySelectorAll(".log_section"))) {
+			const href = findRawLogLink(section);
+			if (!href) continue;
+			const url = new URL(href, pageUrl);
+			if (url.origin !== location.origin) continue;
+			try {
+				const buffer = await GMFetch(url.href, { responseType: "arraybuffer" });
+				const bytes = new Uint8Array(buffer);
+				if (isRipLogContent(bytes)) files.push(bytes);
+			} catch (error) {
+				console.warn("fail to fetch raw rip log", error);
+			}
+		}
+		return {
+			files,
+			texts
+		};
+	};
+	var fetchOriginalRipLogs = async ({ torrentId, ripLogIds = [], logPageUrl }) => {
+		let files = [];
+		for (const logId of getValidRipLogIds(ripLogIds)) {
+			const bytes = await fetchRipLogFromApi(torrentId, logId);
+			if (!bytes) {
+				files = [];
+				break;
+			}
+			files.push(bytes);
+		}
+		let texts = [];
+		if (files.length === 0 && logPageUrl) ({files, texts} = await fetchRipLogsFromPage(logPageUrl));
+		return {
+			files: files.map(bytesToBase64),
+			texts: files.length > 0 ? files.map(decodeRipLogText) : texts
+		};
+	};
+	var LOG_INPUT_SELECTOR = "input[type=\"file\"][name^=\"logfile\"]";
+	var sanitizeFileName = (name) => name.replace(/[\\/:*?"<>|\u0000-\u001f]/g, " ").replace(/\s+/g, " ").trim().slice(0, 180);
+	var attachRipLogFiles = (logFiles, baseName) => {
+		if (!(logFiles === null || logFiles === void 0 ? void 0 : logFiles.length)) return null;
+		const input = document.querySelector(LOG_INPUT_SELECTOR);
+		if (!input) return null;
+		const name = sanitizeFileName(baseName) || "riplog";
+		const dataTransfer = new DataTransfer();
+		logFiles.forEach((data, index) => {
+			const fileName = logFiles.length > 1 ? `${name}.${index + 1}.log` : `${name}.log`;
+			dataTransfer.items.add(new File([new Uint8Array(base64ToBytes(data))], fileName, { type: "text/plain" }));
+		});
+		input.files = dataTransfer.files;
+		input.dispatchEvent(new Event("change", { bubbles: true }));
+		return input;
+	};
+	var keepRipLogFilesAttached = (logFiles, baseName, { container = "#dynamic_form", duration = 3e4 } = {}) => {
+		if (!(logFiles === null || logFiles === void 0 ? void 0 : logFiles.length)) return;
+		const attachedInputs = new WeakSet();
+		const attach = () => {
+			const current = document.querySelector(LOG_INPUT_SELECTOR);
+			if (!current || attachedInputs.has(current)) return;
+			const input = attachRipLogFiles(logFiles, baseName);
+			if (input) attachedInputs.add(input);
+		};
+		attach();
+		const root = document.querySelector(container);
+		if (!root) return;
+		let pending;
+		const observer = new MutationObserver(() => {
+			clearTimeout(pending);
+			pending = setTimeout(attach, 300);
+		});
+		observer.observe(root, {
+			childList: true,
+			subtree: true
+		});
+		setTimeout(() => observer.disconnect(), duration);
+	};
+	var alphabet = "0123456789abcdef";
+	var encodeLookup = [];
+	var decodeLookup = [];
+	for (let i = 0; i < 256; i++) {
+		encodeLookup[i] = alphabet[i >> 4 & 15] + alphabet[i & 15];
+		if (i < 16) {
+			if (i < 10) decodeLookup[48 + i] = i;
+			else decodeLookup[87 + i] = i;
+		}
+	}
+	var arr2hex = (data) => {
+		const length = data.length;
+		let string = "";
+		let i = 0;
+		while (i < length) string += encodeLookup[data[i++]];
+		return string;
+	};
+	var hex2arr = (str) => {
+		const sizeof = str.length >> 1;
+		const length = sizeof << 1;
+		const array = new Uint8Array(sizeof);
+		let n = 0;
+		let i = 0;
+		while (i < length) array[n++] = decodeLookup[str.charCodeAt(i++)] << 4 | decodeLookup[str.charCodeAt(i++)];
+		return array;
+	};
+	var concat = (chunks, size = 0) => {
+		const length = chunks.length || 0;
+		if (!size) {
+			let i = length;
+			while (i--) size += chunks[i].length;
+		}
+		const b = new Uint8Array(size);
+		let offset = size;
+		let i = length;
+		while (i--) {
+			offset -= chunks[i].length;
+			b.set(chunks[i], offset);
+		}
+		return b;
+	};
+	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+	var lookup = typeof Uint8Array === "undefined" ? [] : new Uint8Array(256);
+	for (var i$2 = 0; i$2 < chars.length; i$2++) lookup[chars.charCodeAt(i$2)] = i$2;
+	var encode$1 = function(arraybuffer) {
+		var bytes = new Uint8Array(arraybuffer), i, len = bytes.length, base64 = "";
+		for (i = 0; i < len; i += 3) {
+			base64 += chars[bytes[i] >> 2];
+			base64 += chars[(bytes[i] & 3) << 4 | bytes[i + 1] >> 4];
+			base64 += chars[(bytes[i + 1] & 15) << 2 | bytes[i + 2] >> 6];
+			base64 += chars[bytes[i + 2] & 63];
+		}
+		if (len % 3 === 2) base64 = base64.substring(0, base64.length - 1) + "=";
+		else if (len % 3 === 1) base64 = base64.substring(0, base64.length - 2) + "==";
+		return base64;
+	};
+	var decoder = new TextDecoder();
+	var arr2text = (data, enc) => {
+		if (!enc) return decoder.decode(data);
+		return new TextDecoder(enc).decode(data);
+	};
+	var encoder = new TextEncoder();
+	var text2arr = (str) => encoder.encode(str);
+	var arr2base = (data) => encode$1(data);
+	var scope = typeof window !== "undefined" ? window : self;
+	var crypto = scope.crypto || scope.msCrypto || {};
+	var subtle = crypto.subtle || crypto.webkitSubtle;
+	var formatMap = {
+		hex: arr2hex,
+		base64: arr2base
+	};
+	var hash = async (data, format, algo = "sha-1") => {
+		if (!subtle) throw new Error("no web crypto support");
+		if (typeof data === "string") data = text2arr(data);
+		const out = new Uint8Array(await subtle.digest(algo, data));
+		return format ? formatMap[format](out) : out;
+	};
+	function digitCount(value) {
+		const sign = value < 0 ? 1 : 0;
+		value = Math.abs(Number(value || 1));
+		return Math.floor(Math.log10(value)) + 1 + sign;
+	}
+	function getType(value) {
+		if (ArrayBuffer.isView(value)) return "arraybufferview";
+		if (Array.isArray(value)) return "array";
+		if (value instanceof Number) return "number";
+		if (value instanceof Boolean) return "boolean";
+		if (value instanceof Set) return "set";
+		if (value instanceof Map) return "map";
+		if (value instanceof String) return "string";
+		if (value instanceof ArrayBuffer) return "arraybuffer";
+		return typeof value;
+	}
+	function encode(data, buffer, offset) {
+		const buffers = [];
+		let result = null;
+		encode._encode(buffers, data);
+		result = concat(buffers);
+		encode.bytes = result.length;
+		if (ArrayBuffer.isView(buffer)) {
+			buffer.set(result, offset);
+			return buffer;
+		}
+		return result;
+	}
+	encode.bytes = -1;
+	encode._floatConversionDetected = false;
+	encode._encode = function(buffers, data) {
+		if (data == null) return;
+		switch (getType(data)) {
+			case "object":
+				encode.dict(buffers, data);
+				break;
+			case "map":
+				encode.dictMap(buffers, data);
+				break;
+			case "array":
+				encode.list(buffers, data);
+				break;
+			case "set":
+				encode.listSet(buffers, data);
+				break;
+			case "string":
+				encode.string(buffers, data);
+				break;
+			case "number":
+				encode.number(buffers, data);
+				break;
+			case "boolean":
+				encode.number(buffers, data);
+				break;
+			case "arraybufferview":
+				encode.buffer(buffers, new Uint8Array(data.buffer, data.byteOffset, data.byteLength));
+				break;
+			case "arraybuffer": encode.buffer(buffers, new Uint8Array(data));
+		}
+	};
+	var buffE = new Uint8Array([101]);
+	var buffD = new Uint8Array([100]);
+	var buffL = new Uint8Array([108]);
+	encode.buffer = function(buffers, data) {
+		buffers.push(text2arr(data.length + ":"), data);
+	};
+	encode.string = function(buffers, data) {
+		buffers.push(text2arr(text2arr(data).byteLength + ":" + data));
+	};
+	encode.number = function(buffers, data) {
+		if (Number.isInteger(data)) return buffers.push(text2arr("i" + BigInt(data) + "e"));
+		const maxLo = 2147483648;
+		const hi = data / maxLo << 0;
+		const lo = data % maxLo << 0;
+		const val = hi * maxLo + lo;
+		buffers.push(text2arr("i" + val + "e"));
+		if (val !== data && !encode._floatConversionDetected) {
+			encode._floatConversionDetected = true;
+			console.warn("WARNING: Possible data corruption detected with value \"" + data + "\":", "Bencoding only defines support for integers, value was converted to \"" + val + "\"");
+			console.trace();
+		}
+	};
+	encode.dict = function(buffers, data) {
+		buffers.push(buffD);
+		let j = 0;
+		let k;
+		const keys = Object.keys(data).sort();
+		const kl = keys.length;
+		for (; j < kl; j++) {
+			k = keys[j];
+			if (data[k] == null) continue;
+			encode.string(buffers, k);
+			encode._encode(buffers, data[k]);
+		}
+		buffers.push(buffE);
+	};
+	encode.dictMap = function(buffers, data) {
+		buffers.push(buffD);
+		const keys = Array.from(data.keys()).sort();
+		for (const key of keys) {
+			if (data.get(key) == null) continue;
+			ArrayBuffer.isView(key) ? encode._encode(buffers, key) : encode.string(buffers, String(key));
+			encode._encode(buffers, data.get(key));
+		}
+		buffers.push(buffE);
+	};
+	encode.list = function(buffers, data) {
+		let i = 0;
+		const c = data.length;
+		buffers.push(buffL);
+		for (; i < c; i++) {
+			if (data[i] == null) continue;
+			encode._encode(buffers, data[i]);
+		}
+		buffers.push(buffE);
+	};
+	encode.listSet = function(buffers, data) {
+		buffers.push(buffL);
+		for (const item of data) {
+			if (item == null) continue;
+			encode._encode(buffers, item);
+		}
+		buffers.push(buffE);
+	};
+	var INTEGER_START = 105;
+	var STRING_DELIM = 58;
+	var DICTIONARY_START = 100;
+	var LIST_START = 108;
+	var END_OF_TYPE = 101;
+	function getIntFromBuffer(buffer, start, end) {
+		let sum = 0;
+		let sign = 1;
+		for (let i = start; i < end; i++) {
+			const num = buffer[i];
+			if (num < 58 && num >= 48) {
+				sum = sum * 10 + (num - 48);
+				continue;
+			}
+			if (i === start && num === 43) continue;
+			if (i === start && num === 45) {
+				sign = -1;
+				continue;
+			}
+			if (num === 46) break;
+			throw new Error("not a number: buffer[" + i + "] = " + num);
+		}
+		return sum * sign;
+	}
+	function decode$1(data, start, end, encoding) {
+		if (data == null || data.length === 0) return null;
+		if (typeof start !== "number" && encoding == null) {
+			encoding = start;
+			start = void 0;
+		}
+		if (typeof end !== "number" && encoding == null) {
+			encoding = end;
+			end = void 0;
+		}
+		decode$1.position = 0;
+		decode$1.encoding = encoding || null;
+		decode$1.data = !ArrayBuffer.isView(data) ? text2arr(data) : new Uint8Array(data.slice(start, end));
+		decode$1.bytes = decode$1.data.length;
+		return decode$1.next();
+	}
+	decode$1.bytes = 0;
+	decode$1.position = 0;
+	decode$1.data = null;
+	decode$1.encoding = null;
+	decode$1.next = function() {
+		switch (decode$1.data[decode$1.position]) {
+			case DICTIONARY_START: return decode$1.dictionary();
+			case LIST_START: return decode$1.list();
+			case INTEGER_START: return decode$1.integer();
+			default: return decode$1.buffer();
+		}
+	};
+	decode$1.find = function(chr) {
+		let i = decode$1.position;
+		const c = decode$1.data.length;
+		const d = decode$1.data;
+		while (i < c) {
+			if (d[i] === chr) return i;
+			i++;
+		}
+		throw new Error("Invalid data: Missing delimiter \"" + String.fromCharCode(chr) + "\" [0x" + chr.toString(16) + "]");
+	};
+	decode$1.dictionary = function() {
+		decode$1.position++;
+		const dict = {};
+		while (decode$1.data[decode$1.position] !== END_OF_TYPE) {
+			const buffer = decode$1.buffer();
+			let key = arr2text(buffer);
+			if (key.includes("�")) key = arr2hex(buffer);
+			dict[key] = decode$1.next();
+		}
+		decode$1.position++;
+		return dict;
+	};
+	decode$1.list = function() {
+		decode$1.position++;
+		const lst = [];
+		while (decode$1.data[decode$1.position] !== END_OF_TYPE) lst.push(decode$1.next());
+		decode$1.position++;
+		return lst;
+	};
+	decode$1.integer = function() {
+		const end = decode$1.find(END_OF_TYPE);
+		const number = getIntFromBuffer(decode$1.data, decode$1.position + 1, end);
+		decode$1.position += end + 1 - decode$1.position;
+		return number;
+	};
+	decode$1.buffer = function() {
+		let sep = decode$1.find(STRING_DELIM);
+		const length = getIntFromBuffer(decode$1.data, decode$1.position, sep);
+		const end = ++sep + length;
+		decode$1.position = end;
+		return decode$1.encoding ? arr2text(decode$1.data.slice(sep, end)) : decode$1.data.slice(sep, end);
+	};
+	function listLength(list) {
+		let length = 2;
+		for (const value of list) length += encodingLength$1(value);
+		return length;
+	}
+	function mapLength(map) {
+		let length = 2;
+		for (const [key, value] of map) {
+			const keyLength = text2arr(key).byteLength;
+			length += digitCount(keyLength) + 1 + keyLength;
+			length += encodingLength$1(value);
+		}
+		return length;
+	}
+	function objectLength(value) {
+		let length = 2;
+		const keys = Object.keys(value);
+		for (let i = 0; i < keys.length; i++) {
+			const keyLength = text2arr(keys[i]).byteLength;
+			length += digitCount(keyLength) + 1 + keyLength;
+			length += encodingLength$1(value[keys[i]]);
+		}
+		return length;
+	}
+	function stringLength(value) {
+		const length = text2arr(value).byteLength;
+		return digitCount(length) + 1 + length;
+	}
+	function arrayBufferLength(value) {
+		const length = value.byteLength - value.byteOffset;
+		return digitCount(length) + 1 + length;
+	}
+	function encodingLength$1(value) {
+		const length = 0;
+		if (value == null) return length;
+		const type = getType(value);
+		switch (type) {
+			case "arraybufferview": return arrayBufferLength(value);
+			case "string": return stringLength(value);
+			case "array":
+			case "set": return listLength(value);
+			case "number": return 1 + digitCount(Math.floor(value)) + 1;
+			case "bigint": return 1 + value.toString().length + 1;
+			case "object": return objectLength(value);
+			case "map": return mapLength(value);
+			default: throw new TypeError(`Unsupported value of type "${type}"`);
+		}
+	}
+	var bencode_default = {
+		encode,
+		decode: decode$1,
+		byteLength: encodingLength$1,
+		encodingLength: encodingLength$1
+	};
+	var require___vite_browser_external = __commonJSMin(((exports, module) => {
+		module.exports = {};
+	}));
+	require___vite_browser_external();
+	self.Blob;
+	self.File;
+	self.FormData;
+	self.Headers;
+	self.Request;
+	self.Response;
+	self.AbortController;
+	self.AbortSignal;
+	self.fetch;
+	var byteTable = [
+		255,
+		255,
+		26,
+		27,
+		28,
+		29,
+		30,
+		31,
+		255,
+		255,
+		255,
+		255,
+		255,
+		255,
+		255,
+		255,
+		255,
+		0,
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		7,
+		8,
+		9,
+		10,
+		11,
+		12,
+		13,
+		14,
+		15,
+		16,
+		17,
+		18,
+		19,
+		20,
+		21,
+		22,
+		23,
+		24,
+		25,
+		255,
+		255,
+		255,
+		255,
+		255,
+		255,
+		0,
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		7,
+		8,
+		9,
+		10,
+		11,
+		12,
+		13,
+		14,
+		15,
+		16,
+		17,
+		18,
+		19,
+		20,
+		21,
+		22,
+		23,
+		24,
+		25,
+		255,
+		255,
+		255,
+		255,
+		255
+	];
+	var decode = function(encoded) {
+		if (!ArrayBuffer.isView(encoded) && typeof encoded !== "string") throw new TypeError("base32.decode only takes Buffer or string as parameter");
+		let shiftIndex = 0;
+		let plainDigit = 0;
+		let plainChar;
+		let plainPos = 0;
+		if (!ArrayBuffer.isView(encoded)) encoded = text2arr(encoded);
+		const decoded = new Uint8Array(Math.ceil(encoded.length * 5 / 8));
+		for (let i = 0; i < encoded.length; i++) {
+			if (encoded[i] === 61) break;
+			const encodedByte = encoded[i] - 48;
+			if (encodedByte < byteTable.length) {
+				plainDigit = byteTable[encodedByte];
+				if (shiftIndex <= 3) {
+					shiftIndex = (shiftIndex + 5) % 8;
+					if (shiftIndex === 0) {
+						plainChar |= plainDigit;
+						decoded[plainPos] = plainChar;
+						plainPos++;
+						plainChar = 0;
+					} else plainChar |= 255 & plainDigit << 8 - shiftIndex;
+				} else {
+					shiftIndex = (shiftIndex + 5) % 8;
+					plainChar |= 255 & plainDigit >>> shiftIndex;
+					decoded[plainPos] = plainChar;
+					plainPos++;
+					plainChar = 255 & plainDigit << 8 - shiftIndex;
+				}
+			} else throw new Error("Invalid input - it is not base32 encoded string");
+		}
+		return decoded.subarray(0, plainPos);
+	};
+	function parseRange(range) {
+		const generateRange = (start, end = start) => Array.from({ length: end - start + 1 }, (cur, idx) => idx + start);
+		return range.reduce((acc, cur, idx, arr) => {
+			const r = cur.split("-").map((cur) => parseInt(cur));
+			return acc.concat(generateRange(...r));
+		}, []);
+	}
+	function magnetURIDecode(uri) {
+		const result = {};
+		const data = uri.split("magnet:?")[1];
+		(data && data.length >= 0 ? data.split("&") : []).forEach((param) => {
+			const keyval = param.split("=");
+			if (keyval.length !== 2) return;
+			const key = keyval[0];
+			let val = keyval[1];
+			if (key === "dn") val = decodeURIComponent(val).replace(/\+/g, " ");
+			if (key === "tr" || key === "xs" || key === "as" || key === "ws") val = decodeURIComponent(val);
+			if (key === "kt") val = decodeURIComponent(val).split("+");
+			if (key === "ix") val = Number(val);
+			if (key === "so") val = parseRange(decodeURIComponent(val).split(","));
+			if (result[key]) {
+				if (!Array.isArray(result[key])) result[key] = [result[key]];
+				result[key].push(val);
+			} else result[key] = val;
+		});
+		let m;
+		if (result.xt) (Array.isArray(result.xt) ? result.xt : [result.xt]).forEach((xt) => {
+			if (m = xt.match(/^urn:btih:(.{40})/)) result.infoHash = m[1].toLowerCase();
+			else if (m = xt.match(/^urn:btih:(.{32})/)) result.infoHash = arr2hex(decode(m[1]));
+			else if (m = xt.match(/^urn:btmh:1220(.{64})/)) result.infoHashV2 = m[1].toLowerCase();
+		});
+		if (result.xs) (Array.isArray(result.xs) ? result.xs : [result.xs]).forEach((xs) => {
+			if (m = xs.match(/^urn:btpk:(.{64})/)) result.publicKey = m[1].toLowerCase();
+		});
+		if (result.infoHash) result.infoHashBuffer = hex2arr(result.infoHash);
+		if (result.infoHashV2) result.infoHashV2Buffer = hex2arr(result.infoHashV2);
+		if (result.publicKey) result.publicKeyBuffer = hex2arr(result.publicKey);
+		if (result.dn) result.name = result.dn;
+		if (result.kt) result.keywords = result.kt;
+		result.announce = [];
+		if (typeof result.tr === "string" || Array.isArray(result.tr)) result.announce = result.announce.concat(result.tr);
+		result.urlList = [];
+		if (typeof result.as === "string" || Array.isArray(result.as)) result.urlList = result.urlList.concat(result.as);
+		if (typeof result.ws === "string" || Array.isArray(result.ws)) result.urlList = result.urlList.concat(result.ws);
+		result.peerAddresses = [];
+		if (typeof result["x.pe"] === "string" || Array.isArray(result["x.pe"])) result.peerAddresses = result.peerAddresses.concat(result["x.pe"]);
+		result.announce = Array.from(new Set(result.announce));
+		result.urlList = Array.from(new Set(result.urlList));
+		result.peerAddresses = Array.from(new Set(result.peerAddresses));
+		return result;
+	}
+	var require_path_browserify = __commonJSMin(((exports, module) => {
+		function assertPath(path) {
+			if (typeof path !== "string") throw new TypeError("Path must be a string. Received " + JSON.stringify(path));
+		}
+		function normalizeStringPosix(path, allowAboveRoot) {
+			var res = "";
+			var lastSegmentLength = 0;
+			var lastSlash = -1;
+			var dots = 0;
+			var code;
+			for (var i = 0; i <= path.length; ++i) {
+				if (i < path.length) code = path.charCodeAt(i);
+				else if (code === 47) break;
+				else code = 47;
+				if (code === 47) {
+					if (lastSlash === i - 1 || dots === 1) {} else if (lastSlash !== i - 1 && dots === 2) {
+						if (res.length < 2 || lastSegmentLength !== 2 || res.charCodeAt(res.length - 1) !== 46 || res.charCodeAt(res.length - 2) !== 46) {
+							if (res.length > 2) {
+								var lastSlashIndex = res.lastIndexOf("/");
+								if (lastSlashIndex !== res.length - 1) {
+									if (lastSlashIndex === -1) {
+										res = "";
+										lastSegmentLength = 0;
+									} else {
+										res = res.slice(0, lastSlashIndex);
+										lastSegmentLength = res.length - 1 - res.lastIndexOf("/");
+									}
+									lastSlash = i;
+									dots = 0;
+									continue;
+								}
+							} else if (res.length === 2 || res.length === 1) {
+								res = "";
+								lastSegmentLength = 0;
+								lastSlash = i;
+								dots = 0;
+								continue;
+							}
+						}
+						if (allowAboveRoot) {
+							if (res.length > 0) res += "/..";
+							else res = "..";
+							lastSegmentLength = 2;
+						}
+					} else {
+						if (res.length > 0) res += "/" + path.slice(lastSlash + 1, i);
+						else res = path.slice(lastSlash + 1, i);
+						lastSegmentLength = i - lastSlash - 1;
+					}
+					lastSlash = i;
+					dots = 0;
+				} else if (code === 46 && dots !== -1) ++dots;
+				else dots = -1;
+			}
+			return res;
+		}
+		function _format(sep, pathObject) {
+			var dir = pathObject.dir || pathObject.root;
+			var base = pathObject.base || (pathObject.name || "") + (pathObject.ext || "");
+			if (!dir) return base;
+			if (dir === pathObject.root) return dir + base;
+			return dir + sep + base;
+		}
+		var posix = {
+			resolve: function resolve() {
+				var resolvedPath = "";
+				var resolvedAbsolute = false;
+				var cwd;
+				for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
+					var path;
+					if (i >= 0) path = arguments[i];
+					else {
+						if (cwd === void 0) cwd = process.cwd();
+						path = cwd;
+					}
+					assertPath(path);
+					if (path.length === 0) continue;
+					resolvedPath = path + "/" + resolvedPath;
+					resolvedAbsolute = path.charCodeAt(0) === 47;
+				}
+				resolvedPath = normalizeStringPosix(resolvedPath, !resolvedAbsolute);
+				if (resolvedAbsolute) {
+					if (resolvedPath.length > 0) return "/" + resolvedPath;
+					else return "/";
+				} else if (resolvedPath.length > 0) return resolvedPath;
+				else return ".";
+			},
+			normalize: function normalize(path) {
+				assertPath(path);
+				if (path.length === 0) return ".";
+				var isAbsolute = path.charCodeAt(0) === 47;
+				var trailingSeparator = path.charCodeAt(path.length - 1) === 47;
+				path = normalizeStringPosix(path, !isAbsolute);
+				if (path.length === 0 && !isAbsolute) path = ".";
+				if (path.length > 0 && trailingSeparator) path += "/";
+				if (isAbsolute) return "/" + path;
+				return path;
+			},
+			isAbsolute: function isAbsolute(path) {
+				assertPath(path);
+				return path.length > 0 && path.charCodeAt(0) === 47;
+			},
+			join: function join() {
+				if (arguments.length === 0) return ".";
+				var joined;
+				for (var i = 0; i < arguments.length; ++i) {
+					var arg = arguments[i];
+					assertPath(arg);
+					if (arg.length > 0) {
+						if (joined === void 0) joined = arg;
+						else joined += "/" + arg;
+					}
+				}
+				if (joined === void 0) return ".";
+				return posix.normalize(joined);
+			},
+			relative: function relative(from, to) {
+				assertPath(from);
+				assertPath(to);
+				if (from === to) return "";
+				from = posix.resolve(from);
+				to = posix.resolve(to);
+				if (from === to) return "";
+				var fromStart = 1;
+				for (; fromStart < from.length; ++fromStart) if (from.charCodeAt(fromStart) !== 47) break;
+				var fromEnd = from.length;
+				var fromLen = fromEnd - fromStart;
+				var toStart = 1;
+				for (; toStart < to.length; ++toStart) if (to.charCodeAt(toStart) !== 47) break;
+				var toLen = to.length - toStart;
+				var length = fromLen < toLen ? fromLen : toLen;
+				var lastCommonSep = -1;
+				var i = 0;
+				for (; i <= length; ++i) {
+					if (i === length) {
+						if (toLen > length) {
+							if (to.charCodeAt(toStart + i) === 47) return to.slice(toStart + i + 1);
+							else if (i === 0) return to.slice(toStart + i);
+						} else if (fromLen > length) {
+							if (from.charCodeAt(fromStart + i) === 47) lastCommonSep = i;
+							else if (i === 0) lastCommonSep = 0;
+						}
+						break;
+					}
+					var fromCode = from.charCodeAt(fromStart + i);
+					if (fromCode !== to.charCodeAt(toStart + i)) break;
+					else if (fromCode === 47) lastCommonSep = i;
+				}
+				var out = "";
+				for (i = fromStart + lastCommonSep + 1; i <= fromEnd; ++i) if (i === fromEnd || from.charCodeAt(i) === 47) {
+					if (out.length === 0) out += "..";
+					else out += "/..";
+				}
+				if (out.length > 0) return out + to.slice(toStart + lastCommonSep);
+				else {
+					toStart += lastCommonSep;
+					if (to.charCodeAt(toStart) === 47) ++toStart;
+					return to.slice(toStart);
+				}
+			},
+			_makeLong: function _makeLong(path) {
+				return path;
+			},
+			dirname: function dirname(path) {
+				assertPath(path);
+				if (path.length === 0) return ".";
+				var code = path.charCodeAt(0);
+				var hasRoot = code === 47;
+				var end = -1;
+				var matchedSlash = true;
+				for (var i = path.length - 1; i >= 1; --i) {
+					code = path.charCodeAt(i);
+					if (code === 47) {
+						if (!matchedSlash) {
+							end = i;
+							break;
+						}
+					} else matchedSlash = false;
+				}
+				if (end === -1) return hasRoot ? "/" : ".";
+				if (hasRoot && end === 1) return "//";
+				return path.slice(0, end);
+			},
+			basename: function basename(path, ext) {
+				if (ext !== void 0 && typeof ext !== "string") throw new TypeError("\"ext\" argument must be a string");
+				assertPath(path);
+				var start = 0;
+				var end = -1;
+				var matchedSlash = true;
+				var i;
+				if (ext !== void 0 && ext.length > 0 && ext.length <= path.length) {
+					if (ext.length === path.length && ext === path) return "";
+					var extIdx = ext.length - 1;
+					var firstNonSlashEnd = -1;
+					for (i = path.length - 1; i >= 0; --i) {
+						var code = path.charCodeAt(i);
+						if (code === 47) {
+							if (!matchedSlash) {
+								start = i + 1;
+								break;
+							}
+						} else {
+							if (firstNonSlashEnd === -1) {
+								matchedSlash = false;
+								firstNonSlashEnd = i + 1;
+							}
+							if (extIdx >= 0) {
+								if (code === ext.charCodeAt(extIdx)) {
+									if (--extIdx === -1) end = i;
+								} else {
+									extIdx = -1;
+									end = firstNonSlashEnd;
+								}
+							}
+						}
+					}
+					if (start === end) end = firstNonSlashEnd;
+					else if (end === -1) end = path.length;
+					return path.slice(start, end);
+				} else {
+					for (i = path.length - 1; i >= 0; --i) if (path.charCodeAt(i) === 47) {
+						if (!matchedSlash) {
+							start = i + 1;
+							break;
+						}
+					} else if (end === -1) {
+						matchedSlash = false;
+						end = i + 1;
+					}
+					if (end === -1) return "";
+					return path.slice(start, end);
+				}
+			},
+			extname: function extname(path) {
+				assertPath(path);
+				var startDot = -1;
+				var startPart = 0;
+				var end = -1;
+				var matchedSlash = true;
+				var preDotState = 0;
+				for (var i = path.length - 1; i >= 0; --i) {
+					var code = path.charCodeAt(i);
+					if (code === 47) {
+						if (!matchedSlash) {
+							startPart = i + 1;
+							break;
+						}
+						continue;
+					}
+					if (end === -1) {
+						matchedSlash = false;
+						end = i + 1;
+					}
+					if (code === 46) {
+						if (startDot === -1) startDot = i;
+						else if (preDotState !== 1) preDotState = 1;
+					} else if (startDot !== -1) preDotState = -1;
+				}
+				if (startDot === -1 || end === -1 || preDotState === 0 || preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) return "";
+				return path.slice(startDot, end);
+			},
+			format: function format(pathObject) {
+				if (pathObject === null || typeof pathObject !== "object") throw new TypeError("The \"pathObject\" argument must be of type Object. Received type " + typeof pathObject);
+				return _format("/", pathObject);
+			},
+			parse: function parse(path) {
+				assertPath(path);
+				var ret = {
+					root: "",
+					dir: "",
+					base: "",
+					ext: "",
+					name: ""
+				};
+				if (path.length === 0) return ret;
+				var code = path.charCodeAt(0);
+				var isAbsolute = code === 47;
+				var start;
+				if (isAbsolute) {
+					ret.root = "/";
+					start = 1;
+				} else start = 0;
+				var startDot = -1;
+				var startPart = 0;
+				var end = -1;
+				var matchedSlash = true;
+				var i = path.length - 1;
+				var preDotState = 0;
+				for (; i >= start; --i) {
+					code = path.charCodeAt(i);
+					if (code === 47) {
+						if (!matchedSlash) {
+							startPart = i + 1;
+							break;
+						}
+						continue;
+					}
+					if (end === -1) {
+						matchedSlash = false;
+						end = i + 1;
+					}
+					if (code === 46) {
+						if (startDot === -1) startDot = i;
+						else if (preDotState !== 1) preDotState = 1;
+					} else if (startDot !== -1) preDotState = -1;
+				}
+				if (startDot === -1 || end === -1 || preDotState === 0 || preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
+					if (end !== -1) {
+						if (startPart === 0 && isAbsolute) ret.base = ret.name = path.slice(1, end);
+						else ret.base = ret.name = path.slice(startPart, end);
+					}
+				} else {
+					if (startPart === 0 && isAbsolute) {
+						ret.name = path.slice(1, startDot);
+						ret.base = path.slice(1, end);
+					} else {
+						ret.name = path.slice(startPart, startDot);
+						ret.base = path.slice(startPart, end);
+					}
+					ret.ext = path.slice(startDot, end);
+				}
+				if (startPart > 0) ret.dir = path.slice(0, startPart - 1);
+				else if (isAbsolute) ret.dir = "/";
+				return ret;
+			},
+			sep: "/",
+			delimiter: ":",
+			win32: null,
+			posix: null
+		};
+		posix.posix = posix;
+		module.exports = posix;
+	}));
+	var require_queue_microtask = __commonJSMin(((exports, module) => {
+		var promise;
+		module.exports = typeof queueMicrotask === "function" ? queueMicrotask.bind(typeof window !== "undefined" ? window : global) : (cb) => (promise || (promise = Promise.resolve())).then(cb).catch((err) => setTimeout(() => {
+			throw err;
+		}, 0));
+	}));
+	var import_path_browserify = __toESM(require_path_browserify(), 1);
+	require_queue_microtask();
+	async function parseTorrent(torrentId) {
+		if (typeof torrentId === "string" && /^(stream-)?magnet:/.test(torrentId)) {
+			const torrentObj = magnetURIDecode(torrentId);
+			if (!torrentObj.infoHash) throw new Error("Invalid torrent identifier");
+			return torrentObj;
+		} else if (typeof torrentId === "string" && (/^[a-f0-9]{40}$/i.test(torrentId) || /^[a-z2-7]{32}$/i.test(torrentId))) return magnetURIDecode(`magnet:?xt=urn:btih:${torrentId}`);
+		else if (ArrayBuffer.isView(torrentId) && torrentId.length === 20) return magnetURIDecode(`magnet:?xt=urn:btih:${arr2hex(torrentId)}`);
+		else if (ArrayBuffer.isView(torrentId)) return await decodeTorrentFile(torrentId);
+		else if (torrentId && torrentId.infoHash) {
+			torrentId.infoHash = torrentId.infoHash.toLowerCase();
+			if (!torrentId.announce) torrentId.announce = [];
+			if (typeof torrentId.announce === "string") torrentId.announce = [torrentId.announce];
+			if (!torrentId.urlList) torrentId.urlList = [];
+			return torrentId;
+		} else throw new Error("Invalid torrent identifier");
+	}
+	async function decodeTorrentFile(torrent) {
+		if (ArrayBuffer.isView(torrent)) torrent = bencode_default.decode(torrent);
+		ensure(torrent.info, "info");
+		ensure(torrent.info["name.utf-8"] || torrent.info.name, "info.name");
+		ensure(torrent.info["piece length"], "info['piece length']");
+		ensure(torrent.info.pieces, "info.pieces");
+		if (torrent.info.files) torrent.info.files.forEach((file) => {
+			ensure(typeof file.length === "number", "info.files[0].length");
+			ensure(file["path.utf-8"] || file.path, "info.files[0].path");
+		});
+		else ensure(typeof torrent.info.length === "number", "info.length");
+		const result = {
+			info: torrent.info,
+			infoBuffer: bencode_default.encode(torrent.info),
+			name: arr2text(torrent.info["name.utf-8"] || torrent.info.name),
+			announce: []
+		};
+		result.infoHashBuffer = await hash(result.infoBuffer);
+		result.infoHash = arr2hex(result.infoHashBuffer);
+		if (torrent.info.private !== void 0) result.private = !!torrent.info.private;
+		if (torrent["creation date"]) result.created = new Date(torrent["creation date"] * 1e3);
+		if (torrent["created by"]) result.createdBy = arr2text(torrent["created by"]);
+		if (ArrayBuffer.isView(torrent.comment)) result.comment = arr2text(torrent.comment);
+		if (Array.isArray(torrent["announce-list"]) && torrent["announce-list"].length > 0) torrent["announce-list"].forEach((urls) => {
+			urls.forEach((url) => {
+				result.announce.push(arr2text(url));
+			});
+		});
+		else if (torrent.announce) result.announce.push(arr2text(torrent.announce));
+		if (ArrayBuffer.isView(torrent["url-list"])) torrent["url-list"] = torrent["url-list"].length > 0 ? [torrent["url-list"]] : [];
+		result.urlList = (torrent["url-list"] || []).map((url) => arr2text(url));
+		result.announce = Array.from(new Set(result.announce));
+		result.urlList = Array.from(new Set(result.urlList));
+		let sum = 0;
+		result.files = (torrent.info.files || [torrent.info]).map((file, i) => {
+			const parts = [].concat(result.name, file["path.utf-8"] || file.path || []).map((p) => ArrayBuffer.isView(p) ? arr2text(p) : p);
+			sum += file.length;
+			return {
+				path: import_path_browserify.default.join.apply(null, [import_path_browserify.default.sep].concat(parts)).slice(1),
+				name: parts[parts.length - 1],
+				length: file.length,
+				offset: sum - file.length
+			};
+		});
+		result.length = sum;
+		const lastFile = result.files[result.files.length - 1];
+		result.pieceLength = torrent.info["piece length"];
+		result.lastPieceLength = (lastFile.offset + lastFile.length) % result.pieceLength || result.pieceLength;
+		result.pieces = splitPieces(torrent.info.pieces);
+		return result;
+	}
+	function encodeTorrentFile(parsed) {
+		const torrent = { info: parsed.info };
+		torrent["announce-list"] = (parsed.announce || []).map((url) => {
+			if (!torrent.announce) torrent.announce = url;
+			url = text2arr(url);
+			return [url];
+		});
+		torrent["url-list"] = parsed.urlList || [];
+		if (parsed.private !== void 0) torrent.private = Number(parsed.private);
+		if (parsed.created) torrent["creation date"] = parsed.created.getTime() / 1e3 | 0;
+		if (parsed.createdBy) torrent["created by"] = parsed.createdBy;
+		if (parsed.comment) torrent.comment = parsed.comment;
+		return bencode_default.encode(torrent);
+	}
+	function splitPieces(buf) {
+		const pieces = [];
+		for (let i = 0; i < buf.length; i += 20) pieces.push(arr2hex(buf.slice(i, i + 20)));
+		return pieces;
+	}
+	function ensure(bool, fieldName) {
+		if (!bool) throw new Error(`Torrent is missing required field: ${fieldName}`);
+	}
 	var TORRENT_CONTENT_TYPE = "application/x-bittorrent";
 	var arrayBufferToDataUrl = (buffer, contentType = TORRENT_CONTENT_TYPE) => {
 		const bytes = buffer instanceof Uint8Array ? buffer : new Uint8Array(buffer);
@@ -5410,6 +5599,469 @@
 		}
 	};
 	registry$1.register(new TJUPT());
+	var RELEASE_TYPES = {
+		1: "Album",
+		3: "Soundtrack",
+		5: "EP",
+		6: "Anthology",
+		7: "Compilation",
+		9: "Single",
+		11: "Live album",
+		13: "Remix",
+		14: "Bootleg",
+		15: "Interview",
+		16: "Mixtape",
+		17: "Demo",
+		18: "Concert Recording",
+		19: "DJ Mix",
+		21: "Unknown"
+	};
+	var NAMED_ENTITIES = {
+		amp: "&",
+		lt: "<",
+		gt: ">",
+		quot: "\"",
+		apos: "'",
+		nbsp: " "
+	};
+	var APOSTROPHES = /['`\u00b4\u02bc\u2018\u2019]/g;
+	var SEPARATORS = /[\s\x21-\x2f\x3a-\x40\x5b-\x60\x7b-\x7e\xa1-\xbf\xd7\xf7\u2000-\u206f\u2190-\u2bff\u3000-\u303f\u30fb\uff5f-\uff65]+/g;
+	var COMBINING_DIACRITICS = /[\u0300-\u036f]/g;
+	var BRACKETED = /\s*(\([^()]*\)|\[[^[\]]*\]|\{[^{}]*\}|【[^【】]*】|〔[^〔〕]*〕)\s*/g;
+	var DASH_SUFFIX = /^(.*\S)\s+[-\u2013\u2014:]\s+([^-\u2013\u2014:]+)$/;
+	var EDITION_WORDS = [
+		"deluxe",
+		"remaster",
+		"remastered",
+		"remasters",
+		"remastering",
+		"edition",
+		"expanded",
+		"anniversary",
+		"bonus",
+		"bonus track",
+		"bonus tracks",
+		"reissue",
+		"re issue",
+		"special",
+		"limited",
+		"collector",
+		"collectors",
+		"mono",
+		"stereo",
+		"explicit",
+		"clean",
+		"version",
+		"japan",
+		"japanese",
+		"import",
+		"hi res",
+		"hires",
+		"24bit",
+		"24 bit",
+		"ep",
+		"single",
+		"lp",
+		"cd",
+		"2cd",
+		"vinyl",
+		"digital",
+		"web",
+		"legacy",
+		"definitive",
+		"complete",
+		"extended",
+		"super",
+		"sacd",
+		"shm cd",
+		"mqa"
+	];
+	var EDITION_WORDS_CJK = [
+		"豪华版",
+		"重制",
+		"复刻",
+		"纪念版",
+		"限量版",
+		"特别版",
+		"日版",
+		"首版",
+		"再版",
+		"黑胶",
+		"母带",
+		"限定盤",
+		"通常盤",
+		"初回",
+		"リマスター",
+		"デラックス"
+	];
+	var VARIOUS_ARTISTS = new Set([
+		"various",
+		"various artist",
+		"various artists",
+		"various djs",
+		"various composers",
+		"various conductors",
+		"va",
+		"v a",
+		"群星"
+	]);
+	var IGNORED_CATALOGUES = new Set([
+		"NONE",
+		"NA",
+		"UNKNOWN",
+		"NOCAT",
+		"NOCATNO"
+	]);
+	var decodeHtmlEntities = (text) => text.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (entity, code) => {
+		var _NAMED_ENTITIES$code$;
+		if (code.startsWith("#")) {
+			const isHex = code[1] === "x" || code[1] === "X";
+			const point = parseInt(code.slice(isHex ? 2 : 1), isHex ? 16 : 10);
+			try {
+				return String.fromCodePoint(point);
+			} catch (_unused) {
+				return entity;
+			}
+		}
+		return (_NAMED_ENTITIES$code$ = NAMED_ENTITIES[code.toLowerCase()]) !== null && _NAMED_ENTITIES$code$ !== void 0 ? _NAMED_ENTITIES$code$ : entity;
+	});
+	var normalizeMusicText = (text) => decodeHtmlEntities(text || "").normalize("NFKC").normalize("NFD").replace(COMBINING_DIACRITICS, "").normalize("NFC").toLowerCase().replace(APOSTROPHES, "").replace(/&/g, " and ").replace(SEPARATORS, " ").trim();
+	var titleKey = (text) => normalizeMusicText(text) || decodeHtmlEntities(text || "").normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+	var containsPhrase = (haystack, needle) => !!needle && ` ${haystack} `.includes(` ${needle} `);
+	var isEditionText = (text) => {
+		const normalized = normalizeMusicText(text);
+		if (!normalized) return false;
+		if (/^\d{4}$/.test(normalized)) return true;
+		return EDITION_WORDS.some((word) => containsPhrase(normalized, word)) || EDITION_WORDS_CJK.some((word) => normalized.includes(word));
+	};
+	var prepareTitle = (title) => decodeHtmlEntities(title || "").normalize("NFKC").trim();
+	var stripEditionInfo = (title) => {
+		let result = prepareTitle(title).replace(BRACKETED, (segment) => isEditionText(segment) ? " " : segment);
+		const suffix = result.trim().match(DASH_SUFFIX);
+		if (suffix && isEditionText(suffix[2])) result = suffix[1];
+		return result.replace(/\s+/g, " ").trim();
+	};
+	var stripAllBrackets = (title) => prepareTitle(title).replace(BRACKETED, " ").replace(/\s+/g, " ").trim();
+	var compareTitles = (source, target) => {
+		const sourceKey = titleKey(source);
+		const targetKey = titleKey(target);
+		if (!sourceKey || !targetKey) return "none";
+		if (sourceKey === targetKey) return "exact";
+		const sourceEdition = normalizeMusicText(stripEditionInfo(source));
+		if (sourceEdition && sourceEdition === normalizeMusicText(stripEditionInfo(target))) return "edition";
+		const sourceCore = normalizeMusicText(stripAllBrackets(source));
+		const targetCore = normalizeMusicText(stripAllBrackets(target));
+		if (sourceCore && sourceCore === targetCore) return "core";
+		const [shorter, longer] = sourceCore.length <= targetCore.length ? [sourceCore, targetCore] : [targetCore, sourceCore];
+		if (shorter.length >= 3 && containsPhrase(longer, shorter)) return "partial";
+		return "none";
+	};
+	var normalizeArtistName = (name) => {
+		const normalized = normalizeMusicText(name);
+		return normalized.replace(/(^| )the(?= |$)/g, " ").replace(/\s+/g, " ").trim() || normalized;
+	};
+	var unique = (items) => Array.from(new Set(items));
+	var getPrimaryArtists = (musicInfo) => {
+		if (!musicInfo) return [];
+		const names = (people) => (people !== null && people !== void 0 ? people : []).map((person) => person === null || person === void 0 ? void 0 : person.name).filter(Boolean);
+		const dj = names(musicInfo.dj);
+		if (dj.length > 0) return dj;
+		const main = names(musicInfo.artists);
+		if (main.length > 0) return main;
+		return [...names(musicInfo.composers), ...names(musicInfo.conductor)];
+	};
+	var compareArtists = (musicInfo, target) => {
+		var _target$artist, _target$torrents, _musicInfo$artists;
+		const primary = unique(getPrimaryArtists(musicInfo).map(normalizeArtistName).filter(Boolean));
+		if (primary.length === 0) return "unknown";
+		const display = normalizeArtistName((_target$artist = target.artist) !== null && _target$artist !== void 0 ? _target$artist : "");
+		const listed = unique(((_target$torrents = target.torrents) !== null && _target$torrents !== void 0 ? _target$torrents : []).flatMap((torrent) => {
+			var _torrent$artists;
+			return (_torrent$artists = torrent === null || torrent === void 0 ? void 0 : torrent.artists) !== null && _torrent$artists !== void 0 ? _torrent$artists : [];
+		}).map((artist) => {
+			var _artist$name;
+			return normalizeArtistName((_artist$name = artist === null || artist === void 0 ? void 0 : artist.name) !== null && _artist$name !== void 0 ? _artist$name : "");
+		}).filter(Boolean));
+		if (!display && listed.length === 0) return "unknown";
+		const main = unique(((_musicInfo$artists = musicInfo === null || musicInfo === void 0 ? void 0 : musicInfo.artists) !== null && _musicInfo$artists !== void 0 ? _musicInfo$artists : []).map((artist) => {
+			var _artist$name2;
+			return normalizeArtistName((_artist$name2 = artist === null || artist === void 0 ? void 0 : artist.name) !== null && _artist$name2 !== void 0 ? _artist$name2 : "");
+		}).filter(Boolean));
+		if (listed.length > 0 && main.length > 0) {
+			const common = main.filter((name) => listed.includes(name));
+			if (common.length === main.length && common.length === listed.length) return "exact";
+			if (common.length === main.length) return "contains";
+			if (common.length > 0) return "partial";
+		}
+		if (!display) return listed.length > 0 ? "none" : "unknown";
+		const sourceIsVarious = primary.length >= 3 || primary.some((name) => VARIOUS_ARTISTS.has(name));
+		if (VARIOUS_ARTISTS.has(display)) return sourceIsVarious ? "various" : "none";
+		const found = primary.filter((name) => containsPhrase(display, name));
+		if (primary.length >= 3) return found.length > 0 ? "partial" : "none";
+		if (found.length === primary.length) return [primary.join(" and "), [...primary].reverse().join(" and ")].includes(display) ? "exact" : "contains";
+		return found.length > 0 ? "partial" : "none";
+	};
+	var compareYears = (source, target) => {
+		const a = Number(source) || 0;
+		const b = Number(target) || 0;
+		if (!a || !b) return "unknown";
+		const diff = Math.abs(a - b);
+		if (diff === 0) return "exact";
+		return diff === 1 ? "near" : "mismatch";
+	};
+	var KNOWN_RELEASE_TYPES = new Set(Object.values(RELEASE_TYPES).map(normalizeMusicText));
+	var getReleaseTypeName = (value) => {
+		var _RELEASE_TYPES$Number;
+		if (value === void 0 || value === null || value === "") return "";
+		const text = String(value).trim();
+		const normalized = normalizeMusicText(/^\d+$/.test(text) ? (_RELEASE_TYPES$Number = RELEASE_TYPES[Number(text)]) !== null && _RELEASE_TYPES$Number !== void 0 ? _RELEASE_TYPES$Number : "" : text);
+		return KNOWN_RELEASE_TYPES.has(normalized) && normalized !== "unknown" ? normalized : "";
+	};
+	var compareReleaseTypes = (source, target) => {
+		const a = getReleaseTypeName(source);
+		const b = getReleaseTypeName(target);
+		if (!a || !b) return "unknown";
+		return a === b ? "match" : "mismatch";
+	};
+	var normalizeCatalogueNumber = (value) => {
+		const normalized = decodeHtmlEntities(value !== null && value !== void 0 ? value : "").normalize("NFKC").toUpperCase().replace(/[^0-9A-Z]/g, "");
+		return normalized.length >= 3 && !IGNORED_CATALOGUES.has(normalized) ? normalized : "";
+	};
+	var hasSameCatalogueNumber = (release, target) => {
+		var _release$torrent, _release$group, _target$torrents2;
+		const source = [(_release$torrent = release.torrent) === null || _release$torrent === void 0 ? void 0 : _release$torrent.remasterCatalogueNumber, (_release$group = release.group) === null || _release$group === void 0 ? void 0 : _release$group.catalogueNumber].map(normalizeCatalogueNumber).filter(Boolean);
+		if (source.length === 0) return false;
+		return ((_target$torrents2 = target.torrents) !== null && _target$torrents2 !== void 0 ? _target$torrents2 : []).some((torrent) => source.includes(normalizeCatalogueNumber(torrent === null || torrent === void 0 ? void 0 : torrent.remasterCatalogueNumber)));
+	};
+	var TITLE_SCORE = {
+		exact: 40,
+		edition: 34,
+		core: 22,
+		partial: 12,
+		none: 0
+	};
+	var ARTIST_SCORE = {
+		exact: 30,
+		contains: 26,
+		various: 18,
+		partial: 12,
+		unknown: 6,
+		none: 0
+	};
+	var YEAR_SCORE = {
+		exact: 15,
+		near: 6,
+		unknown: 3,
+		mismatch: -10
+	};
+	var RELEASE_TYPE_SCORE = {
+		match: 10,
+		unknown: 0,
+		mismatch: -20
+	};
+	var CATALOGUE_SCORE = 15;
+	var isConfidentMatch = (detail) => {
+		const titleOk = detail.title === "exact" || detail.title === "edition";
+		const artistOk = detail.artist === "exact" || detail.artist === "contains" || detail.artist === "various" && (detail.title === "exact" || detail.catalogue);
+		const yearOk = detail.year === "exact" || detail.catalogue;
+		return titleOk && artistOk && yearOk && detail.releaseType !== "mismatch";
+	};
+	var isPossibleMatch = (detail) => {
+		if (detail.title === "none") return false;
+		if (detail.artist === "exact" || detail.artist === "contains" || detail.artist === "various" || detail.artist === "partial") return !(detail.title === "partial" && detail.artist === "partial");
+		return (detail.title === "exact" || detail.title === "edition") && (detail.year === "exact" || detail.catalogue);
+	};
+	var scoreGroup = (release, group) => {
+		var _release$group$name, _release$group2, _group$groupName, _release$group3, _release$group4, _release$group5;
+		const detail = {
+			title: compareTitles((_release$group$name = (_release$group2 = release.group) === null || _release$group2 === void 0 ? void 0 : _release$group2.name) !== null && _release$group$name !== void 0 ? _release$group$name : "", (_group$groupName = group.groupName) !== null && _group$groupName !== void 0 ? _group$groupName : ""),
+			artist: compareArtists((_release$group3 = release.group) === null || _release$group3 === void 0 ? void 0 : _release$group3.musicInfo, group),
+			year: compareYears((_release$group4 = release.group) === null || _release$group4 === void 0 ? void 0 : _release$group4.year, group.groupYear),
+			releaseType: compareReleaseTypes((_release$group5 = release.group) === null || _release$group5 === void 0 ? void 0 : _release$group5.releaseType, group.releaseType),
+			catalogue: hasSameCatalogueNumber(release, group)
+		};
+		return {
+			group,
+			detail,
+			score: TITLE_SCORE[detail.title] + ARTIST_SCORE[detail.artist] + YEAR_SCORE[detail.year] + RELEASE_TYPE_SCORE[detail.releaseType] + (detail.catalogue ? CATALOGUE_SCORE : 0),
+			confident: isConfidentMatch(detail)
+		};
+	};
+	var confidenceRank = ({ detail }) => (detail.catalogue ? 2 : 0) + (detail.title === "exact" ? 1 : 0);
+	var matchExistingGroup = (release, groups) => {
+		const seen = new Set();
+		const candidates = groups.filter((group) => {
+			if (!group || !group.groupId || seen.has(group.groupId)) return false;
+			seen.add(group.groupId);
+			return true;
+		}).map((group) => scoreGroup(release, group)).filter((candidate) => isPossibleMatch(candidate.detail)).sort((a, b) => Number(b.confident) - Number(a.confident) || confidenceRank(b) - confidenceRank(a) || b.score - a.score);
+		const confident = candidates.filter((candidate) => candidate.confident);
+		if (confident.length > 0) {
+			const best = confidenceRank(confident[0]);
+			const top = confident.filter((candidate) => confidenceRank(candidate) === best);
+			if (top.length === 1) return {
+				decision: "merge",
+				group: top[0].group,
+				candidates: candidates.slice(0, 5)
+			};
+			return {
+				decision: "ambiguous",
+				candidates: candidates.slice(0, 5)
+			};
+		}
+		if (candidates.length > 0) return {
+			decision: "suggest",
+			candidates: candidates.slice(0, 5)
+		};
+		return {
+			decision: "none",
+			candidates: []
+		};
+	};
+	var toSearchText = (text) => decodeHtmlEntities(text || "").normalize("NFKC").replace(APOSTROPHES, " ").replace(SEPARATORS, " ").replace(/\s+/g, " ").trim();
+	var buildGroupSearchQueries = (group) => {
+		var _group$name;
+		const name = decodeHtmlEntities((_group$name = group === null || group === void 0 ? void 0 : group.name) !== null && _group$name !== void 0 ? _group$name : "");
+		const title = toSearchText(stripAllBrackets(name)) || toSearchText(name) || name.trim();
+		if (!title) return [];
+		const queries = [];
+		const artists = getPrimaryArtists(group.musicInfo);
+		if (artists.length > 0 && artists.length <= 2) {
+			const artist = toSearchText(artists[0]);
+			if (artist) queries.push(`${artist} ${title}`);
+		}
+		queries.push(group.year ? `${title} ${group.year}` : title);
+		return unique(queries);
+	};
+	var findExistingGroup = async (release, search) => {
+		const groups = [];
+		let result = {
+			decision: "none",
+			candidates: []
+		};
+		for (const query of buildGroupSearchQueries(release.group)) {
+			try {
+				var _response$response;
+				const response = await search(query);
+				const results = response === null || response === void 0 || (_response$response = response.response) === null || _response$response === void 0 ? void 0 : _response$response.results;
+				if ((response === null || response === void 0 ? void 0 : response.status) === "success" && Array.isArray(results)) groups.push(...results);
+			} catch (error) {
+				console.error("[easy-upload] music group search failed", query, error);
+			}
+			result = matchExistingGroup(release, groups);
+			if (result.decision === "merge") break;
+		}
+		return result;
+	};
+	var MUSIC_GROUP_MERGE_CLOSED_KEY = "easy-upload.music-group-merge-closed";
+	var AUTO_GROUP_FLAG = "easy-upload-group=auto";
+	var NEW_GROUP_FLAG = "easy-upload-group=new";
+	var BOX_ID = "easy-upload-music-group";
+	var isMusicGroupMergeEnabled = () => !GM_getValue(MUSIC_GROUP_MERGE_CLOSED_KEY, false);
+	var hasHashFlag = (flag) => location.hash.split("#").includes(flag);
+	var getTimestamp = () => {
+		var _location$hash$match$, _location$hash$match;
+		return (_location$hash$match$ = (_location$hash$match = location.hash.match(/(^|#)timestamp=([^#]*)(#|$)/)) === null || _location$hash$match === void 0 ? void 0 : _location$hash$match[2]) !== null && _location$hash$match$ !== void 0 ? _location$hash$match$ : "";
+	};
+	var buildUploadUrl = (siteInfo, groupId, flag) => {
+		const query = groupId ? `?groupid=${groupId}` : "";
+		const extra = flag ? `#${flag}` : "";
+		return `${siteInfo.url}${siteInfo.uploadPath}${query}#timestamp=${getTimestamp()}${extra}`;
+	};
+	var buildGroupUrl = (siteInfo, groupId) => `${siteInfo.url}/torrents.php?id=${groupId}`;
+	var createLink = (text, href, newTab = false) => {
+		const link = document.createElement("a");
+		link.textContent = text;
+		link.href = href;
+		if (newTab) {
+			link.target = "_blank";
+			link.rel = "noopener noreferrer";
+		}
+		return link;
+	};
+	var describeGroup = (group) => {
+		return `${[group.artist, group.groupName].map((text) => decodeHtmlEntities(text !== null && text !== void 0 ? text : "").trim()).filter(Boolean).join(" - ")}${group.groupYear ? ` [${group.groupYear}]` : ""}${typeof group.releaseType === "string" && group.releaseType ? ` [${decodeHtmlEntities(group.releaseType)}]` : ""}`;
+	};
+	var describeDifferences = ({ detail }) => {
+		const notes = [];
+		if (detail.title !== "exact" && detail.title !== "edition") notes.push($t("musicGroup.diffTitle"));
+		if (detail.artist === "partial" || detail.artist === "none") notes.push($t("musicGroup.diffArtist"));
+		if (detail.year === "near" || detail.year === "mismatch") notes.push($t("musicGroup.diffYear"));
+		if (detail.releaseType === "mismatch") notes.push($t("musicGroup.diffReleaseType"));
+		if (detail.catalogue) notes.push($t("musicGroup.sameCatalogue"));
+		return notes;
+	};
+	var showBox = (fill) => {
+		var _document$getElementB;
+		(_document$getElementB = document.getElementById(BOX_ID)) === null || _document$getElementB === void 0 || _document$getElementB.remove();
+		const box = document.createElement("div");
+		box.id = BOX_ID;
+		box.className = "box pad";
+		box.style.cssText = "margin: 10px 0; padding: 10px; border: 1px solid #e6a23c;";
+		fill(box);
+		const close = document.createElement("button");
+		close.type = "button";
+		close.textContent = $t("musicGroup.close");
+		close.addEventListener("click", () => box.remove());
+		box.appendChild(close);
+		const form = document.querySelector("#upload_table");
+		if (form === null || form === void 0 ? void 0 : form.parentNode) form.parentNode.insertBefore(box, form);
+		else {
+			var _document$querySelect;
+			((_document$querySelect = document.querySelector("#content")) !== null && _document$querySelect !== void 0 ? _document$querySelect : document.body).prepend(box);
+		}
+	};
+	var createMessage = (text) => {
+		const message = document.createElement("p");
+		message.textContent = `[EASY-UPLOAD] ${text}`;
+		return message;
+	};
+	var showGroupCandidates = (result, siteInfo) => {
+		if (result.candidates.length === 0) return;
+		showBox((box) => {
+			box.appendChild(createMessage(result.decision === "ambiguous" ? $t("musicGroup.ambiguous") : $t("musicGroup.suggest")));
+			const list = document.createElement("ul");
+			result.candidates.forEach((candidate) => {
+				const { groupId } = candidate.group;
+				const item = document.createElement("li");
+				item.appendChild(createLink(describeGroup(candidate.group), buildGroupUrl(siteInfo, groupId), true));
+				const notes = describeDifferences(candidate);
+				if (notes.length > 0) item.appendChild(document.createTextNode(` (${notes.join(", ")}) `));
+				else item.appendChild(document.createTextNode(" "));
+				item.appendChild(createLink(`[${$t("musicGroup.useGroup")}]`, buildUploadUrl(siteInfo, groupId)));
+				list.appendChild(item);
+			});
+			box.appendChild(list);
+		});
+	};
+	var showAutoMergedGroupNotice = (siteInfo, groupId) => {
+		if (!hasHashFlag(AUTO_GROUP_FLAG) || !/^\d+$/.test(groupId)) return;
+		showBox((box) => {
+			const message = createMessage(`${$t("musicGroup.autoMerged")} `);
+			message.appendChild(createLink(`torrents.php?id=${groupId}`, buildGroupUrl(siteInfo, Number(groupId)), true));
+			box.appendChild(message);
+			const paragraph = document.createElement("p");
+			paragraph.appendChild(createLink($t("musicGroup.uploadAsNewGroup"), buildUploadUrl(siteInfo, void 0, NEW_GROUP_FLAG)));
+			box.appendChild(paragraph);
+		});
+	};
+	var applyExistingMusicGroup = async ({ release, siteInfo, search, navigate = (url) => {
+		location.href = url;
+	} }) => {
+		if (!isMusicGroupMergeEnabled() || hasHashFlag(NEW_GROUP_FLAG)) return false;
+		try {
+			const result = await findExistingGroup(release, search);
+			console.log("[easy-upload] existing music group lookup", result);
+			if (result.decision === "merge" && result.group) {
+				navigate(buildUploadUrl(siteInfo, result.group.groupId, AUTO_GROUP_FLAG));
+				return true;
+			}
+			showGroupCandidates(result, siteInfo);
+		} catch (error) {
+			console.error("[easy-upload] music group lookup failed", error);
+		}
+		return false;
+	};
 	var RED = class extends BaseFiller {
 		constructor(..._args) {
 			super(..._args);
@@ -5423,12 +6075,14 @@
 			await this.fillMusicInfo();
 		}
 		async fillMusicInfo() {
+			var _this$info$musicInfo;
 			if (!this.info || !this.info.musicJson) return;
 			if (document.forms.upload_table) document.forms.upload_table.reset = () => {};
 			const { musicJson } = this.info;
 			const { name, year, musicInfo, bbBody, tags, releaseType, categoryId, wikiImage } = musicJson.group;
-			if (!getLocationSearchValueByKey("groupid")) {
-				await this.searchAndRedirectToGroup(name, year);
+			const groupId = getLocationSearchValueByKey("groupid");
+			if (!groupId) {
+				if (await this.searchAndRedirectToGroup(musicJson)) return;
 				(0, jquery.default)("#categories").val(categoryId - 1);
 				(0, jquery.default)("#title").val(name);
 				(0, jquery.default)("#year").val(year);
@@ -5437,26 +6091,17 @@
 				(0, jquery.default)("#album_desc").val(bbBody);
 				(0, jquery.default)("#image").val(wikiImage);
 				this.fillArtistsForm(musicInfo);
-			}
+			} else showAutoMergedGroupNotice(CURRENT_SITE_INFO, groupId);
 			this.fillReleaseInfo(musicJson.torrent);
 			this.fillTorrentFile();
+			keepRipLogFilesAttached((_this$info$musicInfo = this.info.musicInfo) === null || _this$info$musicInfo === void 0 ? void 0 : _this$info$musicInfo.logFiles, name);
 		}
-		async searchAndRedirectToGroup(name, year) {
-			const url = `/ajax.php?action=browse&searchstr=${encodeURIComponent(name)} ${year}`;
-			try {
-				const searchResult = await GMFetch(url, { responseType: "json" });
-				if (searchResult.status === "success" && searchResult.response.results.length > 0) {
-					var _timestampMatchArray$;
-					const groupId = searchResult.response.results[0].groupId;
-					const timestampMatchArray = location.hash && location.hash.match(/(^|#)timestamp=([^#]*)(#|$)/);
-					const timestamp = (_timestampMatchArray$ = timestampMatchArray === null || timestampMatchArray === void 0 ? void 0 : timestampMatchArray[2]) !== null && _timestampMatchArray$ !== void 0 ? _timestampMatchArray$ : "";
-					location.href = `${CURRENT_SITE_INFO.url}${CURRENT_SITE_INFO.uploadPath}?groupid=${groupId}#timestamp=${timestamp}`;
-					return true;
-				}
-			} catch (error) {
-				console.error("Error searching for group:", error);
-			}
-			return false;
+		async searchAndRedirectToGroup(musicJson) {
+			return applyExistingMusicGroup({
+				release: musicJson,
+				siteInfo: CURRENT_SITE_INFO,
+				search: (query) => GMFetch(`/ajax.php?action=browse&searchstr=${encodeURIComponent(query)}`, { responseType: "json" })
+			});
 		}
 		fillArtistsForm(musicInfo) {
 			const artistTypeMap = {
@@ -5974,30 +6619,26 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 			return siteName.match(/(DicMusic|Orpheus)/) !== null;
 		}
 		async fill(info) {
+			var _info$musicInfo;
 			this.info = info;
 			const { musicJson } = info;
 			if (!musicJson) return;
-			const { name, year } = musicJson.group;
-			if (!getLocationSearchValueByKey("groupid")) await this.searchAndRedirectToGroup(name, year);
+			const { name } = musicJson.group;
+			const groupId = getLocationSearchValueByKey("groupid");
+			if (!groupId) {
+				if (await this.searchAndRedirectToGroup(musicJson)) return;
+			} else showAutoMergedGroupNotice(CURRENT_SITE_INFO, groupId);
 			await this.processSiteSpecificLogic(musicJson);
 			this.fillJsonToUploadTable(musicJson, name);
 			this.fillTorrentFile();
+			keepRipLogFilesAttached((_info$musicInfo = info.musicInfo) === null || _info$musicInfo === void 0 ? void 0 : _info$musicInfo.logFiles, name);
 		}
-		async searchAndRedirectToGroup(name, year) {
-			try {
-				const searchResult = await GMFetch(`/ajax.php?action=browse&searchstr=${encodeURIComponent(name)} ${year}`, { responseType: "json" });
-				if (searchResult.status === "success" && searchResult.response.results.length > 0) {
-					var _timestampMatchArray$;
-					const groupId = searchResult.response.results[0].groupId;
-					const timestampMatchArray = location.hash && location.hash.match(/(^|#)timestamp=([^#]*)(#|$)/);
-					const timestamp = (_timestampMatchArray$ = timestampMatchArray === null || timestampMatchArray === void 0 ? void 0 : timestampMatchArray[2]) !== null && _timestampMatchArray$ !== void 0 ? _timestampMatchArray$ : "";
-					location.href = `${CURRENT_SITE_INFO.url}${CURRENT_SITE_INFO.uploadPath}?groupid=${groupId}#timestamp=${timestamp}`;
-					return true;
-				}
-			} catch (error) {
-				console.error("Error searching for group:", error);
-			}
-			return false;
+		async searchAndRedirectToGroup(musicJson) {
+			return applyExistingMusicGroup({
+				release: musicJson,
+				siteInfo: CURRENT_SITE_INFO,
+				search: (query) => GMFetch(`/ajax.php?action=browse&searchstr=${encodeURIComponent(query)}`, { responseType: "json" })
+			});
 		}
 		async processSiteSpecificLogic(musicJson) {
 			if (CURRENT_SITE_NAME === "Orpheus") {
@@ -8727,10 +9368,10 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 				Commentary: "with_commentary"
 			}
 		},
-		MUSIC_LOG_API_MAP: (logScore, torrentId, logId) => ({
+		MUSIC_LOG_PAGE_MAP: (logScore, torrentId) => ({
 			RED: `/torrents.php?action=loglist&torrentid=${torrentId}`,
-			Orpheus: `/view.php?type=riplog&id=${torrentId}.${logId}`,
-			DicMusic: `torrents.php?action=viewlog&logscore=${logScore}&torrentid=${torrentId}`
+			Orpheus: `/torrents.php?action=viewlog&torrentid=${torrentId}`,
+			DicMusic: `/torrents.php?action=viewlog&logscore=${logScore}&torrentid=${torrentId}`
 		})
 	};
 	var formatTorrentTitle = (title) => {
@@ -14019,6 +14660,7 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 			this.priority = 10;
 			this._siteTorrentInfo = null;
 			this._siteGroupInfo = null;
+			this.logFiles = [];
 		}
 		get siteGroupInfo() {
 			if (!this._siteGroupInfo) throw new Error("siteGroupInfo is not initialized");
@@ -14056,7 +14698,8 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 				artists: musicInfo.artists.map((item) => item.name),
 				media,
 				encoding,
-				log
+				log,
+				logFiles: this.logFiles
 			};
 			this.info.musicJson = data;
 			return this.info;
@@ -14104,32 +14747,23 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 			this.info.description = description;
 		}
 		async extractLogs() {
-			const { logScore, ripLogIds } = this.siteTorrentInfo;
-			const { media } = this.siteTorrentInfo;
-			const logList = [];
-			if ((ripLogIds === null || ripLogIds === void 0 ? void 0 : ripLogIds.length) > 0) for (let i = 1; i < ripLogIds.length; i++) {
-				const log = await this.getLogFromApi(logScore, this.torrentId, ripLogIds[i]);
-				logList.push(log);
-			}
-			else if (media === "CD") {
-				const logData = await this.getLogFromApi(logScore, this.torrentId, "0");
-				if (logData) logList.push(logData);
-			}
-			this.siteTorrentInfo.log = logList;
+			var _this$siteTorrentInfo;
+			const { logScore, hasLog, media } = this.siteTorrentInfo;
+			const ripLogIds = (_this$siteTorrentInfo = this.siteTorrentInfo.ripLogIds) !== null && _this$siteTorrentInfo !== void 0 ? _this$siteTorrentInfo : [];
+			const logPageMap = CONFIG.MUSIC_LOG_PAGE_MAP(logScore, this.torrentId);
+			const logPageUrl = hasLog || ripLogIds.length > 0 || media === "CD" ? logPageMap[CURRENT_SITE_NAME] : void 0;
+			const { files, texts } = await fetchOriginalRipLogs({
+				torrentId: this.torrentId,
+				ripLogIds,
+				logPageUrl
+			});
+			this.logFiles = files;
+			this.siteTorrentInfo.log = texts;
 		}
 		getUTF8String(entityString) {
 			const tempElement = document.createElement("textarea");
 			tempElement.innerHTML = entityString;
 			return tempElement.value;
-		}
-		async getLogFromApi(logScore, torrentId, ripLogId) {
-			const response = await GMFetch(CONFIG.MUSIC_LOG_API_MAP(logScore, torrentId, ripLogId)[CURRENT_SITE_NAME]);
-			if (CURRENT_SITE_NAME.match(/DicMusic|RED/)) {
-				const div = document.createElement("div");
-				div.innerHTML = response;
-				return (0, jquery.default)(div).find("pre").text() || "";
-			} else if (CURRENT_SITE_NAME.match(/Orpheus|/)) return response;
-			return "";
 		}
 	};
 	registry.register(new GZMusicExtractor());
@@ -21063,6 +21697,12 @@ DVD runtime(s): ${+hour < 10 ? `0${hour}` : hour}:${minute}`;
 			des: "feature.hideDouban",
 			type: "checkbox",
 			key: "doubanClosed"
+		},
+		{
+			name: "music-group-merge-closed",
+			des: "feature.disableMusicGroupMerge",
+			type: "checkbox",
+			key: "musicGroupMergeClosed"
 		}
 	];
 	var SettingPanel = ({ closePanel }) => {
