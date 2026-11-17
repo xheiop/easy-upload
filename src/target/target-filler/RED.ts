@@ -8,6 +8,10 @@ import {
   keepRipLogFilesAttached,
 } from '@/common';
 import { CURRENT_SITE_INFO } from '@/const';
+import {
+  applyExistingMusicGroup,
+  showAutoMergedGroupNotice,
+} from '@/target/helper/music-group';
 
 class RED extends BaseFiller implements TargetFiller {
   priority = 10;
@@ -45,7 +49,10 @@ class RED extends BaseFiller implements TargetFiller {
     const groupId = getLocationSearchValueByKey('groupid');
 
     if (!groupId) {
-      await this.searchAndRedirectToGroup(name, year);
+      // 找到可信的已有专辑时，跳转到它的添加格式页面
+      if (await this.searchAndRedirectToGroup(musicJson)) {
+        return;
+      }
 
       $('#categories').val(categoryId - 1);
       $('#title').val(name);
@@ -56,6 +63,8 @@ class RED extends BaseFiller implements TargetFiller {
       $('#image').val(wikiImage);
 
       this.fillArtistsForm(musicInfo);
+    } else {
+      showAutoMergedGroupNotice(CURRENT_SITE_INFO, groupId);
     }
 
     this.fillReleaseInfo(musicJson.torrent);
@@ -63,33 +72,19 @@ class RED extends BaseFiller implements TargetFiller {
     keepRipLogFilesAttached(this.info.musicInfo?.logFiles, name);
   }
 
-  private async searchAndRedirectToGroup(
-    name: string,
-    year: number,
-  ): Promise<boolean> {
-    const url = `/ajax.php?action=browse&searchstr=${encodeURIComponent(name)} ${year}`;
-    try {
-      const searchResult = await GMFetch<REDSearchResultResponse>(url, {
-        responseType: 'json',
-      });
-
-      if (
-        searchResult.status === 'success' &&
-        searchResult.response.results.length > 0
-      ) {
-        const groupId = searchResult.response.results[0].groupId;
-        const timestampMatchArray =
-          location.hash && location.hash.match(/(^|#)timestamp=([^#]*)(#|$)/);
-        const timestamp = timestampMatchArray?.[2] ?? '';
-
-        location.href = `${CURRENT_SITE_INFO.url}${CURRENT_SITE_INFO.uploadPath}?groupid=${groupId}#timestamp=${timestamp}`;
-        return true;
-      }
-    } catch (error) {
-      console.error('Error searching for group:', error);
-    }
-
-    return false;
+  private async searchAndRedirectToGroup(musicJson: {
+    group: MusicJson.GroupInfo;
+    torrent: MusicJson.Torrent;
+  }): Promise<boolean> {
+    return applyExistingMusicGroup({
+      release: musicJson,
+      siteInfo: CURRENT_SITE_INFO,
+      search: (query) =>
+        GMFetch<REDSearchResultResponse>(
+          `/ajax.php?action=browse&searchstr=${encodeURIComponent(query)}`,
+          { responseType: 'json' },
+        ),
+    });
   }
 
   private fillArtistsForm(musicInfo: MusicJson.GroupInfo['musicInfo']): void {

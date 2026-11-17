@@ -38,6 +38,7 @@ feature.disableRehostImg: 关闭转存图片功能
 feature.disableSiteFavicon: 关闭站点图标显示
 feature.hideThanksQuote: 不显示致谢内容
 feature.hideDouban: 不显示豆瓣按钮和豆瓣链接
+feature.disableMusicGroupMerge: 音乐转种时不自动合并到目标站已有的种子组（RED / Orpheus / DicMusic）
 
 transfer.btnConvert: 转缩略图
 transfer.btnConverting: 转换中...
@@ -61,3 +62,15 @@ siteList.errorBatchNotConfigured: 请先设置群转列表
 siteList.errorOpenFailed: 打开上传页面失败
 siteList.errorBatchFailed: 批量转种失败
 siteList.toastBatchOpened: 转种页面已打开，请前往对应页面操作
+
+musicGroup.autoMerged: 已自动选择目标站已有的种子组：
+musicGroup.uploadAsNewGroup: 选错了？改为新建种子组
+musicGroup.ambiguous: 目标站有多个可能相同的种子组，没有自动合并，请确认后手动选择：
+musicGroup.suggest: 目标站可能已有这张专辑，但匹配不够确定，没有自动合并：
+musicGroup.useGroup: 添加到此种子组
+musicGroup.close: 关闭
+musicGroup.diffTitle: 专辑名不完全一致
+musicGroup.diffArtist: 艺人不一致
+musicGroup.diffYear: 年份不同
+musicGroup.diffReleaseType: 发行类型不同
+musicGroup.sameCatalogue: 目录号相同

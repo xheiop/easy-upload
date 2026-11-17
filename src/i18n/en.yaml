@@ -38,6 +38,7 @@ feature.disableRehostImg: Disable image rehosting
 feature.disableSiteFavicon: Hide site icons
 feature.hideThanksQuote: Hide acknowledgments
 feature.hideDouban: Hide Douban button and link field
+feature.disableMusicGroupMerge: Don't merge music uploads into an existing torrent group automatically (RED / Orpheus / DicMusic)
 
 transfer.btnConvert: Convert to thumbnails
 transfer.btnConverting: Converting...
@@ -61,3 +62,15 @@ siteList.errorBatchNotConfigured: Please configure batch transfer list first
 siteList.errorOpenFailed: Failed to open upload page
 siteList.errorBatchFailed: Batch transfer failed
 siteList.toastBatchOpened: Transfer tabs opened. Switch to each to continue.
+
+musicGroup.autoMerged: 'Picked this existing torrent group on the target site automatically:'
+musicGroup.uploadAsNewGroup: Wrong group? Upload as a new group
+musicGroup.ambiguous: 'Several existing torrent groups may be this release, so none was picked. Check them and choose one:'
+musicGroup.suggest: 'The target site may already have this release, but the match is not certain enough to merge automatically:'
+musicGroup.useGroup: Add to this group
+musicGroup.close: Close
+musicGroup.diffTitle: title differs
+musicGroup.diffArtist: artist differs
+musicGroup.diffYear: year differs
+musicGroup.diffReleaseType: release type differs
+musicGroup.sameCatalogue: same catalogue number

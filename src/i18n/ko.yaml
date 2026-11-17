@@ -38,6 +38,7 @@ feature.disableRehostImg: 이미지 리호스팅 기능 끄기
 feature.disableSiteFavicon: 사이트 아이콘 숨기기
 feature.hideThanksQuote: 감사 내용 숨기기
 feature.hideDouban: 더우반 버튼 및 링크 필드 숨기기
+feature.disableMusicGroupMerge: 음악 업로드 시 대상 사이트의 기존 토렌트 그룹에 자동으로 합치지 않기 (RED / Orpheus / DicMusic)
 
 transfer.btnConvert: 썸네일로 변환
 transfer.btnConverting: 변환 중...
@@ -61,3 +62,15 @@ siteList.errorBatchNotConfigured: 먼저 일괄 전송 목록을 설정하세요
 siteList.errorOpenFailed: 업로드 페이지 열기 실패
 siteList.errorBatchFailed: 일괄 전송 실패
 siteList.toastBatchOpened: 전송 페이지가 열렸습니다. 해당 페이지로 이동하여 작업하세요.
+
+musicGroup.autoMerged: '대상 사이트의 기존 토렌트 그룹을 자동으로 선택했습니다:'
+musicGroup.uploadAsNewGroup: 잘못된 그룹인가요? 새 그룹으로 업로드
+musicGroup.ambiguous: '같은 릴리스로 보이는 그룹이 여러 개라 자동으로 합치지 않았습니다. 확인 후 직접 선택하세요:'
+musicGroup.suggest: '대상 사이트에 이미 이 릴리스가 있을 수 있지만, 확실하지 않아 자동으로 합치지 않았습니다:'
+musicGroup.useGroup: 이 그룹에 추가
+musicGroup.close: 닫기
+musicGroup.diffTitle: 앨범명이 다름
+musicGroup.diffArtist: 아티스트가 다름
+musicGroup.diffYear: 연도가 다름
+musicGroup.diffReleaseType: 릴리스 유형이 다름
+musicGroup.sameCatalogue: 카탈로그 번호가 같음
