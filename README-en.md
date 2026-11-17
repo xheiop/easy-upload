@@ -7,10 +7,10 @@
 [![Build](https://github.com/xheiop/easy-upload/actions/workflows/build.yml/badge.svg)](https://github.com/xheiop/easy-upload/actions/workflows/build.yml)
 [![License](https://img.shields.io/github/license/xheiop/easy-upload)](LICENSE)
 [![All Contributors](https://img.shields.io/github/all-contributors/xheiop/easy-upload/master)](#contributors)
-[![Telegram](https://img.shields.io/badge/Telegram-join-26A5E4?logo=telegram&logoColor=white)](https://t.me/+Ss_nJoAapvRhYTM1)
+[![Telegram](https://img.shields.io/badge/Telegram-join-26A5E4?logo=telegram&logoColor=white)](https://t.me/+9m9-g1czMP9jMjFl)
 [![Ask DeepWiki](https://img.shields.io/badge/Ask-DeepWiki-1f6feb)](https://deepwiki.com/xheiop/easy-upload)
 
-[Installation address 1](https://greasyfork.org/en/scripts/423199) | [Installation address 2](https://github.com/xheiop/easy-upload/raw/master/dist/easy-upload.user.js) | [Join Telegram group](https://t.me/+Ss_nJoAapvRhYTM1)
+[Installation address 1](https://greasyfork.org/en/scripts/423199) | [Installation address 2](https://github.com/xheiop/easy-upload/raw/master/dist/easy-upload.user.js) | [Join Telegram group](https://t.me/+9m9-g1czMP9jMjFl)
 
 ## About
 

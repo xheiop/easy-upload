@@ -7,12 +7,12 @@
 [![Build](https://github.com/xheiop/easy-upload/actions/workflows/build.yml/badge.svg)](https://github.com/xheiop/easy-upload/actions/workflows/build.yml)
 [![License](https://img.shields.io/github/license/xheiop/easy-upload)](LICENSE)
 [![All Contributors](https://img.shields.io/github/all-contributors/xheiop/easy-upload/master)](#致谢)
-[![Telegram](https://img.shields.io/badge/Telegram-join-26A5E4?logo=telegram&logoColor=white)](https://t.me/+Ss_nJoAapvRhYTM1)
+[![Telegram](https://img.shields.io/badge/Telegram-join-26A5E4?logo=telegram&logoColor=white)](https://t.me/+9m9-g1czMP9jMjFl)
 [![Ask DeepWiki](https://img.shields.io/badge/Ask-DeepWiki-1f6feb)](https://deepwiki.com/xheiop/easy-upload)
 
 [English Version](README-en.md)
 
-[安装地址 1](https://greasyfork.org/zh-CN/scripts/423199) | [安装地址 2](https://github.com/xheiop/easy-upload/raw/master/dist/easy-upload.user.js) | [加入 Telegram 群组](https://t.me/+Ss_nJoAapvRhYTM1)
+[安装地址 1](https://greasyfork.org/zh-CN/scripts/423199) | [安装地址 2](https://github.com/xheiop/easy-upload/raw/master/dist/easy-upload.user.js) | [加入 Telegram 群组](https://t.me/+9m9-g1czMP9jMjFl)
 
 ## 关于
 
