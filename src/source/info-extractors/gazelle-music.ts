@@ -1,4 +1,4 @@
-import { GMFetch, htmlToBBCode } from '@/common';
+import { fetchOriginalRipLogs, GMFetch, htmlToBBCode } from '@/common';
 import {
   formatTorrentTitle,
   getCategoryFromSource,
@@ -14,6 +14,7 @@ class GZMusicExtractor extends GazelleExtractor implements InfoExtractor {
   priority = 10;
   private _siteTorrentInfo: MusicJson.Torrent | null = null;
   private _siteGroupInfo: MusicJson.GroupInfo | null = null;
+  private logFiles: string[] = [];
 
   private get siteGroupInfo(): MusicJson.GroupInfo {
     if (!this._siteGroupInfo) {
@@ -65,6 +66,7 @@ class GZMusicExtractor extends GazelleExtractor implements InfoExtractor {
       media,
       encoding,
       log,
+      logFiles: this.logFiles,
     };
     this.info.musicJson = data;
 
@@ -162,25 +164,20 @@ class GZMusicExtractor extends GazelleExtractor implements InfoExtractor {
   }
 
   private async extractLogs() {
-    const { logScore, ripLogIds } = this.siteTorrentInfo;
-    const { media } = this.siteTorrentInfo;
-    const logList = [];
-    if (ripLogIds?.length > 0) {
-      for (let i = 1; i < ripLogIds.length; i++) {
-        const log = await this.getLogFromApi(
-          logScore,
-          this.torrentId,
-          ripLogIds[i],
-        );
-        logList.push(log);
-      }
-    } else if (media === 'CD') {
-      const logData = await this.getLogFromApi(logScore, this.torrentId, '0');
-      if (logData) {
-        logList.push(logData);
-      }
-    }
-    this.siteTorrentInfo.log = logList;
+    const { logScore, hasLog, media } = this.siteTorrentInfo;
+    const ripLogIds = this.siteTorrentInfo.ripLogIds ?? [];
+    const logPageMap = CONFIG.MUSIC_LOG_PAGE_MAP(logScore, this.torrentId);
+    const logPageUrl =
+      hasLog || ripLogIds.length > 0 || media === 'CD'
+        ? logPageMap[CURRENT_SITE_NAME as keyof typeof logPageMap]
+        : undefined;
+    const { files, texts } = await fetchOriginalRipLogs({
+      torrentId: this.torrentId,
+      ripLogIds,
+      logPageUrl,
+    });
+    this.logFiles = files;
+    this.siteTorrentInfo.log = texts;
   }
 
   private getUTF8String(entityString: string) {
@@ -188,25 +185,6 @@ class GZMusicExtractor extends GazelleExtractor implements InfoExtractor {
     tempElement.innerHTML = entityString;
     const utf8String = tempElement.value;
     return utf8String;
-  }
-
-  private async getLogFromApi(
-    logScore: number,
-    torrentId: string,
-    ripLogId: string,
-  ) {
-    const apiUrlMap = CONFIG.MUSIC_LOG_API_MAP(logScore, torrentId, ripLogId);
-    const response = await GMFetch<string>(
-      apiUrlMap[CURRENT_SITE_NAME as keyof typeof apiUrlMap],
-    );
-    if (CURRENT_SITE_NAME.match(/DicMusic|RED/)) {
-      const div = document.createElement('div');
-      div.innerHTML = response;
-      return $(div).find('pre').text() || '';
-    } else if (CURRENT_SITE_NAME.match(/Orpheus|/)) {
-      return response;
-    }
-    return '';
   }
 }
 

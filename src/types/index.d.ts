@@ -101,6 +101,8 @@ declare namespace TorrentInfo {
       media: string;
       encoding: string;
       log: string[];
+      // original rip log files, base64, uploaded to the target as they are
+      logFiles?: string[];
     };
     image?: string;
   }
@@ -407,8 +409,9 @@ declare namespace MusicJson {
     remastered: boolean;
     remasterTitle: string;
     logScore: number;
+    hasLog?: boolean;
     log: string[];
-    ripLogIds: string[];
+    ripLogIds: Array<number | string>;
   }
   interface MusicInfo {
     artists: People[];

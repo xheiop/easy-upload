@@ -236,9 +236,10 @@ export const CONFIG = {
       Commentary: 'with_commentary',
     },
   },
-  MUSIC_LOG_API_MAP: (logScore: number, torrentId: string, logId: string) => ({
+  // pages listing a torrent's rip logs, each with a link to the stored file
+  MUSIC_LOG_PAGE_MAP: (logScore: number, torrentId: string) => ({
     RED: `/torrents.php?action=loglist&torrentid=${torrentId}`,
-    Orpheus: `/view.php?type=riplog&id=${torrentId}.${logId}`,
-    DicMusic: `torrents.php?action=viewlog&logscore=${logScore}&torrentid=${torrentId}`,
+    Orpheus: `/torrents.php?action=viewlog&torrentid=${torrentId}`,
+    DicMusic: `/torrents.php?action=viewlog&logscore=${logScore}&torrentid=${torrentId}`,
   }),
 };

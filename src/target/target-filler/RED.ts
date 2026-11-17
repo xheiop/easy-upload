@@ -2,7 +2,11 @@ import { registry, TargetFiller } from './registry';
 import { BaseFiller } from './base/base-filler';
 import $ from 'jquery';
 import { REDSearchResultResponse } from '@/target/types';
-import { GMFetch, getLocationSearchValueByKey } from '@/common';
+import {
+  GMFetch,
+  getLocationSearchValueByKey,
+  keepRipLogFilesAttached,
+} from '@/common';
 import { CURRENT_SITE_INFO } from '@/const';
 
 class RED extends BaseFiller implements TargetFiller {
@@ -56,6 +60,7 @@ class RED extends BaseFiller implements TargetFiller {
 
     this.fillReleaseInfo(musicJson.torrent);
     this.fillTorrentFile();
+    keepRipLogFilesAttached(this.info.musicInfo?.logFiles, name);
   }
 
   private async searchAndRedirectToGroup(
