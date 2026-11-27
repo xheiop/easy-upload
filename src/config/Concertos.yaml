@@ -12,8 +12,13 @@ search:
   replaceKey: ["tt", ""]
   params:
     name: "{name}"
-    imdb: "{imdb}"
-    order_by: size
+    imdbId: "{imdb}"
+    sortField: size
+  result:
+    list: 'tr.c-torrent-row[data-torrent-id]'
+    url: 'a.c-torrent-row__name'
+    name: 'a.c-torrent-row__name'
+    size: 'td.c-torrent-row__size'
 name:
   selector: "#title"
 description:
