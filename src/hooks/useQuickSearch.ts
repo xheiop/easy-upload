@@ -64,7 +64,8 @@ export const useQuickSearch = () => {
           });
 
           if (sameTorrent) {
-            const url = `${siteUrl}/${$(sameTorrent).find(urlDom).attr('href')}`;
+            const href = $(sameTorrent).find(urlDom).attr('href') ?? '';
+            const url = new URL(href, `${siteUrl}/`).href;
             $(`.search-list li>a[data-site=${site}]`)
               .attr('data-url', url)
               .css('color', '#218380');
