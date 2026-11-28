@@ -12,8 +12,8 @@
 
 - 在该站点有账号，能打开种子上传页面
 - 浏览器装有 Tampermonkey 或 Violentmonkey，并安装了最新版 easy-upload
-- Node.js 20 及以上，Yarn（执行 `corepack enable` 即可）
-- fork 并克隆本仓库，在仓库目录执行 `yarn install`
+- Node.js 20 及以上，pnpm（安装方式见 https://pnpm.io/installation ，会自动切到 `package.json` 里 `packageManager` 指定的版本）
+- fork 并克隆本仓库，在仓库目录执行 `pnpm install`
 
 ### 1. 获取页面的原始配置
 
@@ -30,7 +30,7 @@
 在仓库目录打开你的 AI 编程工具，发送类似下面的提示词：
 
 ```text
-按照 scripts/site-config/rules.md，根据 <站点名>.raw.yaml 生成 src/config/<站点名>.yaml，用 yarn site-config 校验并修复所有错误。
+按照 scripts/site-config/rules.md，根据 <站点名>.raw.yaml 生成 src/config/<站点名>.yaml，用 pnpm site-config 校验并修复所有错误。
 ```
 
 - 仓库带有 `site-config` skill（Agent Skills 格式，位于 `.agents/skills/site-config/`），Codex、GitHub Copilot、Cursor、Gemini CLI 会自动加载，Claude Code 通过软链接 `.claude/skills/site-config` 加载；读取 `AGENTS.md` 的工具也能找到这份规则。其他工具先让它读 `scripts/site-config/rules.md` 即可
@@ -40,14 +40,14 @@
 ### 3. 校验
 
 ```bash
-yarn site-config --raw <站点名>.raw.yaml --name <站点名>
+pnpm site-config --raw <站点名>.raw.yaml --name <站点名>
 ```
 
 校验会检查配置里的选择器和下拉框取值是否都能在原始配置里找到，自动获取站点图标，并写回 `src/config/<站点名>.yaml`。所有 `✗` 错误都必须修复；`!` 警告和配置里的 `# TODO` 注释需要逐条确认。
 
 ### 4. 在真实站点上测试
 
-1. 执行 `yarn dev`，安装开发版脚本：macOS 和 Windows 上浏览器会自动打开安装页，其他系统按终端输出的地址打开。测试期间在脚本管理器里停用正式版 easy-upload，避免两个脚本同时运行
+1. 执行 `pnpm dev`，安装开发版脚本：macOS 和 Windows 上浏览器会自动打开安装页，其他系统按终端输出的地址打开。测试期间在脚本管理器里停用正式版 easy-upload，避免两个脚本同时运行
 2. 在 easy-upload 设置面板的「转种站点启用」里勾选新站点
 3. 打开一个已支持站点的种子详情页，点击转载到新站点
 4. 逐项检查上传页：标题、副标题、简介、IMDb/豆瓣链接、MediaInfo、种子文件，以及类型、媒介、编码、音频编码、分辨率、地区、制作组、匿名和标签
@@ -56,8 +56,8 @@ yarn site-config --raw <站点名>.raw.yaml --name <站点名>
 
 ### 5. 提交 PR
 
-1. 提交 `src/config/<站点名>.yaml`，以及确实需要的其他改动（`vite.config.js` 的 `match` 规则、自定义的 filler/extractor 等）。可以执行 `yarn support` 更新 `SUPPORTED.md`
-2. 不要提交 `dist/easy-upload.user.js`，`yarn build` 会改写它
+1. 提交 `src/config/<站点名>.yaml`，以及确实需要的其他改动（`vite.config.js` 的 `match` 规则、自定义的 filler/extractor 等）。可以执行 `pnpm support` 更新 `SUPPORTED.md`
+2. 不要提交 `dist/easy-upload.user.js`，`pnpm build` 会改写它
 3. 提交信息使用 [Conventional Commits](https://www.conventionalcommits.org/zh-hans/) 格式，例如 `feat(config): add <站点名> site config`
 4. 按 PR 模板填写：测试过的资源、上传页填写结果的截图，以及原始配置（方便维护者复核）
 
@@ -66,5 +66,5 @@ yarn site-config --raw <站点名>.raw.yaml --name <站点名>
 ## 其他贡献
 
 - Bug 反馈和功能建议请使用 Issue 模板
-- 提交代码前请执行 `yarn lint` 和 `yarn test --run`
+- 提交代码前请执行 `pnpm lint` 和 `pnpm test --run`
 - 项目结构和常用命令见 [AGENTS.md](AGENTS.md)

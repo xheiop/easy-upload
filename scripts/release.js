@@ -33,8 +33,8 @@ bump({
     text: '📦 打包中...',
     color: 'blue',
   }).start();
-  execa.sync('yarn', ['changelog']);
-  execa.sync('yarn', ['build']);
+  execa.sync('pnpm', ['changelog']);
+  execa.sync('pnpm', ['build']);
   spinner.text = '🔨 提交代码...';
   spinner.color = 'green';
   execa.sync('git', ['add', '.']);

@@ -15,7 +15,7 @@ Adding a site? Read CONTRIBUTING-en.md first. New-site PRs without a test record
 - 架构 / Engine: NexusPHP / UNIT3D / Gazelle / Other
 
 - [ ] 已用开发版脚本在真实上传页上测试 / Tested on the real upload page with the development build
-- [ ] `yarn site-config --raw <file> --name <Name>` 没有 ✗ 错误 / reports no ✗ errors
+- [ ] `pnpm site-config --raw <file> --name <Name>` 没有 ✗ 错误 / reports no ✗ errors
 - [ ] 没有提交 `dist/easy-upload.user.js` / `dist/easy-upload.user.js` is not committed
 
 测试过的资源 / Torrents tested with (e.g. movie 1080p Blu-ray encode, TV pack WEB-DL):
@@ -35,5 +35,5 @@ Adding a site? Read CONTRIBUTING-en.md first. New-site PRs without a test record
 
 ## 检查 / Checks
 
-- [ ] `yarn lint`
-- [ ] `yarn test --run`
+- [ ] `pnpm lint`
+- [ ] `pnpm test --run`

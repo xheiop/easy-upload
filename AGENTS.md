@@ -9,18 +9,18 @@ This file provides guidance to AI coding assistants (Claude Code, Codex, Cursor,
 ## Commands
 
 ```bash
-yarn build          # Build production userscript to dist/
-yarn dev            # Dev server with hot reload
-yarn test           # Run Vitest tests (watch mode)
-yarn test --run     # Run tests once
-yarn coverage       # Run tests with coverage report
-yarn lint           # ESLint check
-yarn site-config --raw <file> --name <Name>   # Validate a new site config, see below
+pnpm build          # Build production userscript to dist/
+pnpm dev            # Dev server with hot reload
+pnpm test           # Run Vitest tests (watch mode)
+pnpm test --run     # Run tests once
+pnpm coverage       # Run tests with coverage report
+pnpm lint           # ESLint check
+pnpm site-config --raw <file> --name <Name>   # Validate a new site config, see below
 ```
 
 To run a single test file:
 ```bash
-yarn test src/common/movie/tests/douban.test.ts --run
+pnpm test src/common/movie/tests/douban.test.ts --run
 ```
 
 ## Architecture Overview
@@ -65,7 +65,7 @@ The core data structure passed between source and target. Key fields: `title`, `
 
 New sites arrive as pull requests that the contributor has tested on the real upload page; new-site issues are no longer accepted. `CONTRIBUTING.md` describes the process for contributors.
 
-To write or fix a site config, follow `scripts/site-config/rules.md`: the workflow, the raw config format produced by the "[EASY-UPLOAD] Retrieve Site Config" button, the output schema and the mapping rules. The `site-config` skill in `.agents/skills/` (symlinked from `.claude/skills/` for Claude Code) points there too. `yarn site-config --raw <file> --name <Name>` validates the config against the raw config and fetches the icon; `yarn icon <SiteName>` refetches an icon. In short:
+To write or fix a site config, follow `scripts/site-config/rules.md`: the workflow, the raw config format produced by the "[EASY-UPLOAD] Retrieve Site Config" button, the output schema and the mapping rules. The `site-config` skill in `.agents/skills/` (symlinked from `.claude/skills/` for Claude Code) points there too. `pnpm site-config --raw <file> --name <Name>` validates the config against the raw config and fetches the icon; `pnpm icon <SiteName>` refetches an icon. In short:
 
 1. Create `src/config/<SITENAME>.yaml` with selectors and value maps
 2. If the site uses a standard engine (NexusPHP, Unit3D, AVistaZ), existing extractors/fillers may work automatically

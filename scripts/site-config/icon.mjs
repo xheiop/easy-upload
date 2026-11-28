@@ -1,7 +1,7 @@
 /**
  * Site favicon -> 20px PNG data URI for the `icon` field of a site config.
  *
- * Also a CLI (`yarn icon <SiteName> [...]`): refetches the icon of
+ * Also a CLI (`pnpm icon <SiteName> [...]`): refetches the icon of
  * src/config/<SiteName>.yaml and rewrites only the `icon:` line, so the rest
  * of the file (comments, quoting, order) stays as it is.
  */
@@ -91,7 +91,7 @@ export function injectIcon(yamlText, dataUri) {
 
 async function main(siteNames) {
   if (!siteNames.length) {
-    console.error('Usage: yarn icon <SiteName> [<SiteName> ...]');
+    console.error('Usage: pnpm icon <SiteName> [<SiteName> ...]');
     process.exit(2);
   }
   let failed = 0;

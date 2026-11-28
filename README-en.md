@@ -67,7 +67,7 @@ Greasemonkey 4 is significantly inconsistent with the API of the above two scrip
 Issues requesting support for a new site are no longer accepted; new sites come in as pull requests that the contributor has tested on the site. An AI coding assistant can write the site config:
 
 1. On the site's torrent upload page, click the green `[EASY-UPLOAD]Export page config` button in the bottom right corner and save the raw config it copies to the clipboard
-2. Have your AI assistant follow [`scripts/site-config/rules.md`](scripts/site-config/rules.md) to write `src/config/<SiteName>.yaml`, then validate it with `yarn site-config`
+2. Have your AI assistant follow [`scripts/site-config/rules.md`](scripts/site-config/rules.md) to write `src/config/<SiteName>.yaml`, then validate it with `pnpm site-config`
 3. Test it on the site with the development build, then open a pull request
 
 The [contributing guide](CONTRIBUTING-en.md) has the details.
