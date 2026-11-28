@@ -21,11 +21,11 @@ jobs:
         with:
           node-version: 24
 
-      - name: Corepack
-        run: corepack enable
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Run tests
-        run: yarn run test
+        run: pnpm run test

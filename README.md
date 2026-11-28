@@ -68,7 +68,7 @@ Greasemonkey 4 与以上两种脚本管理器的 API 严重不一致且只能在
 项目不再接受「请求支持新站点」的 Issue，只接受自己在站点上测试过的 PR。站点配置可以借助 AI 编程工具生成：
 
 1. 在站点的种子上传页点击右下角绿色的`[EASY-UPLOAD]获取页面配置`按钮，保存复制到剪贴板的原始配置
-2. 让 AI 工具按照 [`scripts/site-config/rules.md`](scripts/site-config/rules.md) 生成 `src/config/<站点名>.yaml`，再用 `yarn site-config` 校验
+2. 让 AI 工具按照 [`scripts/site-config/rules.md`](scripts/site-config/rules.md) 生成 `src/config/<站点名>.yaml`，再用 `pnpm site-config` 校验
 3. 用开发版脚本在站点上实际测试后提交 PR
 
 详细步骤见[贡献指南](CONTRIBUTING.md)。

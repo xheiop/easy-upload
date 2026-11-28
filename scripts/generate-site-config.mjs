@@ -30,7 +30,7 @@ import {
 } from './site-config/validate.mjs';
 import { fetchIconDataUri, hasIcon, injectIcon } from './site-config/icon.mjs';
 
-const HELP = `Usage: yarn site-config --raw <file> [options]
+const HELP = `Usage: pnpm site-config --raw <file> [options]
        (= node scripts/generate-site-config.mjs --raw <file> [options])
 
 Checks a site config against the raw config that the "[EASY-UPLOAD] Retrieve
@@ -183,7 +183,7 @@ async function run(opts) {
       log('Icon fetched.');
     } catch (err) {
       result.warnings.push(
-        `Could not fetch the favicon from ${siteUrl} (${err.message}); retry later with \`yarn icon ${name}\`.`,
+        `Could not fetch the favicon from ${siteUrl} (${err.message}); retry later with \`pnpm icon ${name}\`.`,
       );
     }
   }

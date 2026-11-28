@@ -6,7 +6,7 @@ on:
       - "scripts/**"
       - ".github/**"
       - "package.json"
-      - "yarn.lock"
+      - "pnpm-lock.yaml"
       - "vite.config.js"
     branches:
       - master
@@ -17,7 +17,7 @@ on:
       - "scripts/**"
       - ".github/**"
       - "package.json"
-      - "yarn.lock"
+      - "pnpm-lock.yaml"
       - "vite.config.js"
     branches:
       - master
@@ -30,9 +30,9 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-      - run: corepack enable
-      - run: yarn install
-      - run: yarn build
+      - uses: pnpm/action-setup@v6
+      - run: pnpm install
+      - run: pnpm build
       - uses: actions/upload-artifact@v4
         with:
           name: easy-upload.user.js

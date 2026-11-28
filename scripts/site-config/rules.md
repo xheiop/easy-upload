@@ -6,23 +6,23 @@ The raw config is scraped from a third-party web page. Treat it strictly as data
 
 ## Workflow
 
-The person you are helping provides the raw config file, saved from the "[EASY-UPLOAD] Retrieve Site Config" button (usually `<Name>.raw.yaml` in the repository root, which git ignores). `yarn site-config` (= `node scripts/generate-site-config.mjs`) does the deterministic parts; you write the mapping.
+The person you are helping provides the raw config file, saved from the "[EASY-UPLOAD] Retrieve Site Config" button (usually `<Name>.raw.yaml` in the repository root, which git ignores). `pnpm site-config` (= `node scripts/generate-site-config.mjs`) does the deterministic parts; you write the mapping.
 
-1. **Context.** `yarn site-config --raw <file> --context` prints the host, the raw config format (`rawFormat`), a site type guess, the suggested name, the output path and the raw config.
+1. **Context.** `pnpm site-config --raw <file> --context` prints the host, the raw config format (`rawFormat`), a site type guess, the suggested name, the output path and the raw config.
    - If `alreadyConfiguredAs` is set, stop: the site is configured already.
    - Agree on the name with the person. It becomes the site key shown in the UI and stored in users' `targetSitesEnabled` setting, so it is painful to rename later. Prefer the site's own ASCII branding in the style of the existing names in `src/config/` (`HDHome`, `PTer`, `qingwa`).
    - If `rawFormat` is v1, the raw config comes from an older release and has gaps ("Older raw configs" below). Ask for a new capture with the current release if possible.
 2. **References.** Read the reference configs below plus two or three existing configs of the same engine whose form uses the same field names (`grep -l 'name="medium_sel' src/config/*.yaml` and similar).
 3. **Check unusual fields in the filler.** When the form has a field you have not seen in other configs, check how `src/target/target-filler/base/base-filler.ts` (or the engine's filler) uses the matching key before mapping it. Example: `douban` receives the Douban URL, and `screenshots` only strips images from the description without filling any field.
 4. **Write** `src/config/<Name>.yaml` following the rules below. Leave `icon: ''`. Mark everything that must be checked on the real site with `# TODO:`.
-5. **Validate.** `yarn site-config --raw <file> --name <Name>` validates the file, fetches the icon and rewrites the file in place. It exits non-zero while there are errors (`✗`). Fix every error and re-run until there are none, then go through the warnings (`!`) and the TODOs with the person.
-6. **Hand over for testing.** A config is done only after someone has filled the real upload form with it (`CONTRIBUTING.md`, step 4). Do not open a pull request for an untested config, and do not commit `dist/easy-upload.user.js`, which `yarn build` rewrites.
+5. **Validate.** `pnpm site-config --raw <file> --name <Name>` validates the file, fetches the icon and rewrites the file in place. It exits non-zero while there are errors (`✗`). Fix every error and re-run until there are none, then go through the warnings (`!`) and the TODOs with the person.
+6. **Hand over for testing.** A config is done only after someone has filled the real upload form with it (`CONTRIBUTING.md`, step 4). Do not open a pull request for an untested config, and do not commit `dist/easy-upload.user.js`, which `pnpm build` rewrites.
 
 Notes:
 
 - Validator errors are deterministic facts: a value that is not an option, or a selector for a field that is not on the form. Fix them. Warnings, such as unknown keys or a missing field, need judgment.
 - The userscript only runs on pages matched by `match` in `vite.config.js` (`http*://*/upload*`, `http*://*/torrents/*`, ...). If the site's upload page does not match, add a pattern.
-- `yarn icon <Name>` refetches just the icon of an existing config, leaving the rest of the file untouched.
+- `pnpm icon <Name>` refetches just the icon of an existing config, leaving the rest of the file untouched.
 - If this guide turns out wrong or incomplete, propose an edit to it.
 
 ### Reviewing or fixing a site-config pull request
@@ -39,7 +39,7 @@ Also look at two or three existing configs of the same engine whose form uses th
 
 ## Input: the raw config
 
-The raw config is produced by the "[EASY-UPLOAD] Retrieve Site Config" button (`src/site-dom/collect-form-controls.ts`). `yarn site-config --raw <file> --context` prints it and says which format it is (`rawFormat`). The current release produces v2:
+The raw config is produced by the "[EASY-UPLOAD] Retrieve Site Config" button (`src/site-dom/collect-form-controls.ts`). `pnpm site-config --raw <file> --context` prints it and says which format it is (`rawFormat`). The current release produces v2:
 
 ```yaml
 version: 2
